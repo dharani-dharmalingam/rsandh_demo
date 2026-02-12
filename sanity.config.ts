@@ -10,7 +10,7 @@ import { structureTool } from 'sanity/structure'
 import { presentationTool } from 'sanity/presentation'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import { apiVersion, dataset, projectId } from './sanity/env'
+import { apiVersion, dataset, projectId, siteUrl } from './sanity/env'
 import { schemaTypes } from './sanity/schemaTypes'
 import { structure } from './sanity/structure'
 
@@ -26,6 +26,7 @@ export default defineConfig({
     structureTool({ structure }),
     presentationTool({
       previewUrl: {
+        origin: siteUrl,
         previewMode: {
           enable: '/api/draft-mode/enable',
         },

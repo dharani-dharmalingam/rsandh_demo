@@ -11,6 +11,16 @@ export const projectId = assertValue(
     'Missing environment variable: NEXT_PUBLIC_SANITY_PROJECT_ID'
 )
 
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://rsandh-demosite.vercel.app/'
+
+export const clientConfig = {
+    projectId,
+    dataset,
+    apiVersion,
+    useCdn: true,
+    previewUrl: siteUrl,
+}
+
 function assertValue<T>(v: T | undefined, errorMessage: string): T {
     if (v === undefined) {
         throw new Error(errorMessage)
