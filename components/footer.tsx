@@ -1,5 +1,16 @@
 import Link from 'next/link';
-import { QUICK_LINKS, CONTACT_INFO } from '@/lib/data';
+
+const QUICK_LINKS = [
+  { label: 'Benefits Guide', href: '/' },
+  { label: 'Enrollment', href: '/enrollment-checklist' },
+  { label: 'Support', href: '#' },
+];
+
+const CONTACT_INFO = [
+  { label: 'Benefits Phone', value: '(555) 123-4567' },
+  { label: 'Benefits Email', value: 'benefits@rshealth.com', href: 'mailto:benefits@rshealth.com' },
+  { label: 'HR Portal', value: 'portal.rshealth.com', href: '#' },
+];
 
 export function Footer() {
   return (

@@ -1,23 +1,42 @@
 import Link from 'next/link';
-import { BenefitChapter } from '@/lib/data';
+import { urlFor } from '@/sanity/lib/image';
 import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
 
+interface SanityBenefitChapter {
+  _id: string;
+  title: string;
+  description?: string;
+  slug: string;
+  icon?: string;
+  image?: any;
+}
+
 interface BenefitCardProps {
-  chapter: BenefitChapter;
+  chapter: SanityBenefitChapter;
 }
 
 export function BenefitCard({ chapter }: BenefitCardProps) {
+  const imageUrl = chapter.image
+    ? urlFor(chapter.image).width(400).height(300).url()
+    : null;
+
   return (
     <div className="group overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition-shadow">
       {/* Image */}
       <div className="relative h-48 w-full overflow-hidden bg-slate-100">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={chapter.image || "/placeholder.svg"}
-          alt={chapter.title}
-          className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
-        />
+        {imageUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={imageUrl}
+            alt={chapter.title}
+            className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        ) : (
+          <div className="h-full w-full flex items-center justify-center text-slate-400 text-sm">
+            No image
+          </div>
+        )}
       </div>
 
       {/* Content */}

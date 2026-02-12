@@ -1,19 +1,34 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { SectionWrapper } from '@/components/section-wrapper';
-import { BENEFIT_CHAPTERS, getBenefitChapterBySlug } from '@/lib/data';
 import { ChevronLeft } from 'lucide-react';
 import { notFound } from 'next/navigation';
+import { client } from '@/sanity/lib/client';
+import { chapterBySlugQuery, benefitChaptersQuery } from '@/sanity/lib/queries';
+import { urlFor } from '@/sanity/lib/image';
+import { PortableText } from '@portabletext/react';
+
+type ChapterDetail = {
+  _id: string;
+  title: string;
+  description: string;
+  slug: string;
+  image?: any;
+  content?: any[];
+};
 
 export async function generateStaticParams() {
-  return BENEFIT_CHAPTERS.map((chapter) => ({
+  const chapters = await client.fetch<{ slug: string }[]>(
+    `*[_type == "benefitChapter"]{ "slug": slug.current }`
+  );
+  return (chapters || []).map((chapter) => ({
     slug: chapter.slug,
   }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const chapter = getBenefitChapterBySlug(slug);
+  const chapter: ChapterDetail | null = await client.fetch(chapterBySlugQuery, { slug });
 
   if (!chapter) {
     return {
@@ -29,11 +44,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BenefitDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const chapter = getBenefitChapterBySlug(slug);
+  const chapter: ChapterDetail | null = await client.fetch(chapterBySlugQuery, { slug });
 
   if (!chapter) {
     notFound();
   }
+
+  const imageUrl = chapter.image ? urlFor(chapter.image).width(1200).height(400).url() : null;
 
   return (
     <div>
@@ -47,12 +64,16 @@ export default async function BenefitDetailPage({ params }: { params: Promise<{ 
 
       {/* Hero Section */}
       <div className="h-96 w-full overflow-hidden bg-slate-200 flex items-center justify-center text-slate-400">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={chapter.image || "/placeholder.svg"}
-          alt={chapter.title}
-          className="h-full w-full object-cover"
-        />
+        {imageUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={imageUrl}
+            alt={chapter.title}
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          <p className="text-lg text-slate-400">No image available</p>
+        )}
       </div>
 
       {/* Content */}
@@ -62,12 +83,15 @@ export default async function BenefitDetailPage({ params }: { params: Promise<{ 
           <p className="text-lg text-slate-600 mb-8">{chapter.description}</p>
 
           <div className="prose prose-sm max-w-none text-slate-700 space-y-6">
-            <p>{chapter.fullContent}</p>
-            <p>
-              This benefits chapter provides important information about your coverage options and how to make the
-              most of your benefits. For more detailed information or to enroll, please visit your benefits portal
-              or contact the HR team.
-            </p>
+            {chapter.content && chapter.content.length > 0 ? (
+              <PortableText value={chapter.content} />
+            ) : (
+              <p>
+                This benefits chapter provides important information about your coverage options and how to make the
+                most of your benefits. For more detailed information or to enroll, please visit your benefits portal
+                or contact the HR team.
+              </p>
+            )}
           </div>
 
           <div className="mt-12 pt-8 border-t border-slate-200">

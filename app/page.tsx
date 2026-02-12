@@ -3,11 +3,54 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { SectionWrapper } from '@/components/section-wrapper';
 import { BenefitCard } from '@/components/benefit-card';
-import { BENEFIT_CHAPTERS, OPEN_ENROLLMENT_INFO } from '@/lib/data';
+import { client } from '@/sanity/lib/client';
+import { benefitChaptersQuery, openEnrollmentQuery } from '@/sanity/lib/queries';
 import { FileText, Calendar, HelpCircle, CheckSquare, TrendingUp } from 'lucide-react';
 
-export default function HomePage() {
-  const previewChapters = BENEFIT_CHAPTERS.slice(0, 6);
+type BenefitChapter = {
+  _id: string;
+  title: string;
+  description: string;
+  slug: string;
+  icon?: string;
+  image?: any;
+};
+
+type OpenEnrollmentData = {
+  title: string;
+  description: string;
+  startDate: string;
+  endDate: string;
+  enrollmentLink?: string;
+  benefitsGuideUrl?: string;
+};
+
+function computeDaysLeft(endDate: string | undefined): number {
+  if (!endDate) return 0;
+  const end = new Date(endDate);
+  const now = new Date();
+  const diff = Math.ceil((end.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+  return Math.max(0, diff);
+}
+
+function formatDate(dateStr: string | undefined): string {
+  if (!dateStr) return '';
+  return new Date(dateStr).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+
+export default async function HomePage() {
+  const [chapters, enrollment]: [BenefitChapter[], OpenEnrollmentData] =
+    await Promise.all([
+      client.fetch(benefitChaptersQuery),
+      client.fetch(openEnrollmentQuery),
+    ]);
+
+  const previewChapters = (chapters || []).slice(0, 6);
+  const daysLeft = computeDaysLeft(enrollment?.endDate);
 
   return (
     <div className="space-y-0">
@@ -21,12 +64,21 @@ export default function HomePage() {
             <p className="text-lg text-slate-600 mb-8">
               Your comprehensive benefits portal designed to help you make informed decisions about your health, retirement, and financial wellbeing.
             </p>
-            <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700">
-              <a href="/benefits-guide.pdf" download>
-                <FileText className="mr-2 h-5 w-5" />
-                Download Benefits Guide
-              </a>
-            </Button>
+            {enrollment?.benefitsGuideUrl ? (
+              <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700">
+                <a href={enrollment.benefitsGuideUrl} download>
+                  <FileText className="mr-2 h-5 w-5" />
+                  Download Benefits Guide
+                </a>
+              </Button>
+            ) : (
+              <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700">
+                <a href="/benefits-guide.pdf" download>
+                  <FileText className="mr-2 h-5 w-5" />
+                  Download Benefits Guide
+                </a>
+              </Button>
+            )}
           </div>
           <div className="h-80 rounded-xl bg-slate-200 flex items-center justify-center text-slate-400">
             <div className="text-center">
@@ -40,8 +92,12 @@ export default function HomePage() {
       {/* Open Enrollment Section */}
       <SectionWrapper className="bg-white">
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-slate-900 mb-2">{OPEN_ENROLLMENT_INFO.title}</h2>
-          <p className="text-slate-600 mb-8">{OPEN_ENROLLMENT_INFO.description}</p>
+          <h2 className="text-3xl font-bold text-slate-900 mb-2">
+            {enrollment?.title || 'Welcome to Open Enrollment'}
+          </h2>
+          <p className="text-slate-600 mb-8">
+            {enrollment?.description || 'Review and update your benefits selections'}
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -50,7 +106,7 @@ export default function HomePage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-blue-600 font-medium mb-1">Days Left</p>
-                <p className="text-4xl font-bold text-blue-900">{OPEN_ENROLLMENT_INFO.daysLeft}</p>
+                <p className="text-4xl font-bold text-blue-900">{daysLeft}</p>
               </div>
               <Calendar className="h-12 w-12 text-blue-300" />
             </div>
@@ -59,9 +115,9 @@ export default function HomePage() {
           {/* Dates Card */}
           <Card className="p-6 border-slate-200">
             <p className="text-sm text-slate-600 font-medium mb-2">Open Enrollment Period</p>
-            <p className="text-slate-900 font-medium mb-1">{OPEN_ENROLLMENT_INFO.startDate}</p>
+            <p className="text-slate-900 font-medium mb-1">{formatDate(enrollment?.startDate)}</p>
             <p className="text-slate-600 text-sm mb-4">to</p>
-            <p className="text-slate-900 font-medium">{OPEN_ENROLLMENT_INFO.endDate}</p>
+            <p className="text-slate-900 font-medium">{formatDate(enrollment?.endDate)}</p>
           </Card>
 
           {/* Status Card */}
@@ -91,7 +147,7 @@ export default function HomePage() {
             </Link>
           </Button>
           <Button asChild className="h-auto p-4 justify-start flex-col items-start bg-blue-600 hover:bg-blue-700">
-            <a href="#enroll">
+            <a href={enrollment?.enrollmentLink || '#enroll'}>
               <span className="font-semibold">Enroll Now</span>
               <span className="text-sm text-blue-100">Complete your enrollment</span>
             </a>
@@ -135,7 +191,7 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {previewChapters.map((chapter) => (
-            <BenefitCard key={chapter.id} chapter={chapter} />
+            <BenefitCard key={chapter._id} chapter={chapter} />
           ))}
         </div>
 
