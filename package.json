@@ -40,6 +40,7 @@
     "@radix-ui/react-tooltip": "1.1.6",
     "@sanity/image-url": "^1.2.0",
     "@sanity/vision": "^4.22.0",
+    "@sanity/visual-editing": "^5.2.1",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

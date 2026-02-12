@@ -1,6 +1,6 @@
 import { BenefitCard } from '@/components/benefit-card';
 import { SectionWrapper } from '@/components/section-wrapper';
-import { client } from '@/sanity/lib/client';
+import { sanityFetch } from '@/sanity/lib/live';
 import { benefitsPageQuery, benefitChaptersQuery } from '@/sanity/lib/queries';
 
 type Chapter = {
@@ -18,10 +18,10 @@ type BenefitsPageData = {
 };
 
 export default async function BenefitsPage() {
-  const [pageData, chapters]: [BenefitsPageData, Chapter[]] =
+  const [{ data: pageData }, { data: chapters }] =
     await Promise.all([
-      client.fetch(benefitsPageQuery),
-      client.fetch(benefitChaptersQuery),
+      sanityFetch({ query: benefitsPageQuery }),
+      sanityFetch({ query: benefitChaptersQuery }),
     ]);
 
   return (
@@ -41,7 +41,7 @@ export default async function BenefitsPage() {
       {/* Chapters Grid */}
       <SectionWrapper className="bg-white">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {chapters?.map((chapter) => (
+          {(chapters as Chapter[])?.map((chapter: Chapter) => (
             <BenefitCard key={chapter._id} chapter={chapter} />
           ))}
         </div>

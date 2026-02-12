@@ -3,8 +3,8 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { SectionWrapper } from '@/components/section-wrapper';
 import { BenefitCard } from '@/components/benefit-card';
-import { client } from '@/sanity/lib/client';
-import { benefitChaptersQuery, openEnrollmentQuery } from '@/sanity/lib/queries';
+import { sanityFetch } from '@/sanity/lib/live';
+import { benefitChaptersQuery, openEnrollmentQuery, retirementPlanningQuery } from '@/sanity/lib/queries';
 import { FileText, Calendar, HelpCircle, CheckSquare, TrendingUp } from 'lucide-react';
 
 type BenefitChapter = {
@@ -23,6 +23,13 @@ type OpenEnrollmentData = {
   endDate: string;
   enrollmentLink?: string;
   benefitsGuideUrl?: string;
+  videoUrl?: string;
+};
+
+type RetirementData = {
+  heroTitle: string;
+  heroDescription: string;
+  heroVideoUrl?: string;
 };
 
 function computeDaysLeft(endDate: string | undefined): number {
@@ -42,15 +49,33 @@ function formatDate(dateStr: string | undefined): string {
   });
 }
 
-export default async function HomePage() {
-  const [chapters, enrollment]: [BenefitChapter[], OpenEnrollmentData] =
-    await Promise.all([
-      client.fetch(benefitChaptersQuery),
-      client.fetch(openEnrollmentQuery),
-    ]);
+function getEmbedUrl(url: string | undefined): string | null {
+  if (!url) return null;
+  if (url.includes('youtube.com/watch?v=')) {
+    return url.replace('watch?v=', 'embed/');
+  }
+  if (url.includes('youtu.be/')) {
+    return url.replace('youtu.be/', 'youtube.com/embed/');
+  }
+  if (url.includes('vimeo.com/')) {
+    return url.replace('vimeo.com/', 'player.vimeo.com/video/');
+  }
+  return url;
+}
 
-  const previewChapters = (chapters || []).slice(0, 6);
-  const daysLeft = computeDaysLeft(enrollment?.endDate);
+export default async function HomePage() {
+  const [{ data: chapters }, { data: enrollment }, { data: retirement }] = await Promise.all([
+    sanityFetch({ query: benefitChaptersQuery }),
+    sanityFetch({ query: openEnrollmentQuery }),
+    sanityFetch({ query: retirementPlanningQuery }),
+  ]);
+
+  const typedChapters = (chapters || []) as BenefitChapter[];
+  const typedEnrollment = enrollment as OpenEnrollmentData;
+  const typedRetirement = retirement as RetirementData;
+
+  const previewChapters = typedChapters.slice(0, 6);
+  const daysLeft = computeDaysLeft(typedEnrollment?.endDate);
 
   return (
     <div className="space-y-0">
@@ -64,9 +89,9 @@ export default async function HomePage() {
             <p className="text-lg text-slate-600 mb-8">
               Your comprehensive benefits portal designed to help you make informed decisions about your health, retirement, and financial wellbeing.
             </p>
-            {enrollment?.benefitsGuideUrl ? (
+            {typedEnrollment?.benefitsGuideUrl ? (
               <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700">
-                <a href={enrollment.benefitsGuideUrl} download>
+                <a href={typedEnrollment.benefitsGuideUrl} download>
                   <FileText className="mr-2 h-5 w-5" />
                   Download Benefits Guide
                 </a>
@@ -80,11 +105,20 @@ export default async function HomePage() {
               </Button>
             )}
           </div>
-          <div className="h-80 rounded-xl bg-slate-200 flex items-center justify-center text-slate-400">
-            <div className="text-center">
-              <div className="text-6xl mb-2">▶</div>
-              <p>Video Placeholder</p>
-            </div>
+          <div className="h-80 rounded-xl bg-slate-200 overflow-hidden flex items-center justify-center text-slate-400">
+            {typedEnrollment?.videoUrl ? (
+              <iframe
+                src={getEmbedUrl(typedEnrollment.videoUrl)!}
+                className="w-full h-full border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            ) : (
+              <div className="text-center">
+                <div className="text-6xl mb-2">▶</div>
+                <p>Video Placeholder</p>
+              </div>
+            )}
           </div>
         </div>
       </SectionWrapper>
@@ -93,10 +127,10 @@ export default async function HomePage() {
       <SectionWrapper className="bg-white">
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-slate-900 mb-2">
-            {enrollment?.title || 'Welcome to Open Enrollment'}
+            {typedEnrollment?.title || 'Welcome to Open Enrollment'}
           </h2>
           <p className="text-slate-600 mb-8">
-            {enrollment?.description || 'Review and update your benefits selections'}
+            {typedEnrollment?.description || 'Review and update your benefits selections'}
           </p>
         </div>
 
@@ -115,9 +149,9 @@ export default async function HomePage() {
           {/* Dates Card */}
           <Card className="p-6 border-slate-200">
             <p className="text-sm text-slate-600 font-medium mb-2">Open Enrollment Period</p>
-            <p className="text-slate-900 font-medium mb-1">{formatDate(enrollment?.startDate)}</p>
+            <p className="text-slate-900 font-medium mb-1">{formatDate(typedEnrollment?.startDate)}</p>
             <p className="text-slate-600 text-sm mb-4">to</p>
-            <p className="text-slate-900 font-medium">{formatDate(enrollment?.endDate)}</p>
+            <p className="text-slate-900 font-medium">{formatDate(typedEnrollment?.endDate)}</p>
           </Card>
 
           {/* Status Card */}
@@ -147,7 +181,7 @@ export default async function HomePage() {
             </Link>
           </Button>
           <Button asChild className="h-auto p-4 justify-start flex-col items-start bg-blue-600 hover:bg-blue-700">
-            <a href={enrollment?.enrollmentLink || '#enroll'}>
+            <a href={typedEnrollment?.enrollmentLink || '#enroll'}>
               <span className="font-semibold">Enroll Now</span>
               <span className="text-sm text-blue-100">Complete your enrollment</span>
             </a>
@@ -159,11 +193,20 @@ export default async function HomePage() {
       <SectionWrapper className="bg-slate-50">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
-            <div className="h-80 rounded-xl bg-slate-200 flex items-center justify-center text-slate-400">
-              <div className="text-center">
-                <div className="text-6xl mb-2">▶</div>
-                <p>Video Placeholder</p>
-              </div>
+            <div className="h-80 rounded-xl bg-slate-200 overflow-hidden flex items-center justify-center text-slate-400">
+              {typedRetirement?.heroVideoUrl ? (
+                <iframe
+                  src={getEmbedUrl(typedRetirement.heroVideoUrl)!}
+                  className="w-full h-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <div className="text-center">
+                  <div className="text-6xl mb-2">▶</div>
+                  <p>Video Placeholder</p>
+                </div>
+              )}
             </div>
           </div>
           <div className="order-1 md:order-2">
@@ -171,9 +214,11 @@ export default async function HomePage() {
               <TrendingUp className="h-5 w-5 text-blue-600" />
               <span className="text-blue-600 font-semibold text-sm">Retirement Planning</span>
             </div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Plan for Your Future</h2>
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+              {typedRetirement?.heroTitle || 'Plan for Your Future'}
+            </h2>
             <p className="text-slate-600 mb-8">
-              Learn about retirement plans, investment options, and strategies to help you achieve your long-term financial goals.
+              {typedRetirement?.heroDescription || 'Learn about retirement plans, investment options, and strategies to help you achieve your long-term financial goals.'}
             </p>
             <Button asChild className="bg-blue-600 hover:bg-blue-700">
               <Link href="/retirement-planning">Learn More</Link>

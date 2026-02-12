@@ -56,7 +56,8 @@ export const openEnrollmentQuery = `
   startDate,
   endDate,
   enrollmentLink,
-  "benefitsGuideUrl": benefitsGuide.asset->url
+  "benefitsGuideUrl": benefitsGuide.asset->url,
+  videoUrl
 }
 `;
 
@@ -88,6 +89,17 @@ export const retirementPlanningQuery = `
   features,
   planningTitle,
   sections,
-  ctaButtonText
+  ctaButtonText,
+  heroVideoUrl
+}
+`;
+
+export const siteSettingsQuery = `
+*[_type == "siteSettings"][0]{
+  logoText,
+  footerAbout,
+  quickLinks,
+  contactInfo,
+  copyrightText
 }
 `;

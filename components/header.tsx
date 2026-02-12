@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 
-export function Header() {
+export function Header({ logoText }: { logoText?: string }) {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white shadow-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -15,7 +15,7 @@ export function Header() {
               <span className="text-white font-bold text-sm">RS</span>
             </div>
             <span className="hidden sm:inline text-sm font-semibold text-slate-900">
-              RS&H Benefits
+              {logoText || 'RS&H Benefits'}
             </span>
           </Link>
 

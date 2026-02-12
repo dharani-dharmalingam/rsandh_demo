@@ -1,18 +1,25 @@
 import Link from 'next/link';
 
-const QUICK_LINKS = [
-  { label: 'Benefits Guide', href: '/' },
-  { label: 'Enrollment', href: '/enrollment-checklist' },
-  { label: 'Support', href: '#' },
-];
+interface FooterProps {
+  about?: string;
+  quickLinks?: { label: string; href: string }[];
+  contactInfo?: { label: string; value: string; href?: string }[];
+  copyrightText?: string;
+}
 
-const CONTACT_INFO = [
-  { label: 'Benefits Phone', value: '(555) 123-4567' },
-  { label: 'Benefits Email', value: 'benefits@rshealth.com', href: 'mailto:benefits@rshealth.com' },
-  { label: 'HR Portal', value: 'portal.rshealth.com', href: '#' },
-];
+export function Footer({ about, quickLinks, contactInfo, copyrightText }: FooterProps) {
+  const currentQuickLinks = quickLinks || [
+    { label: 'Benefits Guide', href: '/' },
+    { label: 'Enrollment', href: '/enrollment-checklist' },
+    { label: 'Support', href: '#' },
+  ];
 
-export function Footer() {
+  const currentContactInfo = contactInfo || [
+    { label: 'Benefits Phone', value: '(555) 123-4567' },
+    { label: 'Benefits Email', value: 'benefits@rshealth.com', href: 'mailto:benefits@rshealth.com' },
+    { label: 'HR Portal', value: 'portal.rshealth.com', href: '#' },
+  ];
+
   return (
     <footer className="border-t border-slate-200 bg-slate-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
@@ -21,7 +28,7 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold text-slate-900 mb-4">RS&H</h3>
             <p className="text-sm text-slate-600">
-              Comprehensive benefits administration and support for our valued employees.
+              {about || 'Comprehensive benefits administration and support for our valued employees.'}
             </p>
           </div>
 
@@ -29,7 +36,7 @@ export function Footer() {
           <div>
             <h4 className="text-sm font-semibold text-slate-900 mb-4">Quick Links</h4>
             <nav className="space-y-2">
-              {QUICK_LINKS.map((link) => (
+              {currentQuickLinks.map((link) => (
                 <div key={link.label}>
                   <Link href={link.href} className="text-sm text-slate-600 hover:text-blue-600 transition-colors">
                     {link.label}
@@ -43,7 +50,7 @@ export function Footer() {
           <div>
             <h4 className="text-sm font-semibold text-slate-900 mb-4">Contact</h4>
             <div className="space-y-2">
-              {CONTACT_INFO.map((info) => (
+              {currentContactInfo.map((info) => (
                 <div key={info.label}>
                   {info.href ? (
                     <a href={info.href} className="text-sm text-slate-600 hover:text-blue-600 transition-colors">
@@ -63,7 +70,7 @@ export function Footer() {
         {/* Bottom divider and copyright */}
         <div className="mt-8 border-t border-slate-200 pt-8">
           <p className="text-xs text-slate-600 text-center">
-            © 2025 RS&H. All rights reserved. Benefits information is confidential.
+            {copyrightText || `© ${new Date().getFullYear()} RS&H. All rights reserved. Benefits information is confidential.`}
           </p>
         </div>
       </div>

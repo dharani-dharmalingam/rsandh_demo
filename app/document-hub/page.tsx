@@ -1,7 +1,7 @@
 import { SectionWrapper } from '@/components/section-wrapper';
 import { Button } from '@/components/ui/button';
 import { FileText, Download, Archive } from 'lucide-react';
-import { client } from '@/sanity/lib/client';
+import { sanityFetch } from '@/sanity/lib/live';
 import { documentsQuery } from '@/sanity/lib/queries';
 
 export const metadata = {
@@ -33,7 +33,8 @@ function getFileTypeLabel(mimeType?: string): string {
 }
 
 export default async function DocumentHubPage() {
-  const documents: SanityDocument[] = (await client.fetch(documentsQuery)) || [];
+  const { data } = await sanityFetch({ query: documentsQuery });
+  const documents = (data || []) as SanityDocument[];
 
   return (
     <div className="space-y-0">

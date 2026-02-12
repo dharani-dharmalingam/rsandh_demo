@@ -7,6 +7,7 @@ import benefitChangesPage from './benefitChangesPage'
 import benefitsPage from './benefitsPage'
 import enrollmentChecklist from './enrollmentChecklist'
 import retirementPlanning from './retirementPlanning'
+import siteSettings from './siteSettings'
 
 export const schemaTypes = [
   client,
@@ -17,6 +18,7 @@ export const schemaTypes = [
   benefitChangesPage,
   benefitsPage,
   enrollmentChecklist,
-  retirementPlanning
+  retirementPlanning,
+  siteSettings
 ]
 

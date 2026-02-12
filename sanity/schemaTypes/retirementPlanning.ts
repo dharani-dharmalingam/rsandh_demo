@@ -64,5 +64,11 @@ export default defineType({
             title: "CTA Button Text",
             type: "string",
         }),
+        defineField({
+            name: "heroVideoUrl",
+            title: "Hero Video URL",
+            type: "url",
+            description: "Enter a YouTube or Vimeo embed link",
+        }),
     ],
 });

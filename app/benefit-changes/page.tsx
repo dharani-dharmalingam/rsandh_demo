@@ -2,7 +2,7 @@ import { SectionWrapper } from '@/components/section-wrapper';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { AlertCircle, TrendingUp, Plus, CheckCircle } from 'lucide-react';
-import { client } from '@/sanity/lib/client';
+import { sanityFetch } from '@/sanity/lib/live';
 import { benefitChangesQuery } from '@/sanity/lib/queries';
 
 export const metadata = {
@@ -27,28 +27,29 @@ type BenefitChangesPageData = {
 };
 
 export default async function BenefitChangesPage() {
-  const data: BenefitChangesPageData = await client.fetch(benefitChangesQuery);
+  const { data } = await sanityFetch({ query: benefitChangesQuery });
+  const typedData = data as BenefitChangesPageData;
 
   const newBenefits =
-    data?.changes?.filter((c) => c.type === 'new') || [];
+    typedData?.changes?.filter((c: BenefitChange) => c.type === 'new') || [];
 
   const updatedBenefits =
-    data?.changes?.filter((c) => c.type === 'update') || [];
+    typedData?.changes?.filter((c: BenefitChange) => c.type === 'update') || [];
 
   return (
     <div className="space-y-0">
       {/* Hero */}
       <SectionWrapper className="bg-gradient-to-br from-blue-50 to-slate-50">
         <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-          {data?.title}
+          {typedData?.title}
         </h1>
         <p className="text-lg text-slate-600 max-w-2xl">
-          {data?.description}
+          {typedData?.description}
         </p>
       </SectionWrapper>
 
       {/* Alert Banner */}
-      {data?.alertMessage && (
+      {typedData?.alertMessage && (
         <SectionWrapper className="bg-white">
           <Alert className="border-blue-200 bg-blue-50">
             <AlertCircle className="h-4 w-4 text-blue-600" />
@@ -120,7 +121,7 @@ export default async function BenefitChangesPage() {
       )}
 
       {/* Call to Action */}
-      {(data?.ctaTitle || data?.ctaDescription) && (
+      {(typedData?.ctaTitle || typedData?.ctaDescription) && (
         <SectionWrapper className="bg-white">
           <div className="max-w-3xl">
             <div className="p-8 border border-slate-200 rounded-lg bg-gradient-to-br from-blue-50 to-slate-50">
@@ -128,10 +129,10 @@ export default async function BenefitChangesPage() {
                 <CheckCircle className="h-6 w-6 text-blue-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-xl font-semibold text-slate-900 mb-3">
-                    {data?.ctaTitle}
+                    {typedData?.ctaTitle}
                   </h3>
                   <p className="text-slate-600 mb-6">
-                    {data?.ctaDescription}
+                    {typedData?.ctaDescription}
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Button asChild className="bg-blue-600 hover:bg-blue-700">

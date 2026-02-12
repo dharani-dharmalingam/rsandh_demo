@@ -1,7 +1,7 @@
 import { SectionWrapper } from '@/components/section-wrapper';
 import { Button } from '@/components/ui/button';
 import { TrendingUp, DollarSign, Target, BarChart3 } from 'lucide-react';
-import { client } from '@/sanity/lib/client';
+import { sanityFetch } from '@/sanity/lib/live';
 import { retirementPlanningQuery } from '@/sanity/lib/queries';
 
 export const metadata = {
@@ -45,10 +45,11 @@ function getIcon(iconName?: string) {
 }
 
 export default async function RetirementPlanningPage() {
-  const data: RetirementPageData | null = await client.fetch(retirementPlanningQuery);
+  const { data } = await sanityFetch({ query: retirementPlanningQuery });
+  const typedData = data as RetirementPageData | null;
 
-  const features = data?.features || [];
-  const sections = data?.sections || [];
+  const features = typedData?.features || [];
+  const sections = typedData?.sections || [];
 
   return (
     <div className="space-y-0">
@@ -57,10 +58,10 @@ export default async function RetirementPlanningPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-              {data?.heroTitle || 'Retirement Planning'}
+              {typedData?.heroTitle || 'Retirement Planning'}
             </h1>
             <p className="text-lg text-slate-600 mb-4">
-              {data?.heroDescription ||
+              {typedData?.heroDescription ||
                 "Plan your future with confidence. RS&H offers comprehensive retirement benefits and planning resources to help you achieve your long-term financial goals."}
             </p>
           </div>
@@ -76,7 +77,7 @@ export default async function RetirementPlanningPage() {
       {/* Key Features */}
       <SectionWrapper className="bg-white">
         <h2 className="text-3xl font-bold text-slate-900 mb-12">
-          {data?.featuresTitle || 'Retirement Benefits'}
+          {typedData?.featuresTitle || 'Retirement Benefits'}
         </h2>
 
         {features.length > 0 ? (
@@ -130,7 +131,7 @@ export default async function RetirementPlanningPage() {
       <SectionWrapper className="bg-slate-50">
         <div className="max-w-3xl">
           <h2 className="text-2xl font-bold text-slate-900 mb-6">
-            {data?.planningTitle || 'Planning Your Retirement'}
+            {typedData?.planningTitle || 'Planning Your Retirement'}
           </h2>
 
           {sections.length > 0 ? (
@@ -162,7 +163,7 @@ export default async function RetirementPlanningPage() {
           )}
 
           <Button className="mt-8 bg-blue-600 hover:bg-blue-700">
-            {data?.ctaButtonText || 'Schedule a Consultation'}
+            {typedData?.ctaButtonText || 'Schedule a Consultation'}
           </Button>
         </div>
       </SectionWrapper>

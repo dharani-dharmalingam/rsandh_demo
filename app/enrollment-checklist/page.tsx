@@ -2,7 +2,7 @@ import { SectionWrapper } from '@/components/section-wrapper';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { CheckCircle2 } from 'lucide-react';
-import { client } from '@/sanity/lib/client';
+import { sanityFetch } from '@/sanity/lib/live';
 import { enrollmentChecklistQuery } from '@/sanity/lib/queries';
 
 export const metadata = {
@@ -26,19 +26,20 @@ type ChecklistPageData = {
 };
 
 export default async function EnrollmentChecklistPage() {
-  const data: ChecklistPageData | null = await client.fetch(enrollmentChecklistQuery);
+  const { data } = await sanityFetch({ query: enrollmentChecklistQuery });
+  const typedData = data as ChecklistPageData | null;
 
-  const items = data?.items || [];
+  const items = typedData?.items || [];
 
   return (
     <div className="space-y-0">
       {/* Hero */}
       <SectionWrapper className="bg-gradient-to-br from-blue-50 to-slate-50">
         <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-          {data?.title || 'Enrollment Checklist'}
+          {typedData?.title || 'Enrollment Checklist'}
         </h1>
         <p className="text-lg text-slate-600 max-w-2xl">
-          {data?.description ||
+          {typedData?.description ||
             'Use this step-by-step checklist to prepare for open enrollment and make informed decisions about your benefits.'}
         </p>
       </SectionWrapper>
@@ -80,10 +81,10 @@ export default async function EnrollmentChecklistPage() {
               <CheckCircle2 className="h-6 w-6 text-green-600 flex-shrink-0" />
               <div>
                 <h3 className="font-semibold text-green-900 mb-2">
-                  {data?.ctaTitle || 'Ready to Enroll?'}
+                  {typedData?.ctaTitle || 'Ready to Enroll?'}
                 </h3>
                 <p className="text-sm text-green-800 mb-4">
-                  {data?.ctaDescription ||
+                  {typedData?.ctaDescription ||
                     "Once you've completed this checklist, you're ready to make your benefit elections during open enrollment."}
                 </p>
                 <Button className="bg-green-600 hover:bg-green-700">Complete Enrollment</Button>

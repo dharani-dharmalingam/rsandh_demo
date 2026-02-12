@@ -4,6 +4,7 @@ import { SectionWrapper } from '@/components/section-wrapper';
 import { ChevronLeft } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import { client } from '@/sanity/lib/client';
+import { sanityFetch } from '@/sanity/lib/live';
 import { chapterBySlugQuery, benefitChaptersQuery } from '@/sanity/lib/queries';
 import { urlFor } from '@/sanity/lib/image';
 import { PortableText } from '@portabletext/react';
@@ -44,13 +45,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BenefitDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const chapter: ChapterDetail | null = await client.fetch(chapterBySlugQuery, { slug });
+  const { data: chapter } = await sanityFetch({ query: chapterBySlugQuery, params: { slug } });
+  const typedChapter = chapter as ChapterDetail | null;
 
-  if (!chapter) {
+  if (!typedChapter) {
     notFound();
   }
 
-  const imageUrl = chapter.image ? urlFor(chapter.image).width(1200).height(400).url() : null;
+  const imageUrl = typedChapter.image ? urlFor(typedChapter.image).width(1200).height(400).url() : null;
 
   return (
     <div>
@@ -68,7 +70,7 @@ export default async function BenefitDetailPage({ params }: { params: Promise<{ 
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={imageUrl}
-            alt={chapter.title}
+            alt={typedChapter.title}
             className="h-full w-full object-cover"
           />
         ) : (
@@ -79,12 +81,12 @@ export default async function BenefitDetailPage({ params }: { params: Promise<{ 
       {/* Content */}
       <SectionWrapper className="bg-white">
         <div className="max-w-3xl">
-          <h1 className="text-4xl font-bold text-slate-900 mb-4">{chapter.title}</h1>
-          <p className="text-lg text-slate-600 mb-8">{chapter.description}</p>
+          <h1 className="text-4xl font-bold text-slate-900 mb-4">{typedChapter.title}</h1>
+          <p className="text-lg text-slate-600 mb-8">{typedChapter.description}</p>
 
           <div className="prose prose-sm max-w-none text-slate-700 space-y-6">
-            {chapter.content && chapter.content.length > 0 ? (
-              <PortableText value={chapter.content} />
+            {typedChapter.content && typedChapter.content.length > 0 ? (
+              <PortableText value={typedChapter.content} />
             ) : (
               <p>
                 This benefits chapter provides important information about your coverage options and how to make the
