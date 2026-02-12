@@ -1,0 +1,105 @@
+export const chaptersQuery = `
+*[_type == "benefitChapter"] | order(order asc){
+  _id,
+  title,
+  description,
+  "slug": slug.current,
+  icon,
+  image
+}
+`;
+
+export const chapterBySlugQuery = `
+*[_type == "benefitChapter" && slug.current == $slug][0]{
+  _id,
+  title,
+  description,
+  "slug": slug.current,
+  image,
+  content
+}
+`;
+
+export const benefitChangesQuery = `
+*[_type == "benefitChangesPage"][0]{
+  title,
+  description,
+  alertMessage,
+  changes,
+  ctaTitle,
+  ctaDescription
+}
+`;
+
+export const benefitsPageQuery = `
+*[_type == "benefitsPage"][0]{
+  title,
+  description
+}
+`;
+
+export const benefitChaptersQuery = `
+*[_type == "benefitChapter"] | order(order asc, title asc){
+  _id,
+  title,
+  description,
+  "slug": slug.current,
+  icon,
+  image
+}
+`;
+
+export const openEnrollmentQuery = `
+*[_type == "openEnrollment"][0]{
+  title,
+  description,
+  startDate,
+  endDate,
+  enrollmentLink,
+  "benefitsGuideUrl": benefitsGuide.asset->url,
+  videoUrl
+}
+`;
+
+export const documentsQuery = `
+*[_type == "documentHub"]{
+  _id,
+  title,
+  "fileUrl": file.asset->url,
+  "fileSize": file.asset->size,
+  "fileType": file.asset->mimeType
+}
+`;
+
+export const enrollmentChecklistQuery = `
+*[_type == "enrollmentChecklist"][0]{
+  title,
+  description,
+  items,
+  ctaTitle,
+  ctaDescription
+}
+`;
+
+export const retirementPlanningQuery = `
+*[_type == "retirementPlanning"][0]{
+  heroTitle,
+  heroDescription,
+  featuresTitle,
+  features,
+  planningTitle,
+  sections,
+  ctaButtonText,
+  heroVideoUrl
+}
+`;
+
+export const siteSettingsQuery = `
+*[_type == "siteSettings"][0]{
+  logoText,
+  footerAbout,
+  quickLinks,
+  contactInfo,
+  copyrightText
+}
+`;
