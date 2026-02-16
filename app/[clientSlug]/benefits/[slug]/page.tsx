@@ -5,7 +5,7 @@ import { ChevronLeft } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import { client } from '@/sanity/lib/client';
 import { sanityFetch } from '@/sanity/lib/live';
-import { chapterBySlugQuery, benefitChaptersQuery } from '@/sanity/lib/queries';
+import { chapterBySlugQuery, benefitChaptersQuery, siteSettingsQuery } from '@/sanity/lib/queries';
 import { urlFor } from '@/sanity/lib/image';
 import { PortableText } from '@portabletext/react';
 
@@ -19,33 +19,49 @@ type ChapterDetail = {
 };
 
 export async function generateStaticParams() {
-  const chapters = await client.fetch<{ slug: string }[]>(
-    `*[_type == "benefitChapter"]{ "slug": slug.current }`
+  const chapters = await client.fetch<{ slug: string, clientSlug: string }[]>(
+    `*[_type == "benefitChapter" && defined(client->slug.current)]{ 
+      "slug": slug.current, 
+      "clientSlug": client->slug.current 
+    }`
   );
   return (chapters || []).map((chapter) => ({
+    clientSlug: chapter.clientSlug,
     slug: chapter.slug,
   }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const chapter: ChapterDetail | null = await client.fetch(chapterBySlugQuery, { slug });
+type Props = {
+  params: Promise<{ clientSlug: string; slug: string }>
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { clientSlug, slug } = await params;
+  const { data: settings } = await sanityFetch({
+    query: siteSettingsQuery,
+    params: { clientSlug }
+  });
+  const clientName = settings?.clientName || 'RS&H';
+  const chapter: ChapterDetail | null = await client.fetch(chapterBySlugQuery, { slug, clientSlug });
 
   if (!chapter) {
     return {
-      title: 'Not Found - RS&H Benefits Portal',
+      title: `Not Found - ${clientName} Benefits Portal`,
     };
   }
 
   return {
-    title: `${chapter.title} - RS&H Benefits Portal`,
+    title: `${chapter.title} - ${clientName} Benefits Portal`,
     description: chapter.description,
   };
 }
 
-export default async function BenefitDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const { data: chapter } = await sanityFetch({ query: chapterBySlugQuery, params: { slug } });
+export default async function BenefitDetailPage({ params }: Props) {
+  const { clientSlug, slug } = await params;
+  const { data: chapter } = await sanityFetch({
+    query: chapterBySlugQuery,
+    params: { slug, clientSlug }
+  });
   const typedChapter = chapter as ChapterDetail | null;
 
   if (!typedChapter) {
@@ -58,7 +74,7 @@ export default async function BenefitDetailPage({ params }: { params: Promise<{ 
     <div>
       {/* Back Link */}
       <SectionWrapper className="bg-slate-50">
-        <Link href="/benefits" className="inline-flex items-center text-blue-600 hover:text-blue-700">
+        <Link href={`/${clientSlug}/benefits`} className="inline-flex items-center text-blue-600 hover:text-blue-700">
           <ChevronLeft className="h-4 w-4 mr-1" />
           Back to Benefits
         </Link>
@@ -99,7 +115,7 @@ export default async function BenefitDetailPage({ params }: { params: Promise<{ 
           <div className="mt-12 pt-8 border-t border-slate-200">
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild variant="outline">
-                <Link href="/benefits">
+                <Link href={`/${clientSlug}/benefits`}>
                   <ChevronLeft className="h-4 w-4 mr-2" />
                   Back to Benefits
                 </Link>

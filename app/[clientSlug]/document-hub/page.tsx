@@ -2,12 +2,35 @@ import { SectionWrapper } from '@/components/section-wrapper';
 import { Button } from '@/components/ui/button';
 import { FileText, Download, Archive } from 'lucide-react';
 import { sanityFetch } from '@/sanity/lib/live';
-import { documentsQuery } from '@/sanity/lib/queries';
+import { client } from '@/sanity/lib/client';
+import { documentsQuery, siteSettingsQuery } from '@/sanity/lib/queries';
+import { Metadata } from 'next';
 
-export const metadata = {
-  title: 'Document Hub - RS&H Benefits Portal',
-  description: 'Download benefits documents and guides',
-};
+export async function generateStaticParams() {
+  const clients = await client.fetch<{ slug: string }[]>(
+    `*[_type == "client"]{ "slug": slug.current }`
+  );
+  return (clients || []).map((client) => ({
+    clientSlug: client.slug,
+  }));
+}
+
+type Props = {
+  params: Promise<{ clientSlug: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { clientSlug } = await params
+  const { data: settings } = await sanityFetch({
+    query: siteSettingsQuery,
+    params: { clientSlug }
+  });
+  const clientName = settings?.clientName || 'RS&H';
+  return {
+    title: `Document Hub - ${clientName} Benefits Portal`,
+    description: `Download benefits documents and guides from ${clientName}`,
+  }
+}
 
 type SanityDocument = {
   _id: string;
@@ -32,8 +55,12 @@ function getFileTypeLabel(mimeType?: string): string {
   return 'File';
 }
 
-export default async function DocumentHubPage() {
-  const { data } = await sanityFetch({ query: documentsQuery });
+export default async function DocumentHubPage({ params }: Props) {
+  const { clientSlug } = await params
+  const { data } = await sanityFetch({
+    query: documentsQuery,
+    params: { clientSlug }
+  });
   const documents = (data || []) as SanityDocument[];
 
   return (

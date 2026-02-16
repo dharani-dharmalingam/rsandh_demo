@@ -11,7 +11,9 @@ export const projectId = assertValue(
     'Missing environment variable: NEXT_PUBLIC_SANITY_PROJECT_ID'
 )
 
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://rsandh-demosite.vercel.app/'
+export const activeClientSlug = process.env.NEXT_PUBLIC_ACTIVE_CLIENT_SLUG || 'rs-h'
+
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
 
 export const clientConfig = {
     projectId,

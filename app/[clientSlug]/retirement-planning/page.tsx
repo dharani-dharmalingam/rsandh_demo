@@ -2,12 +2,19 @@ import { SectionWrapper } from '@/components/section-wrapper';
 import { Button } from '@/components/ui/button';
 import { TrendingUp, DollarSign, Target, BarChart3 } from 'lucide-react';
 import { sanityFetch } from '@/sanity/lib/live';
-import { retirementPlanningQuery } from '@/sanity/lib/queries';
+import { client } from '@/sanity/lib/client';
+import { retirementPlanningQuery, siteSettingsQuery } from '@/sanity/lib/queries';
+import { Metadata } from 'next';
 
-export const metadata = {
-  title: 'Retirement Planning - RS&H Benefits Portal',
-  description: 'Resources and tools for planning your retirement',
-};
+export async function generateStaticParams() {
+  const clients = await client.fetch<{ slug: string }[]>(
+    `*[_type == "client"]{ "slug": slug.current }`
+  );
+  return (clients || []).map((client) => ({
+    clientSlug: client.slug,
+  }));
+}
+
 
 type RetirementFeature = {
   _key: string;
@@ -44,9 +51,31 @@ function getIcon(iconName?: string) {
   return iconMap[iconName] || TrendingUp;
 }
 
-export default async function RetirementPlanningPage() {
-  const { data } = await sanityFetch({ query: retirementPlanningQuery });
+type Props = {
+  params: Promise<{ clientSlug: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { clientSlug } = await params
+  const { data: settings } = await sanityFetch({
+    query: siteSettingsQuery,
+    params: { clientSlug }
+  });
+  const clientName = settings?.clientName || 'RS&H';
+  return {
+    title: `Retirement Planning - ${clientName} Benefits Portal`,
+    description: `Resources and tools for planning your retirement at ${clientName}`,
+  }
+}
+
+export default async function RetirementPlanningPage({ params }: Props) {
+  const { clientSlug } = await params
+  const [{ data }, { data: settings }] = await Promise.all([
+    sanityFetch({ query: retirementPlanningQuery, params: { clientSlug } }),
+    sanityFetch({ query: siteSettingsQuery, params: { clientSlug } }),
+  ]);
   const typedData = data as RetirementPageData | null;
+  const clientName = settings?.clientName || 'RS&H';
 
   const features = typedData?.features || [];
   const sections = typedData?.sections || [];
@@ -62,7 +91,7 @@ export default async function RetirementPlanningPage() {
             </h1>
             <p className="text-lg text-slate-600 mb-4">
               {typedData?.heroDescription ||
-                "Plan your future with confidence. RS&H offers comprehensive retirement benefits and planning resources to help you achieve your long-term financial goals."}
+                `Plan your future with confidence. ${clientName} offers comprehensive retirement benefits and planning resources to help you achieve your long-term financial goals.`}
             </p>
           </div>
           <div className="h-96 rounded-xl bg-slate-200 flex items-center justify-center text-slate-400">
@@ -148,14 +177,14 @@ export default async function RetirementPlanningPage() {
               <div>
                 <h3 className="font-semibold text-slate-900 mb-2">Start Early, Save Often</h3>
                 <p>
-                  The earlier you start saving for retirement, the more time your investments have to grow. RS&H&apos;s
+                  The earlier you start saving for retirement, the more time your investments have to grow. {clientName}&apos;s
                   retirement plans offer multiple investment options to suit your risk tolerance and timeline.
                 </p>
               </div>
               <div>
                 <h3 className="font-semibold text-slate-900 mb-2">Maximize Employer Matching</h3>
                 <p>
-                  Take full advantage of RS&H&apos;s 401(k) matching program. This is free money for your retirement that
+                  Take full advantage of {clientName}&apos;s 401(k) matching program. This is free money for your retirement that
                   helps you build a stronger financial foundation.
                 </p>
               </div>

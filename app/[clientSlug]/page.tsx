@@ -4,8 +4,19 @@ import { Card } from '@/components/ui/card';
 import { SectionWrapper } from '@/components/section-wrapper';
 import { BenefitCard } from '@/components/benefit-card';
 import { sanityFetch } from '@/sanity/lib/live';
-import { benefitChaptersQuery, openEnrollmentQuery, retirementPlanningQuery } from '@/sanity/lib/queries';
+import { client } from '@/sanity/lib/client';
+import { benefitChaptersQuery, openEnrollmentQuery, retirementPlanningQuery, siteSettingsQuery } from '@/sanity/lib/queries';
 import { FileText, Calendar, HelpCircle, CheckSquare, TrendingUp } from 'lucide-react';
+import { Metadata } from 'next';
+
+export async function generateStaticParams() {
+  const clients = await client.fetch<{ slug: string }[]>(
+    `*[_type == "client"]{ "slug": slug.current }`
+  );
+  return (clients || []).map((client) => ({
+    clientSlug: client.slug,
+  }));
+}
 
 type BenefitChapter = {
   _id: string;
@@ -63,11 +74,26 @@ function getEmbedUrl(url: string | undefined): string | null {
   return url;
 }
 
-export default async function HomePage() {
-  const [{ data: chapters }, { data: enrollment }, { data: retirement }] = await Promise.all([
-    sanityFetch({ query: benefitChaptersQuery }),
-    sanityFetch({ query: openEnrollmentQuery }),
-    sanityFetch({ query: retirementPlanningQuery }),
+export async function generateMetadata({ params }: { params: Promise<{ clientSlug: string }> }): Promise<Metadata> {
+  const { clientSlug } = await params
+  const { data: settings } = await sanityFetch({
+    query: siteSettingsQuery,
+    params: { clientSlug }
+  });
+  const clientName = settings?.clientName || 'RS&H';
+  return {
+    title: `${clientName} Benefits Portal`,
+    description: `Welcome to the ${clientName} Benefits Portal. Access your health, retirement, and financial wellbeing resources.`,
+  }
+}
+
+export default async function HomePage({ params }: { params: Promise<{ clientSlug: string }> }) {
+  const { clientSlug } = await params;
+  const [{ data: chapters }, { data: enrollment }, { data: retirement }, { data: settings }] = await Promise.all([
+    sanityFetch({ query: benefitChaptersQuery, params: { clientSlug } }),
+    sanityFetch({ query: openEnrollmentQuery, params: { clientSlug } }),
+    sanityFetch({ query: retirementPlanningQuery, params: { clientSlug } }),
+    sanityFetch({ query: siteSettingsQuery, params: { clientSlug } }),
   ]);
 
   const typedChapters = (chapters || []) as BenefitChapter[];
@@ -84,7 +110,7 @@ export default async function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-              Welcome to RS&H
+              Welcome to {settings?.clientName || 'RS&H'}
             </h1>
             <p className="text-lg text-slate-600 mb-8">
               Your comprehensive benefits portal designed to help you make informed decisions about your health, retirement, and financial wellbeing.
@@ -169,13 +195,13 @@ export default async function HomePage() {
         {/* Quick Action Buttons */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Button asChild variant="outline" className="h-auto p-4 justify-start flex-col items-start bg-transparent">
-            <Link href="/enrollment-checklist">
+            <Link href={`/${clientSlug}/enrollment-checklist`}>
               <span className="font-semibold text-blue-600">Review Enrollment Checklist</span>
               <span className="text-sm text-slate-600">Prepare for open enrollment</span>
             </Link>
           </Button>
           <Button asChild variant="outline" className="h-auto p-4 justify-start flex-col items-start bg-transparent">
-            <Link href="/benefit-changes">
+            <Link href={`/${clientSlug}/benefit-changes`}>
               <span className="font-semibold text-blue-600">Discover Benefit Changes</span>
               <span className="text-sm text-slate-600">What's new for 2026</span>
             </Link>
@@ -221,7 +247,7 @@ export default async function HomePage() {
               {typedRetirement?.heroDescription || 'Learn about retirement plans, investment options, and strategies to help you achieve your long-term financial goals.'}
             </p>
             <Button asChild className="bg-blue-600 hover:bg-blue-700">
-              <Link href="/retirement-planning">Learn More</Link>
+              <Link href={`/${clientSlug}/retirement-planning`}>Learn More</Link>
             </Button>
           </div>
         </div>
@@ -236,19 +262,19 @@ export default async function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {previewChapters.map((chapter) => (
-            <BenefitCard key={chapter._id} chapter={chapter} />
+            <BenefitCard key={chapter._id} chapter={chapter} clientSlug={clientSlug} />
           ))}
         </div>
 
         <div className="flex justify-center">
           <Button asChild size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 bg-transparent">
-            <Link href="/benefits">View All Benefits</Link>
+            <Link href={`/${clientSlug}/benefits`}>View All Benefits</Link>
           </Button>
         </div>
       </SectionWrapper>
 
       {/* Help Section */}
-      <SectionWrapper className="bg-blue-50">
+      <SectionWrapper className="bg-blue-100">
         <div className="max-w-2xl">
           <div className="flex gap-4 items-start mb-6">
             <HelpCircle className="h-8 w-8 text-blue-600 flex-shrink-0" />
@@ -278,7 +304,7 @@ export default async function HomePage() {
           <Card className="p-6 hover:shadow-lg transition-shadow cursor-pointer">
             <h3 className="font-semibold text-slate-900 mb-2">Important Contacts</h3>
             <p className="text-sm text-slate-600 mb-4">Find phone numbers and email addresses</p>
-            <Link href="/benefits/document-hub" className="text-blue-600 hover:text-blue-700 text-sm font-medium">
+            <Link href={`/${clientSlug}/benefits/document-hub`} className="text-blue-600 hover:text-blue-700 text-sm font-medium">
               View Contacts →
             </Link>
           </Card>
@@ -286,7 +312,7 @@ export default async function HomePage() {
           <Card className="p-6 hover:shadow-lg transition-shadow cursor-pointer">
             <h3 className="font-semibold text-slate-900 mb-2">Document Hub</h3>
             <p className="text-sm text-slate-600 mb-4">Download benefits documents and guides</p>
-            <Link href="/document-hub" className="text-blue-600 hover:text-blue-700 text-sm font-medium">
+            <Link href={`/${clientSlug}/document-hub`} className="text-blue-600 hover:text-blue-700 text-sm font-medium">
               View Documents →
             </Link>
           </Card>

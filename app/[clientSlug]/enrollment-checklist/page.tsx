@@ -3,12 +3,35 @@ import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { CheckCircle2 } from 'lucide-react';
 import { sanityFetch } from '@/sanity/lib/live';
-import { enrollmentChecklistQuery } from '@/sanity/lib/queries';
+import { client } from '@/sanity/lib/client';
+import { enrollmentChecklistQuery, siteSettingsQuery } from '@/sanity/lib/queries';
+import { Metadata } from 'next';
 
-export const metadata = {
-  title: 'Enrollment Checklist - RS&H Benefits Portal',
-  description: 'Step-by-step checklist for benefits enrollment',
-};
+export async function generateStaticParams() {
+  const clients = await client.fetch<{ slug: string }[]>(
+    `*[_type == "client"]{ "slug": slug.current }`
+  );
+  return (clients || []).map((client) => ({
+    clientSlug: client.slug,
+  }));
+}
+
+type Props = {
+  params: Promise<{ clientSlug: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { clientSlug } = await params
+  const { data: settings } = await sanityFetch({
+    query: siteSettingsQuery,
+    params: { clientSlug }
+  });
+  const clientName = settings?.clientName || 'RS&H';
+  return {
+    title: `Enrollment Checklist - ${clientName} Benefits Portal`,
+    description: `Step-by-step checklist for benefits enrollment at ${clientName}`,
+  }
+}
 
 type ChecklistItem = {
   _key: string;
@@ -25,8 +48,12 @@ type ChecklistPageData = {
   ctaDescription: string;
 };
 
-export default async function EnrollmentChecklistPage() {
-  const { data } = await sanityFetch({ query: enrollmentChecklistQuery });
+export default async function EnrollmentChecklistPage({ params }: Props) {
+  const { clientSlug } = await params
+  const { data } = await sanityFetch({
+    query: enrollmentChecklistQuery,
+    params: { clientSlug }
+  });
   const typedData = data as ChecklistPageData | null;
 
   const items = typedData?.items || [];

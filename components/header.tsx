@@ -4,18 +4,30 @@ import Link from 'next/link';
 import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 
-export function Header({ logoText }: { logoText?: string }) {
+interface HeaderProps {
+  logoText?: string;
+  clientName?: string;
+  shortName?: string;
+  clientLogo?: string;
+  clientSlug?: string;
+}
+
+export function Header({ logoText, clientName, shortName, clientLogo, clientSlug }: HeaderProps) {
+  const displayShortName = shortName || 'RS';
+  const displayLogoText = logoText || `${clientName || 'RS&H'} Benefits`;
+  const homeLink = clientSlug ? `/${clientSlug}` : '/';
+
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white shadow-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Left Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href={homeLink} className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center">
-              <span className="text-white font-bold text-sm">RS</span>
+              <span className="text-white font-bold text-sm">{displayShortName.substring(0, 2)}</span>
             </div>
             <span className="hidden sm:inline text-sm font-semibold text-slate-900">
-              {logoText || 'RS&H Benefits'}
+              {displayLogoText}
             </span>
           </Link>
 
@@ -32,9 +44,9 @@ export function Header({ logoText }: { logoText?: string }) {
           </div>
 
           {/* Right Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href={homeLink} className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-slate-700 flex items-center justify-center">
-              <span className="text-white font-bold text-xs">RSH</span>
+              <span className="text-white font-bold text-xs">{displayShortName}</span>
             </div>
           </Link>
         </div>

@@ -14,12 +14,16 @@ interface SanityBenefitChapter {
 
 interface BenefitCardProps {
   chapter: SanityBenefitChapter;
+  clientSlug?: string;
 }
 
-export function BenefitCard({ chapter }: BenefitCardProps) {
+export function BenefitCard({ chapter, clientSlug }: BenefitCardProps) {
   const imageUrl = chapter.image
     ? urlFor(chapter.image).width(400).height(300).url()
     : null;
+  const linkHref = clientSlug
+    ? `/${clientSlug}/benefits/${chapter.slug}`
+    : `/benefits/${chapter.slug}`;
 
   return (
     <div className="group overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition-shadow">
@@ -44,7 +48,7 @@ export function BenefitCard({ chapter }: BenefitCardProps) {
         <h3 className="text-lg font-semibold text-slate-900 mb-2">{chapter.title}</h3>
         <p className="text-sm text-slate-600 mb-4 line-clamp-2">{chapter.description}</p>
 
-        <Link href={`/benefits/${chapter.slug}`}>
+        <Link href={linkHref}>
           <Button variant="outline" size="sm" className="w-full bg-transparent">
             Learn More <ChevronRight className="ml-2 h-4 w-4" />
           </Button>

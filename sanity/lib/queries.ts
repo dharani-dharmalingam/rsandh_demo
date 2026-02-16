@@ -1,5 +1,5 @@
 export const chaptersQuery = `
-*[_type == "benefitChapter"] | order(order asc){
+*[_type == "benefitChapter" && client->slug.current == $clientSlug] | order(order asc){
   _id,
   title,
   description,
@@ -10,7 +10,7 @@ export const chaptersQuery = `
 `;
 
 export const chapterBySlugQuery = `
-*[_type == "benefitChapter" && slug.current == $slug][0]{
+*[_type == "benefitChapter" && slug.current == $slug && client->slug.current == $clientSlug][0]{
   _id,
   title,
   description,
@@ -21,7 +21,7 @@ export const chapterBySlugQuery = `
 `;
 
 export const benefitChangesQuery = `
-*[_type == "benefitChangesPage"][0]{
+*[_type == "benefitChangesPage" && client->slug.current == $clientSlug][0]{
   title,
   description,
   alertMessage,
@@ -32,14 +32,14 @@ export const benefitChangesQuery = `
 `;
 
 export const benefitsPageQuery = `
-*[_type == "benefitsPage"][0]{
+*[_type == "benefitsPage" && client->slug.current == $clientSlug][0]{
   title,
   description
 }
 `;
 
 export const benefitChaptersQuery = `
-*[_type == "benefitChapter"] | order(order asc, title asc){
+*[_type == "benefitChapter" && client->slug.current == $clientSlug] | order(order asc, title asc){
   _id,
   title,
   description,
@@ -50,7 +50,7 @@ export const benefitChaptersQuery = `
 `;
 
 export const openEnrollmentQuery = `
-*[_type == "openEnrollment"][0]{
+*[_type == "openEnrollment" && client->slug.current == $clientSlug][0]{
   title,
   description,
   startDate,
@@ -62,7 +62,7 @@ export const openEnrollmentQuery = `
 `;
 
 export const documentsQuery = `
-*[_type == "documentHub"]{
+*[_type == "documentHub" && client->slug.current == $clientSlug]{
   _id,
   title,
   "fileUrl": file.asset->url,
@@ -72,7 +72,7 @@ export const documentsQuery = `
 `;
 
 export const enrollmentChecklistQuery = `
-*[_type == "enrollmentChecklist"][0]{
+*[_type == "enrollmentChecklist" && client->slug.current == $clientSlug][0]{
   title,
   description,
   items,
@@ -82,7 +82,7 @@ export const enrollmentChecklistQuery = `
 `;
 
 export const retirementPlanningQuery = `
-*[_type == "retirementPlanning"][0]{
+*[_type == "retirementPlanning" && client->slug.current == $clientSlug][0]{
   heroTitle,
   heroDescription,
   featuresTitle,
@@ -95,7 +95,10 @@ export const retirementPlanningQuery = `
 `;
 
 export const siteSettingsQuery = `
-*[_type == "siteSettings"][0]{
+*[_type == "siteSettings" && client->slug.current == $clientSlug][0]{
+  clientName,
+  shortName,
+  "clientLogo": clientLogo.asset->url,
   logoText,
   footerAbout,
   quickLinks,

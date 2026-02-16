@@ -70,5 +70,12 @@ export default defineType({
             type: "url",
             description: "Enter a YouTube or Vimeo embed link",
         }),
+        defineField({
+            name: "client",
+            title: "Client",
+            type: "reference",
+            to: [{ type: "client" }],
+            validation: (Rule) => Rule.required(),
+        }),
     ],
 });

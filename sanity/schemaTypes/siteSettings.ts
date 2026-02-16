@@ -6,6 +6,33 @@ export default defineType({
     type: 'document',
     fields: [
         defineField({
+            name: 'clientName',
+            title: 'Client Name',
+            type: 'string',
+            description: 'Full name of the client (e.g. RS&H, ABC Corp)',
+        }),
+        defineField({
+            name: 'shortName',
+            title: 'Short Name / Initials',
+            type: 'string',
+            description: 'Shortened name or initials for logos (e.g. RS, ABC)',
+        }),
+        defineField({
+            name: 'clientLogo',
+            title: 'Client Logo',
+            type: 'image',
+            options: {
+                hotspot: true,
+            }
+        }),
+        defineField({
+            name: 'client',
+            title: 'Client',
+            type: 'reference',
+            to: [{ type: 'client' }],
+            validation: (Rule) => Rule.required(),
+        }),
+        defineField({
             name: 'logoText',
             title: 'Logo Text',
             type: 'string',

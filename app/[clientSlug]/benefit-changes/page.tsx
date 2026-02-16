@@ -3,12 +3,36 @@ import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { AlertCircle, TrendingUp, Plus, CheckCircle } from 'lucide-react';
 import { sanityFetch } from '@/sanity/lib/live';
-import { benefitChangesQuery } from '@/sanity/lib/queries';
+import { client } from '@/sanity/lib/client';
+import { benefitChangesQuery, siteSettingsQuery } from '@/sanity/lib/queries';
+import { Metadata } from 'next';
+import Link from 'next/link';
 
-export const metadata = {
-  title: 'Benefit Changes 2026 - RS&H Benefits Portal',
-  description: 'Learn about what’s new in 2026 benefits',
-};
+export async function generateStaticParams() {
+  const clients = await client.fetch<{ slug: string }[]>(
+    `*[_type == "client"]{ "slug": slug.current }`
+  );
+  return (clients || []).map((client) => ({
+    clientSlug: client.slug,
+  }));
+}
+
+type Props = {
+  params: Promise<{ clientSlug: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { clientSlug } = await params
+  const { data: settings } = await sanityFetch({
+    query: siteSettingsQuery,
+    params: { clientSlug }
+  });
+  const clientName = settings?.clientName || 'RS&H';
+  return {
+    title: `Benefit Changes 2026 - ${clientName} Benefits Portal`,
+    description: `Learn about what’s new in 2026 benefits at ${clientName}`,
+  }
+}
 
 type BenefitChange = {
   _key: string;
@@ -26,8 +50,12 @@ type BenefitChangesPageData = {
   ctaDescription: string;
 };
 
-export default async function BenefitChangesPage() {
-  const { data } = await sanityFetch({ query: benefitChangesQuery });
+export default async function BenefitChangesPage({ params }: Props) {
+  const { clientSlug } = await params
+  const { data } = await sanityFetch({
+    query: benefitChangesQuery,
+    params: { clientSlug }
+  });
   const typedData = data as BenefitChangesPageData;
 
   const newBenefits =
@@ -54,7 +82,7 @@ export default async function BenefitChangesPage() {
           <Alert className="border-blue-200 bg-blue-50">
             <AlertCircle className="h-4 w-4 text-blue-600" />
             <AlertDescription className="text-blue-900">
-              {data.alertMessage}
+              {typedData.alertMessage}
             </AlertDescription>
           </Alert>
         </SectionWrapper>
@@ -136,12 +164,12 @@ export default async function BenefitChangesPage() {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Button asChild className="bg-blue-600 hover:bg-blue-700">
-                      <a href="/benefits">View All Benefits</a>
+                      <Link href={`/${clientSlug}/benefits`}>View All Benefits</Link>
                     </Button>
                     <Button asChild variant="outline">
-                      <a href="/enrollment-checklist">
+                      <Link href={`/${clientSlug}/enrollment-checklist`}>
                         Start Enrollment Checklist
-                      </a>
+                      </Link>
                     </Button>
                   </div>
                 </div>

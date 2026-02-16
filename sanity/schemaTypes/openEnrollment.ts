@@ -11,6 +11,13 @@ export default defineType({
     defineField({ name: 'endDate', title: 'End Date', type: 'datetime' }),
     defineField({ name: 'enrollmentLink', title: 'Enrollment Link', type: 'url' }),
     defineField({ name: 'benefitsGuide', title: 'Benefits Guide PDF', type: 'file' }),
-    defineField({ name: 'videoUrl', title: 'Hero Video URL', type: 'url', description: 'Enter a YouTube or Vimeo embed link' })
+    defineField({ name: 'videoUrl', title: 'Hero Video URL', type: 'url', description: 'Enter a YouTube or Vimeo embed link' }),
+    defineField({
+      name: 'client',
+      title: 'Client',
+      type: 'reference',
+      to: [{ type: 'client' }],
+      validation: (Rule) => Rule.required(),
+    }),
   ]
 })

@@ -15,5 +15,12 @@ export default defineType({
       title: "Page Description",
       type: "text",
     }),
+    defineField({
+      name: "client",
+      title: "Client",
+      type: "reference",
+      to: [{ type: "client" }],
+      validation: (Rule) => Rule.required(),
+    }),
   ],
 });

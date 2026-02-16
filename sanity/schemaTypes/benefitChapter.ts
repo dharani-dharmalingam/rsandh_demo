@@ -49,5 +49,12 @@ export default defineType({
       title: "Display Order",
       type: "number",
     }),
+    defineField({
+      name: "client",
+      title: "Client",
+      type: "reference",
+      to: [{ type: "client" }],
+      validation: (Rule) => Rule.required(),
+    }),
   ],
 });

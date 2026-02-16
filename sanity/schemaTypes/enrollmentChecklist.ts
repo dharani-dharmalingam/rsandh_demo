@@ -40,5 +40,12 @@ export default defineType({
             title: "CTA Description",
             type: "text",
         }),
+        defineField({
+            name: "client",
+            title: "Client",
+            type: "reference",
+            to: [{ type: "client" }],
+            validation: (Rule) => Rule.required(),
+        }),
     ],
 });
