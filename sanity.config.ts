@@ -31,6 +31,20 @@ export default defineConfig({
           enable: '/api/draft-mode/enable',
         },
       },
+      // Allow the deployed Vercel origin and localhost
+      allowOrigins: ['https://rsandh-demosite.vercel.app', 'http://localhost:3000'],
+      resolve: {
+        mainDocuments: [
+          {
+            route: '/:clientSlug',
+            filter: '_type == "client" && slug.current == $clientSlug',
+          },
+          {
+            route: '/:clientSlug/benefits',
+            filter: '_type == "benefitsPage" && client->slug.current == $clientSlug',
+          },
+        ],
+      },
     }),
     // Vision is for querying with GROQ from inside the Studio
     // https://www.sanity.io/docs/the-vision-plugin
