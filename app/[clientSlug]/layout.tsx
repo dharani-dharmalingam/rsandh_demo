@@ -64,8 +64,6 @@ export default async function ClientLayout({
         copyrightText={settings?.copyrightText}
       />
       <FloatingAssistant />
-      <SanityLive />
-      {(await draftMode()).isEnabled && <VisualEditing />}
     </>
   )
 }

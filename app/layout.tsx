@@ -11,7 +11,11 @@ export const metadata: Metadata = {
     description: 'Comprehensive benefits information and enrollment',
 }
 
-export default function RootLayout({
+import { SanityLive } from '@/sanity/lib/live'
+import { VisualEditing } from 'next-sanity/visual-editing'
+import { draftMode } from 'next/headers'
+
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode
@@ -20,6 +24,8 @@ export default function RootLayout({
         <html lang="en">
             <body className="font-sans antialiased bg-white">
                 {children}
+                <SanityLive />
+                {(await draftMode()).isEnabled && <VisualEditing />}
             </body>
         </html>
     )
