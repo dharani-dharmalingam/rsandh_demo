@@ -4,11 +4,11 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
-    // Root redirect to default client
-    if (pathname === '/') {
-        const activeClientSlug = process.env.NEXT_PUBLIC_ACTIVE_CLIENT_SLUG || 'rs-h';
-        return NextResponse.redirect(new URL(`/${activeClientSlug}`, request.url));
-    }
+    // Root redirect moved to root landing page for better dev experience
+    // if (pathname === '/') {
+    //     const activeClientSlug = process.env.NEXT_PUBLIC_ACTIVE_CLIENT_SLUG || 'rs-h';
+    //     return NextResponse.redirect(new URL(`/${activeClientSlug}`, request.url));
+    // }
 
     return NextResponse.next();
 }
