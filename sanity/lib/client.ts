@@ -8,6 +8,8 @@ export const client = createClient({
   apiVersion,
   useCdn: true,
   stega: {
-    studioUrl: '/sanity',
+    studioUrl: process.env.NODE_ENV === 'production'
+      ? 'https://rsandh-hub.sanity.studio'
+      : 'http://localhost:3000/sanity',
   },
 })

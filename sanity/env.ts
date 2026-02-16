@@ -7,7 +7,9 @@ export const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'ow03d9eg'
 
 export const activeClientSlug = process.env.NEXT_PUBLIC_ACTIVE_CLIENT_SLUG || 'rs-h'
 
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+// Use Vercel URL in production, otherwise localhost
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://rsandh-demosite.vercel.app')
 
 export const clientConfig = {
     projectId,
