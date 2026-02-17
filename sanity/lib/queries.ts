@@ -106,3 +106,13 @@ export const siteSettingsQuery = `
   copyrightText
 }
 `;
+
+export const allClientsQuery = `
+*[_type == "client"] | order(name asc){
+  _id,
+  name,
+  "slug": slug.current,
+  themeColor,
+  "description": *[_type == "siteSettings" && client._ref == ^._id][0].footerAbout
+}
+`;

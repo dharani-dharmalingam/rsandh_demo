@@ -25,7 +25,8 @@ export default async function RootLayout({
             <body className="font-sans antialiased bg-white">
                 {children}
                 <SanityLive />
-                {(await draftMode()).isEnabled && <VisualEditing />}
+                {/* @ts-ignore */}
+                {(await draftMode()).isEnabled && <VisualEditing studioUrl="/sanity" />}
             </body>
         </html>
     )
