@@ -1,13 +1,16 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { urlFor } from '@/sanity/lib/image';
 
 interface HeaderProps {
   logoText?: string;
   clientName?: string;
   shortName?: string;
-  clientLogo?: string;
+  clientLogo?: any;
   clientSlug?: string;
 }
 
@@ -16,6 +19,8 @@ export function Header({ logoText, clientName, shortName, clientLogo, clientSlug
   const displayLogoText = logoText || `${clientName || 'RS&H'} Benefits`;
   const homeLink = clientSlug ? `/${clientSlug}` : '/';
 
+  const logoUrl = clientLogo ? urlFor(clientLogo).url() : null;
+
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white shadow-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -23,9 +28,9 @@ export function Header({ logoText, clientName, shortName, clientLogo, clientSlug
           {/* Left Logo */}
           <Link href={homeLink} className="flex items-center gap-2">
             <div className="h-10 w-10 relative flex items-center justify-center">
-              {clientLogo ? (
+              {logoUrl ? (
                 <Image
-                  src={clientLogo}
+                  src={logoUrl}
                   alt={clientName || 'Client Logo'}
                   fill
                   className="object-contain"
@@ -57,9 +62,9 @@ export function Header({ logoText, clientName, shortName, clientLogo, clientSlug
           {/* Right Logo */}
           <Link href={homeLink} className="flex items-center gap-2">
             <div className="h-10 w-10 relative flex items-center justify-center">
-              {clientLogo ? (
+              {logoUrl ? (
                 <Image
-                  src={clientLogo}
+                  src={logoUrl}
                   alt={clientName || 'Client Logo'}
                   fill
                   className="object-contain"
@@ -74,6 +79,6 @@ export function Header({ logoText, clientName, shortName, clientLogo, clientSlug
         </div>
       </div>
     </header>
-
   );
 }
+

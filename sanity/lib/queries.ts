@@ -98,7 +98,7 @@ export const siteSettingsQuery = `
 *[_type == "siteSettings" && client->slug.current == $clientSlug][0]{
   clientName,
   shortName,
-  "clientLogo": clientLogo.asset->url,
+  clientLogo,
   logoText,
   footerAbout,
   quickLinks,
@@ -106,6 +106,7 @@ export const siteSettingsQuery = `
   copyrightText
 }
 `;
+
 
 export const allClientsQuery = `
 *[_type == "client"] | order(name asc){
