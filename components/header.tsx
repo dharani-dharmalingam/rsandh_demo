@@ -1,6 +1,5 @@
-'use client';
-
 import Link from 'next/link';
+import Image from 'next/image';
 import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 
@@ -23,8 +22,20 @@ export function Header({ logoText, clientName, shortName, clientLogo, clientSlug
         <div className="flex h-16 items-center justify-between">
           {/* Left Logo */}
           <Link href={homeLink} className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center">
-              <span className="text-white font-bold text-sm">{displayShortName.substring(0, 2)}</span>
+            <div className="h-10 w-10 relative flex items-center justify-center">
+              {clientLogo ? (
+                <Image
+                  src={clientLogo}
+                  alt={clientName || 'Client Logo'}
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              ) : (
+                <div className="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">{displayShortName.substring(0, 2)}</span>
+                </div>
+              )}
             </div>
             <span className="hidden sm:inline text-sm font-semibold text-slate-900">
               {displayLogoText}
@@ -45,12 +56,24 @@ export function Header({ logoText, clientName, shortName, clientLogo, clientSlug
 
           {/* Right Logo */}
           <Link href={homeLink} className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-lg bg-slate-700 flex items-center justify-center">
-              <span className="text-white font-bold text-xs">{displayShortName}</span>
+            <div className="h-10 w-10 relative flex items-center justify-center">
+              {clientLogo ? (
+                <Image
+                  src={clientLogo}
+                  alt={clientName || 'Client Logo'}
+                  fill
+                  className="object-contain"
+                />
+              ) : (
+                <div className="h-8 w-8 rounded-lg bg-slate-700 flex items-center justify-center">
+                  <span className="text-white font-bold text-xs">{displayShortName}</span>
+                </div>
+              )}
             </div>
           </Link>
         </div>
       </div>
     </header>
+
   );
 }
