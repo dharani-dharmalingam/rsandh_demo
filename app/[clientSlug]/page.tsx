@@ -106,48 +106,60 @@ export default async function HomePage({ params }: { params: Promise<{ clientSlu
   return (
     <div className="space-y-0">
       {/* Hero Section - Welcome to Company */}
-      <SectionWrapper className="bg-gradient-to-br from-blue-50 to-slate-50">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-              Welcome to {settings?.clientName || 'RS&H'}
-            </h1>
-            <p className="text-lg text-slate-600 mb-8">
-              Your comprehensive benefits portal designed to help you make informed decisions about your health, retirement, and financial wellbeing.
-            </p>
-            {typedEnrollment?.benefitsGuideUrl ? (
-              <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700">
-                <a href={typedEnrollment.benefitsGuideUrl} download>
-                  <FileText className="mr-2 h-5 w-5" />
-                  Download Benefits Guide
-                </a>
-              </Button>
-            ) : (
-              <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700">
-                <a href="/benefits-guide.pdf" download>
-                  <FileText className="mr-2 h-5 w-5" />
-                  Download Benefits Guide
-                </a>
-              </Button>
-            )}
-          </div>
-          <div className="h-80 rounded-xl bg-slate-200 overflow-hidden flex items-center justify-center text-slate-400">
-            {typedEnrollment?.videoUrl ? (
-              <iframe
-                src={getEmbedUrl(typedEnrollment.videoUrl)!}
-                className="w-full h-full border-0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            ) : (
-              <div className="text-center">
-                <div className="text-6xl mb-2">▶</div>
-                <p>Video Placeholder</p>
-              </div>
-            )}
-          </div>
+      <div className="relative overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('/images/welcomebg.png')`,
+          }}
+        >
+          <div className="absolute inset-0 bg-white/85 backdrop-blur-[1px]" />
         </div>
-      </SectionWrapper>
+
+        <SectionWrapper className="relative z-10 py-24 md:py-32">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6 leading-tight">
+                Welcome to {settings?.clientName || 'RS&H'}
+              </h1>
+              <p className="text-xl text-slate-600 mb-10 leading-relaxed font-medium">
+                Your comprehensive benefits portal designed to help you make informed decisions about your health, retirement, and financial wellbeing.
+              </p>
+              {typedEnrollment?.benefitsGuideUrl ? (
+                <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white border-0 h-14 px-8 text-lg font-semibold shadow-lg shadow-blue-500/10">
+                  <a href={typedEnrollment.benefitsGuideUrl} download>
+                    <FileText className="mr-3 h-6 w-6" />
+                    Download Benefits Guide
+                  </a>
+                </Button>
+              ) : (
+                <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white border-0 h-14 px-8 text-lg font-semibold shadow-lg shadow-blue-500/10">
+                  <a href="/benefits-guide.pdf" download>
+                    <FileText className="mr-3 h-6 w-6" />
+                    Download Benefits Guide
+                  </a>
+                </Button>
+              )}
+            </div>
+            <div className="h-80 md:h-96 rounded-2xl bg-white/40 backdrop-blur-md border border-slate-200 overflow-hidden flex items-center justify-center text-slate-400 shadow-xl">
+              {typedEnrollment?.videoUrl ? (
+                <iframe
+                  src={getEmbedUrl(typedEnrollment.videoUrl)!}
+                  className="w-full h-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <div className="text-center">
+                  <div className="text-7xl mb-4 text-slate-200">▶</div>
+                  <p className="text-slate-500 font-medium">Video Placeholder</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </SectionWrapper>
+      </div>
 
       {/* Open Enrollment Section */}
       <SectionWrapper className="bg-white">
@@ -216,42 +228,56 @@ export default async function HomePage({ params }: { params: Promise<{ clientSlu
       </SectionWrapper>
 
       {/* Retirement Planning Section */}
-      <SectionWrapper className="bg-slate-50">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="order-2 md:order-1">
-            <div className="h-80 rounded-xl bg-slate-200 overflow-hidden flex items-center justify-center text-slate-400">
-              {typedRetirement?.heroVideoUrl ? (
-                <iframe
-                  src={getEmbedUrl(typedRetirement.heroVideoUrl)!}
-                  className="w-full h-full border-0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              ) : (
-                <div className="text-center">
-                  <div className="text-6xl mb-2">▶</div>
-                  <p>Video Placeholder</p>
-                </div>
-              )}
-            </div>
-          </div>
-          <div className="order-1 md:order-2">
-            <div className="flex items-center gap-2 mb-4">
-              <TrendingUp className="h-5 w-5 text-blue-600" />
-              <span className="text-blue-600 font-semibold text-sm">Retirement Planning</span>
-            </div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">
-              {typedRetirement?.heroTitle || 'Plan for Your Future'}
-            </h2>
-            <p className="text-slate-600 mb-8">
-              {typedRetirement?.heroDescription || 'Learn about retirement plans, investment options, and strategies to help you achieve your long-term financial goals.'}
-            </p>
-            <Button asChild className="bg-blue-600 hover:bg-blue-700">
-              <Link href={`/${clientSlug}/retirement-planning`}>Learn More</Link>
-            </Button>
-          </div>
+      <div className="relative overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div
+          className="absolute inset-0 z-0 bg-center bg-no-repeat bg-cover"
+          style={{
+            backgroundImage: `url('/images/retirement.png')`,
+          }}
+        >
+          <div className="absolute inset-0 bg-white/75 backdrop-blur-[1px]" />
         </div>
-      </SectionWrapper>
+
+        <SectionWrapper className="relative z-10 py-24 md:py-32">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="order-2 md:order-1">
+              <div className="h-80 md:h-96 rounded-2xl bg-white/40 backdrop-blur-md border border-slate-200 overflow-hidden flex items-center justify-center text-slate-400 shadow-xl">
+                {typedRetirement?.heroVideoUrl ? (
+                  <iframe
+                    src={getEmbedUrl(typedRetirement.heroVideoUrl)!}
+                    className="w-full h-full border-0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                ) : (
+                  <div className="text-center">
+                    <div className="text-7xl mb-4 text-slate-200">▶</div>
+                    <p className="text-slate-500 font-medium">Video Placeholder</p>
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="order-1 md:order-2">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 bg-blue-100 rounded-lg border border-blue-200">
+                  <TrendingUp className="h-6 w-6 text-blue-600" />
+                </div>
+                <span className="text-blue-600 font-bold text-sm uppercase tracking-wider">Retirement Planning</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                {typedRetirement?.heroTitle || 'Plan for Your Future'}
+              </h2>
+              <p className="text-lg text-slate-600 mb-10 leading-relaxed font-medium">
+                {typedRetirement?.heroDescription || 'Learn about retirement plans, investment options, and strategies to help you achieve your long-term financial goals.'}
+              </p>
+              <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white border-0 h-14 px-10 text-lg font-semibold shadow-lg shadow-blue-500/10">
+                <Link href={`/${clientSlug}/retirement-planning`}>Learn More</Link>
+              </Button>
+            </div>
+          </div>
+        </SectionWrapper>
+      </div>
 
       {/* Benefits Grid Section */}
       <SectionWrapper className="bg-white">
