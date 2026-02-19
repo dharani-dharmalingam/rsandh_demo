@@ -57,8 +57,18 @@ export const openEnrollmentQuery = `
   startDate,
   endDate,
   enrollmentLink,
-  "benefitsGuideUrl": benefitsGuide.asset->url,
-  videoUrl
+  "benefitsGuideUrl": coalesce(benefitsGuide.asset->url, benefitsGuideUrl),
+  videoUrl,
+  daysLeftLabel,
+  periodLabel,
+  statusTitle,
+  statusDescription,
+  checklistLabel,
+  checklistSubtext,
+  changesLabel,
+  changesSubtext,
+  enrollLabel,
+  enrollSubtext
 }
 `;
 

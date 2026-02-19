@@ -73,6 +73,28 @@ async function seedRSH() {
             });
         }
 
+        // 4. Enrollment Settings
+        console.log('📅 Creating Enrollment Settings for RS&H...');
+        await client.createOrReplace({
+            _id: 'openEnrollment-rsh',
+            _type: 'openEnrollment',
+            client: clientRef,
+            title: 'Welcome to RS&H Open Enrollment',
+            description: 'Your window to review and select your 2026 benefit options.',
+            startDate: '2026-04-01T00:00:00Z',
+            endDate: '2026-04-30T23:59:59Z',
+            daysLeftLabel: 'Days Left',
+            periodLabel: 'Enrollment Period',
+            statusTitle: 'Action Required',
+            statusDescription: 'Please finalize your elections before April 30th',
+            checklistLabel: 'Enrollment Steps',
+            checklistSubtext: 'Guide to completing your enrollment',
+            changesLabel: '2026 Plan Updates',
+            changesSubtext: 'What you need to know for the new year',
+            enrollLabel: 'Enroll Online',
+            enrollSubtext: 'Submit your 2026 benefits',
+        });
+
         console.log('✅ Full site for RS&H seeded successfully!');
     } catch (error) {
         console.error('❌ Error seeding RS&H data:', error.message);

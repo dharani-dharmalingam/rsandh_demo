@@ -84,6 +84,16 @@ async function seedABC() {
             description: 'Time to choose your benefits for the upcoming year at ABC Corp.',
             startDate: '2026-03-01T00:00:00Z',
             endDate: '2026-03-31T23:59:59Z',
+            daysLeftLabel: 'Days Remaining',
+            periodLabel: 'Annual Enrollment Window',
+            statusTitle: 'Action Needed',
+            statusDescription: 'Select your benefits for the 2026 plan year',
+            checklistLabel: 'Enrollment Checklist',
+            checklistSubtext: 'Steps to follow for enrollment',
+            changesLabel: 'Year-over-Year Changes',
+            changesSubtext: 'See what has changed for 2026',
+            enrollLabel: 'Begin Enrollment',
+            enrollSubtext: 'Submit your choices online',
         });
 
         console.log('✅ Full site for ABC Corp seeded successfully!');

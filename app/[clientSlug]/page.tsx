@@ -36,6 +36,16 @@ type OpenEnrollmentData = {
   enrollmentLink?: string;
   benefitsGuideUrl?: string;
   videoUrl?: string;
+  daysLeftLabel?: string;
+  periodLabel?: string;
+  statusTitle?: string;
+  statusDescription?: string;
+  checklistLabel?: string;
+  checklistSubtext?: string;
+  changesLabel?: string;
+  changesSubtext?: string;
+  enrollLabel?: string;
+  enrollSubtext?: string;
 };
 
 type RetirementData = {
@@ -178,7 +188,7 @@ export default async function HomePage({ params }: { params: Promise<{ clientSlu
           <Card className="p-6 border-blue-200 bg-blue-50">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-blue-600 font-medium mb-1">Days Left</p>
+                <p className="text-sm text-blue-600 font-medium mb-1">{typedEnrollment?.daysLeftLabel || 'Days Left'}</p>
                 <p className="text-4xl font-bold text-blue-900">{daysLeft}</p>
               </div>
               <Calendar className="h-12 w-12 text-blue-300" />
@@ -187,9 +197,9 @@ export default async function HomePage({ params }: { params: Promise<{ clientSlu
 
           {/* Dates Card */}
           <Card className="p-6 border-slate-200">
-            <p className="text-sm text-slate-600 font-medium mb-2">Open Enrollment Period</p>
+            <p className="text-sm text-slate-600 font-medium mb-2">{typedEnrollment?.periodLabel || 'Open Enrollment Period'}</p>
             <p className="text-slate-900 font-medium mb-1">{formatDate(typedEnrollment?.startDate)}</p>
-            <p className="text-slate-600 text-sm mb-4">to</p>
+            <p className="text-slate-600 text-sm mb-4"></p>
             <p className="text-slate-900 font-medium">{formatDate(typedEnrollment?.endDate)}</p>
           </Card>
 
@@ -198,8 +208,8 @@ export default async function HomePage({ params }: { params: Promise<{ clientSlu
             <div className="flex items-start gap-3">
               <CheckSquare className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
-                <p className="text-sm text-green-600 font-medium">Action Needed</p>
-                <p className="text-slate-700 text-sm mt-1">Review and update your selections now</p>
+                <p className="text-sm text-green-600 font-medium">{typedEnrollment?.statusTitle || 'Action Needed'}</p>
+                <p className="text-slate-700 text-sm mt-1">{typedEnrollment?.statusDescription || 'Review and update your selections now'}</p>
               </div>
             </div>
           </Card>
@@ -209,20 +219,20 @@ export default async function HomePage({ params }: { params: Promise<{ clientSlu
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Button asChild variant="outline" className="h-auto p-4 justify-start flex-col items-start bg-transparent">
             <Link href={`/${clientSlug}/enrollment-checklist`}>
-              <span className="font-semibold text-blue-600">Review Enrollment Checklist</span>
-              <span className="text-sm text-slate-600">Prepare for open enrollment</span>
+              <span className="font-semibold text-blue-600">{typedEnrollment?.checklistLabel || 'Review Enrollment Checklist'}</span>
+              <span className="text-sm text-slate-600">{typedEnrollment?.checklistSubtext || 'Prepare for open enrollment'}</span>
             </Link>
           </Button>
           <Button asChild variant="outline" className="h-auto p-4 justify-start flex-col items-start bg-transparent">
             <Link href={`/${clientSlug}/benefit-changes`}>
-              <span className="font-semibold text-blue-600">Discover Benefit Changes</span>
-              <span className="text-sm text-slate-600">What's new for 2026</span>
+              <span className="font-semibold text-blue-600">{typedEnrollment?.changesLabel || 'Discover Benefit Changes'}</span>
+              <span className="text-sm text-slate-600">{typedEnrollment?.changesSubtext || "What's new for 2026"}</span>
             </Link>
           </Button>
           <Button asChild className="h-auto p-4 justify-start flex-col items-start bg-blue-600 hover:bg-blue-700">
             <a href={typedEnrollment?.enrollmentLink || '#enroll'}>
-              <span className="font-semibold">Enroll Now</span>
-              <span className="text-sm text-blue-100">Complete your enrollment</span>
+              <span className="font-semibold">{typedEnrollment?.enrollLabel || 'Enroll Now'}</span>
+              <span className="text-sm text-blue-100">{typedEnrollment?.enrollSubtext || 'Complete your enrollment'}</span>
             </a>
           </Button>
         </div>

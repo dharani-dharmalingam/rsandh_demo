@@ -66,19 +66,6 @@ async function seedPremierAmerica() {
             footerAbout: 'Comprehensive benefits administration and support for the valued employees of Premier America Credit Union.',
             contactInfo: [
                 { _key: 'c-hr', label: 'HR Department', value: '818-772-4000 | hrd@premieramerica.com', href: 'mailto:hrd@premieramerica.com' },
-                { _key: 'c-medical', label: 'Medical - Anthem Blue Cross', value: '833-913-2236 | Policy #: L06734', href: 'https://www.anthem.com' },
-                { _key: 'c-telemed', label: 'Telemedicine - LiveHealth Online', value: '888-548-3432', href: 'https://livehealthonline.com' },
-                { _key: 'c-dental', label: 'Dental - Anthem Blue Cross', value: '877-567-1804 | Policy #: L067340003', href: 'https://www.anthem.com' },
-                { _key: 'c-vision', label: 'Vision - EyeMed', value: '866-804-0982 | Policy #: 1019955', href: 'https://www.eyemed.com' },
-                { _key: 'c-hsa', label: 'HSA - Anthem Blue Cross WealthCare Saver', value: '844-860-3535', href: 'https://www.anthem.com' },
-                { _key: 'c-fsa', label: 'FSA - HealthEquity', value: '877-924-3967', href: 'https://www.healthequity.com/wageworks' },
-                { _key: 'c-life', label: 'Life & AD&D - Mutual of Omaha', value: '800-775-8805 | Policy #: GLUG-BNGY (Basic) / GVTL-BNGY (Vol)', href: 'https://www.mutualofomaha.com' },
-                { _key: 'c-disability', label: 'Disability - Mutual of Omaha', value: '800-877-5176 | Policy #: GLTD-BNGY', href: 'https://www.mutualofomaha.com' },
-                { _key: 'c-eap', label: 'EAP - Mutual of Omaha', value: '800-316-2796 | Policy #: GLUG-BNGY', href: 'https://www.mutualofomaha.com/eap' },
-                { _key: 'c-supplemental', label: 'Supplemental Health - Allstate', value: '800-521-3535', href: 'https://www.allstatebenefits.com/mybenefits' },
-                { _key: 'c-pet', label: 'Pet Insurance - Nationwide', value: '877-738-7874', href: 'https://www.petinsurance.com/affiliates/premier' },
-                { _key: 'c-identity', label: 'Identity Theft - Experian', value: '855-797-0052 | Policy #: 8439044', href: 'https://experian.myfinancialexpert.com/login' },
-                { _key: 'c-college', label: 'College Savings - ScholarShare 529', value: '800-544-5248', href: 'https://ScholarShare529.com' },
             ],
             quickLinks: [
                 { _key: 'ql-1', label: 'Anthem Blue Cross (Medical/Dental)', href: 'https://www.anthem.com' },
@@ -115,6 +102,16 @@ async function seedPremierAmerica() {
             client: CLIENT_REF,
             title: 'Welcome to Open Enrollment',
             description: 'Review and update your benefits selections for the upcoming plan year. Take time to explore your options and make informed decisions about your coverage.',
+            daysLeftLabel: 'Days Left',
+            periodLabel: 'Open Enrollment Period',
+            statusTitle: 'Action Needed',
+            statusDescription: 'Review and update your selections now',
+            checklistLabel: 'Review Enrollment Checklist',
+            checklistSubtext: 'Prepare for open enrollment',
+            changesLabel: 'Discover Benefit Changes',
+            changesSubtext: 'What\'s new for 2026',
+            enrollLabel: 'Enroll Now',
+            enrollSubtext: 'Complete your enrollment',
         });
 
         // ═══════════════════════════════════════════════════════════════════
