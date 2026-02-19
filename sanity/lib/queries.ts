@@ -16,7 +16,8 @@ export const chapterBySlugQuery = `
   description,
   "slug": slug.current,
   image,
-  content
+  content,
+  planDetails
 }
 `;
 

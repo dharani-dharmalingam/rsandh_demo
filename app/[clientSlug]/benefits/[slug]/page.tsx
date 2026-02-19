@@ -9,6 +9,13 @@ import { chapterBySlugQuery, benefitChaptersQuery, siteSettingsQuery } from '@/s
 import { urlFor } from '@/sanity/lib/image';
 import { PortableText } from '@portabletext/react';
 
+type PlanDetail = {
+  _key: string;
+  label: string;
+  inNetwork: string;
+  outOfNetwork?: string;
+};
+
 type ChapterDetail = {
   _id: string;
   title: string;
@@ -16,6 +23,7 @@ type ChapterDetail = {
   slug: string;
   image?: any;
   content?: any[];
+  planDetails?: PlanDetail[];
 };
 
 export async function generateStaticParams() {
@@ -69,6 +77,11 @@ export default async function BenefitDetailPage({ params }: Props) {
   }
 
   const imageUrl = typedChapter.image ? urlFor(typedChapter.image).width(1200).height(400).url() : null;
+  const hasPlanDetails = typedChapter.planDetails && typedChapter.planDetails.length > 0;
+  // Check if any row has a non-empty, non-dash outOfNetwork value
+  const hasOutOfNetwork = hasPlanDetails && typedChapter.planDetails!.some(
+    (d) => d.outOfNetwork && d.outOfNetwork !== '—' && d.outOfNetwork !== '-'
+  );
 
   return (
     <div>
@@ -96,7 +109,7 @@ export default async function BenefitDetailPage({ params }: Props) {
 
       {/* Content */}
       <SectionWrapper className="bg-white">
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
           <h1 className="text-4xl font-bold text-slate-900 mb-4">{typedChapter.title}</h1>
           <p className="text-lg text-slate-600 mb-8">{typedChapter.description}</p>
 
@@ -111,6 +124,50 @@ export default async function BenefitDetailPage({ params }: Props) {
               </p>
             )}
           </div>
+
+          {/* Plan Details Table */}
+          {hasPlanDetails && (
+            <div className="mt-10">
+              <h2 className="text-2xl font-bold text-slate-800 mb-2">Plan Benefits Summary</h2>
+              <p className="text-sm text-slate-500 mb-6">Comprehensive coverage details for {typedChapter.title}</p>
+              <div className="overflow-x-auto rounded-lg border border-slate-200 shadow-sm">
+                <table className="w-full text-left">
+                  <thead>
+                    <tr className="bg-[#1a365d] text-white">
+                      <th className="px-6 py-4 text-sm font-semibold w-2/5">Benefit</th>
+                      <th className="px-6 py-4 text-sm font-semibold text-center">
+                        {hasOutOfNetwork ? 'In-Network' : 'Details'}
+                      </th>
+                      {hasOutOfNetwork && (
+                        <th className="px-6 py-4 text-sm font-semibold text-center">Out-of-Network</th>
+                      )}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {typedChapter.planDetails!.map((detail, index) => (
+                      <tr
+                        key={detail._key}
+                        className={`border-b border-slate-100 ${index % 2 === 0 ? 'bg-white' : 'bg-slate-50'
+                          } hover:bg-blue-50/50 transition-colors`}
+                      >
+                        <td className="px-6 py-4 text-sm font-medium text-slate-700">
+                          {detail.label}
+                        </td>
+                        <td className="px-6 py-4 text-sm text-slate-600 text-center">
+                          {detail.inNetwork}
+                        </td>
+                        {hasOutOfNetwork && (
+                          <td className="px-6 py-4 text-sm text-slate-600 text-center">
+                            {detail.outOfNetwork || '—'}
+                          </td>
+                        )}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
 
           <div className="mt-12 pt-8 border-t border-slate-200">
             <div className="flex flex-col sm:flex-row gap-4">
@@ -130,3 +187,4 @@ export default async function BenefitDetailPage({ params }: Props) {
     </div>
   );
 }
+
