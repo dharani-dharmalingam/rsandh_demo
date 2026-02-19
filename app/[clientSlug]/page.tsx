@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { SectionWrapper } from '@/components/section-wrapper';
 import { BenefitCard } from '@/components/benefit-card';
+import { ImportantContacts } from '@/components/important-contacts';
 import { sanityFetch } from '@/sanity/lib/live';
 import { client } from '@/sanity/lib/client';
 import { benefitChaptersQuery, openEnrollmentQuery, retirementPlanningQuery, siteSettingsQuery } from '@/sanity/lib/queries';
@@ -327,13 +328,7 @@ export default async function HomePage({ params }: { params: Promise<{ clientSlu
             </Link>
           </Card>
 
-          <Card className="p-6 hover:shadow-lg transition-shadow cursor-pointer">
-            <h3 className="font-semibold text-slate-900 mb-2">Important Contacts</h3>
-            <p className="text-sm text-slate-600 mb-4">Find phone numbers and email addresses</p>
-            <Link href={`/${clientSlug}/benefits/document-hub`} className="text-blue-600 hover:text-blue-700 text-sm font-medium">
-              View Contacts →
-            </Link>
-          </Card>
+          <ImportantContacts contacts={settings?.contactInfo || []} />
 
           <Card className="p-6 hover:shadow-lg transition-shadow cursor-pointer">
             <h3 className="font-semibold text-slate-900 mb-2">Document Hub</h3>
