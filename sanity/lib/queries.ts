@@ -17,7 +17,8 @@ export const chapterBySlugQuery = `
   "slug": slug.current,
   image,
   content,
-  planDetails
+  planDetails,
+  premiumTables
 }
 `;
 

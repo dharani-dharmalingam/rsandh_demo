@@ -12,8 +12,26 @@ import { PortableText } from '@portabletext/react';
 type PlanDetail = {
   _key: string;
   label: string;
+  description?: string;
   inNetwork: string;
   outOfNetwork?: string;
+  frequency?: string;
+  isSection?: boolean;
+  spanColumns?: boolean;
+};
+
+type PremiumTier = {
+  _key: string;
+  tierName: string;
+  amount: string;
+};
+
+type PremiumTable = {
+  _key: string;
+  planName: string;
+  sectionTitle: string;
+  sectionDescription?: string;
+  tiers: PremiumTier[];
 };
 
 type ChapterDetail = {
@@ -24,6 +42,7 @@ type ChapterDetail = {
   image?: any;
   content?: any[];
   planDetails?: PlanDetail[];
+  premiumTables?: PremiumTable[];
 };
 
 export async function generateStaticParams() {
@@ -78,10 +97,14 @@ export default async function BenefitDetailPage({ params }: Props) {
 
   const imageUrl = typedChapter.image ? urlFor(typedChapter.image).width(1200).height(400).url() : null;
   const hasPlanDetails = typedChapter.planDetails && typedChapter.planDetails.length > 0;
-  // Check if any row has a non-empty, non-dash outOfNetwork value
+  const hasPremiumTables = typedChapter.premiumTables && typedChapter.premiumTables.length > 0;
   const hasOutOfNetwork = hasPlanDetails && typedChapter.planDetails!.some(
     (d) => d.outOfNetwork && d.outOfNetwork !== '—' && d.outOfNetwork !== '-'
   );
+  const hasFrequency = hasPlanDetails && typedChapter.planDetails!.some(
+    (d) => d.frequency && d.frequency.trim() !== ''
+  );
+  const totalCols = 1 + (hasOutOfNetwork ? 2 : 1) + (hasFrequency ? 1 : 0);
 
   return (
     <div>
@@ -134,38 +157,124 @@ export default async function BenefitDetailPage({ params }: Props) {
                 <table className="w-full text-left">
                   <thead>
                     <tr className="bg-[#1a365d] text-white">
-                      <th className="px-6 py-4 text-sm font-semibold w-2/5">Benefit</th>
-                      <th className="px-6 py-4 text-sm font-semibold text-center">
+                      <th className="px-5 py-4 text-sm font-semibold w-[30%]" />
+                      <th className="px-5 py-4 text-sm font-semibold text-center uppercase tracking-wider">
                         {hasOutOfNetwork ? 'In-Network' : 'Details'}
                       </th>
                       {hasOutOfNetwork && (
-                        <th className="px-6 py-4 text-sm font-semibold text-center">Out-of-Network</th>
+                        <th className="px-5 py-4 text-sm font-semibold text-center uppercase tracking-wider">Non-Network</th>
+                      )}
+                      {hasFrequency && (
+                        <th className="px-5 py-4 text-sm font-semibold text-center uppercase tracking-wider">Frequency</th>
                       )}
                     </tr>
                   </thead>
                   <tbody>
-                    {typedChapter.planDetails!.map((detail, index) => (
-                      <tr
-                        key={detail._key}
-                        className={`border-b border-slate-100 ${index % 2 === 0 ? 'bg-white' : 'bg-slate-50'
-                          } hover:bg-blue-50/50 transition-colors`}
-                      >
-                        <td className="px-6 py-4 text-sm font-medium text-slate-700">
-                          {detail.label}
-                        </td>
-                        <td className="px-6 py-4 text-sm text-slate-600 text-center">
-                          {detail.inNetwork}
-                        </td>
-                        {hasOutOfNetwork && (
-                          <td className="px-6 py-4 text-sm text-slate-600 text-center">
-                            {detail.outOfNetwork || '—'}
+                    {typedChapter.planDetails!.map((detail, index) => {
+                      if (detail.isSection) {
+                        return (
+                          <tr key={detail._key} className="bg-[#2d3748]">
+                            <td
+                              colSpan={totalCols}
+                              className="px-5 py-3 text-xs font-bold text-white uppercase tracking-wider"
+                            >
+                              {detail.label}
+                            </td>
+                          </tr>
+                        );
+                      }
+
+                      const valueCols = (hasOutOfNetwork ? 2 : 1) + (hasFrequency ? 1 : 0);
+
+                      return (
+                        <tr
+                          key={detail._key}
+                          className={`border-b border-slate-100 ${index % 2 === 0 ? 'bg-white' : 'bg-slate-50'
+                            } hover:bg-blue-50/50 transition-colors`}
+                        >
+                          <td className="px-5 py-4 text-sm text-slate-700 text-right">
+                            <span className="font-semibold">{detail.label}</span>
+                            {detail.description && (
+                              <span className="block text-xs text-slate-400 mt-0.5">{detail.description}</span>
+                            )}
                           </td>
-                        )}
-                      </tr>
-                    ))}
+                          {detail.spanColumns ? (
+                            <td
+                              colSpan={valueCols}
+                              className="px-5 py-4 text-sm text-slate-600 text-center bg-blue-50/40"
+                            >
+                              {detail.inNetwork}
+                            </td>
+                          ) : (
+                            <>
+                              <td className="px-5 py-4 text-sm text-slate-600 text-center bg-blue-50/40">
+                                {detail.inNetwork}
+                              </td>
+                              {hasOutOfNetwork && (
+                                <td className="px-5 py-4 text-sm text-slate-600 text-center bg-blue-50/40">
+                                  {detail.outOfNetwork || '—'}
+                                </td>
+                              )}
+                              {hasFrequency && (
+                                <td className="px-5 py-4 text-sm text-slate-600 text-center">
+                                  {detail.frequency || ''}
+                                </td>
+                              )}
+                            </>
+                          )}
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
+            </div>
+          )}
+
+          {/* Premium Contribution Tables */}
+          {hasPremiumTables && (
+            <div className="mt-10 space-y-12">
+              {typedChapter.premiumTables!.map((table) => (
+                <div key={table._key}>
+                  <h2 className="text-2xl font-bold text-slate-800 mb-1">{table.sectionTitle}</h2>
+                  {table.sectionDescription && (
+                    <p className="text-sm text-slate-600 mb-6 max-w-2xl">{table.sectionDescription}</p>
+                  )}
+                  <div className="overflow-x-auto rounded-lg border border-slate-200 shadow-sm max-w-2xl">
+                    <table className="w-full text-left">
+                      <thead>
+                        <tr>
+                          <th colSpan={2} className="px-6 py-3 text-center text-sm font-bold text-[#1a365d] tracking-wide">
+                            {table.planName}
+                          </th>
+                        </tr>
+                        <tr className="bg-[#1a365d]">
+                          <th className="px-6 py-3 text-xs font-semibold text-white uppercase tracking-wider">
+                            Bi-Weekly Contributions
+                          </th>
+                          <th className="px-6 py-3" />
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {table.tiers.map((tier, index) => (
+                          <tr
+                            key={tier._key}
+                            className={`border-b border-slate-100 ${index % 2 === 0 ? 'bg-white' : 'bg-blue-50/40'
+                              } hover:bg-blue-50/70 transition-colors`}
+                          >
+                            <td className="px-6 py-3 text-sm font-medium text-slate-700 text-right">
+                              {tier.tierName}
+                            </td>
+                            <td className="px-6 py-3 text-sm text-slate-600 text-center bg-blue-50/60">
+                              {tier.amount}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              ))}
             </div>
           )}
 

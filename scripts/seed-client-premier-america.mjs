@@ -160,13 +160,41 @@ async function seedPremierAmerica() {
                     "The third plan starts at Bi-weekly contribution of $0 for individual coverage. This is a great option if you want lower premiums and the ability to save for future healthcare costs. This plan allows you to pair your coverage with a Health Savings Account, where you can set aside pre-tax dollars to use for medical expenses.",
                     "Take a moment to consider your needs and the needs of your family. If a specific plan stands out to you, you can skip ahead to its chapter for more details!",
                 ]),
-                planDetails: [
-                    { _key: 'pd-1', label: 'Plan Option', inNetwork: 'HDHP', outOfNetwork: 'HMO / HSA-Eligible' },
-                    { _key: 'pd-2', label: 'Administered By', inNetwork: 'Anthem Blue Cross', outOfNetwork: 'Anthem Blue Cross' },
-                    { _key: 'pd-3', label: 'Bi-Weekly Premium (Employee Only)', inNetwork: '$91.19', outOfNetwork: '$0 / $0' },
-                    { _key: 'pd-4', label: 'Network Type', inNetwork: 'In & Out-of-Network', outOfNetwork: 'In-Network Only / HSA Eligible' },
-                    { _key: 'pd-5', label: 'PCP Required', inNetwork: 'No', outOfNetwork: 'Yes (HMO) / No' },
-                    { _key: 'pd-6', label: 'HSA Compatible', inNetwork: 'No', outOfNetwork: 'No / Yes' },
+                premiumTables: [
+                    {
+                        _key: 'pt-medical',
+                        planName: 'HDHP',
+                        sectionTitle: 'Medical Premiums',
+                        sectionDescription: 'Premium contributions for medical are deducted from your paycheck on a pre-tax basis. Your level of coverage determines your bi-weekly contributions.',
+                        tiers: [
+                            { _key: 'tier-1', tierName: 'Team Member Only', amount: '$91.19' },
+                            { _key: 'tier-2', tierName: 'Team Member + Spouse/DP', amount: '$295.66' },
+                            { _key: 'tier-3', tierName: 'Team Member + Child(ren)', amount: '$241.90' },
+                            { _key: 'tier-4', tierName: 'Team Member + Family', amount: '$416.61' },
+                        ],
+                    },
+                    {
+                        _key: 'pt-dental',
+                        planName: 'ANTHEM BLUE CROSS - PPO',
+                        sectionTitle: 'Dental Plan Summary',
+                        sectionDescription: 'This chart summarizes the dental coverage provided by Anthem Blue Cross for 2025.',
+                        tiers: [
+                            { _key: 'tier-1', tierName: 'Team Member Only', amount: '$19.37' },
+                            { _key: 'tier-2', tierName: 'Team Member + 1 Dependent', amount: '$42.57' },
+                            { _key: 'tier-3', tierName: 'Team Member + Family', amount: '$64.43' },
+                        ],
+                    },
+                    {
+                        _key: 'pt-vision',
+                        planName: 'INSIGHT - PPO',
+                        sectionTitle: 'Vision Premiums',
+                        sectionDescription: 'Vision premium contributions are deducted from your paycheck on a pre-tax basis. Your tier of coverage determines your bi-weekly premium. This chart summarizes the vision coverage provided by EyeMed for 2025.',
+                        tiers: [
+                            { _key: 'tier-1', tierName: 'Team Member Only', amount: '$3.36' },
+                            { _key: 'tier-2', tierName: 'Team Member + 1 Dependent', amount: '$6.40' },
+                            { _key: 'tier-3', tierName: 'Team Member + Family', amount: '$9.39' },
+                        ],
+                    },
                 ],
             },
 
@@ -190,23 +218,25 @@ async function seedPremierAmerica() {
                     "This plan also makes it easy to access quality healthcare from anywhere with virtual visits through LiveHealth Online. With LiveHealth Online, you and your dependents can consult a doctor at any time for common health issues like allergies, sore throats, sinus problems, and more.",
                 ]),
                 planDetails: [
-                    { _key: 'pd-1', label: 'Bi-Weekly Premium (Employee Only)', inNetwork: '$91.19', outOfNetwork: '—' },
-                    { _key: 'pd-2', label: 'Annual Deductible (Individual)', inNetwork: '$1,650', outOfNetwork: '—' },
-                    { _key: 'pd-3', label: 'Annual Deductible (Family)', inNetwork: '$4,100 ($3,300/member)', outOfNetwork: '—' },
-                    { _key: 'pd-4', label: 'Out-of-Pocket Max (Individual)', inNetwork: '$4,250', outOfNetwork: '—' },
-                    { _key: 'pd-5', label: 'Out-of-Pocket Max (Family)', inNetwork: '$8,500', outOfNetwork: '—' },
-                    { _key: 'pd-6', label: 'Coinsurance (Your Share)', inNetwork: '20%', outOfNetwork: '—' },
-                    { _key: 'pd-7', label: 'Preventive Care', inNetwork: '100% Covered', outOfNetwork: '—' },
-                    { _key: 'pd-8', label: 'Primary Physician Office Visit', inNetwork: '20% after deductible', outOfNetwork: '—' },
-                    { _key: 'pd-9', label: 'Specialist Office Visit', inNetwork: '20% after deductible', outOfNetwork: '—' },
-                    { _key: 'pd-10', label: 'Inpatient Care', inNetwork: '20% after deductible', outOfNetwork: '—' },
-                    { _key: 'pd-11', label: 'Urgent Care', inNetwork: '20% after deductible', outOfNetwork: '—' },
-                    { _key: 'pd-12', label: 'Emergency Room', inNetwork: '20% after deductible', outOfNetwork: '—' },
-                    { _key: 'pd-13', label: 'Outpatient Surgery', inNetwork: '20% after deductible', outOfNetwork: '—' },
-                    { _key: 'pd-14', label: 'Independent Labs', inNetwork: '20% after deductible', outOfNetwork: '—' },
-                    { _key: 'pd-15', label: 'Outpatient X-Rays', inNetwork: '20% after deductible', outOfNetwork: '—' },
-                    { _key: 'pd-16', label: 'Imaging (MRI, CT, PET, etc.)', inNetwork: '20% after deductible', outOfNetwork: '—' },
-                    { _key: 'pd-17', label: 'Virtual Visits (LiveHealth Online)', inNetwork: 'Available', outOfNetwork: '—' },
+                    // ── Section: Calendar Year Deductible ──
+                    { _key: 'pd-s1', label: 'Calendar Year Deductible', isSection: true },
+                    { _key: 'pd-1', label: 'Individual', inNetwork: '$1,650', outOfNetwork: '$4,950' },
+                    { _key: 'pd-2', label: 'Family', inNetwork: '$4,100 ($3,300/Family Member)', outOfNetwork: '$9,900 ($4,950/Family Member)' },
+                    { _key: 'pd-3', label: 'Coinsurance (You Pay)', inNetwork: '20%*', outOfNetwork: '40%*' },
+                    // ── Section: Calendar Year Out-of-Pocket Maximum ──
+                    { _key: 'pd-s2', label: 'Calendar Year Out-of-Pocket Maximum (Maximum Includes Deductible)', isSection: true },
+                    { _key: 'pd-4', label: 'Individual', inNetwork: '$4,250', outOfNetwork: '$12,750' },
+                    { _key: 'pd-5', label: 'Family', inNetwork: '$8,500 ($4,250/Family Member)', outOfNetwork: '$25,500 ($12,750/Family Member)' },
+                    // ── Section: Copays/Coinsurance ──
+                    { _key: 'pd-s3', label: 'Copays/Coinsurance', isSection: true },
+                    { _key: 'pd-6', label: 'Preventive Care', inNetwork: 'No charge', outOfNetwork: 'Deductible, then 40%' },
+                    { _key: 'pd-7', label: 'Primary Care', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 40%' },
+                    { _key: 'pd-8', label: 'Specialist Services', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 40%' },
+                    { _key: 'pd-9', label: 'Diagnostic Care', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 40%' },
+                    { _key: 'pd-10', label: 'Inpatient Care', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 40%' },
+                    { _key: 'pd-11', label: 'Outpatient Care', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 40%' },
+                    { _key: 'pd-12', label: 'Urgent Care', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 40%' },
+                    { _key: 'pd-13', label: 'Emergency Room', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 20%' },
                 ],
             },
 
@@ -219,26 +249,23 @@ async function seedPremierAmerica() {
                 order: 4,
                 description: 'Affordable dental coverage through Anthem Blue Cross for all eligible employees and their dependents.',
                 content: textToBlocks([
-                    "Your dental health is a vital part of your overall well-being.",
-                    "We offer affordable coverage through Anthem Blue Cross for all eligible employees and their dependents.",
-                    "This plan provides coverage for a wide range of dental services, from routine cleanings to more complex procedures.",
-                    "For preventive care services, like routine exams and cleanings, this plan covers 100% of the cost.",
-                    "Basic services, like fillings or simple extractions, will be covered at 80% in-network after you meet your deductible, and major services, like crowns, are covered at 50% in-network after meeting your deductible.",
-                    "This plan also includes orthodontic coverage. You'll pay $1,500 for orthodontic services, and there's a lifetime maximum of $1,500.",
-                    "The deductible for this plan is $50 per individual and $150 per family. After you've met your deductible, your plan will help cover costs based on the type of service you receive.",
-                    "We also offer a second dental plan starting at a Bi-weekly contribution of $0, and the Anthem Blue Cross PPO plan starting at a Bi-weekly contribution of $19.37 for individual coverage. Dental coverage is administered by Anthem Blue Cross and offers coverage for a wide range of services.",
+                    "Dental coverage is provided by Anthem Blue Cross. This PPO plan offers comprehensive preventive, basic, major, and orthodontic services for eligible employees and their dependents.",
                 ]),
                 planDetails: [
-                    { _key: 'pd-1', label: 'Bi-Weekly Premium - PPO (Employee Only)', inNetwork: '$19.37', outOfNetwork: '—' },
-                    { _key: 'pd-2', label: 'Bi-Weekly Premium - Plan 2 (Employee Only)', inNetwork: '$0', outOfNetwork: '—' },
-                    { _key: 'pd-3', label: 'Annual Deductible (Individual)', inNetwork: '$50', outOfNetwork: '—' },
-                    { _key: 'pd-4', label: 'Annual Deductible (Family)', inNetwork: '$150', outOfNetwork: '—' },
-                    { _key: 'pd-5', label: 'Preventive Care (Exams & Cleanings)', inNetwork: '100% Covered', outOfNetwork: '—' },
-                    { _key: 'pd-6', label: 'Basic Services (Fillings, Extractions)', inNetwork: '80% after deductible', outOfNetwork: '—' },
-                    { _key: 'pd-7', label: 'Major Services (Crowns, Bridges)', inNetwork: '50% after deductible', outOfNetwork: '—' },
-                    { _key: 'pd-8', label: 'Orthodontics', inNetwork: '$1,500', outOfNetwork: '—' },
-                    { _key: 'pd-9', label: 'Orthodontic Lifetime Maximum', inNetwork: '$1,500', outOfNetwork: '—' },
-                    { _key: 'pd-10', label: 'Administered By', inNetwork: 'Anthem Blue Cross', outOfNetwork: '—' },
+                    // ── Section: Calendar Year Deductible ──
+                    { _key: 'pd-s1', label: 'Calendar Year Deductible', isSection: true },
+                    { _key: 'pd-1', label: 'Individual', inNetwork: '$50', outOfNetwork: '$50' },
+                    { _key: 'pd-2', label: 'Family', inNetwork: '$150', outOfNetwork: '$150' },
+                    // ── Section: Calendar Year Maximum ──
+                    { _key: 'pd-s2', label: 'Calendar Year Maximum', isSection: true },
+                    { _key: 'pd-3', label: 'Per Person', inNetwork: '$1,500/Individual', outOfNetwork: '$1,500/Individual' },
+                    // ── Section: Covered Services ──
+                    { _key: 'pd-s3', label: 'Covered Services', isSection: true },
+                    { _key: 'pd-4', label: 'Preventive Services', description: 'Exams, X-rays, Cleaning & Fluoride Treatments, Sealants, Space Maintainers, Palliative Treatments', inNetwork: 'No charge', outOfNetwork: 'No charge' },
+                    { _key: 'pd-5', label: 'Basic Services', description: 'Fillings, Extractions, Repair of Crowns/Inlays/Onlays/Bridges/Dentures, Periodontics, Oral Surgery, Anesthesia', inNetwork: '20%*', outOfNetwork: '20%*' },
+                    { _key: 'pd-6', label: 'Major Services', description: 'Inlays/Onlays/Crowns, Bridges, Dentures, Implants', inNetwork: '50%*', outOfNetwork: '50%*' },
+                    { _key: 'pd-7', label: 'Orthodontics', description: 'Diagnostic, Active, Retention Treatment for Adults and Dependent Children', inNetwork: '50%*', spanColumns: true },
+                    { _key: 'pd-8', label: 'Orthodontic Lifetime Maximum', inNetwork: '$1,500', spanColumns: true },
                 ],
             },
 
@@ -251,28 +278,27 @@ async function seedPremierAmerica() {
                 order: 5,
                 description: 'Quality vision care through EyeMed, with premiums starting at just $3.36 bi-weekly.',
                 content: textToBlocks([
-                    "Premier America Credit Union offers quality vision care for you and your family through EyeMed.",
-                    "Getting your eyes checked regularly is important, even if you don't wear eyeglasses or contacts. Eye doctors are often the first healthcare professionals to detect chronic systemic diseases, such as high blood pressure and diabetes.",
-                    "This plan covers a range of vision services.",
-                    "You'll have a $20 copay for eye exams, and whether you need single vision, bifocal, trifocal, or lenticular lenses, they are covered at no charge. These services are covered once every 12 months.",
-                    "If you prefer contact lenses instead of glasses, you'll receive a $130 allowance for elective contacts. Medically necessary contact lenses are covered in full.",
-                    "For frames, the plan provides a $130 allowance, once every 12 months.",
-                    "Premiums start at a Bi-weekly contribution of just $3.36 for individual coverage, providing excellent coverage for your eye exams, glasses, contacts, and more.",
+                    "We provide quality vision care for you and your family through EyeMed.",
                 ]),
                 planDetails: [
-                    { _key: 'pd-1', label: 'Bi-Weekly Premium (Employee Only)', inNetwork: '$3.36', outOfNetwork: '—' },
-                    { _key: 'pd-2', label: 'Eye Exam', inNetwork: '$20 copay', outOfNetwork: '—' },
-                    { _key: 'pd-3', label: 'Single Vision Lenses', inNetwork: 'No Charge', outOfNetwork: '—' },
-                    { _key: 'pd-4', label: 'Bifocal Lenses', inNetwork: 'No Charge', outOfNetwork: '—' },
-                    { _key: 'pd-5', label: 'Trifocal Lenses', inNetwork: 'No Charge', outOfNetwork: '—' },
-                    { _key: 'pd-6', label: 'Lenticular Lenses', inNetwork: 'No Charge', outOfNetwork: '—' },
-                    { _key: 'pd-7', label: 'Frames Allowance', inNetwork: '$130 allowance', outOfNetwork: '—' },
-                    { _key: 'pd-8', label: 'Elective Contact Lenses', inNetwork: '$130 allowance', outOfNetwork: '—' },
-                    { _key: 'pd-9', label: 'Medically Necessary Contacts', inNetwork: 'Covered in Full', outOfNetwork: '—' },
-                    { _key: 'pd-10', label: 'Exam Frequency', inNetwork: 'Once every 12 months', outOfNetwork: '—' },
-                    { _key: 'pd-11', label: 'Lens Frequency', inNetwork: 'Once every 12 months', outOfNetwork: '—' },
-                    { _key: 'pd-12', label: 'Frame Frequency', inNetwork: 'Once every 12 months', outOfNetwork: '—' },
-                    { _key: 'pd-13', label: 'Administered By', inNetwork: 'EyeMed', outOfNetwork: '—' },
+                    // ── Section: Exams ──
+                    { _key: 'pd-s1', label: 'Exams', isSection: true },
+                    { _key: 'pd-1', label: 'Copay', inNetwork: '$20', outOfNetwork: 'Up to $40 reimbursement', frequency: 'Every 12 months' },
+                    // ── Section: Lenses ──
+                    { _key: 'pd-s2', label: 'Lenses', isSection: true },
+                    { _key: 'pd-2', label: 'Single Vision', inNetwork: 'No charge', outOfNetwork: 'Up to $30 reimbursement' },
+                    { _key: 'pd-3', label: 'Bifocal', inNetwork: 'No charge', outOfNetwork: 'Up to $50 reimbursement', frequency: 'Every 12 months' },
+                    { _key: 'pd-4', label: 'Trifocal', inNetwork: 'No charge', outOfNetwork: 'Up to $70 reimbursement' },
+                    // ── Section: Contacts ──
+                    { _key: 'pd-s3', label: 'Contacts (In Lieu of Lenses and Frames)', isSection: true },
+                    { _key: 'pd-5', label: 'Elective', inNetwork: '$130 allowance', outOfNetwork: 'Up to $130 reimbursement' },
+                    { _key: 'pd-6', label: 'Medically Necessary', inNetwork: 'No charge', outOfNetwork: 'Up to $210 reimbursement', frequency: 'Every 12 months' },
+                    // ── Section: Frames ──
+                    { _key: 'pd-s4', label: 'Frames', isSection: true },
+                    { _key: 'pd-7', label: 'Allowance', inNetwork: '$130 allowance, then 20% off remaining balance', outOfNetwork: 'Up to $91 reimbursement', frequency: 'Every 12 months' },
+                    // ── Section: Other Services ──
+                    { _key: 'pd-s5', label: 'Other Services', isSection: true },
+                    { _key: 'pd-8', label: 'Eyeglass Lens Upgrades', inNetwork: 'Continued Eyewear Savings', outOfNetwork: 'LASIK and PRK Benefit', frequency: 'Hearing Care' },
                 ],
             },
 
@@ -433,6 +459,9 @@ async function seedPremierAmerica() {
             };
             if (ch.planDetails) {
                 doc.planDetails = ch.planDetails;
+            }
+            if (ch.premiumTables) {
+                doc.premiumTables = ch.premiumTables;
             }
             await client.createOrReplace(doc);
         }
