@@ -1,6 +1,8 @@
 /**
  * Structured extraction output from LlamaExtract.
  * Matches the JSON schema sent to the extraction API.
+ *
+ * Uses a UNIFIED table type for both templated and dynamic chapters.
  */
 
 export type BenefitCategory =
@@ -10,49 +12,33 @@ export type BenefitCategory =
   | 'pet-insurance' | 'college-savings' | 'wellness'
   | 'paid-time-off' | 'voluntary-benefits' | 'other'
 
-export interface ExtractedPlanDetailRow {
-  label: string
-  description?: string
-  inNetwork?: string
-  outOfNetwork?: string
-  frequency?: string
-  isSection?: boolean
-  spanColumns?: boolean
+// ── Unified Table Types ──
+
+export interface TableColumn {
+  key: string        // e.g., "ppo-in-network"
+  label: string      // e.g., "PPO"
+  subLabel?: string  // e.g., "In-Network", "Out-of-Network"
 }
 
-export interface ExtractedPlanDetailTable {
+export interface TableRow {
+  label: string
+  cells: string[]       // Values in the same order as columns
+  isSection?: boolean   // If true, rendered as a dark section-header row
+}
+
+export interface ExtractedTable {
+  templateId?: string         // Links back to global template (null for dynamic)
   tableTitle: string
   tableDescription?: string
-  rows: ExtractedPlanDetailRow[]
+  columns: TableColumn[]
+  rows: TableRow[]
 }
 
-export interface ExtractedPremiumTier {
-  tierName: string
-  amount: string
-}
-
-export interface ExtractedPremiumTable {
-  planName: string
-  sectionTitle: string
-  sectionDescription?: string
-  tiers: ExtractedPremiumTier[]
-}
+// ── Chapter Types ──
 
 export interface ExtractedChapterSection {
   title: string
   paragraphs: string[]
-}
-
-export interface ExtractedDynamicTableRow {
-  cells: string[]
-  isSection?: boolean
-}
-
-export interface ExtractedDynamicTable {
-  tableTitle: string
-  tableDescription?: string
-  headers: string[]
-  rows: ExtractedDynamicTableRow[]
 }
 
 export interface ExtractedChapter {
@@ -61,10 +47,19 @@ export interface ExtractedChapter {
   category: BenefitCategory | string
   contentParagraphs: string[]
   sections?: ExtractedChapterSection[]
-  planDetails?: ExtractedPlanDetailTable[]
-  premiumTables?: ExtractedPremiumTable[]
-  dynamicTables?: ExtractedDynamicTable[]
+  tables?: ExtractedTable[]
 }
+
+// ── Plan Detection (Phase 1) ──
+
+export interface DetectedPlans {
+  medicalPlans: string[]    // e.g., ["PPO", "Prime HDHP", "Alternate HDHP"]
+  dentalPlans: string[]     // e.g., ["Core Plan", "Enhanced Plan"]
+  visionPlans: string[]     // e.g., ["Core VSP", "Enhanced VSP"]
+  premiumTiers: string[]    // e.g., ["Employee Only", "Employee + Spouse", ...]
+}
+
+// ── Other Extracted Types (unchanged) ──
 
 export interface ExtractedChecklistItem {
   title: string
@@ -133,6 +128,7 @@ export interface ExtractedBenefitsData {
   landingPage?: ExtractedLandingPage
   retirementPlanning?: ExtractedRetirementPlanning
   chapters: ExtractedChapter[]
+  detectedPlans?: DetectedPlans
   enrollmentChecklist?: ExtractedChecklistItem[]
   benefitChanges?: ExtractedBenefitChange[]
   contactInfo?: ExtractedContactInfo[]

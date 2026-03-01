@@ -23,45 +23,20 @@ export interface BenefitChapterPayload {
   icon?: string
   order: number
   content: PortableTextBlock[]
-  planDetails?: Array<{
+  tables?: Array<{
     _key: string
     tableTitle: string
     tableDescription?: string
-    planColumns?: Array<{
+    templateId?: string
+    columns: Array<{
       _key: string
-      planName: string
-      subtitle?: string
+      key: string
+      label: string
+      subLabel?: string
     }>
     rows: Array<{
       _key: string
       label: string
-      description?: string
-      inNetwork?: string
-      outOfNetwork?: string
-      frequency?: string
-      isSection?: boolean
-      spanColumns?: boolean
-      planValues?: Array<{
-        _key: string
-        inNetwork: string
-        outOfNetwork: string
-      }>
-    }>
-  }>
-  premiumTables?: Array<{
-    _key: string
-    planName: string
-    sectionTitle: string
-    sectionDescription?: string
-    tiers: Array<{ _key: string; tierName: string; amount: string }>
-  }>
-  dynamicTables?: Array<{
-    _key: string
-    tableTitle: string
-    tableDescription?: string
-    headers: string[]
-    rows: Array<{
-      _key: string
       cells: string[]
       isSection?: boolean
     }>

@@ -1,12 +1,12 @@
 /**
  * Stage 2 – Structured extraction data + clientSlug → Sanity seed payload.
  *
- * Since LlamaExtract returns structured data matching our schema,
- * this is primarily a field-mapping layer that adds Sanity-specific
- * metadata (_id, _type, _key, references, slugs).
+ * Since extraction now returns unified table structures, this is
+ * primarily a field-mapping layer that adds Sanity-specific metadata
+ * (_id, _type, _key, references, slugs).
  */
 
-import type { ExtractedBenefitsData } from './types'
+import type { ExtractedBenefitsData, ExtractedTable, TableColumn, TableRow } from './types'
 import type { SanitySeedPayload } from '../seedClient'
 
 /**
@@ -104,6 +104,32 @@ function normalizeCategory(raw: string): string {
 }
 
 /**
+ * Convert ExtractedTable to Sanity-ready table data with _key fields.
+ */
+function mapTables(tables: ExtractedTable[] | undefined): SanitySeedPayload['benefitChapters'][0]['tables'] | undefined {
+  if (!tables?.length) return undefined
+
+  return tables.map((table, tIdx) => ({
+    _key: `tbl-${tIdx}`,
+    tableTitle: table.tableTitle,
+    ...(table.tableDescription && { tableDescription: table.tableDescription }),
+    ...(table.templateId && { templateId: table.templateId }),
+    columns: table.columns.map((col, cIdx) => ({
+      _key: `col-${cIdx}`,
+      key: col.key,
+      label: col.label,
+      ...(col.subLabel && { subLabel: col.subLabel }),
+    })),
+    rows: table.rows.map((row, rIdx) => ({
+      _key: `row-${rIdx}`,
+      label: row.label,
+      cells: row.cells.map(c => c || '—'),
+      ...(row.isSection && { isSection: row.isSection }),
+    })),
+  }))
+}
+
+/**
  * Transform structured LlamaExtract data into a Sanity seed payload.
  */
 export async function transformToSanitySchema(
@@ -126,14 +152,12 @@ export async function transformToSanitySchema(
     const icon = CATEGORY_ICON_MAP[category] ?? CATEGORY_ICON_MAP['other']
 
     // ── Content Transformation ──
-    // Combine introductory paragraphs and structured sections into one Portable Text array
     const contentBlocks: any[] = textToBlocks(
       ch.contentParagraphs?.length ? ch.contentParagraphs : [ch.description || ch.title]
     )
 
     if (ch.sections?.length) {
       ch.sections.forEach((section: any, sIdx: number) => {
-        // Add H3 Header for the section
         contentBlocks.push({
           _type: 'block' as const,
           _key: `header-${sIdx}`,
@@ -141,7 +165,6 @@ export async function transformToSanitySchema(
           children: [{ _type: 'span' as const, _key: `span-h-${sIdx}`, text: section.title, marks: [] }],
           markDefs: [],
         })
-        // Add paragraphs
         section.paragraphs.forEach((p: string, pIdx: number) => {
           contentBlocks.push({
             _type: 'block' as const,
@@ -166,67 +189,10 @@ export async function transformToSanitySchema(
       content: contentBlocks,
     }
 
-    if (ch.planDetails?.length) {
-      chapter.planDetails = ch.planDetails.map((table: any, tIdx: number) => ({
-        _key: `table-${tIdx}`,
-        tableTitle: table.tableTitle,
-        ...(table.tableDescription && { tableDescription: table.tableDescription }),
-        ...(table.planColumns?.length && {
-          planColumns: table.planColumns.map((col: any, cIdx: number) => ({
-            _key: `col-${cIdx}`,
-            planName: col.planName,
-            ...(col.subtitle && { subtitle: col.subtitle }),
-          })),
-        }),
-        rows: table.rows.map((pd: any, rIdx: number) => ({
-          _key: `row-${rIdx}`,
-          label: pd.label,
-          ...(pd.description && { description: pd.description }),
-          ...(pd.inNetwork && { inNetwork: pd.inNetwork }),
-          ...(pd.outOfNetwork && { outOfNetwork: pd.outOfNetwork }),
-          ...(pd.frequency && { frequency: pd.frequency }),
-          ...(pd.isSection && { isSection: pd.isSection }),
-          ...(pd.spanColumns && { spanColumns: pd.spanColumns }),
-          ...(pd.planValues?.length && {
-            planValues: pd.planValues.map((pv: any, pvIdx: number) => ({
-              _key: `pv-${pvIdx}`,
-              inNetwork: pv.inNetwork || '—',
-              outOfNetwork: pv.outOfNetwork || '—',
-            })),
-          }),
-        })),
-      }))
-    }
-
-
-    // Map dynamicTables with _key fields
-    if (ch.dynamicTables?.length) {
-      chapter.dynamicTables = ch.dynamicTables.map((dt: any, dtIdx: number) => ({
-        _key: `dt-${dtIdx}`,
-        tableTitle: dt.tableTitle,
-        ...(dt.tableDescription && { tableDescription: dt.tableDescription }),
-        headers: dt.headers,
-        rows: dt.rows.map((row: any, rIdx: number) => ({
-          _key: `dtr-${rIdx}`,
-          cells: row.cells.map((c: string) => c || '—'),
-          ...(row.isSection && { isSection: row.isSection }),
-        })),
-      }))
-    }
-
-    // Map premiumTables with _key fields
-    if (ch.premiumTables?.length) {
-      chapter.premiumTables = ch.premiumTables.map((pt: any, j: number) => ({
-        _key: `pt-${j}`,
-        planName: pt.planName,
-        sectionTitle: pt.sectionTitle,
-        ...(pt.sectionDescription && { sectionDescription: pt.sectionDescription }),
-        tiers: pt.tiers.map((t: any, k: number) => ({
-          _key: `tier-${k}`,
-          tierName: t.tierName,
-          amount: t.amount,
-        })),
-      }))
+    // ── Unified Tables ──
+    const tables = mapTables(ch.tables)
+    if (tables) {
+      chapter.tables = tables
     }
 
     return chapter
@@ -257,9 +223,6 @@ export async function transformToSanitySchema(
     ...(c.groupNumber && { groupNumber: c.groupNumber }),
   }))
 
-
-
-
   // ── Retirement Planning ──
   let retirementPlanning: SanitySeedPayload['retirementPlanning'] = undefined
   if (extracted.retirementPlanning) {
@@ -288,7 +251,7 @@ export async function transformToSanitySchema(
     }
   }
 
-  // ── Quick Access Cards (with smart defaults) ──
+  // ── Quick Access Cards ──
   let quickAccess = (extracted.quickAccess ?? []).map((item, i) => ({
     _key: `qa-${i}`,
     title: item.title,
@@ -297,7 +260,6 @@ export async function transformToSanitySchema(
     iconName: item.iconName || 'building',
   }))
 
-  // If the PDF didn't produce quickAccess cards, auto-generate them
   if (quickAccess.length === 0) {
     quickAccess = [
       {
@@ -324,7 +286,7 @@ export async function transformToSanitySchema(
     ]
   }
 
-  // ── Footer Quick Links (always use internal navigation) ──
+  // ── Footer Quick Links ──
   const defaultQuickLinks = [
     { _key: 'ql-0', label: 'Home', href: `/${slug}` },
     { _key: 'ql-1', label: 'Benefits', href: `/${slug}/benefits` },
@@ -332,7 +294,6 @@ export async function transformToSanitySchema(
     { _key: 'ql-3', label: 'Contacts', href: `/${slug}/contacts` },
   ]
 
-  // Use extracted quickLinks only if they look like internal paths, otherwise use defaults
   const extractedLinks = (extracted.quickLinks ?? [])
   const quickLinks = extractedLinks.length > 0 && extractedLinks.some(l => l.href?.startsWith('/'))
     ? extractedLinks.map((link, i) => ({ _key: `ql-${i}`, label: link.label, href: link.href }))
