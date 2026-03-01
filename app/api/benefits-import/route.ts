@@ -10,7 +10,7 @@ import { transformToSanitySchema } from '@/lib/benefits-import/transform'
 import { seedClientSite } from '@/lib/seedClient'
 import { projectId, dataset, apiVersion } from '@/sanity/env'
 
-export const maxDuration = 600
+export const maxDuration = 300
 
 export async function POST(request: Request) {
   try {
