@@ -33,7 +33,7 @@ export default defineConfig({
         },
       },
       // Allow the deployed Vercel origin and localhost
-      allowOrigins: ['https://rsandh-demosite.vercel.app', 'http://localhost:3000'],
+      allowOrigins: ['https://dbh-demosite.vercel.app', 'http://localhost:3000'],
       resolve: {
         mainDocuments: [
           {
