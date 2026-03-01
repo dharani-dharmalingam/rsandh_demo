@@ -30,6 +30,7 @@ export default defineType({
             title: 'Client',
             type: 'reference',
             to: [{ type: 'client' }],
+            weak: true,
             validation: (Rule) => Rule.required(),
         }),
         defineField({
@@ -57,9 +58,27 @@ export default defineType({
             ]
         }),
         defineField({
-            name: 'contactInfo',
-            title: 'Contact Information',
+            name: 'quickAccess',
+            title: 'Quick Access Cards',
             type: 'array',
+            description: 'Top-level cards below the retirement section (e.g. UKG, Support, Document Hub)',
+            of: [
+                {
+                    type: 'object',
+                    fields: [
+                        { name: 'title', type: 'string', title: 'Title' },
+                        { name: 'description', type: 'string', title: 'Description' },
+                        { name: 'href', type: 'string', title: 'Link URL' },
+                        { name: 'iconName', type: 'string', title: 'Icon Name', description: 'lucide-react icon name (building, message-square, mail, file-text)' }
+                    ]
+                }
+            ]
+        }),
+        defineField({
+            name: 'contactInfo',
+            title: 'Footer Contact List',
+            type: 'array',
+            description: 'Detailed contacts listed in the footer column',
             of: [
                 {
                     type: 'object',
@@ -70,6 +89,18 @@ export default defineType({
                     ]
                 }
             ]
+        }),
+        defineField({
+            name: 'footerContactTitle',
+            title: 'Footer Contact Title',
+            type: 'string',
+            initialValue: 'Contact',
+        }),
+        defineField({
+            name: 'footerContactDescription',
+            title: 'Footer Contact Description',
+            type: 'text',
+            initialValue: 'Have questions? Reach out to our support team.',
         }),
         defineField({
             name: 'copyrightText',

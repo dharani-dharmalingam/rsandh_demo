@@ -67,11 +67,10 @@ export function FloatingAssistant() {
             {messages.map((message, index) => (
               <div key={index} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div
-                  className={`max-w-xs px-4 py-2 rounded-lg text-sm ${
-                    message.role === 'user'
+                  className={`max-w-xs px-4 py-2 rounded-lg text-sm ${message.role === 'user'
                       ? 'bg-blue-600 text-white rounded-br-none'
                       : 'bg-white text-slate-900 rounded-bl-none border border-slate-200'
-                  }`}
+                    }`}
                 >
                   {message.content}
                 </div>

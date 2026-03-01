@@ -6,8 +6,8 @@ const token = process.env.SANITY_API_READ_TOKEN;
 
 const { sanityFetch: remoteFetch, SanityLive } = defineLive({
   client,
-  serverToken: token,
-  browserToken: token,
+  serverToken: token ?? false,
+  browserToken: token ?? false,
 });
 
 export { SanityLive };

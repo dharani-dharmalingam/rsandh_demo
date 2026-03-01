@@ -46,24 +46,69 @@ export default defineType({
     }),
     defineField({
       name: "planDetails",
-      title: "Plan Details (Table)",
+      title: "Plan Details Tables",
       type: "array",
-      description: "Structured plan details displayed as a comparison table (e.g., Deductible, Co-pay, etc.)",
+      description: "Grouped plan detail tables. Each entry is a separate table with its own title and rows. Supports single-plan (inNetwork/outOfNetwork) and multi-plan comparison layouts.",
       of: [
         {
           type: "object",
           fields: [
-            { name: "label", title: "Label", type: "string", description: "e.g., Deductible, Coinsurance, Out-of-Pocket Max" },
-            { name: "description", title: "Description", type: "text", description: "Optional sub-description shown below the label" },
-            { name: "inNetwork", title: "In-Network", type: "string", description: "In-network value" },
-            { name: "outOfNetwork", title: "Out-of-Network", type: "string", description: "Out-of-network value (leave blank if N/A)" },
-            { name: "frequency", title: "Frequency", type: "string", description: "Optional frequency column (e.g., Every 12 months)" },
-            { name: "isSection", title: "Section Header?", type: "boolean", description: "If true, renders as a dark section header row" },
-            { name: "spanColumns", title: "Span Columns?", type: "boolean", description: "If true, the in-network value spans across both value columns" },
+            { name: "tableTitle", title: "Table Title", type: "string", description: "e.g., Plan Benefits Summary, Prescription Drug Coverage, Out-of-Network Coverage" },
+            { name: "tableDescription", title: "Table Description", type: "text", description: "Optional description shown above the table" },
+            {
+              name: "planColumns",
+              title: "Plan Columns (for multi-plan comparison)",
+              type: "array",
+              description: "Define plan columns for side-by-side comparison (e.g., Core Plan, Enhanced Plan). Leave empty for single-plan tables.",
+              of: [
+                {
+                  type: "object",
+                  fields: [
+                    { name: "planName", title: "Plan Name", type: "string", description: "e.g., Core Plan, Enhanced Plan" },
+                    { name: "subtitle", title: "Subtitle", type: "string", description: "e.g., formerly Preferred Plan" },
+                  ],
+                },
+              ],
+            },
+            {
+              name: "rows",
+              title: "Table Rows",
+              type: "array",
+              of: [
+                {
+                  type: "object",
+                  fields: [
+                    { name: "label", title: "Label", type: "string", description: "e.g., Deductible, Coinsurance, Out-of-Pocket Max" },
+                    { name: "description", title: "Description", type: "text", description: "Optional sub-description shown below the label" },
+                    { name: "inNetwork", title: "In-Network", type: "string", description: "In-network value (single-plan mode)" },
+                    { name: "outOfNetwork", title: "Out-of-Network", type: "string", description: "Out-of-network value (single-plan mode)" },
+                    { name: "frequency", title: "Frequency", type: "string", description: "Optional frequency column (e.g., Every 12 months)" },
+                    { name: "isSection", title: "Section Header?", type: "boolean", description: "If true, renders as a dark section header row" },
+                    { name: "spanColumns", title: "Span Columns?", type: "boolean", description: "If true, the value spans across all plan columns" },
+                    {
+                      name: "planValues",
+                      title: "Plan Values (multi-plan mode)",
+                      type: "array",
+                      description: "Values for each plan column. Order must match planColumns.",
+                      of: [
+                        {
+                          type: "object",
+                          fields: [
+                            { name: "inNetwork", title: "In-Network", type: "string" },
+                            { name: "outOfNetwork", title: "Out-of-Network", type: "string" },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
           ],
         },
       ],
     }),
+
     defineField({
       name: "premiumTables",
       title: "Premium Contribution Tables",
@@ -95,6 +140,48 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "dynamicTables",
+      title: "Dynamic Tables (Exact PDF Layout)",
+      type: "array",
+      description: "Tables extracted with exact column structure from the PDF. Used for non-overview chapters (Dental, Vision, FSA, HSA, etc.).",
+      of: [
+        {
+          type: "object",
+          fields: [
+            { name: "tableTitle", title: "Table Title", type: "string" },
+            { name: "tableDescription", title: "Table Description", type: "text" },
+            {
+              name: "headers",
+              title: "Column Headers",
+              type: "array",
+              description: "Column headers exactly as they appear in the PDF table.",
+              of: [{ type: "string" }],
+            },
+            {
+              name: "rows",
+              title: "Table Rows",
+              type: "array",
+              of: [
+                {
+                  type: "object",
+                  fields: [
+                    {
+                      name: "cells",
+                      title: "Cell Values",
+                      type: "array",
+                      description: "Cell values in the same order as headers.",
+                      of: [{ type: "string" }],
+                    },
+                    { name: "isSection", title: "Section Header?", type: "boolean", description: "If true, renders as a dark section header row" },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    }),
+    defineField({
       name: "order",
       title: "Display Order",
       type: "number",
@@ -104,6 +191,7 @@ export default defineType({
       title: "Client",
       type: "reference",
       to: [{ type: "client" }],
+      weak: true,
       validation: (Rule) => Rule.required(),
     }),
   ],

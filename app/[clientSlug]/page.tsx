@@ -328,25 +328,34 @@ export default async function HomePage({ params }: { params: Promise<{ clientSlu
 
       {/* Quick Access Section */}
       <SectionWrapper className="bg-white">
-        <h2 className="text-2xl font-bold text-slate-900 mb-8">Quick Access</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card className="p-6 hover:shadow-lg transition-shadow cursor-pointer">
-            <h3 className="font-semibold text-slate-900 mb-2">UKG Link</h3>
-            <p className="text-sm text-slate-600 mb-4">Access the UKG time and attendance system</p>
-            <Link href="#ukg" className="text-blue-600 hover:text-blue-700 text-sm font-medium">
-              Go to UKG →
-            </Link>
-          </Card>
-
-          <ImportantContacts contacts={settings?.contactInfo || []} />
-
-          <Card className="p-6 hover:shadow-lg transition-shadow cursor-pointer">
-            <h3 className="font-semibold text-slate-900 mb-2">Document Hub</h3>
-            <p className="text-sm text-slate-600 mb-4">Download benefits documents and guides</p>
-            <Link href={`/${clientSlug}/document-hub`} className="text-blue-600 hover:text-blue-700 text-sm font-medium">
-              View Documents →
-            </Link>
-          </Card>
+        <h2 className="text-3xl font-bold text-slate-900 mb-8">Quick Access</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {(settings?.quickAccess || []).map((item: any, i: number) => (
+            <Card key={i} className="p-8 hover:shadow-xl transition-all border-slate-200 group relative">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 bg-blue-50 rounded-xl group-hover:bg-blue-100 transition-colors">
+                  {item.iconName === 'building' && <FileText className="h-6 w-6 text-blue-600" />}
+                  {item.iconName === 'message-square' && <HelpCircle className="h-6 w-6 text-blue-600" />}
+                  {item.iconName === 'mail' && <HelpCircle className="h-6 w-6 text-blue-600" />}
+                  {item.iconName === 'file-text' && <FileText className="h-6 w-6 text-blue-600" />}
+                  {!item.iconName && <HelpCircle className="h-6 w-6 text-blue-600" />}
+                </div>
+                <h3 className="text-xl font-bold text-slate-900">{item.title}</h3>
+              </div>
+              <p className="text-slate-600 mb-6 leading-relaxed">
+                {item.description}
+              </p>
+              <Link
+                href={item.title.toLowerCase().includes('contact') ? `/${clientSlug}/contacts` : (item.href || '#')}
+                className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors"
+                target={(!item.title.toLowerCase().includes('contact') && item.href?.startsWith('http')) ? '_blank' : undefined}
+                rel={(!item.title.toLowerCase().includes('contact') && item.href?.startsWith('http')) ? 'noopener noreferrer' : undefined}
+              >
+                Go to {item.title}
+                <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
+              </Link>
+            </Card>
+          ))}
         </div>
       </SectionWrapper>
     </div>

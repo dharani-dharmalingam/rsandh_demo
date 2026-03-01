@@ -64,19 +64,39 @@ async function seedPremierAmerica() {
             shortName: 'Premier America Credit Union',
             logoText: 'Premier America Benefits',
             footerAbout: 'Comprehensive benefits administration and support for the valued employees of Premier America Credit Union.',
+            quickAccess: [
+                {
+                    _key: 'qa-ukg',
+                    title: 'UKG',
+                    description: 'Access the UKG time and attendance system for payroll and scheduling.',
+                    href: 'https://premieramerica.ultipro.com',
+                    iconName: 'building'
+                },
+                {
+                    _key: 'qa-support',
+                    title: 'Important Contact Information',
+                    description: 'Reach out to our benefits support team for any plan-related questions.',
+                    href: 'mailto:benefits@premieramerica.com',
+                    iconName: 'message-square'
+                },
+                {
+                    _key: 'qa-docs',
+                    title: 'Contact Us',
+                    description: 'General HR inquiries and employment verification.',
+                    href: 'mailto:hrd@premieramerica.com',
+                    iconName: 'mail'
+                }
+            ],
             contactInfo: [
                 { _key: 'c-hr', label: 'HR Department', value: '818-772-4000 | hrd@premieramerica.com', href: 'mailto:hrd@premieramerica.com' },
             ],
             quickLinks: [
-                { _key: 'ql-1', label: 'Anthem Blue Cross (Medical/Dental)', href: 'https://www.anthem.com' },
-                { _key: 'ql-2', label: 'EyeMed (Vision)', href: 'https://www.eyemed.com' },
-                { _key: 'ql-3', label: 'LiveHealth Online (Telemedicine)', href: 'https://livehealthonline.com' },
-                { _key: 'ql-4', label: 'HealthEquity (FSA)', href: 'https://www.healthequity.com/wageworks' },
-                { _key: 'ql-5', label: 'Mutual of Omaha (Life/Disability/EAP)', href: 'https://www.mutualofomaha.com' },
-                { _key: 'ql-6', label: 'Allstate (Supplemental Health)', href: 'https://www.allstatebenefits.com/mybenefits' },
-                { _key: 'ql-7', label: 'Nationwide (Pet Insurance)', href: 'https://www.petinsurance.com/affiliates/premier' },
-                { _key: 'ql-8', label: 'ScholarShare 529 (College Savings)', href: 'https://ScholarShare529.com' },
+                { _key: 'ql-1', label: 'Home', href: '/premier-america' },
+                { _key: 'ql-2', label: 'Chapters', href: '/premier-america/benefits' },
+                { _key: 'ql-3', label: 'Document Hub', href: '/premier-america/document-hub' },
             ],
+            footerContactTitle: 'Contact',
+            footerContactDescription: 'Have questions? Reach out to our support team.',
             copyrightText: `© ${new Date().getFullYear()} Premier America Credit Union. All rights reserved.`,
         });
 
@@ -137,11 +157,17 @@ async function seedPremierAmerica() {
                     "If you experience a qualifying life event and need to make changes, simply contact us. We'll be here to support you when the time comes!",
                 ]),
                 planDetails: [
-                    { _key: 'pd-1', label: 'Eligible Employees', inNetwork: 'Full-time, 30+ hrs/week', outOfNetwork: '—' },
-                    { _key: 'pd-2', label: 'Spouse/Domestic Partner', inNetwork: 'Eligible', outOfNetwork: '—' },
-                    { _key: 'pd-3', label: 'Dependent Children', inNetwork: 'Up to Age 26', outOfNetwork: '—' },
-                    { _key: 'pd-4', label: 'Disabled Dependents', inNetwork: 'Beyond Age 26 (if certified)', outOfNetwork: '—' },
-                    { _key: 'pd-5', label: 'Mid-Year Changes', inNetwork: 'Qualifying Life Event Only', outOfNetwork: '—' },
+                    {
+                        _key: 'table-0',
+                        tableTitle: 'Eligibility Summary',
+                        rows: [
+                            { _key: 'row-0-0', label: 'Eligible Employees', inNetwork: 'Full-time, 30+ hrs/week', outOfNetwork: '---' },
+                            { _key: 'row-0-1', label: 'Spouse/Domestic Partner', inNetwork: 'Eligible', outOfNetwork: '---' },
+                            { _key: 'row-0-2', label: 'Dependent Children', inNetwork: 'Up to Age 26', outOfNetwork: '---' },
+                            { _key: 'row-0-3', label: 'Disabled Dependents', inNetwork: 'Beyond Age 26 (if certified)', outOfNetwork: '---' },
+                            { _key: 'row-0-4', label: 'Mid-Year Changes', inNetwork: 'Qualifying Life Event Only', outOfNetwork: '---' },
+                        ],
+                    },
                 ],
             },
 
@@ -218,25 +244,29 @@ async function seedPremierAmerica() {
                     "This plan also makes it easy to access quality healthcare from anywhere with virtual visits through LiveHealth Online. With LiveHealth Online, you and your dependents can consult a doctor at any time for common health issues like allergies, sore throats, sinus problems, and more.",
                 ]),
                 planDetails: [
-                    // ── Section: Calendar Year Deductible ──
-                    { _key: 'pd-s1', label: 'Calendar Year Deductible', isSection: true },
-                    { _key: 'pd-1', label: 'Individual', inNetwork: '$1,650', outOfNetwork: '$4,950' },
-                    { _key: 'pd-2', label: 'Family', inNetwork: '$4,100 ($3,300/Family Member)', outOfNetwork: '$9,900 ($4,950/Family Member)' },
-                    { _key: 'pd-3', label: 'Coinsurance (You Pay)', inNetwork: '20%*', outOfNetwork: '40%*' },
-                    // ── Section: Calendar Year Out-of-Pocket Maximum ──
-                    { _key: 'pd-s2', label: 'Calendar Year Out-of-Pocket Maximum (Maximum Includes Deductible)', isSection: true },
-                    { _key: 'pd-4', label: 'Individual', inNetwork: '$4,250', outOfNetwork: '$12,750' },
-                    { _key: 'pd-5', label: 'Family', inNetwork: '$8,500 ($4,250/Family Member)', outOfNetwork: '$25,500 ($12,750/Family Member)' },
-                    // ── Section: Copays/Coinsurance ──
-                    { _key: 'pd-s3', label: 'Copays/Coinsurance', isSection: true },
-                    { _key: 'pd-6', label: 'Preventive Care', inNetwork: 'No charge', outOfNetwork: 'Deductible, then 40%' },
-                    { _key: 'pd-7', label: 'Primary Care', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 40%' },
-                    { _key: 'pd-8', label: 'Specialist Services', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 40%' },
-                    { _key: 'pd-9', label: 'Diagnostic Care', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 40%' },
-                    { _key: 'pd-10', label: 'Inpatient Care', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 40%' },
-                    { _key: 'pd-11', label: 'Outpatient Care', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 40%' },
-                    { _key: 'pd-12', label: 'Urgent Care', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 40%' },
-                    { _key: 'pd-13', label: 'Emergency Room', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 20%' },
+                    {
+                        _key: 'table-0',
+                        tableTitle: 'Plan Benefits Summary',
+                        tableDescription: 'Comprehensive coverage details for HDHP plan',
+                        rows: [
+                            { _key: 'row-0-0', label: 'Calendar Year Deductible', isSection: true },
+                            { _key: 'row-0-1', label: 'Individual', inNetwork: '$1,650', outOfNetwork: '$4,950' },
+                            { _key: 'row-0-2', label: 'Family', inNetwork: '$4,100 ($3,300/Family Member)', outOfNetwork: '$9,900 ($4,950/Family Member)' },
+                            { _key: 'row-0-3', label: 'Coinsurance (You Pay)', inNetwork: '20%*', outOfNetwork: '40%*' },
+                            { _key: 'row-0-4', label: 'Calendar Year Out-of-Pocket Maximum', isSection: true },
+                            { _key: 'row-0-5', label: 'Individual', inNetwork: '$4,250', outOfNetwork: '$12,750' },
+                            { _key: 'row-0-6', label: 'Family', inNetwork: '$8,500 ($4,250/Family Member)', outOfNetwork: '$25,500 ($12,750/Family Member)' },
+                            { _key: 'row-0-7', label: 'Copays/Coinsurance', isSection: true },
+                            { _key: 'row-0-8', label: 'Preventive Care', inNetwork: 'No charge', outOfNetwork: 'Deductible, then 40%' },
+                            { _key: 'row-0-9', label: 'Primary Care', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 40%' },
+                            { _key: 'row-0-10', label: 'Specialist Services', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 40%' },
+                            { _key: 'row-0-11', label: 'Diagnostic Care', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 40%' },
+                            { _key: 'row-0-12', label: 'Inpatient Care', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 40%' },
+                            { _key: 'row-0-13', label: 'Outpatient Care', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 40%' },
+                            { _key: 'row-0-14', label: 'Urgent Care', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 40%' },
+                            { _key: 'row-0-15', label: 'Emergency Room', inNetwork: 'Deductible, then 20%', outOfNetwork: 'Deductible, then 20%' },
+                        ],
+                    },
                 ],
             },
 
@@ -252,20 +282,24 @@ async function seedPremierAmerica() {
                     "Dental coverage is provided by Anthem Blue Cross. This PPO plan offers comprehensive preventive, basic, major, and orthodontic services for eligible employees and their dependents.",
                 ]),
                 planDetails: [
-                    // ── Section: Calendar Year Deductible ──
-                    { _key: 'pd-s1', label: 'Calendar Year Deductible', isSection: true },
-                    { _key: 'pd-1', label: 'Individual', inNetwork: '$50', outOfNetwork: '$50' },
-                    { _key: 'pd-2', label: 'Family', inNetwork: '$150', outOfNetwork: '$150' },
-                    // ── Section: Calendar Year Maximum ──
-                    { _key: 'pd-s2', label: 'Calendar Year Maximum', isSection: true },
-                    { _key: 'pd-3', label: 'Per Person', inNetwork: '$1,500/Individual', outOfNetwork: '$1,500/Individual' },
-                    // ── Section: Covered Services ──
-                    { _key: 'pd-s3', label: 'Covered Services', isSection: true },
-                    { _key: 'pd-4', label: 'Preventive Services', description: 'Exams, X-rays, Cleaning & Fluoride Treatments, Sealants, Space Maintainers, Palliative Treatments', inNetwork: 'No charge', outOfNetwork: 'No charge' },
-                    { _key: 'pd-5', label: 'Basic Services', description: 'Fillings, Extractions, Repair of Crowns/Inlays/Onlays/Bridges/Dentures, Periodontics, Oral Surgery, Anesthesia', inNetwork: '20%*', outOfNetwork: '20%*' },
-                    { _key: 'pd-6', label: 'Major Services', description: 'Inlays/Onlays/Crowns, Bridges, Dentures, Implants', inNetwork: '50%*', outOfNetwork: '50%*' },
-                    { _key: 'pd-7', label: 'Orthodontics', description: 'Diagnostic, Active, Retention Treatment for Adults and Dependent Children', inNetwork: '50%*', spanColumns: true },
-                    { _key: 'pd-8', label: 'Orthodontic Lifetime Maximum', inNetwork: '$1,500', spanColumns: true },
+                    {
+                        _key: 'table-0',
+                        tableTitle: 'Dental Plan Summary',
+                        tableDescription: 'Coverage details for Anthem Blue Cross dental plan',
+                        rows: [
+                            { _key: 'row-0-0', label: 'Calendar Year Deductible', isSection: true },
+                            { _key: 'row-0-1', label: 'Individual', inNetwork: '$50', outOfNetwork: '$50' },
+                            { _key: 'row-0-2', label: 'Family', inNetwork: '$150', outOfNetwork: '$150' },
+                            { _key: 'row-0-3', label: 'Calendar Year Maximum', isSection: true },
+                            { _key: 'row-0-4', label: 'Per Person', inNetwork: '$1,500/Individual', outOfNetwork: '$1,500/Individual' },
+                            { _key: 'row-0-5', label: 'Covered Services', isSection: true },
+                            { _key: 'row-0-6', label: 'Preventive Services', description: 'Exams, X-rays, Cleaning & Fluoride Treatments, Sealants, Space Maintainers, Palliative Treatments', inNetwork: 'No charge', outOfNetwork: 'No charge' },
+                            { _key: 'row-0-7', label: 'Basic Services', description: 'Fillings, Extractions, Repair of Crowns/Inlays/Onlays/Bridges/Dentures, Periodontics, Oral Surgery, Anesthesia', inNetwork: '20%*', outOfNetwork: '20%*' },
+                            { _key: 'row-0-8', label: 'Major Services', description: 'Inlays/Onlays/Crowns, Bridges, Dentures, Implants', inNetwork: '50%*', outOfNetwork: '50%*' },
+                            { _key: 'row-0-9', label: 'Orthodontics', description: 'Diagnostic, Active, Retention Treatment for Adults and Dependent Children', inNetwork: '50%*', spanColumns: true },
+                            { _key: 'row-0-10', label: 'Orthodontic Lifetime Maximum', inNetwork: '$1,500', spanColumns: true },
+                        ],
+                    },
                 ],
             },
 
@@ -281,24 +315,26 @@ async function seedPremierAmerica() {
                     "We provide quality vision care for you and your family through EyeMed.",
                 ]),
                 planDetails: [
-                    // ── Section: Exams ──
-                    { _key: 'pd-s1', label: 'Exams', isSection: true },
-                    { _key: 'pd-1', label: 'Copay', inNetwork: '$20', outOfNetwork: 'Up to $40 reimbursement', frequency: 'Every 12 months' },
-                    // ── Section: Lenses ──
-                    { _key: 'pd-s2', label: 'Lenses', isSection: true },
-                    { _key: 'pd-2', label: 'Single Vision', inNetwork: 'No charge', outOfNetwork: 'Up to $30 reimbursement' },
-                    { _key: 'pd-3', label: 'Bifocal', inNetwork: 'No charge', outOfNetwork: 'Up to $50 reimbursement', frequency: 'Every 12 months' },
-                    { _key: 'pd-4', label: 'Trifocal', inNetwork: 'No charge', outOfNetwork: 'Up to $70 reimbursement' },
-                    // ── Section: Contacts ──
-                    { _key: 'pd-s3', label: 'Contacts (In Lieu of Lenses and Frames)', isSection: true },
-                    { _key: 'pd-5', label: 'Elective', inNetwork: '$130 allowance', outOfNetwork: 'Up to $130 reimbursement' },
-                    { _key: 'pd-6', label: 'Medically Necessary', inNetwork: 'No charge', outOfNetwork: 'Up to $210 reimbursement', frequency: 'Every 12 months' },
-                    // ── Section: Frames ──
-                    { _key: 'pd-s4', label: 'Frames', isSection: true },
-                    { _key: 'pd-7', label: 'Allowance', inNetwork: '$130 allowance, then 20% off remaining balance', outOfNetwork: 'Up to $91 reimbursement', frequency: 'Every 12 months' },
-                    // ── Section: Other Services ──
-                    { _key: 'pd-s5', label: 'Other Services', isSection: true },
-                    { _key: 'pd-8', label: 'Eyeglass Lens Upgrades', inNetwork: 'Continued Eyewear Savings', outOfNetwork: 'LASIK and PRK Benefit', frequency: 'Hearing Care' },
+                    {
+                        _key: 'table-0',
+                        tableTitle: 'Vision Plan Summary',
+                        tableDescription: 'Coverage details for EyeMed vision plan',
+                        rows: [
+                            { _key: 'row-0-0', label: 'Exams', isSection: true },
+                            { _key: 'row-0-1', label: 'Copay', inNetwork: '$20', outOfNetwork: 'Up to $40 reimbursement', frequency: 'Every 12 months' },
+                            { _key: 'row-0-2', label: 'Lenses', isSection: true },
+                            { _key: 'row-0-3', label: 'Single Vision', inNetwork: 'No charge', outOfNetwork: 'Up to $30 reimbursement' },
+                            { _key: 'row-0-4', label: 'Bifocal', inNetwork: 'No charge', outOfNetwork: 'Up to $50 reimbursement', frequency: 'Every 12 months' },
+                            { _key: 'row-0-5', label: 'Trifocal', inNetwork: 'No charge', outOfNetwork: 'Up to $70 reimbursement' },
+                            { _key: 'row-0-6', label: 'Contacts (In Lieu of Lenses and Frames)', isSection: true },
+                            { _key: 'row-0-7', label: 'Elective', inNetwork: '$130 allowance', outOfNetwork: 'Up to $130 reimbursement' },
+                            { _key: 'row-0-8', label: 'Medically Necessary', inNetwork: 'No charge', outOfNetwork: 'Up to $210 reimbursement', frequency: 'Every 12 months' },
+                            { _key: 'row-0-9', label: 'Frames', isSection: true },
+                            { _key: 'row-0-10', label: 'Allowance', inNetwork: '$130 allowance, then 20% off remaining balance', outOfNetwork: 'Up to $91 reimbursement', frequency: 'Every 12 months' },
+                            { _key: 'row-0-11', label: 'Other Services', isSection: true },
+                            { _key: 'row-0-12', label: 'Eyeglass Lens Upgrades', inNetwork: 'Continued Eyewear Savings', outOfNetwork: 'LASIK and PRK Benefit', frequency: 'Hearing Care' },
+                        ],
+                    },
                 ],
             },
 
@@ -322,16 +358,28 @@ async function seedPremierAmerica() {
                     "Key differences between an HSA and an FSA: Eligibility — You must be enrolled in the HDHP plan to contribute to an HSA, while an FSA is available regardless of your health plan. Rollover — HSA funds roll over from year to year, while FSA funds must be used within the plan year. Flexibility — HSAs allow you to save for long-term healthcare expenses, including retirement, while FSAs are designed to cover more immediate medical costs.",
                 ]),
                 planDetails: [
-                    { _key: 'pd-1', label: 'Healthcare FSA Limit', inNetwork: '$3,300/year', outOfNetwork: '—' },
-                    { _key: 'pd-2', label: 'Healthcare FSA Rollover', inNetwork: 'Use It or Lose It', outOfNetwork: '—' },
-                    { _key: 'pd-3', label: 'Dependent Care FSA Limit', inNetwork: '$5,000/year', outOfNetwork: '—' },
-                    { _key: 'pd-4', label: 'HSA Limit (Individual)', inNetwork: '$4,300/year', outOfNetwork: '—' },
-                    { _key: 'pd-5', label: 'HSA Limit (Family)', inNetwork: '$8,550/year', outOfNetwork: '—' },
-                    { _key: 'pd-6', label: 'HSA Catch-Up (55+)', inNetwork: '+$1,000', outOfNetwork: '—' },
-                    { _key: 'pd-7', label: 'Employer HSA Contribution (Individual)', inNetwork: '$1,100/year', outOfNetwork: '—' },
-                    { _key: 'pd-8', label: 'Employer HSA Contribution (Family)', inNetwork: '$2,100/year', outOfNetwork: '—' },
-                    { _key: 'pd-9', label: 'HSA Rollover', inNetwork: 'Yes — Funds Roll Over', outOfNetwork: '—' },
-                    { _key: 'pd-10', label: 'LUFSA Limit', inNetwork: '$3,300/year', outOfNetwork: '—' },
+                    {
+                        _key: 'table-0',
+                        tableTitle: 'FSA Contribution Limits',
+                        rows: [
+                            { _key: 'row-0-0', label: 'Healthcare FSA Limit', inNetwork: '$3,300/year' },
+                            { _key: 'row-0-1', label: 'Healthcare FSA Rollover', inNetwork: 'Use It or Lose It' },
+                            { _key: 'row-0-2', label: 'Dependent Care FSA Limit', inNetwork: '$5,000/year' },
+                            { _key: 'row-0-3', label: 'LUFSA Limit', inNetwork: '$3,300/year' },
+                        ],
+                    },
+                    {
+                        _key: 'table-1',
+                        tableTitle: 'HSA Contribution Limits',
+                        rows: [
+                            { _key: 'row-1-0', label: 'HSA Limit (Individual)', inNetwork: '$4,300/year' },
+                            { _key: 'row-1-1', label: 'HSA Limit (Family)', inNetwork: '$8,550/year' },
+                            { _key: 'row-1-2', label: 'HSA Catch-Up (55+)', inNetwork: '+$1,000' },
+                            { _key: 'row-1-3', label: 'Employer HSA Contribution (Individual)', inNetwork: '$1,100/year' },
+                            { _key: 'row-1-4', label: 'Employer HSA Contribution (Family)', inNetwork: '$2,100/year' },
+                            { _key: 'row-1-5', label: 'HSA Rollover', inNetwork: 'Yes — Funds Roll Over' },
+                        ],
+                    },
                 ],
             },
 
@@ -350,16 +398,22 @@ async function seedPremierAmerica() {
                     "To access these services, you will need to enter company Web ID: www.mutualofomaha.com/eap when visiting the website.",
                 ]),
                 planDetails: [
-                    { _key: 'pd-1', label: 'Cost to Employee', inNetwork: 'No Cost', outOfNetwork: '—' },
-                    { _key: 'pd-2', label: 'Eligibility', inNetwork: 'All Employees (regardless of medical enrollment)', outOfNetwork: '—' },
-                    { _key: 'pd-3', label: 'Mental Health Support', inNetwork: 'Included', outOfNetwork: '—' },
-                    { _key: 'pd-4', label: 'Legal Assistance', inNetwork: 'Included', outOfNetwork: '—' },
-                    { _key: 'pd-5', label: 'Financial Assistance', inNetwork: 'Included', outOfNetwork: '—' },
-                    { _key: 'pd-6', label: 'Phone Access', inNetwork: '24/7', outOfNetwork: '—' },
-                    { _key: 'pd-7', label: 'Face-to-Face Visits', inNetwork: 'Licensed Professionals', outOfNetwork: '—' },
-                    { _key: 'pd-8', label: 'Confidentiality', inNetwork: 'All Services Confidential', outOfNetwork: '—' },
-                    { _key: 'pd-9', label: 'Web ID', inNetwork: 'www.mutualofomaha.com/eap', outOfNetwork: '—' },
-                    { _key: 'pd-10', label: 'Administered By', inNetwork: 'Mutual of Omaha', outOfNetwork: '—' },
+                    {
+                        _key: 'table-0',
+                        tableTitle: 'EAP Program Summary',
+                        rows: [
+                            { _key: 'row-0-0', label: 'Cost to Employee', inNetwork: 'No Cost' },
+                            { _key: 'row-0-1', label: 'Eligibility', inNetwork: 'All Employees (regardless of medical enrollment)' },
+                            { _key: 'row-0-2', label: 'Mental Health Support', inNetwork: 'Included' },
+                            { _key: 'row-0-3', label: 'Legal Assistance', inNetwork: 'Included' },
+                            { _key: 'row-0-4', label: 'Financial Assistance', inNetwork: 'Included' },
+                            { _key: 'row-0-5', label: 'Phone Access', inNetwork: '24/7' },
+                            { _key: 'row-0-6', label: 'Face-to-Face Visits', inNetwork: 'Licensed Professionals' },
+                            { _key: 'row-0-7', label: 'Confidentiality', inNetwork: 'All Services Confidential' },
+                            { _key: 'row-0-8', label: 'Web ID', inNetwork: 'www.mutualofomaha.com/eap' },
+                            { _key: 'row-0-9', label: 'Administered By', inNetwork: 'Mutual of Omaha' },
+                        ],
+                    },
                 ],
             },
 
@@ -380,14 +434,20 @@ async function seedPremierAmerica() {
                     "These Supplemental Health benefits are designed to give you flexibility and help cover the gaps in your traditional health insurance.",
                 ]),
                 planDetails: [
-                    { _key: 'pd-1', label: 'Critical Illness Coverage', inNetwork: 'Lump-Sum Benefit', outOfNetwork: '—' },
-                    { _key: 'pd-2', label: 'Critical Illness - Use of Funds', inNetwork: 'Unrestricted (medical, wages, travel, etc.)', outOfNetwork: '—' },
-                    { _key: 'pd-3', label: 'Hospital Indemnity Coverage', inNetwork: 'Cash Benefits for Hospital/ICU Stay', outOfNetwork: '—' },
-                    { _key: 'pd-4', label: 'Hospital Indemnity - Pregnancy', inNetwork: 'Day 1 Coverage', outOfNetwork: '—' },
-                    { _key: 'pd-5', label: 'Hospital Indemnity - Use of Funds', inNetwork: 'Deductibles, copays, travel, food, everyday expenses', outOfNetwork: '—' },
-                    { _key: 'pd-6', label: 'Accident Coverage', inNetwork: 'Non-Work-Related Accidents', outOfNetwork: '—' },
-                    { _key: 'pd-7', label: 'Accident - Use of Funds', inNetwork: 'Deductibles, copays, everyday expenses', outOfNetwork: '—' },
-                    { _key: 'pd-8', label: 'Administered By', inNetwork: 'Allstate', outOfNetwork: '—' },
+                    {
+                        _key: 'table-0',
+                        tableTitle: 'Supplemental Coverage Summary',
+                        rows: [
+                            { _key: 'row-0-0', label: 'Critical Illness Coverage', inNetwork: 'Lump-Sum Benefit' },
+                            { _key: 'row-0-1', label: 'Critical Illness - Use of Funds', inNetwork: 'Unrestricted (medical, wages, travel, etc.)' },
+                            { _key: 'row-0-2', label: 'Hospital Indemnity Coverage', inNetwork: 'Cash Benefits for Hospital/ICU Stay' },
+                            { _key: 'row-0-3', label: 'Hospital Indemnity - Pregnancy', inNetwork: 'Day 1 Coverage' },
+                            { _key: 'row-0-4', label: 'Hospital Indemnity - Use of Funds', inNetwork: 'Deductibles, copays, travel, food, everyday expenses' },
+                            { _key: 'row-0-5', label: 'Accident Coverage', inNetwork: 'Non-Work-Related Accidents' },
+                            { _key: 'row-0-6', label: 'Accident - Use of Funds', inNetwork: 'Deductibles, copays, everyday expenses' },
+                            { _key: 'row-0-7', label: 'Administered By', inNetwork: 'Allstate' },
+                        ],
+                    },
                 ],
             },
 
@@ -406,15 +466,27 @@ async function seedPremierAmerica() {
                     "For extended periods of disability, our Long-Term Disability Insurance provides 50% of your income, up to a maximum of $6,000 per month. Benefits begin after a 90-day elimination period and can continue until you recover or meet the Social Security normal retirement age, whichever happens first.",
                 ]),
                 planDetails: [
-                    { _key: 'pd-1', label: 'STD Benefit', inNetwork: '55% of income', outOfNetwork: '—' },
-                    { _key: 'pd-2', label: 'STD Weekly Max', inNetwork: '$1,075/week', outOfNetwork: '—' },
-                    { _key: 'pd-3', label: 'STD Elimination Period', inNetwork: 'Day 1 Accident / Day 8 Illness', outOfNetwork: '—' },
-                    { _key: 'pd-4', label: 'STD Benefit Duration', inNetwork: 'Up to 90 Days', outOfNetwork: '—' },
-                    { _key: 'pd-5', label: 'STD Cost to Employee', inNetwork: 'No Cost', outOfNetwork: '—' },
-                    { _key: 'pd-6', label: 'LTD Benefit', inNetwork: '50% of income', outOfNetwork: '—' },
-                    { _key: 'pd-7', label: 'LTD Monthly Max', inNetwork: '$6,000/month', outOfNetwork: '—' },
-                    { _key: 'pd-8', label: 'LTD Elimination Period', inNetwork: '90 Days', outOfNetwork: '—' },
-                    { _key: 'pd-9', label: 'LTD Benefit Duration', inNetwork: 'To SS Retirement Age', outOfNetwork: '—' },
+                    {
+                        _key: 'table-0',
+                        tableTitle: 'Short-Term Disability Insurance',
+                        rows: [
+                            { _key: 'row-0-0', label: 'Benefit', inNetwork: '55% of income' },
+                            { _key: 'row-0-1', label: 'Weekly Maximum', inNetwork: '$1,075/week' },
+                            { _key: 'row-0-2', label: 'Elimination Period', inNetwork: 'Day 1 Accident / Day 8 Illness' },
+                            { _key: 'row-0-3', label: 'Benefit Duration', inNetwork: 'Up to 90 Days' },
+                            { _key: 'row-0-4', label: 'Cost to Employee', inNetwork: 'No Cost' },
+                        ],
+                    },
+                    {
+                        _key: 'table-1',
+                        tableTitle: 'Long-Term Disability Insurance',
+                        rows: [
+                            { _key: 'row-1-0', label: 'Benefit', inNetwork: '50% of income' },
+                            { _key: 'row-1-1', label: 'Monthly Maximum', inNetwork: '$6,000/month' },
+                            { _key: 'row-1-2', label: 'Elimination Period', inNetwork: '90 Days' },
+                            { _key: 'row-1-3', label: 'Benefit Duration', inNetwork: 'To SS Retirement Age' },
+                        ],
+                    },
                 ],
             },
 
@@ -435,11 +507,17 @@ async function seedPremierAmerica() {
                     "Remember, it's essential to name a primary and contingent beneficiary to ensure your benefits are distributed according to your wishes. This is the person you designate to receive your Life insurance benefits in the event of your death.",
                 ]),
                 planDetails: [
-                    { _key: 'pd-1', label: 'Basic Life Insurance', inNetwork: 'Up to $50,000', outOfNetwork: '—' },
-                    { _key: 'pd-2', label: 'Basic AD&D', inNetwork: 'Included', outOfNetwork: '—' },
-                    { _key: 'pd-3', label: 'Cost to Employee', inNetwork: 'No Cost (Employer-Paid)', outOfNetwork: '—' },
-                    { _key: 'pd-4', label: 'Voluntary Life & AD&D', inNetwork: 'Available for Purchase', outOfNetwork: '—' },
-                    { _key: 'pd-5', label: 'Spouse/Dependent Coverage', inNetwork: 'Available for Purchase', outOfNetwork: '—' },
+                    {
+                        _key: 'table-0',
+                        tableTitle: 'Life Insurance & AD&D Summary',
+                        rows: [
+                            { _key: 'row-0-0', label: 'Basic Life Insurance', inNetwork: 'Up to $50,000' },
+                            { _key: 'row-0-1', label: 'Basic AD&D', inNetwork: 'Included' },
+                            { _key: 'row-0-2', label: 'Cost to Employee', inNetwork: 'No Cost (Employer-Paid)' },
+                            { _key: 'row-0-3', label: 'Voluntary Life & AD&D', inNetwork: 'Available for Purchase' },
+                            { _key: 'row-0-4', label: 'Spouse/Dependent Coverage', inNetwork: 'Available for Purchase' },
+                        ],
+                    },
                 ],
             },
         ];

@@ -58,11 +58,15 @@ export default async function ClientLayout({
       </main>
       <Footer
         clientName={settings?.clientName}
+        clientSlug={clientSlug}
         about={settings?.footerAbout}
         quickLinks={settings?.quickLinks}
         contactInfo={settings?.contactInfo}
         copyrightText={settings?.copyrightText}
+        footerContactTitle={settings?.footerContactTitle}
+        footerContactDescription={settings?.footerContactDescription}
       />
+
       <FloatingAssistant />
     </>
   )

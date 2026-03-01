@@ -20,6 +20,7 @@ export default defineType({
       title: "Client",
       type: "reference",
       to: [{ type: "client" }],
+      weak: true,
       validation: (Rule) => Rule.required(),
     }),
   ],

@@ -81,4 +81,3 @@ export function Header({ logoText, clientName, shortName, clientLogo, clientSlug
     </header>
   );
 }
-

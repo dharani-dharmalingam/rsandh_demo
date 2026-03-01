@@ -2,13 +2,25 @@ import Link from 'next/link';
 
 interface FooterProps {
   clientName?: string;
+  clientSlug?: string;
   about?: string;
   quickLinks?: { label: string; href: string }[];
   contactInfo?: { label: string; value: string; href?: string }[];
   copyrightText?: string;
+  footerContactTitle?: string;
+  footerContactDescription?: string;
 }
 
-export function Footer({ clientName, about, quickLinks, contactInfo, copyrightText }: FooterProps) {
+export function Footer({
+  clientName,
+  clientSlug,
+  about,
+  quickLinks,
+  contactInfo,
+  copyrightText,
+  footerContactTitle,
+  footerContactDescription,
+}: FooterProps) {
   const displayClientName = clientName || 'RS&H';
   const currentQuickLinks = quickLinks || [
     { label: 'Benefits Guide', href: '/' },
@@ -16,11 +28,16 @@ export function Footer({ clientName, about, quickLinks, contactInfo, copyrightTe
     { label: 'Support', href: '#' },
   ];
 
-  const currentContactInfo = contactInfo || [
+  const allContacts = contactInfo || [
     { label: 'Benefits Phone', value: '(555) 123-4567' },
     { label: 'Benefits Email', value: `benefits@${displayClientName.toLowerCase().replace(/\s+/g, '')}.com`, href: '#' },
     { label: 'HR Portal', value: `portal.${displayClientName.toLowerCase().replace(/\s+/g, '')}.com`, href: '#' },
   ];
+
+  // Show only the first 3 contacts in the footer
+  const MAX_FOOTER_CONTACTS = 2;
+  const displayedContacts = allContacts.slice(0, MAX_FOOTER_CONTACTS);
+  const hasMoreContacts = allContacts.length > MAX_FOOTER_CONTACTS;
 
   return (
     <footer className="border-t border-slate-200 bg-slate-200">
@@ -50,21 +67,34 @@ export function Footer({ clientName, about, quickLinks, contactInfo, copyrightTe
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-sm font-semibold text-slate-900 mb-4">Contact</h4>
-            <div className="space-y-2">
-              {currentContactInfo.map((info) => (
-                <div key={info.label}>
-                  {info.href ? (
-                    <a href={info.href} className="text-sm text-slate-600 hover:text-blue-600 transition-colors">
-                      {info.label}: {info.value}
-                    </a>
-                  ) : (
-                    <p className="text-sm text-slate-600">
-                      {info.label}: {info.value}
-                    </p>
-                  )}
-                </div>
-              ))}
+            <h4 className="text-sm font-semibold text-slate-900 mb-4">{footerContactTitle || 'Contact'}</h4>
+            <div className="space-y-4">
+              <p className="text-sm text-slate-600">
+                {footerContactDescription || 'Have questions? Reach out to our support team.'}
+              </p>
+              <div className="space-y-2">
+                {displayedContacts.map((info) => (
+                  <div key={info.label}>
+                    {info.href ? (
+                      <a href={info.href} className="text-sm text-slate-600 hover:text-blue-600 transition-colors">
+                        {info.label}: {info.value}
+                      </a>
+                    ) : (
+                      <p className="text-sm text-slate-600">
+                        {info.label}: {info.value}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+              {hasMoreContacts && clientSlug && (
+                <Link
+                  href={`/${clientSlug}/contacts`}
+                  className="inline-block text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors mt-2"
+                >
+                  View all contacts →
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -79,3 +109,4 @@ export function Footer({ clientName, about, quickLinks, contactInfo, copyrightTe
     </footer>
   );
 }
+

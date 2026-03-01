@@ -18,7 +18,8 @@ export const chapterBySlugQuery = `
   image,
   content,
   planDetails,
-  premiumTables
+  premiumTables,
+  dynamicTables
 }
 `;
 
@@ -114,7 +115,10 @@ export const siteSettingsQuery = `
   logoText,
   footerAbout,
   quickLinks,
+  quickAccess,
   contactInfo,
+  footerContactTitle,
+  footerContactDescription,
   copyrightText
 }
 `;
