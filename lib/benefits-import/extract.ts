@@ -45,7 +45,7 @@ const PLAN_DETECTION_SCHEMA = {
     },
     visionPlans: {
       type: 'array',
-      description: 'Names of ALL distinct vision plan options. Extract ONLY the SHORT plan name used as a column header in the vision comparison table (e.g., "Core VSP", "Enhanced VSP"). Do NOT include alternate names or parentheticals. If a plan appears under multiple names, use only ONE — the shortest name.',
+      description: 'Names of ALL distinct vision plan options. Search for the "Vision" or "Vision Benefits" chapter. Extract ONLY the SHORT plan names used as column headers in vision comparison or contribution tables. Do NOT include alternate names or parentheticals. If a plan appears under multiple names, use only ONE — the shortest name.',
       items: { type: 'string' },
     },
     premiumTiers: {
@@ -159,7 +159,7 @@ function buildExtractionSchema(plans: DetectedPlans): Record<string, unknown> {
 
   // Build vision values schema — per plan, in-network + out-of-network
   const visionRowKeys = [
-    'eye_exam', 'new_frames', 'single', 'bifocal', 'trifocal', 'elective', 'medically_necessary',
+    'eye_exam', 'new_frames', 'single', 'bifocal', 'trifocal', 'lenticular', 'elective', 'medically_necessary',
   ]
   const visionValuesSchema: Record<string, unknown> = {}
   for (const planName of visionPlanNames) {
@@ -168,6 +168,7 @@ function buildExtractionSchema(plans: DetectedPlans): Record<string, unknown> {
     for (const rowKey of visionRowKeys) {
       props[`${rowKey}_in_network`] = { type: 'string', description: `In-network value for "${rowKey.replace(/_/g, ' ')}" under ${planName}.` }
       props[`${rowKey}_out_of_network`] = { type: 'string', description: `Out-of-network value for "${rowKey.replace(/_/g, ' ')}" under ${planName}.` }
+      props[`${rowKey}_frequency`] = { type: 'string', description: `Frequency/Limit for "${rowKey.replace(/_/g, ' ')}" under ${planName}. e.g. "Once every 12 months"` }
     }
     visionValuesSchema[`vision_${safeName}`] = {
       type: 'object',
@@ -795,17 +796,18 @@ function assembleExtractedData(
     const visionCols = visionPlanNames.flatMap(pn => [
       { key: `${pn.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}_in`, label: pn, subLabel: 'In-network' },
       { key: `${pn.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}_out`, label: pn, subLabel: 'Out-of-network' },
+      { key: `${pn.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}_freq`, label: pn, subLabel: 'Frequency' },
     ])
 
     const visionRowDefs = [
-      { label: 'Eye Exam (every 12 months)', key: 'eye_exam' },
-      { label: 'Frames', key: null, isSection: true },
-      { label: 'New frames', key: 'new_frames' },
-      { label: 'Lenses (every 12 months)', key: null, isSection: true },
+      { label: 'Eye Exam', key: 'eye_exam' },
+      { label: 'Frames', key: 'new_frames' },
+      { label: 'Lenses', key: null, isSection: true },
       { label: 'Single', key: 'single' },
       { label: 'Bifocal', key: 'bifocal' },
       { label: 'Trifocal', key: 'trifocal' },
-      { label: 'Contact lenses (every 12 months)', key: null, isSection: true },
+      { label: 'Lenticular', key: 'lenticular' },
+      { label: 'Contact lenses', key: null, isSection: true },
       { label: 'Elective', key: 'elective' },
       { label: 'Medically necessary', key: 'medically_necessary' },
     ]
@@ -820,6 +822,7 @@ function assembleExtractedData(
         return [
           planData[`${rowDef.key}_in_network`] || '—',
           planData[`${rowDef.key}_out_of_network`] || '—',
+          planData[`${rowDef.key}_frequency`] || '—',
         ]
       })
       return { label: rowDef.label, cells }
