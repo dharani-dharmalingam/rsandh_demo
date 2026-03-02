@@ -59,23 +59,10 @@ export function Header({ logoText, clientName, shortName, clientLogo, clientSlug
             </div>
           </div>
 
-          {/* Right Logo */}
-          <Link href={homeLink} className="flex items-center gap-2">
-            <div className="h-10 w-10 relative flex items-center justify-center">
-              {logoUrl ? (
-                <Image
-                  src={logoUrl}
-                  alt={clientName || 'Client Logo'}
-                  fill
-                  className="object-contain"
-                />
-              ) : (
-                <div className="h-8 w-8 rounded-lg bg-slate-700 flex items-center justify-center">
-                  <span className="text-white font-bold text-xs">{displayShortName}</span>
-                </div>
-              )}
-            </div>
-          </Link>
+          {/* Right Section (Empty Space or could be used for Profile/Logout in future) */}
+          <div className="flex items-center">
+            {/* Right side placeholder */}
+          </div>
         </div>
       </div>
     </header>
