@@ -11,16 +11,16 @@ export interface BenefitsImportResult {
 }
 
 export async function runBenefitsImport(
-  file: File,
   clientSlug: string,
-  logo?: File | null,
+  fileAssetId: string,
+  logoAssetId?: string,
   baseUrl: string = ''
 ): Promise<BenefitsImportResult> {
   const formData = new FormData()
-  formData.append('file', file)
   formData.append('clientSlug', clientSlug.trim())
-  if (logo) {
-    formData.append('logo', logo)
+  formData.append('fileAssetId', fileAssetId)
+  if (logoAssetId) {
+    formData.append('logoAssetId', logoAssetId)
   }
 
   const res = await fetch(`${baseUrl || (typeof window !== 'undefined' ? window.location.origin : '')}/api/benefits-import`, {

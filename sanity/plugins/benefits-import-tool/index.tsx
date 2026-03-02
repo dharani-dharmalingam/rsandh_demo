@@ -6,9 +6,11 @@
 
 import { useState } from 'react'
 import { Card, Stack, Box, Label, TextInput, Button, Spinner, Text, Flex } from '@sanity/ui'
+import { useClient } from 'sanity'
 import { runBenefitsImport } from './api'
 
 export function BenefitsImportTool() {
+  const client = useClient({ apiVersion: '2024-02-12' })
   const [clientSlug, setClientSlug] = useState('')
   const [file, setFile] = useState<File | null>(null)
   const [logo, setLogo] = useState<File | null>(null)
@@ -25,7 +27,24 @@ export function BenefitsImportTool() {
     setStatus('loading')
     setMessage('')
     try {
-      const result = await runBenefitsImport(file, clientSlug, logo)
+      // 1. Upload PDF to Sanity first (bypasses Vercel 4.5MB limit)
+      setMessage('Uploading PDF to Sanity...')
+      const fileAsset = await client.assets.upload('file', file, {
+        filename: `${clientSlug.trim()}-benefits-guide.pdf`,
+      })
+
+      // 2. Upload Logo if provided
+      let logoAssetId: string | undefined
+      if (logo) {
+        setMessage('Uploading Logo to Sanity...')
+        const logoAsset = await client.assets.upload('image', logo)
+        logoAssetId = logoAsset._id
+      }
+
+      // 3. Call the API with asset IDs
+      setMessage('Processing extraction (this may take a few minutes)...')
+      const result = await runBenefitsImport(clientSlug, fileAsset._id, logoAssetId)
+
       if (!result.success) {
         setStatus('error')
         setMessage(result.error || 'Request failed')
