@@ -9,7 +9,7 @@ import { FloatingAssistant } from '@/components/floating-assistant'
 import { sanityFetch, SanityLive } from '@/sanity/lib/live'
 import { VisualEditing } from 'next-sanity/visual-editing'
 import { draftMode } from 'next/headers'
-import { siteSettingsQuery } from '@/sanity/lib/queries'
+import { benefitChaptersQuery, siteSettingsQuery } from '@/sanity/lib/queries'
 
 const _geist = Geist({ subsets: ['latin'] })
 const _geistMono = Geist_Mono({ subsets: ['latin'] })
@@ -39,10 +39,10 @@ export default async function ClientLayout({
   params,
 }: Props) {
   const { clientSlug } = await params
-  const { data: settings } = await sanityFetch({
-    query: siteSettingsQuery,
-    params: { clientSlug }
-  });
+  const [{ data: settings }, { data: chapters }] = await Promise.all([
+    sanityFetch({ query: siteSettingsQuery, params: { clientSlug } }),
+    sanityFetch({ query: benefitChaptersQuery, params: { clientSlug } }),
+  ]);
 
   return (
     <>
@@ -52,6 +52,7 @@ export default async function ClientLayout({
         shortName={settings?.shortName}
         clientLogo={settings?.clientLogo}
         clientSlug={clientSlug}
+        chapters={chapters}
       />
       <main className="min-h-screen">
         {children}

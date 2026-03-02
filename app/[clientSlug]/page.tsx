@@ -7,7 +7,7 @@ import { ImportantContacts } from '@/components/important-contacts';
 import { sanityFetch } from '@/sanity/lib/live';
 import { client } from '@/sanity/lib/client';
 import { benefitChaptersQuery, openEnrollmentQuery, retirementPlanningQuery, siteSettingsQuery } from '@/sanity/lib/queries';
-import { FileText, Calendar, HelpCircle, CheckSquare, TrendingUp } from 'lucide-react';
+import { FileText, HelpCircle, TrendingUp } from 'lucide-react';
 import { Metadata } from 'next';
 
 export async function generateStaticParams() {
@@ -54,22 +54,6 @@ type RetirementData = {
   heroVideoUrl?: string;
 };
 
-function computeDaysLeft(endDate: string | undefined): number {
-  if (!endDate) return 0;
-  const end = new Date(endDate);
-  const now = new Date();
-  const diff = Math.ceil((end.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
-  return Math.max(0, diff);
-}
-
-function formatDate(dateStr: string | undefined): string {
-  if (!dateStr) return '';
-  return new Date(dateStr).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-}
 
 function getEmbedUrl(url: string | undefined): string | null {
   if (!url) return null;
@@ -112,7 +96,6 @@ export default async function HomePage({ params }: { params: Promise<{ clientSlu
   const typedRetirement = retirement as RetirementData;
 
   const previewChapters = typedChapters.slice(0, 6);
-  const daysLeft = computeDaysLeft(typedEnrollment?.endDate);
 
   return (
     <div className="space-y-0">
@@ -172,71 +155,6 @@ export default async function HomePage({ params }: { params: Promise<{ clientSlu
         </SectionWrapper>
       </div>
 
-      {/* Open Enrollment Section */}
-      <SectionWrapper className="bg-white">
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold text-slate-900 mb-2">
-            {typedEnrollment?.title || 'Welcome to Open Enrollment'}
-          </h2>
-          <p className="text-slate-600 mb-8">
-            {typedEnrollment?.description || 'Review and update your benefits selections'}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {/* Days Left Card */}
-          <Card className="p-6 border-blue-200 bg-blue-50">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-blue-600 font-medium mb-1">{typedEnrollment?.daysLeftLabel || 'Days Left'}</p>
-                <p className="text-4xl font-bold text-blue-900">{daysLeft}</p>
-              </div>
-              <Calendar className="h-12 w-12 text-blue-300" />
-            </div>
-          </Card>
-
-          {/* Dates Card */}
-          <Card className="p-6 border-slate-200">
-            <p className="text-sm text-slate-600 font-medium mb-2">{typedEnrollment?.periodLabel || 'Open Enrollment Period'}</p>
-            <p className="text-slate-900 font-medium mb-1">{formatDate(typedEnrollment?.startDate)}</p>
-            <p className="text-slate-600 text-sm mb-4"></p>
-            <p className="text-slate-900 font-medium">{formatDate(typedEnrollment?.endDate)}</p>
-          </Card>
-
-          {/* Status Card */}
-          <Card className="p-6 border-green-200 bg-green-50">
-            <div className="flex items-start gap-3">
-              <CheckSquare className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <p className="text-sm text-green-600 font-medium">{typedEnrollment?.statusTitle || 'Action Needed'}</p>
-                <p className="text-slate-700 text-sm mt-1">{typedEnrollment?.statusDescription || 'Review and update your selections now'}</p>
-              </div>
-            </div>
-          </Card>
-        </div>
-
-        {/* Quick Action Buttons */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Button asChild variant="outline" className="h-auto p-4 justify-start flex-col items-start bg-transparent">
-            <Link href={`/${clientSlug}/enrollment-checklist`}>
-              <span className="font-semibold text-blue-600">{typedEnrollment?.checklistLabel || 'Review Enrollment Checklist'}</span>
-              <span className="text-sm text-slate-600">{typedEnrollment?.checklistSubtext || 'Prepare for open enrollment'}</span>
-            </Link>
-          </Button>
-          <Button asChild variant="outline" className="h-auto p-4 justify-start flex-col items-start bg-transparent">
-            <Link href={`/${clientSlug}/benefit-changes`}>
-              <span className="font-semibold text-blue-600">{typedEnrollment?.changesLabel || 'Discover Benefit Changes'}</span>
-              <span className="text-sm text-slate-600">{typedEnrollment?.changesSubtext || "What's new for 2026"}</span>
-            </Link>
-          </Button>
-          <Button asChild className="h-auto p-4 justify-start flex-col items-start bg-blue-600 hover:bg-blue-700">
-            <a href={typedEnrollment?.enrollmentLink || '#enroll'}>
-              <span className="font-semibold">{typedEnrollment?.enrollLabel || 'Enroll Now'}</span>
-              <span className="text-sm text-blue-100">{typedEnrollment?.enrollSubtext || 'Complete your enrollment'}</span>
-            </a>
-          </Button>
-        </div>
-      </SectionWrapper>
 
       {/* Retirement Planning Section */}
       <div className="relative overflow-hidden">

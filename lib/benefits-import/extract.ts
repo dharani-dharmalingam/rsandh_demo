@@ -40,12 +40,12 @@ const PLAN_DETECTION_SCHEMA = {
     },
     dentalPlans: {
       type: 'array',
-      description: 'Names of ALL distinct dental plan options. Extract ONLY the SHORT plan name used as a column header in the dental comparison table (e.g., "Core Plan", "Enhanced Plan"). Do NOT include alternate names, former names, or parentheticals like "(formerly X)". If a plan appears under multiple names, use only ONE — the shortest name.',
+      description: 'Names of ALL distinct dental plan options. Search ALL chapters (especially "Dental" or "Dental Plan"). Extract ONLY the SHORT plan names used as column headers in the dental comparison table. If a plan appears under multiple names, use only ONE — the shortest name.',
       items: { type: 'string' },
     },
     visionPlans: {
       type: 'array',
-      description: 'Names of ALL distinct vision plan options. Search for the "Vision" or "Vision Benefits" chapter. Extract ONLY the SHORT plan names used as column headers in vision comparison or contribution tables. Do NOT include alternate names or parentheticals. If a plan appears under multiple names, use only ONE — the shortest name.',
+      description: 'Names of ALL distinct vision plan options. Search ALL chapters (especially "Vision" or "Vision Benefits"). Extract ONLY the SHORT plan names used as labels or column headers in vision comparison/contribution tables. Look for names next to "Vision (..." or above premium tables. If a plan appears under multiple names, use only ONE — the shortest name.',
       items: { type: 'string' },
     },
     premiumTiers: {
@@ -272,7 +272,8 @@ function buildExtractionSchema(plans: DetectedPlans): Record<string, unknown> {
         type: 'array',
         description: `Extract ALL benefit chapters NOT covered by the templated sections above. This includes FSA, HSA, Life Insurance, Disability/Income Protection, EAP, Eligibility, and any other benefit sections. For each chapter, extract ALL tables exactly as they appear in the PDF.
 
-CRITICAL: Do NOT include Medical Plan, Dental Plan, Vision Plan, or Overview chapters here — those are handled by the templated sections above.`,
+CRITICAL: Do NOT include Medical Plan or Overview chapters here — those are handled by the templated sections above.
+NOTE: Vision and Dental plans are partially templated. Extract them here ONLY if their specific plan names were NOT detected in Phase 1 (i.e., if they were not captured by the specialized templates).`,
         items: {
           type: 'object',
           properties: {
@@ -636,6 +637,9 @@ function assembleExtractedData(
     tables: overviewTables,
   })
 
+  const capturedVisionPlanNames = new Set(visionPlanNames.map(n => n.toLowerCase().trim()))
+  const capturedDentalPlanNames = new Set(dentalPlanNames.map(n => n.toLowerCase().trim()))
+
   // ── Medical Plan Chapters (one per plan) ──
   const medicalTemplate = TABLE_TEMPLATES['medical']
   for (const planName of medicalPlanNames) {
@@ -842,10 +846,21 @@ function assembleExtractedData(
     })
   }
 
-  // ── Dynamic Chapters ──
+  // ── Dynamic Chapters fallback ──
   const dynamicChapters = Array.isArray(raw.dynamicChapters) ? raw.dynamicChapters : []
   for (const dc of dynamicChapters) {
     if (!dc.title) continue
+
+    // Deduplication: Skip if this is a Vision or Dental chapter and we already captured it via template
+    const titleLower = dc.title.toLowerCase()
+    if (titleLower.includes('vision') && capturedVisionPlanNames.size > 0) {
+      console.log(`[benefits-import] Skipping dynamic Vision chapter "${dc.title}" - already captured by template.`)
+      continue
+    }
+    if (titleLower.includes('dental') && capturedDentalPlanNames.size > 0) {
+      console.log(`[benefits-import] Skipping dynamic Dental chapter "${dc.title}" - already captured by template.`)
+      continue
+    }
 
     const tables = (dc.tables || []).map((t: any) => {
       const headers: string[] = Array.isArray(t.headers) ? t.headers : []
