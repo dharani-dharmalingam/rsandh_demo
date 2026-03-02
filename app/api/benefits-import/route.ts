@@ -17,14 +17,16 @@ export async function POST(request: Request) {
     const apiKey = process.env.LLAMA_CLOUD_API_KEY
     const token = process.env.SANITY_WRITE_TOKEN || process.env.SANITY_API_TOKEN
     if (!apiKey) {
+      console.error('[benefits-import] Error: LLAMA_CLOUD_API_KEY is missing.')
       return NextResponse.json(
-        { error: 'LLAMA_CLOUD_API_KEY is not set' },
+        { error: 'LLAMA_CLOUD_API_KEY is not set in environment variables.' },
         { status: 500 }
       )
     }
     if (!token) {
+      console.error('[benefits-import] Error: SANITY_WRITE_TOKEN (or SANITY_API_TOKEN) is missing.')
       return NextResponse.json(
-        { error: 'SANITY_WRITE_TOKEN or SANITY_API_TOKEN is required for seeding' },
+        { error: 'SANITY_WRITE_TOKEN or SANITY_API_TOKEN is required for seeding clients.' },
         { status: 500 }
       )
     }
@@ -90,11 +92,13 @@ export async function POST(request: Request) {
       }
     }
 
-    console.log(`[benefits-import] Processing PDF for client: ${clientSlug}`)
+    console.log(`[benefits-import] Starting LlamaParse extraction for client: ${clientSlug}...`)
     const extractedData = await extractBenefitsGuide(buffer, { apiKey })
+    console.log(`[benefits-import] Extraction complete. Received ${Object.keys(extractedData || {}).length} data points.`)
 
-    console.log(`[benefits-import] Transforming extracted data...`)
+    console.log(`[benefits-import] Transforming extracted data for client: ${clientSlug}...`)
     const payload = await transformToSanitySchema(extractedData, clientSlug)
+    console.log(`[benefits-import] Transformation complete.`)
 
     // ── Attach asset references to the payload ──
     if (logoAssetRef) {
@@ -110,13 +114,14 @@ export async function POST(request: Request) {
       }
     }
 
-    console.log(`[benefits-import] Seeding to Sanity...`)
+    console.log(`[benefits-import] Seeding to Sanity for client: ${clientSlug}...`)
     const { created } = await seedClientSite(payload, {
       projectId,
       dataset,
       apiVersion,
       token,
     })
+    console.log(`[benefits-import] Seeding complete. Created ${created?.length || 0} documents.`)
 
     return NextResponse.json({
       success: true,

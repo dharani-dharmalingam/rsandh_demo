@@ -6,6 +6,8 @@ import { Building2, Globe, Building, LayoutGrid } from 'lucide-react';
 import { sanityFetch } from '@/sanity/lib/live';
 import { allClientsQuery } from '@/sanity/lib/queries';
 
+export const dynamic = 'force-dynamic';
+
 export default async function RootLandingPage() {
     const { data: clients } = await sanityFetch({ query: allClientsQuery });
 
