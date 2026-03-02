@@ -29,50 +29,85 @@ async function deleteClient(slug) {
     console.log(`🔍 Searching for client with slug: "${slug}"...`);
 
     try {
-        // 1. Find the client document
-        const clientDoc = await client.fetch(`*[_type == "client" && slug.current == $slug][0]`, { slug });
+        // 1. Fetch EVERYTHING (small dataset, safer to filter in JS)
+        console.log('📂 Fetching all documents to find hidden references...');
+        const allDocs = await client.fetch(`*`);
 
-        if (!clientDoc) {
+        // 2. Find target client docs (published and draft)
+        const clientDocs = allDocs.filter(d =>
+            d._type === 'client' &&
+            (d.slug?.current === slug || (d._id.startsWith('drafts.') && allDocs.find(p => p._id === d._id.replace('drafts.', '') && p.slug?.current === slug)))
+        );
+
+        if (clientDocs.length === 0) {
             console.error(`❌ No client found with slug "${slug}".`);
             return;
         }
 
-        const clientId = clientDoc._id;
-        console.log(`✅ Found client: ${clientDoc.name} (${clientId})`);
+        // Get all possible IDs for this client (base and drafts)
+        const clientIds = new Set();
+        clientDocs.forEach(d => {
+            const baseId = d._id.replace('drafts.', '');
+            clientIds.add(baseId);
+            clientIds.add(`drafts.${baseId}`);
+        });
 
-        // 2. Find all documents referencing this client (including drafts)
-        console.log('📂 Finding all related documents and drafts...');
-        const relatedDocs = await client.fetch(
-            `*[references($clientId) || _id in ["drafts." + $clientId] || _id match "drafts.**" && references($clientId)]`,
-            { clientId }
-        );
+        console.log(`✅ Found client with base IDs: ${Array.from(clientIds).join(', ')}`);
 
-        console.log(`📦 Found ${relatedDocs.length} documents to remove.`);
+        // 3. Find ALL documents referencing ANY of these IDs, or containing the slug suffix
+        console.log('🔍 Identifying all related documents and drafts...');
+        const toDeleteIds = new Set(clientIds);
 
-        if (relatedDocs.length === 0) {
-            console.log('⚠️ No related documents found. Attempting to delete the client document only...');
+        function hasReference(obj, targetIds) {
+            if (!obj) return false;
+            if (typeof obj === 'string') return targetIds.has(obj);
+            if (Array.isArray(obj)) return obj.some(item => hasReference(item, targetIds));
+            if (typeof obj === 'object') {
+                // Check if it's a reference object
+                if (obj._ref && targetIds.has(obj._ref)) return true;
+                return Object.values(obj).some(val => hasReference(val, targetIds));
+            }
+            return false;
         }
 
-        // 3. Delete in a transaction
+        allDocs.forEach(doc => {
+            // Skip the client docs themselves (already in set)
+            if (toDeleteIds.has(doc._id)) return;
+
+            // Check if it references the client
+            if (hasReference(doc, clientIds)) {
+                toDeleteIds.add(doc._id);
+                // Also add its draft if it exists
+                const baseId = doc._id.replace('drafts.', '');
+                toDeleteIds.add(baseId);
+                toDeleteIds.add(`drafts.${baseId}`);
+            }
+
+            // Heuristic cleanup: if the ID contains the slug-based suffix (like -pram)
+            // This is just a safeguard for documents that might link via other means
+            const shortSlug = slug.substring(0, 4); // common suffix pattern
+            if (doc._id.includes(`-${shortSlug}`) || doc._id.includes(slug)) {
+                toDeleteIds.add(doc._id);
+            }
+        });
+
+        console.log(`📦 Found ${toDeleteIds.size} unique document IDs to remove (including potential drafts).`);
+
+        // 4. Executing atomic deletion
         console.log('🗑️  Executing atomic deletion...');
         const tx = client.transaction();
 
-        // Delete all related documents
-        relatedDocs.forEach(doc => {
-            console.log(`  - Deleting ${doc._type}: ${doc._id}`);
-            tx.delete(doc._id);
+        // Sort to ensure we handle things predictably? Not strictly necessary for transaction
+        const finalIds = Array.from(toDeleteIds);
+        finalIds.forEach(id => {
+            console.log(`  - Deleting: ${id}`);
+            tx.delete(id);
         });
-
-        // Finally delete the client itself
-        tx.delete(clientId);
-        // Also try to delete its draft just in case
-        tx.delete(`drafts.${clientId}`);
 
         const result = await tx.commit();
 
         console.log('\n✨ Client and all associated data deleted successfully!');
-        console.log(`✅ ${relatedDocs.length} sub-documents removed.`);
-        console.log(`✅ Client document "${clientDoc.name}" removed.`);
+        console.log(`✅ ${finalIds.length} documents/drafts removed.`);
 
     } catch (error) {
         console.error('❌ Error during deletion:', error.message);

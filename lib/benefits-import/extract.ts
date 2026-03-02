@@ -94,27 +94,38 @@ function buildExtractionSchema(plans: DetectedPlans): Record<string, unknown> {
         },
         benefits: {
           type: 'object',
-          description: `Plan Benefits Summary values for ${planName}. Extract EVERY value exactly as written.`,
+          description: `Plan Benefits Summary values for ${planName}. Extract In-network and Out-of-network values for every row.`,
           properties: {
-            annual_deductible: { type: 'string', description: `Annual deductible for ${planName}. Include per-person and family if both exist. e.g., "$2,000 per person\\n$6,000 family maximum"` },
-            out_of_pocket_maximum: { type: 'string', description: `Out-of-pocket maximum for ${planName}.` },
-            coinsurance: { type: 'string', description: `Coinsurance (your share) for ${planName}. e.g., "20%"` },
-            preventive_care: { type: 'string', description: `Preventive care coverage for ${planName}. e.g., "100% Covered"` },
-            primary_physician_office_visit: { type: 'string', description: `Primary physician office visit cost for ${planName}. e.g., "$30 copay"` },
-            specialist_office_visit: { type: 'string', description: `Specialist office visit cost for ${planName}.` },
-            independent_labs: { type: 'string', description: `Independent labs cost for ${planName}.` },
-            outpatient_xrays: { type: 'string', description: `Outpatient x-rays cost for ${planName}.` },
-            imaging: { type: 'string', description: `Imaging (MRI, CT, PET, etc.) cost for ${planName}.` },
-            convenience_clinic_visit: { type: 'string', description: `Convenience Clinic Visit cost for ${planName}.` },
-            teladoc_virtual_visit: { type: 'string', description: `Teladoc Virtual Visit cost for ${planName}.` },
-            urgent_care_center: { type: 'string', description: `Urgent Care Center cost for ${planName}.` },
-            emergency_room: { type: 'string', description: `Emergency Room cost for ${planName}.` },
-            inpatient_hospitalization: { type: 'string', description: `Inpatient Hospitalization cost for ${planName}.` },
-            outpatient_surgery: { type: 'string', description: `Outpatient Surgery cost for ${planName}.` },
-            // Out-of-network
-            oon_annual_deductible: { type: 'string', description: `Out-of-network Annual Deductible for ${planName}.` },
-            oon_coinsurance: { type: 'string', description: `Out-of-network Coinsurance for ${planName}.` },
-            oon_out_of_pocket_maximum: { type: 'string', description: `Out-of-network Out-of-pocket maximum for ${planName}.` },
+            annual_deductible_in_network: { type: 'string', description: `In-network Annual deductible for ${planName}. e.g., "$2,000 per person"` },
+            annual_deductible_out_of_network: { type: 'string', description: `Out-of-network Annual deductible for ${planName}.` },
+            out_of_pocket_maximum_in_network: { type: 'string', description: `In-network Out-of-pocket maximum for ${planName}.` },
+            out_of_pocket_maximum_out_of_network: { type: 'string', description: `Out-of-network Out-of-pocket maximum for ${planName}.` },
+            coinsurance_in_network: { type: 'string', description: `In-network Coinsurance for ${planName}.` },
+            coinsurance_out_of_network: { type: 'string', description: `Out-of-network Coinsurance for ${planName}.` },
+            preventive_care_in_network: { type: 'string', description: `In-network Preventive care for ${planName}.` },
+            preventive_care_out_of_network: { type: 'string', description: `Out-of-network Preventive care for ${planName}.` },
+            primary_physician_office_visit_in_network: { type: 'string', description: `In-network PCP visit for ${planName}.` },
+            primary_physician_office_visit_out_of_network: { type: 'string', description: `Out-of-network PCP visit for ${planName}.` },
+            specialist_office_visit_in_network: { type: 'string', description: `In-network Specialist visit for ${planName}.` },
+            specialist_office_visit_out_of_network: { type: 'string', description: `Out-of-network Specialist visit for ${planName}.` },
+            independent_labs_in_network: { type: 'string', description: `In-network Labs for ${planName}.` },
+            independent_labs_out_of_network: { type: 'string', description: `Out-of-network Labs for ${planName}.` },
+            outpatient_xrays_in_network: { type: 'string', description: `In-network X-rays for ${planName}.` },
+            outpatient_xrays_out_of_network: { type: 'string', description: `Out-of-network X-rays for ${planName}.` },
+            imaging_in_network: { type: 'string', description: `In-network Imaging (MRI, CT, etc.) for ${planName}.` },
+            imaging_out_of_network: { type: 'string', description: `Out-of-network Imaging for ${planName}.` },
+            convenience_clinic_visit_in_network: { type: 'string', description: `In-network Convenience Clinic for ${planName}.` },
+            convenience_clinic_visit_out_of_network: { type: 'string', description: `Out-of-network Convenience Clinic for ${planName}.` },
+            teladoc_virtual_visit_in_network: { type: 'string', description: `In-network Virtual Visit for ${planName}.` },
+            teladoc_virtual_visit_out_of_network: { type: 'string', description: `Out-of-network Virtual Visit for ${planName}.` },
+            urgent_care_center_in_network: { type: 'string', description: `In-network Urgent Care for ${planName}.` },
+            urgent_care_center_out_of_network: { type: 'string', description: `Out-of-network Urgent Care for ${planName}.` },
+            emergency_room_in_network: { type: 'string', description: `In-network ER for ${planName}.` },
+            emergency_room_out_of_network: { type: 'string', description: `Out-of-network ER for ${planName}.` },
+            inpatient_hospitalization_in_network: { type: 'string', description: `In-network Hospitalization for ${planName}.` },
+            inpatient_hospitalization_out_of_network: { type: 'string', description: `Out-of-network Hospitalization for ${planName}.` },
+            outpatient_surgery_in_network: { type: 'string', description: `In-network Surgery for ${planName}.` },
+            outpatient_surgery_out_of_network: { type: 'string', description: `Out-of-network Surgery for ${planName}.` },
           },
         },
         prescriptionDrug: {
@@ -657,38 +668,24 @@ function assembleExtractedData(
       cells: [premiums[tier.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()] || '—'],
     }))
 
-    // Table 2: Plan Benefits Summary
-    const benefitKeyMap: Record<string, string> = {
-      'Annual deductible': 'annual_deductible',
-      'Out-of-pocket maximum': 'out_of_pocket_maximum',
-      'Coinsurance (your share)': 'coinsurance',
-      'Preventive care': 'preventive_care',
-      'Primary physician office visit': 'primary_physician_office_visit',
-      'Specialist office visit': 'specialist_office_visit',
-      'Independent labs': 'independent_labs',
-      'Outpatient x-rays': 'outpatient_xrays',
-      'Imaging (MRI, CT, PET, etc.)': 'imaging',
-      'Convenience Clinic Visit': 'convenience_clinic_visit',
-      'Teladoc Virtual Visit': 'teladoc_virtual_visit',
-      'Urgent Care Center': 'urgent_care_center',
-      'Emergency Room': 'emergency_room',
-      'Inpatient Hospitalization': 'inpatient_hospitalization',
-      'Outpatient Surgery': 'outpatient_surgery',
-      // Out-of-network
-      'Annual Deductible': 'oon_annual_deductible',
-      'Coinsurance (your share) ': 'oon_coinsurance',  // trailing space to differentiate
-      'Out-of-pocket maximum ': 'oon_out_of_pocket_maximum',
-    }
-
-    const benefitCols = [{ key: safeName, label: `${planName} Plan (you pay)` }]
+    // Table 2: Plan Benefits Summary (In-Network + Out-of-Network)
+    const benefitCols = [
+      { key: `${safeName}_in`, label: `${planName} Plan`, subLabel: 'In-network' },
+      { key: `${safeName}_out`, label: `${planName} Plan`, subLabel: 'Out-of-network' },
+    ]
     const benefitTemplate = medicalTemplate.tables[1]
     const benefitRows = benefitTemplate.rows.map(row => {
       if (row.isSection) {
         return { label: row.label, cells: [], isSection: true }
       }
-      // Check if we're in the out-of-network section
-      const key = benefitKeyMap[row.label] || row.label.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()
-      return { label: row.label, cells: [benefits[key] || '—'] }
+      const baseKey = row.label.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()
+      return {
+        label: row.label,
+        cells: [
+          benefits[`${baseKey}_in_network`] || '—',
+          benefits[`${baseKey}_out_of_network`] || '—',
+        ]
+      }
     })
 
     // Table 3: Prescription Drug Coverage

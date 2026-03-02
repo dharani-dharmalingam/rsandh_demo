@@ -22,9 +22,10 @@ export interface TableTemplate {
      * - "per-plan-in-out": Each detected plan gets In-Network + Out-of-Network sub-columns
      * - "per-plan-single": Each detected plan gets a single value column
      * - "single-plan":     One value column for the specific plan (used in per-plan chapters)
+     * - "single-plan-in-out": One plan with In-Network + Out-of-Network sub-columns (used in per-plan chapters)
      * - "fixed-two-col":   Fixed two-column layout (label + value) — no plan columns
      */
-    columnType: 'per-plan-in-out' | 'per-plan-single' | 'single-plan' | 'fixed-two-col'
+    columnType: 'per-plan-in-out' | 'per-plan-single' | 'single-plan' | 'single-plan-in-out' | 'fixed-two-col'
     rows: TemplateRow[]
 }
 
@@ -103,9 +104,8 @@ const MEDICAL_TEMPLATE: ChapterTableTemplate = {
             templateId: 'medical-benefits',
             tableTitle: 'Plan Benefits Summary',
             tableDescriptionTemplate: 'Comprehensive coverage details for {{planName}} plan',
-            columnType: 'single-plan',
+            columnType: 'single-plan-in-out',
             rows: [
-                // In-Network section
                 { label: 'Annual deductible' },
                 { label: 'Out-of-pocket maximum' },
                 { label: 'Coinsurance (your share)' },
@@ -121,11 +121,6 @@ const MEDICAL_TEMPLATE: ChapterTableTemplate = {
                 { label: 'Emergency Room' },
                 { label: 'Inpatient Hospitalization' },
                 { label: 'Outpatient Surgery' },
-                // Out-of-Network section
-                { label: 'Out-of-network Coverage (plus balance billing)', isSection: true },
-                { label: 'Annual Deductible' },
-                { label: 'Coinsurance (your share)' },
-                { label: 'Out-of-pocket maximum' },
             ],
         },
         // Table 3: Prescription Drug Coverage
