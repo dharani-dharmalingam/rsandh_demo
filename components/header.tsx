@@ -25,24 +25,9 @@ export function Header({ logoText, clientName, shortName, clientLogo, clientSlug
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white shadow-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Left Logo */}
+          {/* Left Side - Text Only */}
           <Link href={homeLink} className="flex items-center gap-2">
-            <div className="h-10 w-10 relative flex items-center justify-center">
-              {logoUrl ? (
-                <Image
-                  src={logoUrl}
-                  alt={clientName || 'Client Logo'}
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              ) : (
-                <div className="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">{displayShortName.substring(0, 2)}</span>
-                </div>
-              )}
-            </div>
-            <span className="hidden sm:inline text-sm font-semibold text-slate-900">
+            <span className="text-sm font-semibold text-slate-900">
               {displayLogoText}
             </span>
           </Link>
@@ -59,10 +44,24 @@ export function Header({ logoText, clientName, shortName, clientLogo, clientSlug
             </div>
           </div>
 
-          {/* Right Section (Empty Space or could be used for Profile/Logout in future) */}
-          <div className="flex items-center">
-            {/* Right side placeholder */}
-          </div>
+          {/* Right Side - Logo Only */}
+          <Link href={homeLink} className="flex items-center gap-2">
+            <div className="h-10 w-10 relative flex items-center justify-center">
+              {logoUrl ? (
+                <Image
+                  src={logoUrl}
+                  alt={clientName || 'Client Logo'}
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              ) : (
+                <div className="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">{displayShortName.substring(0, 2)}</span>
+                </div>
+              )}
+            </div>
+          </Link>
         </div>
       </div>
     </header>
