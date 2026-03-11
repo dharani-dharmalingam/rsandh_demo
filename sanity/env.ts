@@ -9,7 +9,7 @@ export const activeClientSlug = process.env.NEXT_PUBLIC_ACTIVE_CLIENT_SLUG || 'r
 
 // Use Vercel URL in production, otherwise localhost
 export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ||
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://rsandh-demosite.vercel.app')
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://dbh-demosite.vercel.app/')
 
 export const clientConfig = {
     projectId,

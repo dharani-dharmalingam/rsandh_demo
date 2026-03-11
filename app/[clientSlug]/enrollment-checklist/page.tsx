@@ -6,6 +6,7 @@ import { sanityFetch } from '@/sanity/lib/live';
 import { client } from '@/sanity/lib/client';
 import { enrollmentChecklistQuery, siteSettingsQuery } from '@/sanity/lib/queries';
 import { Metadata } from 'next';
+import { PortableText } from '@/components/portable-text';
 
 export async function generateStaticParams() {
   const clients = await client.fetch<{ slug: string }[]>(
@@ -37,12 +38,12 @@ type ChecklistItem = {
   _key: string;
   step: number;
   title: string;
-  description: string;
+  description: any;
 };
 
 type ChecklistPageData = {
   title: string;
-  description: string;
+  description: any;
   items: ChecklistItem[];
   ctaTitle: string;
   ctaDescription: string;
@@ -65,10 +66,13 @@ export default async function EnrollmentChecklistPage({ params }: Props) {
         <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
           {typedData?.title || 'Enrollment Checklist'}
         </h1>
-        <p className="text-lg text-slate-600 max-w-2xl">
-          {typedData?.description ||
-            'Use this step-by-step checklist to prepare for open enrollment and make informed decisions about your benefits.'}
-        </p>
+        <div className="text-lg text-slate-600 max-w-2xl">
+          {typedData?.description ? (
+            <PortableText value={typedData.description} />
+          ) : (
+            'Use this step-by-step checklist to prepare for open enrollment and make informed decisions about your benefits.'
+          )}
+        </div>
       </SectionWrapper>
 
       {/* Checklist */}
@@ -90,7 +94,9 @@ export default async function EnrollmentChecklistPage({ params }: Props) {
                         </div>
                         <div className="flex-1">
                           <h3 className="font-semibold text-slate-900 mb-1">{item.title}</h3>
-                          <p className="text-sm text-slate-600">{item.description}</p>
+                          <div className="text-sm text-slate-600">
+                            <PortableText value={item.description} />
+                          </div>
                         </div>
                       </div>
                     </label>

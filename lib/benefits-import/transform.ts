@@ -165,15 +165,46 @@ export async function transformToSanitySchema(
           children: [{ _type: 'span' as const, _key: `span-h-${sIdx}`, text: section.title, marks: [] }],
           markDefs: [],
         })
-        section.paragraphs.forEach((p: string, pIdx: number) => {
-          contentBlocks.push({
-            _type: 'block' as const,
-            _key: `p-${sIdx}-${pIdx}`,
-            style: 'normal' as const,
-            children: [{ _type: 'span' as const, _key: `span-p-${sIdx}-${pIdx}`, text: p, marks: [] }],
-            markDefs: [],
+
+        if (section.isList) {
+          // Render as Portable Text bullet list items
+          section.paragraphs.forEach((p: string, pIdx: number) => {
+            contentBlocks.push({
+              _type: 'block' as const,
+              _key: `li-${sIdx}-${pIdx}`,
+              style: 'normal' as const,
+              listItem: 'bullet' as const,
+              level: 1,
+              children: [{ _type: 'span' as const, _key: `span-li-${sIdx}-${pIdx}`, text: p, marks: [] }],
+              markDefs: [],
+            })
           })
-        })
+        } else {
+          // Render as normal paragraphs
+          section.paragraphs.forEach((p: string, pIdx: number) => {
+            contentBlocks.push({
+              _type: 'block' as const,
+              _key: `p-${sIdx}-${pIdx}`,
+              style: 'normal' as const,
+              children: [{ _type: 'span' as const, _key: `span-p-${sIdx}-${pIdx}`, text: p, marks: [] }],
+              markDefs: [],
+            })
+          })
+        }
+      })
+    }
+
+    if (ch.tabs?.length) {
+      contentBlocks.push({
+        _type: 'tabs',
+        _key: `tabs-${i}`,
+        items: ch.tabs.map((tab, tabIdx) => ({
+          _key: `tab-item-${tabIdx}`,
+          title: tab.title,
+          content: textToBlocks(tab.contentParagraphs),
+          link: tab.link,
+          linkLabel: tab.linkLabel
+        }))
       })
     }
 

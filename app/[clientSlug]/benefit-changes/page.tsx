@@ -7,6 +7,7 @@ import { client } from '@/sanity/lib/client';
 import { benefitChangesQuery, siteSettingsQuery } from '@/sanity/lib/queries';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { PortableText } from '@/components/portable-text';
 
 export async function generateStaticParams() {
   const clients = await client.fetch<{ slug: string }[]>(
@@ -38,13 +39,13 @@ type BenefitChange = {
   _key: string;
   type: 'new' | 'update';
   title: string;
-  description: string;
+  description: any;
 };
 
 type BenefitChangesPageData = {
   title: string;
-  description: string;
-  alertMessage: string;
+  description: any;
+  alertMessage: any;
   changes: BenefitChange[];
   ctaTitle: string;
   ctaDescription: string;
@@ -71,9 +72,9 @@ export default async function BenefitChangesPage({ params }: Props) {
         <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
           {typedData?.title}
         </h1>
-        <p className="text-lg text-slate-600 max-w-2xl">
-          {typedData?.description}
-        </p>
+        <div className="text-lg text-slate-600 max-w-2xl">
+          <PortableText value={typedData?.description} />
+        </div>
       </SectionWrapper>
 
       {/* Alert Banner */}
@@ -82,7 +83,7 @@ export default async function BenefitChangesPage({ params }: Props) {
           <Alert className="border-blue-200 bg-blue-50">
             <AlertCircle className="h-4 w-4 text-blue-600" />
             <AlertDescription className="text-blue-900">
-              {typedData.alertMessage}
+              <PortableText value={typedData.alertMessage} />
             </AlertDescription>
           </Alert>
         </SectionWrapper>
@@ -108,9 +109,9 @@ export default async function BenefitChangesPage({ params }: Props) {
                   <h3 className="font-semibold text-slate-900 mb-2">
                     {benefit.title}
                   </h3>
-                  <p className="text-sm text-slate-600">
-                    {benefit.description}
-                  </p>
+                  <div className="text-sm text-slate-600">
+                    <PortableText value={benefit.description} />
+                  </div>
                 </div>
               ))}
             </div>
@@ -138,9 +139,9 @@ export default async function BenefitChangesPage({ params }: Props) {
                   <h3 className="font-semibold text-slate-900 mb-2">
                     {benefit.title}
                   </h3>
-                  <p className="text-sm text-slate-600">
-                    {benefit.description}
-                  </p>
+                  <div className="text-sm text-slate-600">
+                    <PortableText value={benefit.description} />
+                  </div>
                 </div>
               ))}
             </div>

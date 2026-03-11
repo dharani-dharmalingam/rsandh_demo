@@ -13,7 +13,8 @@ export default defineType({
         defineField({
             name: "description",
             title: "Page Description",
-            type: "text",
+            type: "array",
+            of: [{ type: "block" }],
         }),
         defineField({
             name: "items",
@@ -25,7 +26,7 @@ export default defineType({
                     fields: [
                         { name: "step", title: "Step Number", type: "number" },
                         { name: "title", title: "Title", type: "string" },
-                        { name: "description", title: "Description", type: "text" },
+                        { name: "description", title: "Description", type: "array", of: [{ type: "block" }] },
                     ],
                 },
             ],

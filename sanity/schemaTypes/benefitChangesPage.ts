@@ -13,12 +13,14 @@ export default defineType({
     defineField({
       name: "description",
       title: "Hero Description",
-      type: "text",
+      type: "array",
+      of: [{ type: "block" }],
     }),
     defineField({
       name: "alertMessage",
       title: "Alert Message",
-      type: "text",
+      type: "array",
+      of: [{ type: "block" }],
     }),
     defineField({
       name: "changes",
@@ -28,6 +30,7 @@ export default defineType({
         {
           type: "object",
           fields: [
+            // ... (type and title fields remain same)
             {
               name: "type",
               title: "Type",
@@ -47,7 +50,8 @@ export default defineType({
             {
               name: "description",
               title: "Description",
-              type: "text",
+              type: "array",
+              of: [{ type: "block" }],
             },
           ],
         },

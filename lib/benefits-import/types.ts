@@ -39,6 +39,8 @@ export interface ExtractedTable {
 export interface ExtractedChapterSection {
   title: string
   paragraphs: string[]
+  /** When true, paragraphs are rendered as bullet-point list items instead of plain paragraphs. */
+  isList?: boolean
 }
 
 export interface ExtractedChapter {
@@ -48,6 +50,13 @@ export interface ExtractedChapter {
   contentParagraphs: string[]
   sections?: ExtractedChapterSection[]
   tables?: ExtractedTable[]
+  /** New field to support multi-tab UI components within a chapter. */
+  tabs?: {
+    title: string
+    contentParagraphs: string[]
+    link?: string
+    linkLabel?: string
+  }[]
 }
 
 // ── Plan Detection (Phase 1) ──
@@ -57,6 +66,15 @@ export interface DetectedPlans {
   dentalPlans: string[]     // e.g., ["Core Plan", "Enhanced Plan"]
   visionPlans: string[]     // e.g., ["Core VSP", "Enhanced VSP"]
   premiumTiers: string[]    // e.g., ["Employee Only", "Employee + Spouse", ...]
+}
+
+// ── Phase 1 Result (returned to client for review) ──
+
+export interface Phase1Result {
+  detectedPlans: DetectedPlans
+  chaptersList: string[]
+  companyName: string
+  themeColor?: string
 }
 
 // ── Other Extracted Types (unchanged) ──
@@ -134,4 +152,21 @@ export interface ExtractedBenefitsData {
   contactInfo?: ExtractedContactInfo[]
   quickLinks?: ExtractedQuickLink[]
   quickAccess?: ExtractedQuickAccessItem[]
+}
+
+// ── Custom Chapter Templates (user-defined extraction schemas) ──
+
+export interface CustomTemplateField {
+  fieldName: string
+  fieldType: 'text' | 'paragraphs' | 'table'
+  fieldDescription: string
+  tableColumns?: string[]
+}
+
+export interface CustomTemplateDefinition {
+  templateId: string
+  displayName: string
+  description: string
+  category: string
+  fields: CustomTemplateField[]
 }

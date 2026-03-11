@@ -2,13 +2,13 @@ import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { SectionWrapper } from '@/components/section-wrapper';
-import { ChevronLeft } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import { client } from '@/sanity/lib/client';
 import { sanityFetch } from '@/sanity/lib/live';
 import { chapterBySlugQuery, benefitChaptersQuery, siteSettingsQuery } from '@/sanity/lib/queries';
 import { urlFor } from '@/sanity/lib/image';
-import { PortableText } from '@portabletext/react';
+import { PortableText } from '@/components/portable-text';
 
 // ── Unified Table Types ──
 
@@ -43,6 +43,12 @@ type ChapterDetail = {
   image?: any;
   content?: any[];
   tables?: UnifiedTable[];
+};
+
+type ChapterSummary = {
+  _id: string;
+  title: string;
+  slug: string;
 };
 
 export async function generateStaticParams() {
@@ -221,6 +227,16 @@ export default async function BenefitDetailPage({ params }: Props) {
     notFound();
   }
 
+  // Fetch all chapters for prev/next navigation
+  const { data: allChapters } = await sanityFetch({
+    query: benefitChaptersQuery,
+    params: { clientSlug }
+  });
+  const chapters = (allChapters || []) as ChapterSummary[];
+  const currentIndex = chapters.findIndex((c) => c.slug === slug);
+  const prevChapter = currentIndex > 0 ? chapters[currentIndex - 1] : null;
+  const nextChapter = currentIndex < chapters.length - 1 ? chapters[currentIndex + 1] : null;
+
   const imageUrl = typedChapter.image ? urlFor(typedChapter.image).width(1200).height(400).url() : null;
   const hasTables = typedChapter.tables && typedChapter.tables.length > 0;
 
@@ -252,9 +268,11 @@ export default async function BenefitDetailPage({ params }: Props) {
       <SectionWrapper className="bg-white">
         <div className="max-w-4xl">
           <h1 className="text-4xl font-bold text-slate-900 mb-4">{typedChapter.title}</h1>
-          <p className="text-lg text-slate-600 mb-8">{typedChapter.description}</p>
+          <div className="text-lg text-slate-600 mb-8">
+            <PortableText value={typedChapter.description} />
+          </div>
 
-          <div className="prose prose-sm max-w-none text-slate-700 space-y-6">
+          <div className="space-y-6">
             {typedChapter.content && typedChapter.content.length > 0 ? (
               <PortableText value={typedChapter.content} />
             ) : (
@@ -275,17 +293,52 @@ export default async function BenefitDetailPage({ params }: Props) {
             </div>
           )}
 
+          {/* Previous / Next Chapter Navigation */}
           <div className="mt-12 pt-8 border-t border-slate-200">
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild variant="outline">
-                <Link href={`/${clientSlug}/benefits`}>
-                  <ChevronLeft className="h-4 w-4 mr-2" />
-                  Back to Benefits
-                </Link>
-              </Button>
-              <Button asChild className="bg-blue-600 hover:bg-blue-700">
-                <a href="#enroll">Enroll in This Benefit</a>
-              </Button>
+            <div className="flex justify-between items-stretch gap-4">
+              {prevChapter ? (
+                <Button asChild variant="outline" className="flex-1 h-auto py-4 px-5">
+                  <Link href={`/${clientSlug}/benefits/${prevChapter.slug}`} className="flex items-center gap-3 no-underline">
+                    <ChevronLeft className="h-5 w-5 text-slate-400 flex-shrink-0" />
+                    <div className="text-left">
+                      <div className="text-xs text-slate-400 font-medium uppercase tracking-wide">Previous</div>
+                      <div className="text-sm font-semibold text-slate-700 mt-0.5">{prevChapter.title}</div>
+                    </div>
+                  </Link>
+                </Button>
+              ) : (
+                <Button asChild variant="outline" className="flex-1 h-auto py-4 px-5">
+                  <Link href={`/${clientSlug}/benefits`} className="flex items-center gap-3 no-underline">
+                    <ChevronLeft className="h-5 w-5 text-slate-400 flex-shrink-0" />
+                    <div className="text-left">
+                      <div className="text-xs text-slate-400 font-medium uppercase tracking-wide">Back to</div>
+                      <div className="text-sm font-semibold text-slate-700 mt-0.5">All Benefits</div>
+                    </div>
+                  </Link>
+                </Button>
+              )}
+
+              {nextChapter ? (
+                <Button asChild variant="outline" className="flex-1 h-auto py-4 px-5">
+                  <Link href={`/${clientSlug}/benefits/${nextChapter.slug}`} className="flex items-center justify-end gap-3 no-underline">
+                    <div className="text-right">
+                      <div className="text-xs text-slate-400 font-medium uppercase tracking-wide">Next</div>
+                      <div className="text-sm font-semibold text-slate-700 mt-0.5">{nextChapter.title}</div>
+                    </div>
+                    <ChevronRight className="h-5 w-5 text-slate-400 flex-shrink-0" />
+                  </Link>
+                </Button>
+              ) : (
+                <Button asChild variant="outline" className="flex-1 h-auto py-4 px-5">
+                  <Link href={`/${clientSlug}/benefits`} className="flex items-center justify-end gap-3 no-underline">
+                    <div className="text-right">
+                      <div className="text-xs text-slate-400 font-medium uppercase tracking-wide">Back to</div>
+                      <div className="text-sm font-semibold text-slate-700 mt-0.5">All Benefits</div>
+                    </div>
+                    <ChevronRight className="h-5 w-5 text-slate-400 flex-shrink-0" />
+                  </Link>
+                </Button>
+              )}
             </div>
           </div>
         </div>

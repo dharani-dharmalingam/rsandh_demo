@@ -7,9 +7,11 @@
  * Phase 2: Extract values using templates for known chapters + dynamic for others
  */
 
-import type { ExtractedBenefitsData, DetectedPlans } from './types'
+import type { ExtractedBenefitsData, DetectedPlans, Phase1Result, ExtractedChapterSection, CustomTemplateDefinition } from './types'
 import { TABLE_TEMPLATES, isTemplatedCategory, buildTableDescription } from './tableTemplates'
 import type { TemplateRow } from './tableTemplates'
+import { buildSchemaFromTemplates, createSchemaContext } from './templates'
+import { customTemplatePropertyKey } from './templates/custom'
 
 const LLAMA_API_BASE = 'https://api.cloud.llamaindex.ai'
 
@@ -23,39 +25,39 @@ export type ExtractOptions = {
 
 const PLAN_DETECTION_SCHEMA = {
   type: 'object',
-  description: 'Detect all plan names mentioned in this benefits guide. Extract ONLY the plan names and types — do not extract benefits details.',
+  description: 'Detect all plan names mentioned in this benefits guide. Extract ONLY plan names and types — no details.',
   properties: {
     companyName: {
       type: 'string',
-      description: 'The name of the company or organization whose benefits guide this is.',
+      description: 'Company/organization name.',
     },
     themeColor: {
       type: 'string',
-      description: 'The primary brand color of the company in hex format (e.g. #D31145). Extract from logos, headers, or dominant colors in the document. If not detectable, return null.',
+      description: 'Primary brand color in hex format (e.g. #D31145) from logos/headers. Return null if not found.',
     },
     medicalPlans: {
       type: 'array',
-      description: 'Names of ALL distinct medical plan options. Extract ONLY the SHORT plan name used as a column header in premium/benefits tables (e.g., "PPO", "HDHP", "HMO", "EPO"). Do NOT include long descriptions or parentheticals. Do NOT duplicate — if a plan appears under multiple names, use only the shortest/simplest name.',
+      description: 'Short names of ALL medical plans (e.g., "PPO", "HDHP"). Extract EXACT labels from comparison tables. No long descriptions.',
       items: { type: 'string' },
     },
     dentalPlans: {
       type: 'array',
-      description: 'Names of ALL distinct dental plan options. Search ALL chapters (especially "Dental" or "Dental Plan"). Extract ONLY the SHORT plan names used as column headers in the dental comparison table. If a plan appears under multiple names, use only ONE — the shortest name.',
+      description: 'Short names of ALL dental plans (e.g., "Dental PPO"). Extract EXACT labels from comparison tables.',
       items: { type: 'string' },
     },
     visionPlans: {
       type: 'array',
-      description: 'Names of ALL distinct vision plan options. Search ALL chapters (especially "Vision" or "Vision Benefits"). Extract ONLY the SHORT plan names used as labels or column headers in vision comparison/contribution tables. Look for names next to "Vision (..." or above premium tables. If a plan appears under multiple names, use only ONE — the shortest name.',
+      description: 'Short names of ALL vision plans (e.g., "Vision Plan"). Extract EXACT labels from comparison tables.',
       items: { type: 'string' },
     },
     premiumTiers: {
       type: 'array',
-      description: 'Coverage tier names used in premium/contribution tables (e.g., "Associate", "Associate + spouse", "Employee Only", "Family"). Extract the EXACT tier names as written.',
+      description: 'Coverage tier names (e.g., "Associate", "Family"). Extract EXACTLY as written.',
       items: { type: 'string' },
     },
     chaptersList: {
       type: 'array',
-      description: 'List ALL benefit section/chapter topics found in the document. Just the topic names — e.g., "Medical", "Dental", "Vision", "FSA", "HSA", "Life Insurance", "Disability", "EAP", "Eligibility", etc.',
+      description: 'List of ALL section/chapter topics found (e.g., "Medical", "FSA", "EAP", "Eligibility").',
       items: { type: 'string' },
     },
   },
@@ -64,7 +66,23 @@ const PLAN_DETECTION_SCHEMA = {
 
 // ── Phase 2: Build dynamic extraction schema based on detected plans ──
 
-function buildExtractionSchema(plans: DetectedPlans): Record<string, unknown> {
+function buildExtractionSchema(
+  plans: DetectedPlans,
+  chaptersList: string[] = [],
+  templateIds?: string[],
+  customTemplates?: CustomTemplateDefinition[]
+): Record<string, unknown> {
+  const ctx = createSchemaContext(plans, chaptersList)
+  return buildSchemaFromTemplates(ctx, templateIds, customTemplates)
+}
+
+// ── Legacy buildExtractionSchema body moved to lib/benefits-import/templates/ ──
+// Each chapter type now has its own template file that generates its schema fragment.
+// See templates/index.ts for the composition logic.
+
+// NOTE: The following code is kept as dead-code reference during migration.
+// It will be removed once the template system is fully verified.
+function _legacyBuildExtractionSchema_UNUSED(plans: DetectedPlans, chaptersList: string[] = []): Record<string, unknown> {
   const medicalPlanNames = plans.medicalPlans.length > 0 ? plans.medicalPlans : ['Plan']
   const dentalPlanNames = plans.dentalPlans.length > 0 ? plans.dentalPlans : ['Plan']
   const visionPlanNames = plans.visionPlans.length > 0 ? plans.visionPlans : ['Plan']
@@ -282,7 +300,7 @@ function buildExtractionSchema(plans: DetectedPlans): Record<string, unknown> {
       dynamicChapters: {
         type: 'array',
         description: `Extract ALL benefit chapters NOT covered by the templated sections above. This includes FSA, HSA, Life Insurance, Disability/Income Protection, EAP, Eligibility, and any other benefit sections. For each chapter, extract ALL tables exactly as they appear in the PDF.
-
+${chaptersList.length > 0 ? `\nSPECIFIC CHAPTERS TO EXTRACT: ${chaptersList.join(', ')}\n` : ''}
 CRITICAL: Do NOT include Medical Plan or Overview chapters here — those are handled by the templated sections above.
 NOTE: Vision and Dental plans are partially templated. Extract them here ONLY if their specific plan names were NOT detected in Phase 1 (i.e., if they were not captured by the specialized templates).`,
         items: {
@@ -488,6 +506,52 @@ function deduplicatePlanNames(names: string[]): string[] {
 
 // ── API Call Helpers ──
 
+export async function fetchWithRetry(
+  url: string,
+  options: RequestInit & { timeout?: number },
+  maxRetries = 3,
+  retryDelayMs = 2000
+): Promise<Response> {
+  const { timeout = 120000, ...rest } = options
+  let lastError: Error | null = null
+
+  for (let i = 0; i <= maxRetries; i++) {
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), timeout)
+
+    try {
+      if (i > 0) {
+        const delay = retryDelayMs * Math.pow(2, i - 1)
+        console.log(`[benefits-import] Retrying fetch (${i}/${maxRetries}) in ${delay}ms... URL: ${url}`)
+        await new Promise(r => setTimeout(r, delay))
+      }
+
+      const res = await fetch(url, {
+        ...rest,
+        signal: controller.signal,
+      })
+      return res
+    } catch (err: any) {
+      lastError = err as Error
+      const name = err.name || 'Error'
+      const isAbort = name === 'AbortError' || err.message?.includes('aborted')
+      const isNetwork = err.message?.includes('fetch failed') ||
+        err.message?.includes('ECONNRESET') ||
+        err.message?.includes('ETIMEDOUT')
+
+      if ((!isNetwork && !isAbort) || i === maxRetries) {
+        throw err
+      }
+
+      const reason = isAbort ? `Timed out after ${timeout}ms` : err.message
+      console.warn(`[benefits-import] Fetch attempt ${i + 1} failed (${reason}). Retrying...`)
+    } finally {
+      clearTimeout(timeoutId)
+    }
+  }
+  throw lastError || new Error('Fetch failed after retries')
+}
+
 
 async function callLlamaExtract(
   pdfBuffer: Buffer,
@@ -499,7 +563,9 @@ async function callLlamaExtract(
   const base64File = pdfBuffer.toString('base64')
   const extractUrl = `${LLAMA_API_BASE}/api/v1/extraction/run`
 
-  const extractRes = await fetch(extractUrl, {
+  console.log(`[benefits-import] Submitting extraction job to LlamaExtract... (Payload size: ${Math.round(base64File.length / 1024)}KB)`)
+
+  const extractRes = await fetchWithRetry(extractUrl, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${apiKey}`,
@@ -517,6 +583,7 @@ async function callLlamaExtract(
       },
       file_name: 'benefits-guide.pdf',
     }),
+    timeout: 180000, // 3 minute timeout for the initial upload/start
   })
 
   if (!extractRes.ok) {
@@ -529,7 +596,7 @@ async function callLlamaExtract(
   // Handle async job response
   if (result.id || result.job_id) {
     const jobId = (result.id ?? result.job_id) as string
-    console.log(`[benefits-import] LlamaExtract job started: ${jobId}`)
+    console.log(`[benefits-import] LlamaExtract job started: ${jobId}. Polling for results...`)
     return await pollForResults(jobId, apiKey, pollIntervalMs, maxWaitMs)
   }
 
@@ -540,29 +607,28 @@ async function callLlamaExtract(
 }
 
 /**
- * Extract structured benefits data from a PDF using LlamaExtract.
- * Two-phase extraction: detect plans first, then extract values.
+ * Phase 1 only: detect plan names, chapters, and company info from a PDF.
+ * Returns a Phase1Result for user review before Phase 2.
  */
-export async function extractBenefitsGuide(
+export async function detectPlans(
   pdfBuffer: Buffer,
   options: ExtractOptions
-): Promise<ExtractedBenefitsData> {
+): Promise<Phase1Result> {
   const { apiKey, pollIntervalMs = 5000, maxWaitMs = 600_000 } = options
 
   if (!apiKey?.trim()) {
     throw new Error('LLAMA_CLOUD_API_KEY is required for extraction')
   }
 
-  // ── Phase 1: Detect Plans ──
   console.log('[benefits-import] Phase 1: Detecting plan names and counts...')
   const phase1Result = await callLlamaExtract(pdfBuffer, PLAN_DETECTION_SCHEMA, apiKey, pollIntervalMs, maxWaitMs)
 
-  const unwrapped1 = (phase1Result as any).extraction ?? phase1Result
+  const unwrapped = (phase1Result as any).extraction ?? phase1Result
   const detectedPlans: DetectedPlans = {
-    medicalPlans: deduplicatePlanNames(Array.isArray(unwrapped1.medicalPlans) ? unwrapped1.medicalPlans : []),
-    dentalPlans: deduplicatePlanNames(Array.isArray(unwrapped1.dentalPlans) ? unwrapped1.dentalPlans : []),
-    visionPlans: deduplicatePlanNames(Array.isArray(unwrapped1.visionPlans) ? unwrapped1.visionPlans : []),
-    premiumTiers: Array.isArray(unwrapped1.premiumTiers) ? unwrapped1.premiumTiers : [],
+    medicalPlans: deduplicatePlanNames(Array.isArray(unwrapped.medicalPlans) ? unwrapped.medicalPlans : []),
+    dentalPlans: deduplicatePlanNames(Array.isArray(unwrapped.dentalPlans) ? unwrapped.dentalPlans : []),
+    visionPlans: deduplicatePlanNames(Array.isArray(unwrapped.visionPlans) ? unwrapped.visionPlans : []),
+    premiumTiers: Array.isArray(unwrapped.premiumTiers) ? unwrapped.premiumTiers : [],
   }
 
   console.log(
@@ -572,15 +638,60 @@ export async function extractBenefitsGuide(
     `${detectedPlans.premiumTiers.length} premium tiers`
   )
 
-  // ── Phase 2: Extract Values ──
+  return {
+    detectedPlans,
+    chaptersList: Array.isArray(unwrapped.chaptersList) ? unwrapped.chaptersList : [],
+    companyName: unwrapped.companyName || 'Unknown Company',
+    themeColor: unwrapped.themeColor,
+  }
+}
+
+/**
+ * Phase 2 only: extract values using user-confirmed plans, then assemble.
+ * Call this after the user has reviewed and edited the Phase 1 results.
+ */
+export async function extractWithConfirmedPlans(
+  pdfBuffer: Buffer,
+  confirmedPlans: DetectedPlans,
+  options: ExtractOptions,
+  phase1Overrides?: { companyName?: string; themeColor?: string; chaptersList?: string[] },
+  templateIds?: string[],
+  customTemplates?: CustomTemplateDefinition[]
+): Promise<ExtractedBenefitsData> {
+  const { apiKey, pollIntervalMs = 5000, maxWaitMs = 600_000 } = options
+
+  if (!apiKey?.trim()) {
+    throw new Error('LLAMA_CLOUD_API_KEY is required for extraction')
+  }
+
   console.log('[benefits-import] Phase 2: Extracting values with template-guided schema...')
-  const phase2Schema = buildExtractionSchema(detectedPlans)
+  const phase2Schema = buildExtractionSchema(confirmedPlans, phase1Overrides?.chaptersList, templateIds, customTemplates)
   const phase2Result = await callLlamaExtract(pdfBuffer, phase2Schema, apiKey, pollIntervalMs, maxWaitMs)
 
   const unwrapped2 = (phase2Result as any).extraction ?? phase2Result
 
-  // ── Assemble into ExtractedBenefitsData ──
-  return assembleExtractedData(unwrapped2, detectedPlans, unwrapped1)
+  // Build a synthetic Phase 1 result for assembly (with user overrides)
+  const phase1ForAssembly: Record<string, any> = {
+    companyName: phase1Overrides?.companyName || unwrapped2.companyName || 'Unknown Company',
+    themeColor: phase1Overrides?.themeColor || unwrapped2.themeColor,
+  }
+
+  return assembleExtractedData(unwrapped2, confirmedPlans, phase1ForAssembly, customTemplates)
+}
+
+/**
+ * Full extraction (backward compatible): Phase 1 + Phase 2 in one call.
+ * For new imports, prefer detectPlans() + extractWithConfirmedPlans() instead.
+ */
+export async function extractBenefitsGuide(
+  pdfBuffer: Buffer,
+  options: ExtractOptions
+): Promise<ExtractedBenefitsData> {
+  const phase1 = await detectPlans(pdfBuffer, options)
+  return extractWithConfirmedPlans(pdfBuffer, phase1.detectedPlans, options, {
+    companyName: phase1.companyName,
+    themeColor: phase1.themeColor,
+  })
 }
 
 /**
@@ -589,7 +700,8 @@ export async function extractBenefitsGuide(
 function assembleExtractedData(
   raw: Record<string, any>,
   plans: DetectedPlans,
-  phase1: Record<string, any>
+  phase1: Record<string, any>,
+  customTemplates?: CustomTemplateDefinition[]
 ): ExtractedBenefitsData {
   const companyName = raw.companyName || phase1.companyName || 'Unknown Company'
   const themeColor = raw.themeColor || phase1.themeColor
@@ -603,60 +715,191 @@ function assembleExtractedData(
 
   const chapters: ExtractedBenefitsData['chapters'] = []
 
-  // ── Overview Chapter ──
-  const overviewTables: ExtractedBenefitsData['chapters'][0]['tables'] = []
+  // ── Overview Chapter (only if overview data was actually extracted) ──
+  const hasOverviewData = ['medical', 'dental', 'vision'].some(bt => {
+    const premiums = raw[`overview_${bt}_premiums`]
+    const info = raw[`overview_${bt}_info`]
+    const hasPremiums = premiums && typeof premiums === 'object' &&
+      Object.values(premiums).some((v: any) => v && v !== '—' && v !== '')
+    const hasInfo = info && typeof info === 'object' &&
+      Object.values(info).some((v: any) => v && v !== '')
+    return hasPremiums || hasInfo
+  })
 
-  for (const benefitType of ['medical', 'dental', 'vision'] as const) {
-    const planNames = benefitType === 'medical' ? medicalPlanNames
-      : benefitType === 'dental' ? dentalPlanNames
-        : visionPlanNames
-    if (planNames.length === 0) continue
+  if (hasOverviewData) {
+    const overviewTables: ExtractedBenefitsData['chapters'][0]['tables'] = []
+    const overviewSections: ExtractedBenefitsData['chapters'][0]['sections'] = []
 
-    const overviewKey = `overview_${benefitType}_premiums`
-    const premiumData = raw[overviewKey] || {}
+    for (const benefitType of ['medical', 'dental', 'vision'] as const) {
+      const planNames = benefitType === 'medical' ? medicalPlanNames
+        : benefitType === 'dental' ? dentalPlanNames
+          : visionPlanNames
+      if (planNames.length === 0) continue
 
-    // Build columns: one per plan
-    const columns = planNames.map(pn => ({
-      key: pn.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase(),
-      label: pn,
-    }))
+      const label = benefitType.charAt(0).toUpperCase() + benefitType.slice(1)
 
-    // Build rows: one per tier
-    const rows = tierNames.map(tier => {
-      const cells = planNames.map(pn => {
-        const key = `${pn.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}_${tier.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}`
-        return premiumData[key] || '—'
+      // Provider info section
+      const infoKey = `overview_${benefitType}_info`
+      const info = raw[infoKey] || {}
+      const sectionParagraphs: string[] = []
+      if (info.providerDescription) sectionParagraphs.push(info.providerDescription)
+      if (info.planCountSummary) sectionParagraphs.push(info.planCountSummary)
+
+      if (sectionParagraphs.length > 0) {
+        overviewSections.push({
+          title: `${label} Plans`,
+          paragraphs: sectionParagraphs,
+        })
+      }
+
+      // Premium table
+      const overviewKey = `overview_${benefitType}_premiums`
+      const premiumData = raw[overviewKey] || {}
+
+      // Build columns: one per plan
+      const columns = planNames.map(pn => ({
+        key: pn.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase(),
+        label: pn,
+      }))
+
+      // Build rows: one per tier
+      const rows = tierNames.map(tier => {
+        const cells = planNames.map(pn => {
+          const key = `${pn.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}_${tier.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}`
+          return premiumData[key] || '—'
+        })
+        return { label: tier, cells }
       })
-      return { label: tier, cells }
-    })
 
-    const template = TABLE_TEMPLATES['overview'].tables.find(t => t.templateId === `overview-${benefitType}`)
-    overviewTables.push({
-      templateId: `overview-${benefitType}`,
-      tableTitle: template?.tableTitle || `${benefitType.charAt(0).toUpperCase() + benefitType.slice(1)} Plans`,
-      tableDescription: template?.tableDescriptionTemplate,
-      columns,
-      rows,
+      const template = TABLE_TEMPLATES['overview'].tables.find(t => t.templateId === `overview-${benefitType}`)
+      overviewTables.push({
+        templateId: `overview-${benefitType}`,
+        tableTitle: template?.tableTitle || `${label} Plans`,
+        tableDescription: template?.tableDescriptionTemplate,
+        columns,
+        rows,
+      })
+    }
+
+    // Build overview content paragraphs
+    const overviewContentParagraphs = [`Review and compare all benefit plans available to ${companyName} employees.`]
+
+    chapters.push({
+      title: 'Overview of Available Plans',
+      description: `Overview of all available benefit plans for ${companyName} employees.`,
+      category: 'overview',
+      contentParagraphs: overviewContentParagraphs,
+      sections: overviewSections.length > 0 ? overviewSections : undefined,
+      tables: overviewTables,
     })
   }
 
-  chapters.push({
-    title: 'Overview of Available Plans',
-    description: `Overview of all available benefit plans for ${companyName} employees.`,
-    category: 'overview',
-    contentParagraphs: [`Review and compare all benefit plans available to ${companyName} employees.`],
-    tables: overviewTables,
-  })
+  // ── Eligibility & Qualifying Life Events Chapter ──
+  const eligData = raw.eligibility_chapter || {}
+  if (eligData.eligibilityIntro || eligData.eligibilityRequirements?.length > 0 || eligData.enrollmentPoints?.length > 0 || eligData.commonQualifyingEvents?.length > 0) {
+    const eligSections: ExtractedBenefitsData['chapters'][0]['sections'] = []
+    const eligParagraphs: string[] = []
+
+    // Eligibility requirements
+    if (eligData.eligibilityIntro) eligParagraphs.push(eligData.eligibilityIntro)
+    if (eligData.eligibilityRequirements?.length > 0) {
+      eligSections.push({
+        title: 'Eligibility',
+        paragraphs: [eligData.eligibilityIntro || '', ...eligData.eligibilityRequirements].filter(Boolean),
+      })
+    }
+
+    // Eligible dependents
+    if (eligData.eligibleDependents?.length > 0) {
+      eligSections.push({
+        title: 'Eligible Dependents',
+        paragraphs: eligData.eligibleDependents,
+      })
+    }
+
+    // Enrollment
+    if (eligData.enrollmentPoints?.length > 0) {
+      eligSections.push({
+        title: 'Enrollment',
+        paragraphs: eligData.enrollmentPoints,
+      })
+    }
+
+    // Qualifying Life Events
+    const qleParagraphs: string[] = []
+    if (eligData.qleDescription) qleParagraphs.push(eligData.qleDescription)
+    if (eligData.qleImportantNotice) qleParagraphs.push(eligData.qleImportantNotice)
+
+    if (eligData.commonQualifyingEvents?.length > 0) {
+      eligSections.push({
+        title: 'Common Qualifying Events',
+        paragraphs: [...qleParagraphs, ...eligData.commonQualifyingEvents],
+      })
+    }
+
+    if (eligData.lesserKnownQualifyingEvents?.length > 0) {
+      eligSections.push({
+        title: 'Lesser-Known Qualifying Events',
+        paragraphs: eligData.lesserKnownQualifyingEvents,
+      })
+    }
+
+    chapters.push({
+      title: 'Eligibility & Qualifying Life Events',
+      description: 'Information about who is eligible for benefits, eligible dependents, enrollment, and qualifying life events.',
+      category: 'eligibility',
+      contentParagraphs: eligParagraphs.length > 0 ? eligParagraphs : ['Eligibility and qualifying life events information.'],
+      sections: eligSections.length > 0 ? eligSections : undefined,
+    })
+  }
 
   const capturedVisionPlanNames = new Set(visionPlanNames.map(n => n.toLowerCase().trim()))
   const capturedDentalPlanNames = new Set(dentalPlanNames.map(n => n.toLowerCase().trim()))
 
-  // ── Medical Plan Chapters (one per plan) ──
+  // ── Medical Common Info (Extracted once, appended to chapters) ──
+  const commonInfo = raw.medical_common_info || {}
+  const commonSections: ExtractedChapterSection[] = []
+  if (commonInfo.inNetworkVsOutNetworkTitle) {
+    commonSections.push({
+      title: commonInfo.inNetworkVsOutNetworkTitle,
+      paragraphs: [
+        '**In-network**',
+        ...(commonInfo.inNetworkExplanation || []),
+        '**Out-of-network**',
+        ...(commonInfo.outOfNetworkExplanation || []),
+        commonInfo.networkCheckInstructions
+      ].filter(Boolean),
+      isList: true
+    })
+  }
+  if (commonInfo.helpSectionTitle) {
+    commonSections.push({
+      title: commonInfo.helpSectionTitle,
+      paragraphs: [
+        commonInfo.alexDescription,
+        commonInfo.pharmacyInfo,
+        commonInfo.virtualVisitInfo,
+        commonInfo.toolkitAppLink ? `**Toolkit App**: ${commonInfo.toolkitAppLink}` : null
+      ].filter(Boolean)
+    })
+  }
+
+  // ── Medical Plan Chapters (one per plan, only if data was extracted) ──
   const medicalTemplate = TABLE_TEMPLATES['medical']
   for (const planName of medicalPlanNames) {
     const safeName = planName.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()
-    const planData = raw[`medical_${safeName}`] || {}
+    const planData = raw[`medical_${safeName}`]
+
+    // Skip this plan if no actual data was extracted (prevents empty overwrites in batched extraction)
+    if (!planData || typeof planData !== 'object') continue
+    const hasAnyValue = planData.planOverview || planData.hsaEligible ||
+      (planData.premiums && Object.values(planData.premiums).some((v: any) => v && v !== '—')) ||
+      (planData.benefits && Object.values(planData.benefits).some((v: any) => v && v !== '—')) ||
+      (planData.prescriptionDrug && Object.values(planData.prescriptionDrug).some((v: any) => v && v !== '—'))
+    if (!hasAnyValue) continue
+
     const premiums = planData.premiums || {}
+    const terms = planData.terms || {}
     const benefits = planData.benefits || {}
     const rx = planData.prescriptionDrug || {}
     const hsaEligible = planData.hsaEligible || ''
@@ -667,6 +910,18 @@ function assembleExtractedData(
       label: tier,
       cells: [premiums[tier.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()] || '—'],
     }))
+
+    // Plan-specific Sections (Terms)
+    const planSections: ExtractedChapterSection[] = []
+    if (terms.copaysDefinition?.length > 0) {
+      planSections.push({ title: 'Copays', paragraphs: terms.copaysDefinition, isList: true })
+    }
+    if (terms.deductibleDefinition?.length > 0) {
+      planSections.push({ title: 'Deductible', paragraphs: terms.deductibleDefinition, isList: true })
+    }
+    if (terms.outOfPocketMaxDefinition?.length > 0) {
+      planSections.push({ title: 'Out-of-Pocket Maximum', paragraphs: terms.outOfPocketMaxDefinition, isList: true })
+    }
 
     // Table 2: Plan Benefits Summary (In-Network + Out-of-Network)
     const benefitCols = [
@@ -692,7 +947,7 @@ function assembleExtractedData(
     const rxKeyMap: Record<string, string> = {
       'Preventive Medication': 'preventive_medication',
       'Pharmacy Deductible': 'pharmacy_deductible',
-      'Tier one': 'retail_tier_one',     // Will be overridden in mail order section
+      'Tier one': 'retail_tier_one',
       'Tier two': 'retail_tier_two',
       'Tier three': 'retail_tier_three',
       'Speciality': 'retail_speciality',
@@ -723,6 +978,7 @@ function assembleExtractedData(
       description: planData.planOverview || `${planName} medical plan coverage details.`,
       category: 'medical',
       contentParagraphs: [planData.planOverview || `Detailed coverage information for the ${planName} medical plan.`],
+      sections: [...planSections, ...commonSections],
       tables: [
         {
           templateId: 'medical-premiums',
@@ -750,39 +1006,43 @@ function assembleExtractedData(
   }
 
   // ── Dental Chapter ──
-  if (dentalPlanNames.length > 0) {
-    const dentalCols = dentalPlanNames.flatMap(pn => [
-      { key: `${pn.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}_in`, label: pn, subLabel: 'In-network' },
-      { key: `${pn.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}_out`, label: pn, subLabel: 'Out-of-network' },
-    ])
+  const dentalData = (raw.dental_multi_plan || raw.dental_single_plan) as any
+  if (dentalData && dentalPlanNames.length > 0) {
+    const isMultiD = !!raw.dental_multi_plan
 
-    const dentalRowKeys = [
-      { label: 'Annual deductible (Individual/Family)', key: 'annual_deductible' },
-      { label: 'Annual maximum (per person)', key: 'annual_maximum' },
-      { label: 'Diagnostic and preventive care', key: 'diagnostic_preventive_care' },
-      { label: 'Basic services', key: 'basic_services' },
-      { label: 'Major services', key: 'major_services' },
-      { label: 'Orthodontia*', key: 'orthodontia' },
-      { label: 'Lifetime maximum', key: 'lifetime_maximum' },
-    ]
+    // 1. Columns
+    const dentalCols = dentalPlanNames.flatMap((pn, idx) => {
+      const num = idx + 1
+      return [
+        { key: `plan${num}_in`, label: pn, subLabel: 'In-network' },
+        { key: `plan${num}_out`, label: pn, subLabel: 'Out-of-network' },
+      ]
+    })
 
-    const dentalRows = dentalRowKeys.map(rowDef => {
-      const cells = dentalPlanNames.flatMap(pn => {
-        const safeName = pn.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()
-        const planData = raw[`dental_${safeName}`] || {}
-        return [
-          planData[`${rowDef.key}_in_network`] || '—',
-          planData[`${rowDef.key}_out_of_network`] || '—',
-        ]
+    // 2. Rows
+    const dentalRows = (dentalData.benefitRows || []).map((row: any) => {
+      const cells = dentalPlanNames.flatMap((_, idx) => {
+        const num = idx + 1
+        if (isMultiD) {
+          return [
+            row[`plan${num}_in_network`] || '—',
+            row[`plan${num}_out_of_network`] || '—',
+          ]
+        } else {
+          return [
+            row.in_network || '—',
+            row.out_of_network || '—',
+          ]
+        }
       })
-      return { label: rowDef.label, cells }
+      return { label: row.label || '—', cells }
     })
 
     chapters.push({
       title: 'Dental Plan',
       description: 'Dental coverage options and benefits comparison.',
       category: 'dental',
-      contentParagraphs: ['Compare dental plan options and their coverage details.'],
+      contentParagraphs: dentalData.introText ? [dentalData.introText] : ['Compare dental plan options and their coverage details.'],
       tables: [{
         templateId: 'dental-benefits',
         tableTitle: 'Dental',
@@ -793,53 +1053,681 @@ function assembleExtractedData(
   }
 
   // ── Vision Chapter ──
-  if (visionPlanNames.length > 0) {
-    const visionCols = visionPlanNames.flatMap(pn => [
-      { key: `${pn.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}_in`, label: pn, subLabel: 'In-network' },
-      { key: `${pn.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}_out`, label: pn, subLabel: 'Out-of-network' },
-      { key: `${pn.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}_freq`, label: pn, subLabel: 'Frequency' },
-    ])
+  const visionData = (raw.vision_multi_plan || raw.vision_single_plan) as any
+  if (visionData && visionPlanNames.length > 0) {
+    const isMultiV = !!raw.vision_multi_plan
 
-    const visionRowDefs = [
-      { label: 'Eye Exam', key: 'eye_exam' },
-      { label: 'Frames', key: 'new_frames' },
-      { label: 'Lenses', key: null, isSection: true },
-      { label: 'Single', key: 'single' },
-      { label: 'Bifocal', key: 'bifocal' },
-      { label: 'Trifocal', key: 'trifocal' },
-      { label: 'Lenticular', key: 'lenticular' },
-      { label: 'Contact lenses', key: null, isSection: true },
-      { label: 'Elective', key: 'elective' },
-      { label: 'Medically necessary', key: 'medically_necessary' },
-    ]
-
-    const visionRows = visionRowDefs.map(rowDef => {
-      if (rowDef.isSection) {
-        return { label: rowDef.label, cells: [], isSection: true }
-      }
-      const cells = visionPlanNames.flatMap(pn => {
-        const safeName = pn.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()
-        const planData = raw[`vision_${safeName}`] || {}
-        return [
-          planData[`${rowDef.key}_in_network`] || '—',
-          planData[`${rowDef.key}_out_of_network`] || '—',
-          planData[`${rowDef.key}_frequency`] || '—',
-        ]
-      })
-      return { label: rowDef.label, cells }
+    // 1. Columns (Strictley 2 per plan: In-network & Out-of-network)
+    const visionCols = visionPlanNames.flatMap((pn, idx) => {
+      const num = idx + 1
+      return [
+        { key: `plan${num}_in`, label: pn, subLabel: 'In-network' },
+        { key: `plan${num}_out`, label: pn, subLabel: 'Out-of-network (reimbursement)' },
+      ]
     })
 
+    // 2. Rows
+    const visionRows: any[] = []
+      ; (visionData.benefitRows || []).forEach((row: any) => {
+        // Main benefit row (In/Out)
+        const cells = visionPlanNames.flatMap((_, idx) => {
+          const num = idx + 1
+          return isMultiV
+            ? [row[`plan${num}_in_network`] || '—', row[`plan${num}_out_of_network`] || '—']
+            : [row.in_network || '—', row.out_of_network || '—']
+        })
+        visionRows.push({ label: row.label || '—', cells })
+
+        // If there's frequency data and it wasn't just a "Frequency" row already, 
+        // add a sub-row for Frequency to match Image 5 style
+        const hasFreq = isMultiV ? (row.plan1_frequency || row.plan2_frequency) : row.frequency
+        if (hasFreq && row.label?.toLowerCase() !== 'frequency') {
+          const freqCells = visionPlanNames.flatMap((_, idx) => {
+            const num = idx + 1
+            const f = isMultiV ? row[`plan${num}_frequency`] : row.frequency
+            return [f || '—', f || '—'] // Repeat for In/Out columns
+          })
+          visionRows.push({ label: 'Frequency', cells: freqCells })
+        }
+      })
+
+    // 3. Footnotes/Disclaimers
+    const visionSections: ExtractedChapterSection[] = []
+    if (visionData.footnotes) {
+      visionSections.push({
+        title: 'Notes & Disclaimers',
+        paragraphs: [visionData.footnotes]
+      })
+    }
+
     chapters.push({
-      title: 'Vision Plan',
+      title: 'Vision Benefits',
       description: 'Vision coverage options and benefits comparison.',
       category: 'vision',
-      contentParagraphs: ['Compare vision plan options and their coverage details.'],
+      contentParagraphs: visionData.introText ? [visionData.introText] : ['Compare vision plan options and their coverage details.'],
+      sections: visionSections.length > 0 ? visionSections : undefined,
       tables: [{
         templateId: 'vision-benefits',
-        tableTitle: 'Vision',
+        tableTitle: 'Vision Coverage Comparison',
         columns: visionCols,
         rows: visionRows,
       }],
+    })
+  }
+
+  // ── EAP Chapter ──
+  const eapData = raw.eap_chapter || {}
+  if (Object.keys(eapData).length > 0) {
+    const sections: ExtractedChapterSection[] = []
+    if (eapData.description) sections.push({ title: 'Overview', paragraphs: [eapData.description] })
+    if (eapData.freeVisits) sections.push({ title: 'Free Visits', paragraphs: [eapData.freeVisits] })
+    if (eapData.services?.length > 0) sections.push({ title: 'Services include:', paragraphs: eapData.services, isList: true })
+
+    chapters.push({
+      title: 'Employee Assistance Program (EAP)',
+      description: eapData.description || 'Confidential counseling and support services.',
+      category: 'eap',
+      contentParagraphs: [eapData.description, eapData.availabilityNote].filter(Boolean),
+      sections,
+    })
+  }
+
+  // ── FSA & HSA Chapter ──
+  const fsaHsaData = raw.fsa_hsa_chapter || {}
+  if (Object.keys(fsaHsaData).length > 0) {
+    const sections: ExtractedChapterSection[] = []
+    const tables: any[] = []
+
+    // ── HSA Sections ──
+    if (fsaHsaData.hsaDefinition?.length > 0) {
+      sections.push({ title: 'What is a Health Savings Account?', paragraphs: fsaHsaData.hsaDefinition, isList: true })
+    }
+    if (fsaHsaData.hsaBenefits?.length > 0) {
+      sections.push({ title: 'Benefits of HSA', paragraphs: fsaHsaData.hsaBenefits, isList: true })
+    }
+    if (fsaHsaData.hsaEligibility?.length > 0) {
+      sections.push({ title: 'Who is eligible for an HSA?', paragraphs: fsaHsaData.hsaEligibility, isList: true })
+    }
+    if (fsaHsaData.hsaManageAccount?.length > 0) {
+      sections.push({ title: 'How to manage your HSA account', paragraphs: fsaHsaData.hsaManageAccount, isList: true })
+    }
+
+    // ── HSA Employer Contribution Table ──
+    if (fsaHsaData.hsaEmployerContributionRows?.length > 0) {
+      const cols = (fsaHsaData.hsaEmployerContributionColumns || []).map((c: string, i: number) => ({
+        key: `hsa-ec-col-${i}`, label: c
+      }))
+      const rows = fsaHsaData.hsaEmployerContributionRows.map((r: any) => ({
+        label: r.label || '—',
+        cells: (r.cells || []).map((c: string) => c || '—')
+      }))
+      tables.push({
+        templateId: 'hsa-employer-contribution',
+        tableTitle: fsaHsaData.hsaEmployerContributionTableTitle || 'Employer Contribution',
+        columns: cols,
+        rows: rows,
+      })
+    }
+
+    // ── HSA Contribution Limits Table ──
+    if (fsaHsaData.hsaContributionLimitsRows?.length > 0) {
+      const cols = (fsaHsaData.hsaContributionLimitsColumns || []).map((c: string, i: number) => ({
+        key: `hsa-cl-col-${i}`, label: c
+      }))
+      const rows = fsaHsaData.hsaContributionLimitsRows.map((r: any) => ({
+        label: r.label || '—',
+        cells: (r.cells || []).map((c: string) => c || '—')
+      }))
+      tables.push({
+        templateId: 'hsa-contribution-limits',
+        tableTitle: fsaHsaData.hsaContributionLimitsTableTitle || 'How much can I contribute?',
+        columns: cols,
+        rows: rows,
+      })
+    }
+
+    // ── Eligible Expenses ──
+    if (fsaHsaData.hsaEligibleExpenses?.length > 0) {
+      sections.push({ title: 'Eligible expenses', paragraphs: fsaHsaData.hsaEligibleExpenses, isList: true })
+    }
+
+    // ── FSA Definition ──
+    if (fsaHsaData.fsaDefinition) {
+      sections.push({ title: 'What is a Flexible Spending Account?', paragraphs: [fsaHsaData.fsaDefinition] })
+    }
+
+    // ── FSA Types Comparison Table ──
+    if (fsaHsaData.fsaTypesRows?.length > 0) {
+      const cols = (fsaHsaData.fsaTypesColumns || []).map((c: string, i: number) => ({
+        key: `fsa-type-col-${i}`, label: c
+      }))
+      const rows = fsaHsaData.fsaTypesRows.map((r: any) => ({
+        label: r.label || '—',
+        cells: (r.cells || []).map((c: string) => c || '—')
+      }))
+      tables.push({
+        templateId: 'fsa-types-comparison',
+        tableTitle: fsaHsaData.fsaTypesTableTitle || 'Types of FSA',
+        columns: cols,
+        rows: rows,
+      })
+    }
+
+    // ── Understanding different types of FSAs ──
+    if (fsaHsaData.fsaTypesExplanation?.length > 0) {
+      sections.push({ title: 'Understanding different types of FSAs', paragraphs: fsaHsaData.fsaTypesExplanation })
+    }
+
+    // ── Transit FSA ──
+    if (fsaHsaData.transitFsaDefinition?.length > 0) {
+      sections.push({ title: 'Transit FSA', paragraphs: fsaHsaData.transitFsaDefinition, isList: true })
+    }
+    if (fsaHsaData.transitFsaRows?.length > 0) {
+      const cols = (fsaHsaData.transitFsaColumns || []).map((c: string, i: number) => ({
+        key: `transit-col-${i}`, label: c
+      }))
+      const rows = fsaHsaData.transitFsaRows.map((r: any) => ({
+        label: '',
+        cells: (r.cells || []).map((c: string) => c || '—')
+      }))
+      tables.push({
+        templateId: 'transit-fsa',
+        tableTitle: fsaHsaData.transitFsaTableTitle || 'Transit FSA',
+        columns: cols,
+        rows: rows,
+      })
+    }
+
+    // ── Parking FSA ──
+    if (fsaHsaData.parkingFsaDefinition?.length > 0) {
+      sections.push({ title: 'Parking FSA', paragraphs: fsaHsaData.parkingFsaDefinition, isList: true })
+    }
+    if (fsaHsaData.parkingFsaRows?.length > 0) {
+      const cols = (fsaHsaData.parkingFsaColumns || []).map((c: string, i: number) => ({
+        key: `parking-col-${i}`, label: c
+      }))
+      const rows = fsaHsaData.parkingFsaRows.map((r: any) => ({
+        label: '',
+        cells: (r.cells || []).map((c: string) => c || '—')
+      }))
+      tables.push({
+        templateId: 'parking-fsa',
+        tableTitle: fsaHsaData.parkingFsaTableTitle || 'Parking FSA',
+        columns: cols,
+        rows: rows,
+      })
+    }
+
+    // ── Dynamic Title ──
+    const hasHsa = fsaHsaData.hsaDefinition?.length > 0 || fsaHsaData.hsaEmployerContributionRows?.length > 0
+    const hasFsa = fsaHsaData.fsaDefinition || fsaHsaData.fsaTypesRows?.length > 0
+    const hasTransit = fsaHsaData.transitFsaRows?.length > 0 || fsaHsaData.parkingFsaRows?.length > 0
+
+    let displayTitle = 'FSA and HSA'
+    if (hasHsa && !hasFsa && !hasTransit) displayTitle = 'Health Savings Account (HSA)'
+    else if (!hasHsa && hasFsa && !hasTransit) displayTitle = 'Flexible Spending Account (FSA)'
+    else if (!hasHsa && !hasFsa && hasTransit) displayTitle = 'Transit and Parking FSA'
+    else if (hasHsa && hasFsa) displayTitle = 'Health Savings Account (HSA) & Flexible Spending Account (FSA)'
+
+    chapters.push({
+      title: displayTitle,
+      description: 'HSA and FSA account options for tax-advantaged savings.',
+      category: 'fsa-hsa',
+      contentParagraphs: ['Understand your tax-advantaged savings account options.'],
+      sections,
+      tables: tables.length > 0 ? tables : undefined,
+    })
+  }
+
+  // ── Survivor Benefits Chapter ──
+  const survivorData = raw.survivor_benefits_chapter || {}
+  if (Object.keys(survivorData).length > 0) {
+    const sections: ExtractedChapterSection[] = []
+    const tables: any[] = []
+
+    // ── Intro ──
+    if (survivorData.introText) {
+      sections.push({ title: 'RS&H provides Basic Life and Accidental Death & Dismemberment Insurance (AD&D)', paragraphs: [survivorData.introText] })
+    }
+
+    // ── Coverage Amount ──
+    if (survivorData.coverageAmountBullets?.length > 0) {
+      sections.push({
+        title: 'Coverage amount',
+        paragraphs: survivorData.coverageAmountBullets,
+        isList: true
+      })
+    }
+
+    // ── Age Reduction Table ──
+    if (survivorData.ageReductionTable?.headers?.length > 0) {
+      const cols = survivorData.ageReductionTable.headers.map((h: string, i: number) => ({
+        key: `age-col-${i}`, label: h
+      }))
+      const rows = [{
+        label: 'The policy reduces by:',
+        cells: survivorData.ageReductionTable.values || []
+      }]
+      tables.push({
+        templateId: 'survivor-age-reduction',
+        tableTitle: 'At age:',
+        columns: cols,
+        rows: rows,
+      })
+    }
+
+    // ── AD&D Coverage ──
+    if (survivorData.adAndDDescription || survivorData.adAndDBullets?.length > 0) {
+      sections.push({
+        title: 'AD&D Coverage',
+        paragraphs: [survivorData.adAndDDescription, ...(survivorData.adAndDBullets || [])].filter(Boolean),
+        isList: true
+      })
+    }
+
+    // ── Other Voluntary Benefits ──
+    if (survivorData.voluntaryBenefitsDescription || survivorData.voluntaryBenefitsBullets?.length > 0) {
+      sections.push({
+        title: 'Other Voluntary benefits',
+        paragraphs: [survivorData.voluntaryBenefitsDescription, ...(survivorData.voluntaryBenefitsBullets || [])].filter(Boolean),
+        isList: true
+      })
+    }
+
+    // ── Beneficiary Note ──
+    if (survivorData.beneficiaryNote) {
+      sections.push({ title: 'Designating Beneficiaries', paragraphs: [survivorData.beneficiaryNote] })
+    }
+
+    chapters.push({
+      title: 'Survivor Benefits',
+      description: survivorData.introText?.slice(0, 200) || 'Basic Life and Accidental Death & Dismemberment (AD&D) insurance.',
+      category: 'life-insurance',
+      contentParagraphs: [survivorData.introText].filter(Boolean),
+      sections,
+      tables: tables.length > 0 ? tables : undefined,
+    })
+  }
+
+  // ── Supplemental Health Chapter ──
+  const suppHealthData = raw.supplemental_health_chapter || {}
+  if (Object.keys(suppHealthData).length > 0) {
+    const sections: ExtractedChapterSection[] = []
+    const tables: any[] = []
+
+    // ── Intro ──
+    if (suppHealthData.introParagraphs?.length > 0) {
+      sections.push({ title: 'What is Supplemental Health?', paragraphs: suppHealthData.introParagraphs })
+    }
+
+    // ── Critical Illness ──
+    if (suppHealthData.criticalIllnessCoverageBullets?.length > 0) {
+      sections.push({ title: 'Critical Illness Coverage', paragraphs: suppHealthData.criticalIllnessCoverageBullets, isList: true })
+    }
+    if (suppHealthData.coveredIllnessList?.length > 0) {
+      sections.push({ title: 'Covered illness include:', paragraphs: suppHealthData.coveredIllnessList, isList: true })
+    }
+    if (suppHealthData.paymentFrequencyBullets?.length > 0) {
+      sections.push({ title: 'Payment frequency', paragraphs: suppHealthData.paymentFrequencyBullets, isList: true })
+    }
+
+    // ── Critical Illness Cost Table ──
+    if (suppHealthData.criticalIllnessCostTable?.length > 0) {
+      const cols = [{ key: 'tier', label: 'Critical Illness and Cancer Insurance' }, { key: 'benefit', label: 'Benefit' }]
+      const rows = suppHealthData.criticalIllnessCostTable.map((r: any) => ({
+        label: r.tier || '—',
+        cells: [r.benefit || '—']
+      }))
+      tables.push({
+        templateId: 'critical-illness-costs',
+        tableTitle: 'Associate cost summary',
+        columns: cols,
+        rows: rows,
+      })
+    }
+
+    // ── Accident Coverage ──
+    if (suppHealthData.accidentCoverageBullets?.length > 0) {
+      sections.push({ title: 'Accident Coverage', paragraphs: suppHealthData.accidentCoverageBullets, isList: true })
+    }
+
+    // ── Accident Payout Table ──
+    if (suppHealthData.accidentPayoutTable?.length > 0) {
+      const cols = [{ key: 'service', label: 'Accident Insurance' }, { key: 'amount', label: 'Coverage Amount' }]
+      const rows = suppHealthData.accidentPayoutTable.map((r: any) => ({
+        label: r.service || '—',
+        cells: [r.amount || '—']
+      }))
+      tables.push({
+        templateId: 'accident-payouts',
+        tableTitle: 'Coverage Details',
+        columns: cols,
+        rows: rows,
+      })
+    }
+
+    // ── Accident Contribution Table ──
+    if (suppHealthData.accidentContributionsTable?.length > 0) {
+      const cols = [{ key: 'tier', label: 'Accident Insurance' }, { key: 'cost', label: 'Bi-weekly Associate Payroll Contributions' }]
+      const rows = suppHealthData.accidentContributionsTable.map((r: any) => ({
+        label: r.tier || '—',
+        cells: [r.cost || '—']
+      }))
+      tables.push({
+        templateId: 'accident-contributions',
+        tableTitle: 'Payroll Contributions',
+        columns: cols,
+        rows: rows,
+      })
+    }
+
+    // ── Additional Details ──
+    if (suppHealthData.additionalDetails?.length > 0) {
+      sections.push({ title: 'Notes & Disclaimers', paragraphs: suppHealthData.additionalDetails })
+    }
+
+    chapters.push({
+      title: 'Supplemental Health',
+      description: `Supplemental health benefits provided by ${suppHealthData.providerName || 'the carrier'}.`,
+      category: 'supplemental',
+      contentParagraphs: [suppHealthData.providerName ? `Provider: ${suppHealthData.providerName}` : ''].filter(Boolean),
+      sections,
+      tables: tables.length > 0 ? tables : undefined,
+    })
+  }
+
+  // ── Income Protection Chapter ──
+  const incomeData = raw.income_protection_chapter || {}
+  if (Object.keys(incomeData).length > 0) {
+    const sections: ExtractedChapterSection[] = []
+    const tables: any[] = []
+
+    // ── Intro ──
+    if (incomeData.introParagraphs?.length > 0) {
+      sections.push({ title: 'Overview', paragraphs: incomeData.introParagraphs })
+    }
+
+    // ── Short-Term Disability (STD) ──
+    if (incomeData.stdIntroBullets?.length > 0) {
+      sections.push({
+        title: incomeData.stdTitle || 'Short-Term Disability Insurance Core Plan',
+        paragraphs: incomeData.stdIntroBullets,
+        isList: true
+      })
+    }
+
+    // ── STD Table ──
+    if (incomeData.stdTableRows?.length > 0) {
+      const headers = incomeData.stdTableHeaders || ['Insurance Coverage', 'Short-Term Disability Core Plan', 'Short-Term Disability Buy-Up Plan*']
+      const cols = headers.map((h: string, i: number) => ({
+        key: `std-col-${i}`, label: h
+      }))
+      const rows = incomeData.stdTableRows.map((r: any) => ({
+        label: r.label || '—',
+        cells: [r.coreValue || '—', r.buyUpValue || '—']
+      }))
+      tables.push({
+        templateId: 'std-comparison',
+        tableTitle: 'Short-Term Disability Plans',
+        columns: cols,
+        rows: rows,
+      })
+    }
+    if (incomeData.stdFootnote) {
+      sections.push({ title: 'STD Notes', paragraphs: [incomeData.stdFootnote] })
+    }
+
+    // ── Long-Term Disability (LTD) ──
+    if (incomeData.ltdIntroBullets?.length > 0) {
+      sections.push({
+        title: incomeData.ltdTitle || 'Long-Term Disability Insurance',
+        paragraphs: incomeData.ltdIntroBullets,
+        isList: true
+      })
+    }
+
+    // ── LTD Table ──
+    if (incomeData.ltdTableRows?.length > 0) {
+      const headers = incomeData.ltdTableHeaders || ['Insurance Coverage', 'Long-Term Disability Plan']
+      const cols = headers.map((h: string, i: number) => ({
+        key: `ltd-col-${i}`, label: h
+      }))
+      const rows = incomeData.ltdTableRows.map((r: any) => ({
+        label: r.label || '—',
+        cells: [r.value || '—']
+      }))
+      tables.push({
+        templateId: 'ltd-details',
+        tableTitle: 'Long-Term Disability Plan',
+        columns: cols,
+        rows: rows,
+      })
+    }
+
+    // ── Additional Details ──
+    if (incomeData.additionalDetails?.length > 0) {
+      sections.push({ title: 'Notes & Disclaimers', paragraphs: incomeData.additionalDetails })
+    }
+
+    chapters.push({
+      title: 'Income Protection (Disability)',
+      description: 'Short-term and long-term disability insurance and income protection benefits.',
+      category: 'disability',
+      contentParagraphs: [incomeData.introParagraphs?.[0], 'Understand your disability insurance options.'].filter(Boolean),
+      sections,
+      tables: tables.length > 0 ? tables : undefined,
+    })
+  }
+
+  // ── Financial Wellbeing Chapter ──
+  const financialData = raw.financial_wellbeing_chapter || {}
+  if (Object.keys(financialData).length > 0) {
+    const sections: ExtractedChapterSection[] = []
+    const tables: any[] = []
+
+    // ── Fidelity Transition ──
+    if (financialData.fidelityTransitionBullets?.length > 0) {
+      sections.push({
+        title: financialData.fidelityTransitionTitle || 'Transitioning to Fidelity for 401(k)',
+        paragraphs: financialData.fidelityTransitionBullets,
+        isList: true
+      })
+    }
+
+    // ── Eligibility ──
+    if (financialData.eligibilityBullets?.length > 0) {
+      sections.push({ title: 'Eligibility', paragraphs: financialData.eligibilityBullets, isList: true })
+    }
+
+    // ── Enrollment & Contributions ──
+    if (financialData.autoEnrollmentBullets?.length > 0) {
+      sections.push({
+        title: 'Employee enrollment and contributions',
+        paragraphs: [financialData.enrollmentIntro, ...financialData.autoEnrollmentBullets].filter(Boolean),
+        isList: true
+      })
+    }
+
+    // ── Contribution Limits Table ──
+    if (financialData.contributionLimitsTable?.length > 0) {
+      const cols = [
+        { key: 'type', label: 'Contribution Type' },
+        { key: 'age', label: 'Age' },
+        { key: 'max', label: 'Annual Maximum Contribution' },
+        { key: 'match', label: 'Eligible for Company Match' },
+        { key: 'info', label: 'Information' }
+      ]
+      const rows = financialData.contributionLimitsTable.map((r: any) => ({
+        label: r.type || '—',
+        cells: [r.age || '—', r.maxContribution || '—', r.eligibleForMatch || '—', r.info || '—']
+      }))
+      tables.push({
+        templateId: '401k-contribution-limits',
+        tableTitle: 'Annual Contribution Limits',
+        columns: cols,
+        rows: rows,
+      })
+    }
+
+    // ── Company Matching ──
+    if (financialData.companyMatchingBullets?.length > 0) {
+      sections.push({
+        title: financialData.companyMatchingTitle || 'Company matching',
+        paragraphs: [...financialData.companyMatchingBullets, financialData.matchingExample].filter(Boolean),
+        isList: true
+      })
+    }
+
+    // ── Vesting Schedule ──
+    if (financialData.vestingIntroBullets?.length > 0) {
+      sections.push({ title: 'Vesting schedule', paragraphs: financialData.vestingIntroBullets, isList: true })
+    }
+    if (financialData.vestingScheduleTable?.length > 0) {
+      const cols = [{ key: 'years', label: 'Years of Service' }, { key: 'percent', label: 'Vesting Percentage' }]
+      const rows = financialData.vestingScheduleTable.map((r: any) => ({
+        label: r.years || '—',
+        cells: [r.percentage || '—']
+      }))
+      tables.push({
+        templateId: '401k-vesting-schedule',
+        tableTitle: 'Vesting Schedule',
+        columns: cols,
+        rows: rows,
+      })
+    }
+
+    // ── Account Types ──
+    if (financialData.preTaxAccountBullets?.length > 0) {
+      sections.push({ title: 'Pre-tax 401(k)', paragraphs: financialData.preTaxAccountBullets, isList: true })
+    }
+    if (financialData.rothAccountBullets?.length > 0) {
+      sections.push({ title: 'Roth 401(k)', paragraphs: financialData.rothAccountBullets, isList: true })
+    }
+
+    // ── Beneficiaries ──
+    if (financialData.beneficiariesBullets?.length > 0) {
+      sections.push({ title: 'Beneficiaries', paragraphs: financialData.beneficiariesBullets, isList: true })
+    }
+
+    // ── Additional Topics ──
+    if (financialData.loansInfo) sections.push({ title: 'Loans', paragraphs: [financialData.loansInfo] })
+    if (financialData.employeeOwnershipInfo) sections.push({ title: 'Employee Ownership', paragraphs: [financialData.employeeOwnershipInfo] })
+    if (financialData.investmentOpportunities) sections.push({ title: 'Opportunities for Investment', paragraphs: [financialData.investmentOpportunities] })
+    if (financialData.additionalDetails?.length > 0) {
+      sections.push({ title: 'Other Retirement Details', paragraphs: financialData.additionalDetails })
+    }
+
+    chapters.push({
+      title: 'Financial Wellbeing (401k)',
+      description: financialData.introParagraph?.slice(0, 160) || 'Retirement savings and financial wellbeing benefits.',
+      category: 'retirement',
+      contentParagraphs: [financialData.introParagraph].filter(Boolean),
+      sections,
+      tables: tables.length > 0 ? tables : undefined,
+    })
+  }
+
+  // ── Paid Time Off (PTO) Chapter ──
+  const ptoData = raw.paid_time_off_chapter || {}
+  if (Object.keys(ptoData).length > 0) {
+    const sections: ExtractedChapterSection[] = []
+    const tables: any[] = []
+
+    // ── Holidays ──
+    if (ptoData.observedHolidays?.length > 0) {
+      sections.push({
+        title: 'Holidays',
+        paragraphs: [ptoData.holidayIntro, ...ptoData.observedHolidays].filter(Boolean),
+        isList: true
+      })
+    }
+    if (ptoData.floatingHolidayDescription) {
+      sections.push({ title: 'Floating Holiday', paragraphs: [ptoData.floatingHolidayDescription] })
+    }
+    if (ptoData.religiousHolidaysDescription) {
+      sections.push({ title: 'Religious Holidays', paragraphs: [ptoData.religiousHolidaysDescription] })
+    }
+
+    // ── Time Away (Vacation) ──
+    if (ptoData.vacationIntro) {
+      sections.push({ title: 'Time Away', paragraphs: [ptoData.vacationIntro] })
+    }
+
+    // ── Vacation Accrual Table ──
+    if (ptoData.vacationAccrualTable?.length > 0) {
+      const cols = [{ key: 'years', label: 'Years of Service' }, { key: 'entitlement', label: 'Vacation Entitlement' }]
+      const rows = ptoData.vacationAccrualTable.map((r: any) => ({
+        label: r.yearsOfService || '—',
+        cells: [r.entitlement || '—']
+      }))
+      tables.push({
+        templateId: 'vacation-accrual',
+        tableTitle: 'Vacation Schedule',
+        columns: cols,
+        rows: rows,
+      })
+    }
+
+    if (ptoData.accrualExplanationBullets?.length > 0) {
+      sections.push({ title: 'Accrual Logic', paragraphs: ptoData.accrualExplanationBullets, isList: true })
+    }
+
+    // ── Additional Leave ──
+    if (ptoData.personalLeaveDescription) {
+      sections.push({ title: 'Personal Leave (PL)', paragraphs: [ptoData.personalLeaveDescription] })
+    }
+    if (ptoData.leaveBankDescription) {
+      sections.push({ title: 'Leave Bank (LB)', paragraphs: [ptoData.leaveBankDescription] })
+    }
+    if (ptoData.paidParentalLeaveDescription || ptoData.paidParentalLeaveSpecifics?.length > 0) {
+      sections.push({
+        title: 'Paid Parental Leave (PPL)',
+        paragraphs: [ptoData.paidParentalLeaveDescription, ...(ptoData.paidParentalLeaveSpecifics || [])].filter(Boolean),
+        isList: true
+      })
+    }
+    if (ptoData.bereavementLeaveDescription) {
+      sections.push({ title: 'Bereavement Leave', paragraphs: [ptoData.bereavementLeaveDescription] })
+    }
+    if (ptoData.juryDutyDescription) {
+      sections.push({ title: 'Jury Duty', paragraphs: [ptoData.juryDutyDescription] })
+    }
+
+    if (ptoData.additionalDetails?.length > 0) {
+      sections.push({ title: 'Other PTO Details', paragraphs: ptoData.additionalDetails })
+    }
+
+    chapters.push({
+      title: 'Paid Time Off and Other Benefits',
+      description: ptoData.holidayIntro?.slice(0, 160) || 'Observed holidays, vacation allowance, and additional leave policies.',
+      category: 'pto',
+      contentParagraphs: [ptoData.holidayIntro].filter(Boolean),
+      sections,
+      tables: tables.length > 0 ? tables : undefined,
+    })
+  }
+
+  // ── Voluntary Benefits Chapter ──
+  const voluntaryData = raw.voluntary_benefits_chapter || {}
+  if (voluntaryData.benefits?.length > 0) {
+    const tabs: any[] = voluntaryData.benefits.map((b: any) => ({
+      title: b.tabTitle || b.title || 'Benefit',
+      contentParagraphs: [
+        b.about,
+        b.howItWorks ? `**How it works**\n${b.howItWorks}` : null,
+        b.providerName ? `Provider: ${b.providerName}` : null,
+        ...(b.coverageDetails || [])
+      ].filter(Boolean),
+      link: b.quoteLink,
+      linkLabel: b.quoteLink ? 'Get a Quote' : undefined
+    }))
+
+    chapters.push({
+      title: voluntaryData.introTitle || 'Additional Voluntary Benefits',
+      description: voluntaryData.introDescription || 'Optional benefits including pet, auto, home, and legal insurance.',
+      category: 'voluntary-benefits',
+      contentParagraphs: [voluntaryData.introDescription].filter(Boolean),
+      tabs
     })
   }
 
@@ -848,14 +1736,20 @@ function assembleExtractedData(
   for (const dc of dynamicChapters) {
     if (!dc.title) continue
 
-    // Deduplication: Skip if this is a Vision or Dental chapter and we already captured it via template
+    // Deduplication: Skip if this is a templated chapter we already captured
     const titleLower = dc.title.toLowerCase()
-    if (titleLower.includes('vision') && capturedVisionPlanNames.size > 0) {
-      console.log(`[benefits-import] Skipping dynamic Vision chapter "${dc.title}" - already captured by template.`)
+    const templatedTitles = [
+      'overview', 'eligibility', 'medical', 'dental', 'vision', 'eap', 'fsa', 'hsa',
+      'life', 'disability', 'wellbeing', 'paid time off', 'voluntary'
+    ]
+    if (templatedTitles.some(t => titleLower.includes(t))) {
+      console.log(`[benefits-import] Skipping dynamic chapter duplicate: "${dc.title}"`)
       continue
     }
-    if (titleLower.includes('dental') && capturedDentalPlanNames.size > 0) {
-      console.log(`[benefits-import] Skipping dynamic Dental chapter "${dc.title}" - already captured by template.`)
+
+    // Also skip if it's a specific vision/dental plan name that was already captured
+    if (capturedVisionPlanNames.has(titleLower) || capturedDentalPlanNames.has(titleLower)) {
+      console.log(`[benefits-import] Skipping dynamic chapter "${dc.title}" - plan name already captured by template.`)
       continue
     }
 
@@ -894,6 +1788,87 @@ function assembleExtractedData(
     })
   }
 
+  // ── Custom Template Chapters ──
+  if (customTemplates?.length) {
+    for (const tmpl of customTemplates) {
+      const propKey = customTemplatePropertyKey(tmpl.templateId)
+      const chapterData = raw[propKey]
+      if (!chapterData || typeof chapterData !== 'object' || Object.keys(chapterData).length === 0) continue
+
+      const hasAnyValue = Object.values(chapterData).some((v: any) => {
+        if (!v) return false
+        if (typeof v === 'string') return v.trim().length > 0
+        if (Array.isArray(v)) return v.length > 0
+        if (typeof v === 'object') return Object.keys(v).length > 0
+        return false
+      })
+      if (!hasAnyValue) continue
+
+      const contentParagraphs: string[] = []
+      const sections: ExtractedChapterSection[] = []
+      const tables: ExtractedBenefitsData['chapters'][0]['tables'] = []
+
+      for (const field of tmpl.fields) {
+        const safeName = field.fieldName.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()
+        const value = chapterData[safeName]
+        if (!value) continue
+
+        switch (field.fieldType) {
+          case 'text':
+            if (typeof value === 'string' && value.trim()) {
+              contentParagraphs.push(value)
+            }
+            break
+
+          case 'paragraphs':
+            if (Array.isArray(value) && value.length > 0) {
+              sections.push({
+                title: field.fieldName.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
+                paragraphs: value.filter((p: any) => typeof p === 'string' && p.trim()),
+                isList: true,
+              })
+            }
+            break
+
+          case 'table': {
+            const tableObj = value as Record<string, any>
+            const rawRows = Array.isArray(tableObj.rows) ? tableObj.rows : []
+            const columns = (field.tableColumns || []).slice(1).map((col: string, i: number) => ({
+              key: `col-${i}`,
+              label: col,
+            }))
+
+            const rows = rawRows.map((r: any) => ({
+              label: r.label || '',
+              cells: (Array.isArray(r.cells) ? r.cells : []).map((c: string) => c || '—'),
+            }))
+
+            if (rows.length > 0) {
+              tables.push({
+                templateId: `custom-${tmpl.templateId}`,
+                tableTitle: tableObj.tableTitle || field.fieldName.replace(/_/g, ' '),
+                columns: columns.length > 0 ? columns : [{ key: 'col-0', label: 'Value' }],
+                rows,
+              })
+            }
+            break
+          }
+        }
+      }
+
+      chapters.push({
+        title: tmpl.displayName,
+        description: tmpl.description.slice(0, 200),
+        category: tmpl.category || 'other',
+        contentParagraphs: contentParagraphs.length > 0 ? contentParagraphs : [tmpl.description],
+        sections: sections.length > 0 ? sections : undefined,
+        tables: tables.length > 0 ? tables : undefined,
+      })
+
+      console.log(`[benefits-import] Assembled custom chapter: "${tmpl.displayName}"`)
+    }
+  }
+
   console.log(
     `[benefits-import] Assembled: "${companyName}" with ${chapters.length} chapters. ` +
     `Chapters: ${chapters.map(c => c.title).join(', ')}`
@@ -929,7 +1904,7 @@ async function pollForResults(
 
   for (; ;) {
     const statusUrl = `${LLAMA_API_BASE}/api/v1/extraction/jobs/${jobId}`
-    const statusRes = await fetch(statusUrl, {
+    const statusRes = await fetchWithRetry(statusUrl, {
       headers: { Authorization: `Bearer ${apiKey}` },
     })
     if (!statusRes.ok) {
@@ -995,7 +1970,7 @@ async function fetchJobResults(
   apiKey: string
 ): Promise<Record<string, unknown>> {
   const resultUrl = `${LLAMA_API_BASE}/api/v1/extraction/jobs/${jobId}/result`
-  const resultRes = await fetch(resultUrl, {
+  const resultRes = await fetchWithRetry(resultUrl, {
     headers: { Authorization: `Bearer ${apiKey}` },
   })
 

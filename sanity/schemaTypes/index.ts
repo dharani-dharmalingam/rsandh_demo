@@ -8,6 +8,7 @@ import benefitsPage from './benefitsPage'
 import enrollmentChecklist from './enrollmentChecklist'
 import retirementPlanning from './retirementPlanning'
 import siteSettings from './siteSettings'
+import customChapterTemplate from './customChapterTemplate'
 
 export const schemaTypes = [
   client,
@@ -19,6 +20,7 @@ export const schemaTypes = [
   benefitsPage,
   enrollmentChecklist,
   retirementPlanning,
-  siteSettings
+  siteSettings,
+  customChapterTemplate,
 ]
 

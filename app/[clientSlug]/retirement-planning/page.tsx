@@ -5,6 +5,7 @@ import { sanityFetch } from '@/sanity/lib/live';
 import { client } from '@/sanity/lib/client';
 import { retirementPlanningQuery, siteSettingsQuery } from '@/sanity/lib/queries';
 import { Metadata } from 'next';
+import { PortableText } from '@/components/portable-text';
 
 export async function generateStaticParams() {
   const clients = await client.fetch<{ slug: string }[]>(
@@ -26,12 +27,12 @@ type RetirementFeature = {
 type RetirementSection = {
   _key: string;
   title: string;
-  content: string;
+  content: any;
 };
 
 type RetirementPageData = {
   heroTitle: string;
-  heroDescription: string;
+  heroDescription: any;
   featuresTitle: string;
   features: RetirementFeature[];
   planningTitle: string;
@@ -89,10 +90,13 @@ export default async function RetirementPlanningPage({ params }: Props) {
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
               {typedData?.heroTitle || 'Retirement Planning'}
             </h1>
-            <p className="text-lg text-slate-600 mb-4">
-              {typedData?.heroDescription ||
-                `Plan your future with confidence. ${clientName} offers comprehensive retirement benefits and planning resources to help you achieve your long-term financial goals.`}
-            </p>
+            <div className="text-lg text-slate-600 mb-4">
+              {typedData?.heroDescription ? (
+                <PortableText value={typedData.heroDescription} />
+              ) : (
+                `Plan your future with confidence. ${clientName} offers comprehensive retirement benefits and planning resources to help you achieve your long-term financial goals.`
+              )}
+            </div>
           </div>
           <div className="h-96 rounded-xl bg-slate-200 flex items-center justify-center text-slate-400">
             <div className="text-center">
@@ -168,7 +172,9 @@ export default async function RetirementPlanningPage({ params }: Props) {
               {sections.map((section) => (
                 <div key={section._key}>
                   <h3 className="font-semibold text-slate-900 mb-2">{section.title}</h3>
-                  <p>{section.content}</p>
+                  <div className="prose-sm">
+                    <PortableText value={section.content} />
+                  </div>
                 </div>
               ))}
             </div>

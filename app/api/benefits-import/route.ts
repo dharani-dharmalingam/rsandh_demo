@@ -1,21 +1,25 @@
 /**
- * Server-side API: PDF upload → LlamaParse extract → transform → Sanity seed.
- * POST with multipart/form-data: file (PDF), clientSlug (string), logo (optional image).
+ * Server-side API: Phase 1 — PDF upload → LlamaExtract plan detection → return for review.
+ * POST with multipart/form-data: file (PDF) or fileAssetId, clientSlug, logo (optional).
+ *
+ * Returns detected plans, chapters, company name, and asset IDs for Phase 2.
  */
 
 import { NextResponse } from 'next/server'
 import { createClient } from '@sanity/client'
-import { extractBenefitsGuide } from '@/lib/benefits-import/extract'
-import { transformToSanitySchema } from '@/lib/benefits-import/transform'
-import { seedClientSite } from '@/lib/seedClient'
+import { detectPlans, fetchWithRetry } from '@/lib/benefits-import/extract'
 import { projectId, dataset, apiVersion } from '@/sanity/env'
 
-export const maxDuration = 300
+export const maxDuration = 900 // Increase max duration for long extractions
 
 export async function POST(request: Request) {
+  const startTime = Date.now()
   try {
     const apiKey = process.env.LLAMA_CLOUD_API_KEY
     const token = process.env.SANITY_WRITE_TOKEN || process.env.SANITY_API_TOKEN
+
+    console.log(`[benefits-import] POST /api/benefits-import started at ${new Date().toISOString()}`)
+
     if (!apiKey) {
       console.error('[benefits-import] Error: LLAMA_CLOUD_API_KEY is missing.')
       return NextResponse.json(
@@ -26,7 +30,7 @@ export async function POST(request: Request) {
     if (!token) {
       console.error('[benefits-import] Error: SANITY_WRITE_TOKEN (or SANITY_API_TOKEN) is missing.')
       return NextResponse.json(
-        { error: 'SANITY_WRITE_TOKEN or SANITY_API_TOKEN is required for seeding clients.' },
+        { error: 'SANITY_WRITE_TOKEN or SANITY_API_TOKEN is required.' },
         { status: 500 }
       )
     }
@@ -38,6 +42,8 @@ export async function POST(request: Request) {
     const logoFile = formData.get('logo') as File | null
     const logoAssetId = formData.get('logoAssetId') as string | null
 
+    console.log(`[benefits-import] Headers: clientSlug=${clientSlug}, filePresent=${!!file}, fileAssetId=${fileAssetId}`)
+
     if ((!file && !fileAssetId) || !clientSlug) {
       return NextResponse.json(
         { error: 'Missing required fields: file (or fileAssetId) and clientSlug' },
@@ -45,7 +51,6 @@ export async function POST(request: Request) {
       )
     }
 
-    // Create a Sanity client for asset operations
     const sanityClient = createClient({
       projectId,
       dataset,
@@ -58,40 +63,71 @@ export async function POST(request: Request) {
     let benefitsGuideAssetRef = fileAssetId || undefined
 
     if (file) {
-      // Flow A: Raw file upload (limited by Vercel 4.5MB)
+      console.log(`[benefits-import] Processing uploaded file: ${file.name} (${Math.round(file.size / 1024)}KB)`)
       buffer = Buffer.from(await file.arrayBuffer())
 
       if (!benefitsGuideAssetRef) {
         console.log(`[benefits-import] Uploading raw PDF to Sanity...`)
         try {
+          // Keep using sanityClient for upload as it's a multipart upload
           const pdfAsset = await sanityClient.assets.upload('file', buffer, {
             filename: `${clientSlug}-benefits-guide.pdf`,
             contentType: 'application/pdf',
           })
           benefitsGuideAssetRef = pdfAsset._id
-          console.log(`[benefits-import] PDF uploaded: ${pdfAsset._id}`)
+          console.log(`[benefits-import] PDF uploaded to Sanity: ${pdfAsset._id}`)
         } catch (uploadErr) {
           console.warn('[benefits-import] PDF asset upload failed:', uploadErr)
         }
       }
     } else if (fileAssetId) {
-      // Flow B: Asset ID provided (bypasses Vercel 4.5MB limit)
-      console.log(`[benefits-import] Fetching PDF from Sanity asset: ${fileAssetId}`)
-      const asset = await sanityClient.getDocument(fileAssetId)
-      if (!asset || !('url' in asset)) {
-        throw new Error(`Could not find asset or URL for ID: ${fileAssetId}`)
+      console.log(`[benefits-import] Fetching PDF from Sanity asset ID: ${fileAssetId}`)
+
+      // Instead of getDocument(), use direct fetch for more control and retry support
+      const metadataUrl = `https://${projectId}.api.sanity.io/v${apiVersion}/data/doc/${dataset}/${fileAssetId}`
+      console.log(`[benefits-import] Fetching metadata from: ${metadataUrl}`)
+
+      const metaRes = await fetchWithRetry(metadataUrl, {
+        method: 'GET',
+        headers: { Authorization: `Bearer ${token}` },
+        timeout: 30000,
+      })
+
+      if (!metaRes.ok) {
+        const errText = await metaRes.text()
+        throw new Error(`Failed to fetch asset metadata from Sanity: ${metaRes.status} ${errText}`)
       }
-      const response = await fetch(asset.url as string)
-      if (!response.ok) throw new Error(`Failed to fetch PDF from Sanity CDN: ${response.statusText}`)
+
+      const metaData = await metaRes.json()
+      const asset = metaData.documents && metaData.documents[0]
+
+      if (!asset || !asset.url) {
+        console.error('[benefits-import] Full Metadata Response:', JSON.stringify(metaData))
+        throw new Error(`Could not find URL for asset ID: ${fileAssetId}. Response but no asset.`)
+      }
+
+      console.log(`[benefits-import] Asset found! URL: ${asset.url}. Downloading PDF...`)
+
+      // Use our retry-capable fetch for the PDF download
+      const response = await fetchWithRetry(asset.url as string, {
+        method: 'GET',
+        timeout: 120000, // 2 minutes for actual file download
+      })
+
+      if (!response.ok) {
+        throw new Error(`Failed to download PDF from Sanity CDN: ${response.status} ${response.statusText}`)
+      }
+
       buffer = Buffer.from(await response.arrayBuffer())
+      console.log(`[benefits-import] PDF successfully fetched. Size: ${Math.round(buffer.length / 1024)}KB`)
     } else {
       throw new Error('No PDF content provided')
     }
 
-    // ── Upload logo if provided as file and not already as asset ──
+    // Upload logo if provided as file
     let logoAssetRef = logoAssetId || undefined
     if (logoFile && !logoAssetRef) {
-      console.log(`[benefits-import] Uploading logo as Sanity image asset...`)
+      console.log(`[benefits-import] Processing logo: ${logoFile.name}`)
       try {
         const logoBuffer = Buffer.from(await logoFile.arrayBuffer())
         const logoAsset = await sanityClient.assets.upload('image', logoBuffer, {
@@ -99,50 +135,31 @@ export async function POST(request: Request) {
           contentType: logoFile.type,
         })
         logoAssetRef = logoAsset._id
-        console.log(`[benefits-import] Logo uploaded: ${logoAsset._id}`)
+        console.log(`[benefits-import] Logo uploaded to Sanity: ${logoAsset._id}`)
       } catch (uploadErr) {
         console.warn('[benefits-import] Logo upload failed:', uploadErr)
       }
     }
 
-    console.log(`[benefits-import] Starting LlamaParse extraction for client: ${clientSlug}...`)
-    const extractedData = await extractBenefitsGuide(buffer, { apiKey })
-    console.log(`[benefits-import] Extraction complete. Received ${Object.keys(extractedData || {}).length} data points.`)
+    // ── Phase 1: Detect Plans ──
+    const detectionStart = Date.now()
+    console.log(`[benefits-import] Phase 1: Calling detectPlans for client: ${clientSlug}... (PDF: ${Math.round(buffer.length / 1024)}KB)`)
+    const phase1Result = await detectPlans(buffer, { apiKey })
 
-    console.log(`[benefits-import] Transforming extracted data for client: ${clientSlug}...`)
-    const payload = await transformToSanitySchema(extractedData, clientSlug)
-    console.log(`[benefits-import] Transformation complete.`)
-
-    // ── Attach asset references to the payload ──
-    if (logoAssetRef) {
-      (payload.siteSettings as any).clientLogo = {
-        _type: 'image',
-        asset: { _type: 'reference', _ref: logoAssetRef },
-      }
-    }
-    if (benefitsGuideAssetRef) {
-      (payload.openEnrollment as any).benefitsGuide = {
-        _type: 'file',
-        asset: { _type: 'reference', _ref: benefitsGuideAssetRef },
-      }
-    }
-
-    console.log(`[benefits-import] Seeding to Sanity for client: ${clientSlug}...`)
-    const { created } = await seedClientSite(payload, {
-      projectId,
-      dataset,
-      apiVersion,
-      token,
-    })
-    console.log(`[benefits-import] Seeding complete. Created ${created?.length || 0} documents.`)
+    const totalDuration = ((Date.now() - startTime) / 1000).toFixed(1)
+    const detectionDuration = ((Date.now() - detectionStart) / 1000).toFixed(1)
+    console.log(`[benefits-import] Phase 1 detection took ${detectionDuration}s. Total time: ${totalDuration}s.`)
 
     return NextResponse.json({
       success: true,
-      message: `Site content generated for client "${clientSlug}".`,
-      created,
+      phase: 1,
+      ...phase1Result,
+      fileAssetId: benefitsGuideAssetRef,
+      logoAssetId: logoAssetRef,
+      clientSlug,
     })
   } catch (err) {
-    const message = err instanceof Error ? err.message : 'Import failed'
+    const message = err instanceof Error ? err.message : 'Phase 1 detection failed'
     console.error('[benefits-import]', err)
     return NextResponse.json({ error: message }, { status: 500 })
   }
