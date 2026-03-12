@@ -2,7 +2,6 @@ import Link from 'next/link';
 
 interface FooterProps {
   clientName?: string;
-  clientSlug?: string;
   about?: string;
   quickLinks?: { label: string; href: string }[];
   contactInfo?: { label: string; value: string; href?: string }[];
@@ -13,7 +12,6 @@ interface FooterProps {
 
 export function Footer({
   clientName,
-  clientSlug,
   about,
   quickLinks,
   contactInfo,
@@ -34,7 +32,6 @@ export function Footer({
     { label: 'HR Portal', value: `portal.${displayClientName.toLowerCase().replace(/\s+/g, '')}.com`, href: '#' },
   ];
 
-  // Show only the first 3 contacts in the footer
   const MAX_FOOTER_CONTACTS = 2;
   const displayedContacts = allContacts.slice(0, MAX_FOOTER_CONTACTS);
   const hasMoreContacts = allContacts.length > MAX_FOOTER_CONTACTS;
@@ -87,9 +84,9 @@ export function Footer({
                   </div>
                 ))}
               </div>
-              {hasMoreContacts && clientSlug && (
+              {hasMoreContacts && (
                 <Link
-                  href={`/${clientSlug}/contacts`}
+                  href="/contacts"
                   className="inline-block text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors mt-2"
                 >
                   View all contacts →
@@ -109,4 +106,3 @@ export function Footer({
     </footer>
   );
 }
-

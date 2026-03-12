@@ -575,7 +575,7 @@ async function callLlamaExtract(
       data_schema: schema,
       config: {
         extraction_target: 'PER_DOC',
-        extraction_mode: 'BALANCED',
+        extraction_mode: 'FAST',
       },
       file: {
         data: base64File,

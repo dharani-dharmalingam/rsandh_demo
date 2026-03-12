@@ -1,25 +1,20 @@
 import Link from 'next/link';
-import { urlFor } from '@/sanity/lib/image';
 import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
 
-interface SanityBenefitChapter {
+interface BenefitChapter {
   _id: string;
   title: string;
   description?: string;
   slug: string;
   icon?: string;
-  image?: any;
+  image?: string;
 }
 
 interface BenefitCardProps {
-  chapter: SanityBenefitChapter;
-  clientSlug?: string;
+  chapter: BenefitChapter;
 }
 
-/**
- * Map icon names (set from benefit category during import) to fallback images.
- */
 const ICON_TO_IMAGE: Record<string, string> = {
   'heart': '/images/benefits/medical.png',
   'shield': '/images/benefits/medical.png',
@@ -39,9 +34,6 @@ const ICON_TO_IMAGE: Record<string, string> = {
   'file-text': '/images/benefits/overview.png',
 };
 
-/**
- * Fallback: match on title keywords when icon is missing.
- */
 const TITLE_KEYWORDS: [RegExp, string][] = [
   [/medical|health|hdhp|hmo|ppo|bcbs/i, '/images/benefits/medical.png'],
   [/dental/i, '/images/benefits/dental.png'],
@@ -67,14 +59,8 @@ function getFallbackImage(icon?: string, title?: string): string {
   return '/images/benefits/overview.png';
 }
 
-export function BenefitCard({ chapter, clientSlug }: BenefitCardProps) {
-  const sanityImageUrl = chapter.image
-    ? urlFor(chapter.image).width(400).height(300).url()
-    : null;
-  const imageUrl = sanityImageUrl || getFallbackImage(chapter.icon, chapter.title);
-  const linkHref = clientSlug
-    ? `/${clientSlug}/benefits/${chapter.slug}`
-    : `/benefits/${chapter.slug}`;
+export function BenefitCard({ chapter }: BenefitCardProps) {
+  const imageUrl = chapter.image || getFallbackImage(chapter.icon, chapter.title);
 
   return (
     <div className="group overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition-shadow">
@@ -93,7 +79,7 @@ export function BenefitCard({ chapter, clientSlug }: BenefitCardProps) {
         <h3 className="text-lg font-semibold text-slate-900 mb-2">{chapter.title}</h3>
         <p className="text-sm text-slate-600 mb-4 line-clamp-2">{chapter.description}</p>
 
-        <Link href={linkHref}>
+        <Link href={`/benefits/${chapter.slug}`}>
           <Button variant="outline" size="sm" className="w-full bg-transparent">
             Learn More <ChevronRight className="ml-2 h-4 w-4" />
           </Button>
@@ -102,4 +88,3 @@ export function BenefitCard({ chapter, clientSlug }: BenefitCardProps) {
     </div>
   );
 }
-

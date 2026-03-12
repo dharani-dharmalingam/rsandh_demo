@@ -11,10 +11,6 @@ export const metadata: Metadata = {
     description: 'Comprehensive benefits information and enrollment',
 }
 
-import { SanityLive } from '@/sanity/lib/live'
-import { VisualEditing } from 'next-sanity/visual-editing'
-import { draftMode } from 'next/headers'
-
 export default async function RootLayout({
     children,
 }: Readonly<{
@@ -24,9 +20,6 @@ export default async function RootLayout({
         <html lang="en">
             <body className="font-sans antialiased bg-white">
                 {children}
-                <SanityLive />
-                {/* @ts-ignore */}
-                {(await draftMode()).isEnabled && <VisualEditing studioUrl="/sanity" />}
             </body>
         </html>
     )

@@ -6,18 +6,16 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Search, X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
-import { urlFor } from '@/sanity/lib/image';
 
 interface HeaderProps {
   logoText?: string;
   clientName?: string;
   shortName?: string;
-  clientLogo?: any;
-  clientSlug?: string;
+  clientLogo?: string;
   chapters?: any[];
 }
 
-export function Header({ logoText, clientName, shortName, clientLogo, clientSlug, chapters = [] }: HeaderProps) {
+export function Header({ logoText, clientName, shortName, clientLogo, chapters = [] }: HeaderProps) {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<any[]>([]);
@@ -26,11 +24,7 @@ export function Header({ logoText, clientName, shortName, clientLogo, clientSlug
 
   const displayShortName = shortName || 'RS';
   const displayLogoText = logoText || `${clientName || 'RS&H'} Benefits`;
-  const homeLink = clientSlug ? `/${clientSlug}` : '/';
 
-  const logoUrl = clientLogo ? urlFor(clientLogo).url() : null;
-
-  // Handle click outside to close search results
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
@@ -41,7 +35,6 @@ export function Header({ logoText, clientName, shortName, clientLogo, clientSlug
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Filter chapters based on search query
   useEffect(() => {
     if (searchQuery.trim().length > 1) {
       const filtered = chapters.filter(ch =>
@@ -59,7 +52,7 @@ export function Header({ logoText, clientName, shortName, clientLogo, clientSlug
   const handleSelectResult = (slug: string) => {
     setSearchQuery('');
     setIsSearchOpen(false);
-    router.push(`/${clientSlug}/benefits/${slug}`);
+    router.push(`/benefits/${slug}`);
   };
 
   return (
@@ -67,7 +60,7 @@ export function Header({ logoText, clientName, shortName, clientLogo, clientSlug
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Left Side - Text Only */}
-          <Link href={homeLink} className="flex items-center gap-2 flex-shrink-0">
+          <Link href="/" className="flex items-center gap-2 flex-shrink-0">
             <span className="text-sm font-semibold text-slate-900 truncate max-w-[150px] sm:max-w-none">
               {displayLogoText}
             </span>
@@ -120,17 +113,17 @@ export function Header({ logoText, clientName, shortName, clientLogo, clientSlug
 
             {isSearchOpen && searchQuery.length > 1 && searchResults.length === 0 && (
               <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-slate-200 rounded-lg shadow-lg p-4 text-center text-sm text-slate-500 z-50">
-                No benefits found matching "{searchQuery}"
+                No benefits found matching &quot;{searchQuery}&quot;
               </div>
             )}
           </div>
 
           {/* Right Side - Logo Only */}
-          <Link href={homeLink} className="flex items-center gap-2 flex-shrink-0">
+          <Link href="/" className="flex items-center gap-2 flex-shrink-0">
             <div className="h-10 w-10 relative flex items-center justify-center">
-              {logoUrl ? (
+              {clientLogo ? (
                 <Image
-                  src={logoUrl}
+                  src={clientLogo}
                   alt={clientName || 'Client Logo'}
                   fill
                   className="object-contain"
