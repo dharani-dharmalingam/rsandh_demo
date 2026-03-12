@@ -21,6 +21,8 @@ export function proxy(request: NextRequest) {
   const host = request.headers.get("host") ?? "";
   const { pathname, searchParams } = request.nextUrl;
 
+  // Multi-tenant: employer from subdomain (e.g. rs-h.benefits.acolyteai.com), ?employer=, or env default.
+  // x-employer-slug is passed to all routes including /admin so client-specific admin loads correct content.
   const subdomain = extractSubdomain(host);
   const employerSlug =
     subdomain ??

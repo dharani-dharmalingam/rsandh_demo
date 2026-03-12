@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
@@ -9,6 +9,7 @@ import { Lock } from 'lucide-react';
 
 export default function AdminLoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [token, setToken] = useState('');
   const [error, setError] = useState('');
 
@@ -19,7 +20,9 @@ export default function AdminLoginPage() {
       return;
     }
     document.cookie = `admin_token=${token}; path=/; samesite=strict`;
-    router.push('/admin');
+    const employer = searchParams.get('employer');
+    const next = employer ? `/admin?employer=${employer}&token=${token}` : '/admin';
+    router.push(next);
   };
 
   return (

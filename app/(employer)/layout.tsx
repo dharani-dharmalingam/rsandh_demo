@@ -1,5 +1,6 @@
 import React from "react"
 import type { Metadata } from 'next'
+import { cookies } from 'next/headers'
 import { Geist, Geist_Mono } from 'next/font/google'
 
 import '../globals.css'
@@ -39,6 +40,8 @@ export default async function EmployerLayout({
   const content = await getPublishedContent(slug)
   const settings = content.siteSettings
   const chapters = content.benefitChapters
+  const cookieStore = await cookies()
+  const adminToken = cookieStore.get('admin_token')
 
   return (
     <>
@@ -48,6 +51,7 @@ export default async function EmployerLayout({
         shortName={settings?.shortName}
         clientLogo={settings?.clientLogo}
         chapters={chapters}
+        adminHref={adminToken?.value ? `/admin?employer=${encodeURIComponent(slug)}` : undefined}
       />
       <main className="min-h-screen">
         {children}

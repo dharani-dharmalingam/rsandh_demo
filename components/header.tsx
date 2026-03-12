@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { Search, X } from 'lucide-react';
+import { Search, X, Settings } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 
 interface HeaderProps {
@@ -13,9 +13,11 @@ interface HeaderProps {
   shortName?: string;
   clientLogo?: string;
   chapters?: any[];
+  /** When set, show an "Admin" link to this URL (current client's admin). */
+  adminHref?: string;
 }
 
-export function Header({ logoText, clientName, shortName, clientLogo, chapters = [] }: HeaderProps) {
+export function Header({ logoText, clientName, shortName, clientLogo, chapters = [], adminHref }: HeaderProps) {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<any[]>([]);
@@ -118,24 +120,35 @@ export function Header({ logoText, clientName, shortName, clientLogo, chapters =
             )}
           </div>
 
-          {/* Right Side - Logo Only */}
-          <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-            <div className="h-10 w-10 relative flex items-center justify-center">
-              {clientLogo ? (
-                <Image
-                  src={clientLogo}
-                  alt={clientName || 'Client Logo'}
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              ) : (
-                <div className="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">{displayShortName.substring(0, 2)}</span>
-                </div>
-              )}
-            </div>
-          </Link>
+          {/* Right Side - Admin link (when token present) + Logo */}
+          <div className="flex items-center gap-3 flex-shrink-0">
+            {adminHref && (
+              <Link
+                href={adminHref}
+                className="flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-slate-900"
+              >
+                <Settings className="h-4 w-4" />
+                Admin
+              </Link>
+            )}
+            <Link href="/" className="flex items-center gap-2">
+              <div className="h-10 w-10 relative flex items-center justify-center">
+                {clientLogo ? (
+                  <Image
+                    src={clientLogo}
+                    alt={clientName || 'Client Logo'}
+                    fill
+                    className="object-contain"
+                    priority
+                  />
+                ) : (
+                  <div className="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center">
+                    <span className="text-white font-bold text-sm">{displayShortName.substring(0, 2)}</span>
+                  </div>
+                )}
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </header>

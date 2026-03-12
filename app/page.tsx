@@ -262,6 +262,7 @@ function DirectoryPage() {
   const getClientIcon = (slug: string) => {
     if (slug === 'abc-corp') return Building2;
     if (slug === 'rs-h') return Building;
+    if (slug === 'premier-america') return Globe;
     if (slug === 'global-tech') return Globe;
     return LayoutGrid;
   };
@@ -269,6 +270,7 @@ function DirectoryPage() {
   const getClientTheme = (slug: string) => {
     const themes: Record<string, { bg: string; hover: string }> = {
       'rs-h': { bg: 'bg-blue-600', hover: 'hover:bg-blue-700' },
+      'premier-america': { bg: 'bg-emerald-600', hover: 'hover:bg-emerald-700' },
       'abc-corp': { bg: 'bg-emerald-600', hover: 'hover:bg-emerald-700' },
       'global-tech': { bg: 'bg-indigo-600', hover: 'hover:bg-indigo-700' },
     };

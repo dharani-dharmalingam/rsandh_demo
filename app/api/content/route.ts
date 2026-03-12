@@ -24,11 +24,17 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Missing employer slug" }, { status: 400 });
   }
 
-  if (!employerExists(slug)) {
-    return NextResponse.json({ error: `Employer "${slug}" not found` }, { status: 404 });
-  }
-
   const mode = request.nextUrl.searchParams.get("mode") || "published";
+
+  // When employer has no content yet, return slug so admin can show Import tab
+  if (!employerExists(slug)) {
+    return NextResponse.json({
+      data: null,
+      hasDraft: false,
+      mode,
+      slug,
+    });
+  }
 
   try {
     const data =
@@ -38,6 +44,7 @@ export async function GET(request: NextRequest) {
       data,
       hasDraft: hasDraft(slug),
       mode,
+      slug,
     });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
