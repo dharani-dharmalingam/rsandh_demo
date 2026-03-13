@@ -2,13 +2,15 @@
  * Phase 1 -- PDF upload -> LlamaExtract plan detection -> return for review.
  * POST with multipart/form-data: file (PDF), clientSlug.
  *
- * PDFs are stored locally in content/uploads/ instead of Sanity.
+ * PDFs and logos are stored in Supabase bucket "employer-assets" when configured;
+ * otherwise falls back to local content/uploads/.
  */
 
 import { NextResponse } from 'next/server'
 import fs from 'node:fs'
 import path from 'node:path'
 import { detectPlans } from '@/lib/benefits-import/extract'
+import { isSupabaseConfigured, uploadPdf, uploadLogo, downloadAsBuffer } from '@/lib/supabase/storage'
 
 export const maxDuration = 900
 
@@ -45,7 +47,7 @@ export async function POST(request: Request) {
       )
     }
 
-    ensureUploadsDir()
+    const useSupabase = isSupabaseConfigured()
 
     let buffer: Buffer
     let savedFileId = fileAssetId || undefined
@@ -54,32 +56,50 @@ export async function POST(request: Request) {
       buffer = Buffer.from(await file.arrayBuffer())
 
       if (!savedFileId) {
-        const filename = `${clientSlug}-benefits-guide.pdf`
-        const filePath = path.join(UPLOADS_DIR, filename)
-        fs.writeFileSync(filePath, buffer)
-        savedFileId = filename
-        console.log(`[benefits-import] PDF saved locally: ${filePath}`)
+        if (useSupabase) {
+          savedFileId = await uploadPdf(clientSlug, buffer)
+          console.log(`[benefits-import] PDF uploaded to Supabase: ${savedFileId}`)
+        } else {
+          ensureUploadsDir()
+          const filename = `${clientSlug}-benefits-guide.pdf`
+          const filePath = path.join(UPLOADS_DIR, filename)
+          fs.writeFileSync(filePath, buffer)
+          savedFileId = filename
+          console.log(`[benefits-import] PDF saved locally: ${filePath}`)
+        }
       }
     } else if (fileAssetId) {
-      const filePath = path.join(UPLOADS_DIR, fileAssetId)
-      if (!fs.existsSync(filePath)) {
-        return NextResponse.json(
-          { error: `File not found: ${fileAssetId}` },
-          { status: 404 }
-        )
+      if (useSupabase) {
+        buffer = await downloadAsBuffer(fileAssetId)
+      } else {
+        const filePath = path.join(UPLOADS_DIR, fileAssetId)
+        if (!fs.existsSync(filePath)) {
+          return NextResponse.json(
+            { error: `File not found: ${fileAssetId}` },
+            { status: 404 }
+          )
+        }
+        buffer = fs.readFileSync(filePath)
       }
-      buffer = fs.readFileSync(filePath)
     } else {
       throw new Error('No PDF content provided')
     }
 
     let logoFileId: string | undefined
     if (logoFile) {
-      const logoFilename = `${clientSlug}-logo${path.extname(logoFile.name || '.png')}`
-      const logoPath = path.join(UPLOADS_DIR, logoFilename)
       const logoBuffer = Buffer.from(await logoFile.arrayBuffer())
-      fs.writeFileSync(logoPath, logoBuffer)
-      logoFileId = logoFilename
+      const mimeType = logoFile.type || 'image/png'
+      if (useSupabase) {
+        logoFileId = await uploadLogo(clientSlug, logoBuffer, mimeType)
+        console.log(`[benefits-import] Logo uploaded to Supabase: ${logoFileId}`)
+      } else {
+        ensureUploadsDir()
+        const ext = path.extname(logoFile.name || '.png')
+        const logoFilename = `${clientSlug}-logo${ext}`
+        const logoPathLocal = path.join(UPLOADS_DIR, logoFilename)
+        fs.writeFileSync(logoPathLocal, logoBuffer)
+        logoFileId = logoFilename
+      }
     }
 
     const detectionStart = Date.now()

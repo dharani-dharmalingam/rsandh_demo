@@ -1,6 +1,8 @@
 /**
  * Phase 2 -- Extract values with confirmed plans -> transform -> save as local content file.
  * POST with JSON body: { fileAssetId, clientSlug, logoAssetId?, confirmedPlans, companyName?, themeColor? }
+ *
+ * fileAssetId is either a Supabase storage path (e.g. rs-h/benefits-guide.pdf) or a local filename.
  */
 
 import { NextResponse } from 'next/server'
@@ -10,6 +12,7 @@ import { extractWithConfirmedPlans } from '@/lib/benefits-import/extract'
 import { transformToSanitySchema } from '@/lib/benefits-import/transform'
 import { seedPayloadToLocalContent } from '@/lib/benefits-import/to-local-content'
 import { saveContent, publishContent } from '@/lib/content'
+import { isSupabaseConfigured, getPublicUrl, downloadAsBuffer } from '@/lib/supabase/storage'
 import type { DetectedPlans, CustomTemplateDefinition } from '@/lib/benefits-import/types'
 
 export const maxDuration = 300
@@ -56,16 +59,23 @@ export async function POST(request: Request) {
       )
     }
 
-    const filePath = path.join(UPLOADS_DIR, fileAssetId)
-    if (!fs.existsSync(filePath)) {
-      return NextResponse.json(
-        { error: `PDF file not found: ${fileAssetId}` },
-        { status: 404 }
-      )
-    }
+    const useSupabase = isSupabaseConfigured()
 
-    const buffer = fs.readFileSync(filePath)
-    console.log(`[benefits-import] Phase 2: PDF loaded from ${filePath} (${Math.round(buffer.length / 1024)}KB)`)
+    let buffer: Buffer
+    if (useSupabase) {
+      buffer = await downloadAsBuffer(fileAssetId)
+      console.log(`[benefits-import] Phase 2: PDF loaded from Supabase ${fileAssetId} (${Math.round(buffer.length / 1024)}KB)`)
+    } else {
+      const filePath = path.join(UPLOADS_DIR, fileAssetId)
+      if (!fs.existsSync(filePath)) {
+        return NextResponse.json(
+          { error: `PDF file not found: ${fileAssetId}` },
+          { status: 404 }
+        )
+      }
+      buffer = fs.readFileSync(filePath)
+      console.log(`[benefits-import] Phase 2: PDF loaded from ${filePath} (${Math.round(buffer.length / 1024)}KB)`)
+    }
 
     console.log(`[benefits-import] Phase 2: Extracting values for client: ${clientSlug}...`)
     const extractedData = await extractWithConfirmedPlans(
@@ -85,10 +95,14 @@ export async function POST(request: Request) {
     const localContent = seedPayloadToLocalContent(payload)
 
     if (logoAssetId) {
-      localContent.siteSettings.clientLogo = `/content/uploads/${logoAssetId}`
+      localContent.siteSettings.clientLogo = useSupabase
+        ? getPublicUrl(logoAssetId)
+        : `/content/uploads/${logoAssetId}`
     }
     if (fileAssetId) {
-      localContent.openEnrollment.benefitsGuideUrl = `/content/uploads/${fileAssetId}`
+      localContent.openEnrollment.benefitsGuideUrl = useSupabase
+        ? getPublicUrl(fileAssetId)
+        : `/content/uploads/${fileAssetId}`
     }
 
     saveContent(clientSlug, localContent)

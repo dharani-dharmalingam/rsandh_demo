@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { Suspense, useEffect, useState, useCallback } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -20,7 +20,7 @@ import type { EmployerContent } from '@/lib/content/types';
 
 type EmployerItem = { slug: string; name: string };
 
-export default function AdminPage() {
+function AdminPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [content, setContent] = useState<EmployerContent | null>(null);
@@ -381,5 +381,17 @@ export default function AdminPage() {
         </Tabs>
       </div>
     </div>
+  );
+}
+
+export default function AdminPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center min-h-screen">
+        <span className="text-slate-500">Loading admin...</span>
+      </div>
+    }>
+      <AdminPageContent />
+    </Suspense>
   );
 }

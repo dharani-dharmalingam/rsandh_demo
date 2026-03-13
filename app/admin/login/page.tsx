@@ -1,13 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { Lock } from 'lucide-react';
 
-export default function AdminLoginPage() {
+function AdminLoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [token, setToken] = useState('');
@@ -26,32 +26,40 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50">
-      <Card className="p-8 w-full max-w-sm">
-        <div className="flex flex-col items-center mb-6">
-          <div className="p-3 bg-blue-100 rounded-full mb-4">
-            <Lock className="h-6 w-6 text-blue-600" />
-          </div>
-          <h1 className="text-xl font-bold text-slate-900">Admin Access</h1>
-          <p className="text-sm text-slate-500 mt-1">Enter your admin token to continue</p>
+    <Card className="p-8 w-full max-w-sm">
+      <div className="flex flex-col items-center mb-6">
+        <div className="p-3 bg-blue-100 rounded-full mb-4">
+          <Lock className="h-6 w-6 text-blue-600" />
         </div>
+        <h1 className="text-xl font-bold text-slate-900">Admin Access</h1>
+        <p className="text-sm text-slate-500 mt-1">Enter your admin token to continue</p>
+      </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <Input
-              type="password"
-              placeholder="Admin token"
-              value={token}
-              onChange={(e) => { setToken(e.target.value); setError(''); }}
-              className={error ? 'border-red-400' : ''}
-            />
-            {error && <p className="text-sm text-red-500 mt-1">{error}</p>}
-          </div>
-          <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
-            Continue to Admin
-          </Button>
-        </form>
-      </Card>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <Input
+            type="password"
+            placeholder="Admin token"
+            value={token}
+            onChange={(e) => { setToken(e.target.value); setError(''); }}
+            className={error ? 'border-red-400' : ''}
+          />
+          {error && <p className="text-sm text-red-500 mt-1">{error}</p>}
+        </div>
+        <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
+          Continue to Admin
+        </Button>
+      </form>
+    </Card>
+  );
+}
+
+export default function AdminLoginPage() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-slate-50">
+      <Suspense fallback={<div className="text-slate-500">Loading...</div>}>
+        <AdminLoginForm />
+      </Suspense>
     </div>
   );
 }
