@@ -13,11 +13,9 @@ interface HeaderProps {
   shortName?: string;
   clientLogo?: string;
   chapters?: any[];
-  /** When set, show an "Admin" link to this URL (current client's admin). */
-  adminHref?: string;
 }
 
-export function Header({ logoText, clientName, shortName, clientLogo, chapters = [], adminHref }: HeaderProps) {
+export function Header({ logoText, clientName, shortName, clientLogo, chapters = [] }: HeaderProps) {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<any[]>([]);
@@ -120,17 +118,8 @@ export function Header({ logoText, clientName, shortName, clientLogo, chapters =
             )}
           </div>
 
-          {/* Right Side - Admin link (when token present) + Logo */}
+          {/* Right Side - Logo */}
           <div className="flex items-center gap-3 flex-shrink-0">
-            {adminHref && (
-              <Link
-                href={adminHref}
-                className="flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-slate-900"
-              >
-                <Settings className="h-4 w-4" />
-                Admin
-              </Link>
-            )}
             <Link href="/" className="flex items-center gap-2">
               <div className="h-10 w-10 relative flex items-center justify-center">
                 {clientLogo ? (

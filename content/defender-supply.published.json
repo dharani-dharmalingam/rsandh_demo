@@ -1,0 +1,1014 @@
+{
+  "client": {
+    "name": "LEHR",
+    "slug": "defender-supply",
+    "themeColor": "#1e40af"
+  },
+  "siteSettings": {
+    "clientName": "LEHR",
+    "shortName": "LEHR",
+    "logoText": "LEHR Benefits",
+    "footerAbout": "Comprehensive benefits administration and support for the valued employees of LEHR.",
+    "quickAccess": [
+      {
+        "title": "Important Contact Information",
+        "description": "Find phone numbers, policy numbers and email addresses for all your benefit providers.",
+        "href": "/defender-supply/contacts",
+        "iconName": "phone"
+      },
+      {
+        "title": "Document Hub",
+        "description": "Access your benefits guide, plan summaries, and enrollment forms.",
+        "href": "/defender-supply/document-hub",
+        "iconName": "file-text"
+      },
+      {
+        "title": "Enroll Now",
+        "description": "Complete your benefit elections during the open enrollment period.",
+        "href": "/defender-supply/enrollment-checklist",
+        "iconName": "clipboard-check"
+      }
+    ],
+    "contactInfo": [
+      {
+        "label": "Medical, Dental & Vision",
+        "value": "866-633-2446"
+      },
+      {
+        "label": "Health Savings Account",
+        "value": "866-633-2446"
+      },
+      {
+        "label": "Disability",
+        "value": "800-679-3054",
+        "href": "www.unum.com"
+      },
+      {
+        "label": "Life and AD&D",
+        "value": "800-679-3054",
+        "href": "www.unum.com"
+      },
+      {
+        "label": "Defender Supply Human Resources",
+        "value": "903-771-1683"
+      }
+    ],
+    "quickLinks": [
+      {
+        "label": "Home",
+        "href": "/defender-supply"
+      },
+      {
+        "label": "Benefits",
+        "href": "/defender-supply/benefits"
+      },
+      {
+        "label": "Document Hub",
+        "href": "/defender-supply/document-hub"
+      },
+      {
+        "label": "Contacts",
+        "href": "/defender-supply/contacts"
+      }
+    ],
+    "footerContactTitle": "Contact",
+    "footerContactDescription": "Have questions? Reach out to our support team.",
+    "copyrightText": "© 2026 LEHR. All rights reserved."
+  },
+  "benefitsPage": {
+    "title": "Your Benefits at a Glance",
+    "description": "Explore the complete range of benefits available to LEHR employees."
+  },
+  "benefitChapters": [
+    {
+      "_id": "desu-ch-overview-of-available-plans",
+      "title": "Overview of Available Plans",
+      "description": "Overview of all available benefit plans for LEHR employees.",
+      "slug": "overview-of-available-plans",
+      "icon": "list",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "Review and compare all benefit plans available to LEHR employees.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "Medical Plans",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-0",
+              "text": "Medical coverage is provided by UHC. To see a current list of network providers online, visit www.myuhc.com.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-1",
+              "text": "3 medical plans available: HDHP, Base Copay, Buy-Up Copay",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "Dental Plans",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-1-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-1-0",
+              "text": "LEHR offers affordable dental plan options for routine care and beyond. Coverage is available from UHC. Employees may purchase dental insurance on a voluntary basis.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-1-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-1-1",
+              "text": "1 dental plan available: DPPO",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-2",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-2",
+              "text": "Vision Plans",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-2-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-2-0",
+              "text": "LEHR offers a comprehensive vision benefit provided by UHC. Employees may purchase vision insurance on a voluntary basis.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-2-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-2-1",
+              "text": "1 vision plan available: VISION",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Medical Plans",
+          "tableDescription": "Bi-weekly associate payroll contributions for medical coverage.",
+          "templateId": "overview-medical",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "hdhp",
+              "label": "HDHP"
+            },
+            {
+              "_key": "col-1",
+              "key": "base_copay",
+              "label": "BASE COPAY"
+            },
+            {
+              "_key": "col-2",
+              "key": "buy_up_copay",
+              "label": "BUY-UP COPAY"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Innetwork",
+              "cells": [
+                "$23.08",
+                "$42.02",
+                "$70.43"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Out of network",
+              "cells": [
+                "—",
+                "—",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Frequency",
+              "cells": [
+                "Bi-weekly",
+                "Bi-weekly",
+                "Bi-weekly"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-1",
+          "tableTitle": "Dental Plans",
+          "tableDescription": "Bi-weekly associate payroll contributions for dental coverage.",
+          "templateId": "overview-dental",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "dppo",
+              "label": "DPPO"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Innetwork",
+              "cells": [
+                "$14.10"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Out of network",
+              "cells": [
+                "—"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Frequency",
+              "cells": [
+                "Bi-weekly"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-2",
+          "tableTitle": "Vision Plans",
+          "tableDescription": "Bi-weekly associate payroll contributions for vision coverage.",
+          "templateId": "overview-vision",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "vision",
+              "label": "VISION"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Innetwork",
+              "cells": [
+                "$2.87"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Out of network",
+              "cells": [
+                "$40 allowance"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Frequency",
+              "cells": [
+                "12 months"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 1
+    },
+    {
+      "_id": "desu-ch-eligibility-qualifying-life-ev",
+      "title": "Eligibility & Qualifying Life Events",
+      "description": "Information about who is eligible for benefits, eligible dependents, enrollment, and qualifying life events.",
+      "slug": "eligibility-qualifying-life-events",
+      "icon": "check-circle",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "If you are a full-time employee of LEHR who is regularly scheduled to work at least 30 hours a week, you are eligible for benefits. The elections you make are effective 1st of the month following 60 days of employment. This is an ACTIVE enrollment! Current benefit elections will not roll over. All eligible employees must make elections in order to receive benefits in 2025.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "Eligibility",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-0",
+              "text": "If you are a full-time employee of LEHR who is regularly scheduled to work at least 30 hours a week, you are eligible for benefits. The elections you make are effective 1st of the month following 60 days of employment. This is an ACTIVE enrollment! Current benefit elections will not roll over. All eligible employees must make elections in order to receive benefits in 2025.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-1",
+              "text": "Full-time employee regularly scheduled to work at least 30 hours per week",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-2",
+              "text": "Enrollment effective 1st of the month following 60 days of employment",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "Enrollment",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-1-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-1-0",
+              "text": "Active enrollment required for 2025 benefits; current elections do not carry over.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "order": 2
+    },
+    {
+      "_id": "desu-ch-survivor-benefits",
+      "title": "Survivor Benefits",
+      "description": "LEHR provides employees with Basic Life and AD&D insurance as part of your basic coverage through Unum, which guarantees that your spouse or other designated survivor(s) continue to receive benefits a",
+      "slug": "survivor-benefits",
+      "icon": "umbrella",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "LEHR provides employees with Basic Life and AD&D insurance as part of your basic coverage through Unum, which guarantees that your spouse or other designated survivor(s) continue to receive benefits after death.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "RS&H provides Basic Life and Accidental Death & Dismemberment Insurance (AD&D)",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-0",
+              "text": "LEHR provides employees with Basic Life and AD&D insurance as part of your basic coverage through Unum, which guarantees that your spouse or other designated survivor(s) continue to receive benefits after death.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "Coverage amount",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-0",
+              "text": "Your Basic Life and AD&D insurance benefit is $10,000.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-1",
+              "text": "If you are a full-time employee, you automatically receive Life and AD&D insurance even if you waive other coverage.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-2",
+              "text": "You may purchase Voluntary Life/AD&D insurance for yourself in $10,000 increments, up to a maximum of lesser of 5x earnings or $500,000. EOI is required over $100,000.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-3",
+              "text": "Voluntary Life/AD&D insurance is available in $5,000 increments for your spouse, up to lesser of employee amount or $250,000. EOI is required over $25,000.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-4",
+              "text": "You may purchase Voluntary Life/AD&D insurance in $2,000 increments for your child(ren), up to $10,000. EOI is not required.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-5",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-5",
+              "text": "Benefits are subject to age reduction schedule: 65% at age 65, 50% at age 70.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-2",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-2",
+              "text": "AD&D Coverage",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-0",
+              "text": "LEHR provides Basic Life and Accidental Death & Dismemberment (AD&D) insurance through Unum.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-1",
+              "text": "Basic Life and AD&D insurance is provided automatically to full-time employees.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-2",
+              "text": "Voluntary Life/AD&D insurance is available to purchase in specified increments with Evidence of Insurability (EOI) requirements depending on amount.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-3",
+              "text": "Age reduction schedule applies to voluntary coverage amounts.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-3",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-3",
+              "text": "Other Voluntary benefits",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-0",
+              "text": "You may purchase additional voluntary life and AD&D insurance for yourself, your spouse, and your children with specified limits and EOI rules.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-1",
+              "text": "Voluntary life insurance: increments of $10,000 up to 5x earnings or $500,000 (EOI > $100,000).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-2",
+              "text": "Voluntary spouse life insurance: $5,000 increments up to employee amount or $250,000 (EOI > $25,000).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-3",
+              "text": "Voluntary child life insurance: $2,000 increments up to $10,000 (no EOI).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "At age:",
+          "templateId": "survivor-age-reduction",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "age-col-0",
+              "label": "65"
+            },
+            {
+              "_key": "col-1",
+              "key": "age-col-1",
+              "label": "70"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "The policy reduces by:",
+              "cells": [
+                "65%",
+                "50%"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 3
+    },
+    {
+      "_id": "desu-ch-income-protection-disability",
+      "title": "Income Protection (Disability)",
+      "description": "Short-term and long-term disability insurance and income protection benefits.",
+      "slug": "income-protection-disability",
+      "icon": "briefcase",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "LEHR offers disability coverage to protect you financially in the event you cannot work due to a debilitating illness or injury.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "Understand your disability insurance options.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "Overview",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-0",
+              "text": "LEHR offers disability coverage to protect you financially in the event you cannot work due to a debilitating illness or injury.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-1",
+              "text": "Employees may purchase disability insurance on a voluntary basis.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Short-Term Disability Plans",
+          "templateId": "std-comparison",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "std-col-0",
+              "label": ""
+            },
+            {
+              "_key": "col-1",
+              "key": "std-col-1",
+              "label": "Voluntary Short-Term Disability (STD) Insurance"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "WEEKLY MAXIMUM BENEFIT",
+              "cells": [
+                "60% of your income, up to $1,500",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "ELIMINATION PERIOD",
+              "cells": [
+                "7 days",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "MAXIMUM BENEFIT PERIOD",
+              "cells": [
+                "12 weeks",
+                "—"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-1",
+          "tableTitle": "Long-Term Disability Plan",
+          "templateId": "ltd-details",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "ltd-col-0",
+              "label": ""
+            },
+            {
+              "_key": "col-1",
+              "key": "ltd-col-1",
+              "label": "Voluntary Long-Term Disability (LTD) Insurance"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "MONTHLY MAXIMUM BENEFIT",
+              "cells": [
+                "60% of your income, up to $6,500"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "ELIMINATION PERIOD",
+              "cells": [
+                "90 days"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "MAXIMUM BENEFIT PERIOD",
+              "cells": [
+                "Payments will last for as long as you are disabled or until you reach your Social Security Normal Retirement Age, whichever is sooner."
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 4
+    }
+  ],
+  "openEnrollment": {
+    "title": "Welcome to Open Enrollment",
+    "description": "Review and update your benefits selections for the upcoming plan year.",
+    "daysLeftLabel": "Days Left",
+    "periodLabel": "Open Enrollment Period",
+    "statusTitle": "Action Needed",
+    "statusDescription": "Review and update your selections now",
+    "checklistLabel": "Review Enrollment Checklist",
+    "checklistSubtext": "Prepare for open enrollment",
+    "changesLabel": "Discover Benefit Changes",
+    "changesSubtext": "What's new this year",
+    "enrollLabel": "Enroll Now",
+    "enrollSubtext": "Complete your enrollment",
+    "benefitsGuideUrl": "https://kyhxmyhtowrqmhglmkhu.supabase.co/storage/v1/object/public/employer-assets/defender-supply/benefits-guide.pdf"
+  },
+  "benefitChangesPage": {
+    "title": "What's New This Year",
+    "description": "Review the latest changes and improvements to your benefits package.",
+    "alertMessage": "Review all changes before making your elections during open enrollment.",
+    "changes": [],
+    "ctaTitle": "Ready to Review Your Benefits?",
+    "ctaDescription": "Contact HR for any questions."
+  },
+  "enrollmentChecklist": {
+    "title": "Enrollment Checklist",
+    "description": "Use this step-by-step checklist to prepare for open enrollment.",
+    "items": [],
+    "ctaTitle": "Ready to Enroll?",
+    "ctaDescription": "Once you've completed this checklist, you're ready to make your benefit elections."
+  },
+  "retirementPlanning": {
+    "heroTitle": "Plan for Your Future"
+  },
+  "documents": []
+}

@@ -4,6 +4,9 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { SectionWrapper } from '@/components/section-wrapper';
 import { BenefitCard } from '@/components/benefit-card';
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
+import { FloatingAssistant } from '@/components/floating-assistant';
 import { FileText, HelpCircle, TrendingUp, Building2, Globe, Building, LayoutGrid } from 'lucide-react';
 import { Metadata } from 'next';
 import { listEmployers, getPublishedContent } from '@/lib/content';
@@ -47,7 +50,33 @@ export default async function RootPage() {
   if (slug) {
     try {
       const content = getPublishedContent(slug);
-      return <EmployerHomePage content={content} />;
+      const settings = content.siteSettings;
+      const chapters = content.benefitChapters;
+
+      return (
+        <>
+          <Header
+            logoText={settings?.logoText}
+            clientName={settings?.clientName}
+            shortName={settings?.shortName}
+            clientLogo={settings?.clientLogo}
+            chapters={chapters}
+          />
+          <main className="min-h-screen">
+            <EmployerHomePage content={content} />
+          </main>
+          <Footer
+            clientName={settings?.clientName}
+            about={settings?.footerAbout}
+            quickLinks={settings?.quickLinks}
+            contactInfo={settings?.contactInfo}
+            copyrightText={settings?.copyrightText}
+            footerContactTitle={settings?.footerContactTitle}
+            footerContactDescription={settings?.footerContactDescription}
+          />
+          <FloatingAssistant />
+        </>
+      );
     } catch {
       // Fall through to directory if content not found
     }
