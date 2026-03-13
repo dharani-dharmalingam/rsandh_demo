@@ -12,7 +12,7 @@ import path from 'node:path'
 import { detectPlans } from '@/lib/benefits-import/extract'
 import { isSupabaseConfigured, uploadPdf, uploadLogo, downloadAsBuffer } from '@/lib/supabase/storage'
 
-export const maxDuration = 900
+export const maxDuration = 300
 
 const UPLOADS_DIR = path.join(process.cwd(), 'content', 'uploads')
 
