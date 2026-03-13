@@ -1,18 +1,24 @@
 import { NextResponse, type NextRequest } from "next/server";
 
+// Only use subdomain as employer when host is under one of these (e.g. rs-h.benefits.acolyteai.com).
+// On other hosts (e.g. dbh-demosite.vercel.app) we ignore subdomain and use ?employer= or env only.
 const BASE_DOMAINS = ["benefits.acolyteai.com", "localhost"];
 
 function isBaseDomain(host: string): boolean {
+  const hostname = host.split(":")[0];
   return BASE_DOMAINS.some(
-    (d) => host === d || host.startsWith(`${d}:`)
+    (d) => hostname === d || hostname.endsWith("." + d)
   );
 }
 
+/** Returns employer subdomain only when host is under a BASE_DOMAIN (e.g. rs-h.benefits.acolyteai.com). */
 function extractSubdomain(host: string): string | null {
-  const parts = host.split(".");
-  if (parts.length > 2) {
-    const sub = parts[0];
-    if (sub !== "www") return sub;
+  const hostname = host.split(":")[0];
+  if (!isBaseDomain(hostname)) return null;
+  for (const base of BASE_DOMAINS) {
+    if (hostname === base || !hostname.endsWith("." + base)) continue;
+    const sub = hostname.slice(0, -base.length - 1);
+    if (sub && sub !== "www") return sub;
   }
   return null;
 }
