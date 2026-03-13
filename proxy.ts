@@ -33,6 +33,7 @@ export function proxy(request: NextRequest) {
   const employerSlug =
     subdomain ??
     searchParams.get("employer") ??
+    request.cookies.get("employer_slug")?.value ??
     process.env.NEXT_PUBLIC_DEFAULT_EMPLOYER ??
     null;
 
@@ -63,6 +64,20 @@ export function proxy(request: NextRequest) {
   }
 
   const response = NextResponse.next({ request: { headers: resHeaders } });
+
+  // Persist employer slug as a cookie so internal links on non-subdomain 
+  // hosts (e.g. vercel.app) maintain context without ?employer= param.
+  if (employerSlug && !subdomain) {
+    const currentCookie = request.cookies.get("employer_slug")?.value;
+    if (currentCookie !== employerSlug) {
+      response.cookies.set("employer_slug", employerSlug, {
+        path: "/",
+        httpOnly: false,
+        sameSite: "lax",
+        maxAge: 60 * 60 * 24, // 24 hours
+      });
+    }
+  }
 
   // Persist admin token as a cookie when provided via query param so
   // subsequent client-side fetches are also authenticated.

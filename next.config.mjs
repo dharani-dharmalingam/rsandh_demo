@@ -13,6 +13,12 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    middlewareClientMaxBodySize: 52428800, // 50MB
+  },
+  serverActions: {
+    bodySizeLimit: '50mb',
+  },
 }
 
 export default nextConfig
