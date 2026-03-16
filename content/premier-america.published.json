@@ -1,106 +1,128 @@
 {
   "client": {
-    "name": "Premier America",
+    "name": "Premier America Credit Union",
     "slug": "premier-america",
-    "themeColor": "#059669"
+    "themeColor": "#1e40af"
   },
   "siteSettings": {
-    "clientName": "Premier America",
-    "shortName": "Premier",
-    "logoText": "Premier America Benefits",
-    "footerAbout": "Premier America is committed to providing exceptional benefits and wellness programs that support the health, financial security, and overall well-being of our team members and their families.",
+    "clientName": "Premier America Credit Union",
+    "shortName": "Premier America Credit Union",
+    "logoText": "Premier America Credit Union Benefits",
+    "footerAbout": "Comprehensive benefits administration and support for the valued employees of Premier America Credit Union.",
     "quickAccess": [
       {
-        "title": "Contact Information",
-        "description": "Find phone numbers, policy numbers, and email addresses for all your benefit providers.",
-        "href": "/contacts",
+        "title": "Important Contact Information",
+        "description": "Find phone numbers, policy numbers and email addresses for all your benefit providers.",
+        "href": "/premier-america/contacts",
         "iconName": "phone"
       },
       {
         "title": "Document Hub",
-        "description": "Access your benefits guide, plan summaries, enrollment forms, and more.",
-        "href": "/document-hub",
+        "description": "Access your benefits guide, plan summaries, and enrollment forms.",
+        "href": "/premier-america/document-hub",
         "iconName": "file-text"
       },
       {
         "title": "Enroll Now",
         "description": "Complete your benefit elections during the open enrollment period.",
-        "href": "/enrollment-checklist",
+        "href": "/premier-america/enrollment-checklist",
         "iconName": "clipboard-check"
       }
     ],
     "contactInfo": [
       {
-        "label": "Aetna Medical Member Services",
-        "value": "1.800.555.1234",
-        "href": "www.aetna.com"
+        "label": "Human Resources Department",
+        "value": "hrd@premieramerica.com"
       },
       {
-        "label": "Delta Dental Member Services",
-        "value": "1.800.555.2345",
-        "href": "www.deltadental.com"
+        "label": "Medical Anthem Blue Cross",
+        "value": "833-913-2236"
       },
       {
-        "label": "EyeMed Vision Care Member Services",
-        "value": "1.800.555.3456",
+        "label": "Life and AD&D Mutual of Omaha",
+        "value": "800-775-8805"
+      },
+      {
+        "label": "Telemedicine Anthem Blue Cross - LiveHealth Online",
+        "value": "888-548-3432",
+        "href": "livehealthonline.com"
+      },
+      {
+        "label": "Disability Mutual of Omaha",
+        "value": "800-877-5176"
+      },
+      {
+        "label": "Team Member Assistance Program Mutual of Omaha",
+        "value": "800-316-2796",
+        "href": "www.mutualofomaha.com/eap"
+      },
+      {
+        "label": "Identity Theft Experian",
+        "value": "855-797-0052",
+        "href": "experian.myfinancialexpert.com/login"
+      },
+      {
+        "label": "College Savings Plan ScholarShare 529",
+        "value": "800-544-5248",
+        "href": "ScholarShare529.com"
+      },
+      {
+        "label": "Dental Anthem Blue Cross",
+        "value": "877-567-1804"
+      },
+      {
+        "label": "Pet Insurance Nationwide",
+        "value": "877-738-7874",
+        "href": "www.petinsurance.com/affiliates/premier"
+      },
+      {
+        "label": "Vision EyeMed",
+        "value": "866-804-0982",
         "href": "www.eyemed.com"
       },
       {
-        "label": "Lincoln Financial Life & Disability",
-        "value": "1.800.555.4567",
-        "href": "www.lincolnfinancial.com"
+        "label": "Health Savings Account Anthem Blue Cross - WealthCare Saver",
+        "value": "844-860-3535",
+        "href": "www.anthem.com"
       },
       {
-        "label": "Fidelity 401(k) Retirement Plan",
-        "value": "1.800.555.5678",
-        "href": "www.fidelity.com"
-      },
-      {
-        "label": "HealthEquity HSA/FSA",
-        "value": "1.800.555.6789",
-        "href": "www.healthequity.com"
-      },
-      {
-        "label": "LegalShield Legal Plan",
-        "value": "1.800.555.7890",
-        "href": "www.legalshield.com"
-      },
-      {
-        "label": "HR Benefits Team",
-        "value": "benefits@premieramerica.com"
+        "label": "Flexible Spending Accounts HealthEquity",
+        "value": "877-924-3967",
+        "href": "www.healthequity.com/wageworks"
       }
     ],
     "quickLinks": [
       {
         "label": "Home",
-        "href": "/"
+        "href": "/premier-america"
       },
       {
         "label": "Benefits",
-        "href": "/benefits"
+        "href": "/premier-america/benefits"
       },
       {
         "label": "Document Hub",
-        "href": "/document-hub"
+        "href": "/premier-america/document-hub"
       },
       {
         "label": "Contacts",
-        "href": "/contacts"
+        "href": "/premier-america/contacts"
       }
     ],
     "footerContactTitle": "Contact",
-    "footerContactDescription": "Have questions about your benefits? Our HR team is here to help.",
-    "copyrightText": "© 2026 Premier America. All rights reserved."
+    "footerContactDescription": "Have questions? Reach out to our support team.",
+    "copyrightText": "© 2026 Premier America Credit Union. All rights reserved.",
+    "clientLogo": "https://kyhxmyhtowrqmhglmkhu.supabase.co/storage/v1/object/public/employer-assets/premier-america/logo.png"
   },
   "benefitsPage": {
     "title": "Your Benefits at a Glance",
-    "description": "Explore the complete range of benefits available to Premier America team members and their families."
+    "description": "Explore the complete range of benefits available to Premier America Credit Union employees."
   },
   "benefitChapters": [
     {
-      "_id": "pa-ch-overview-of-available-plans",
+      "_id": "pram-ch-overview-of-available-plans",
       "title": "Overview of Available Plans",
-      "description": "A summary of all benefit plans available to Premier America employees.",
+      "description": "Overview of all available benefit plans for Premier America Credit Union employees.",
       "slug": "overview-of-available-plans",
       "icon": "list",
       "content": [
@@ -112,7 +134,7 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "Premier America offers a comprehensive suite of benefits designed to protect you and your family. Review and compare all available plans below.",
+              "text": "Review and compare all benefit plans available to Premier America Credit Union employees.",
               "marks": []
             }
           ],
@@ -140,7 +162,7 @@
             {
               "_type": "span",
               "_key": "span-p-0-0",
-              "text": "Medical benefits are provided through Aetna and include access to a broad network of physicians, hospitals, and specialists. All plans include preventive care at no cost, telehealth services, and prescription drug coverage.",
+              "text": "Medical benefits are provided through Anthem Blue Cross with access to Anthem Blue Cross network providers. Coverage includes both in-network and out-of-network providers. All out-of-network services are subject to Reasonable and Customary (R&C) limitations.",
               "marks": []
             }
           ],
@@ -154,7 +176,7 @@
             {
               "_type": "span",
               "_key": "span-p-0-1",
-              "text": "3 medical plans available: HMO Plan, PPO Plan, and High Deductible Health Plan (HDHP) with HSA",
+              "text": "1 medical plan available: HDHP",
               "marks": []
             }
           ],
@@ -182,7 +204,7 @@
             {
               "_type": "span",
               "_key": "span-p-1-0",
-              "text": "Dental coverage is provided through Delta Dental and includes diagnostic, preventive, basic, and major services. Using an in-network provider saves you the most money. Visit www.deltadental.com to find an in-network dentist near you.",
+              "text": "Dental benefits are provided by Anthem Blue Cross with access to network dentists. Out-of-network provider visits entail higher out-of-pocket costs and possible charges beyond Reasonable and Customary (R&C) amounts. To find a network dentist, visit Anthem Blue Cross website.",
               "marks": []
             }
           ],
@@ -196,7 +218,7 @@
             {
               "_type": "span",
               "_key": "span-p-1-1",
-              "text": "2 dental plans available: Basic Plan and Premium Plan",
+              "text": "1 dental plan available: Anthem Blue Cross - PPO",
               "marks": []
             }
           ],
@@ -224,7 +246,7 @@
             {
               "_type": "span",
               "_key": "span-p-2-0",
-              "text": "Vision coverage is provided through EyeMed and includes annual eye exams, lenses, frames, and contact lenses. You'll save the most by visiting an in-network  provider. Discounts on LASIK surgery are also available.",
+              "text": "Vision benefits are provided through EyeMed with access to EyeMed network providers.",
               "marks": []
             }
           ],
@@ -238,7 +260,7 @@
             {
               "_type": "span",
               "_key": "span-p-2-1",
-              "text": "1 vision plan available: EyeMed Select",
+              "text": "1 vision plan available: INSIGHT - PPO",
               "marks": []
             }
           ],
@@ -249,58 +271,160 @@
         {
           "_key": "tbl-0",
           "tableTitle": "Medical Plans",
-          "tableDescription": "Bi-weekly employee payroll contributions for medical coverage.",
+          "tableDescription": "Bi-weekly associate payroll contributions for medical coverage.",
           "templateId": "overview-medical",
           "columns": [
-            { "_key": "col-0", "key": "hmo_plan", "label": "HMO Plan" },
-            { "_key": "col-1", "key": "ppo_plan", "label": "PPO Plan" },
-            { "_key": "col-2", "key": "hdhp_hsa", "label": "HDHP w/ HSA" }
+            {
+              "_key": "col-0",
+              "key": "hdhp",
+              "label": "HDHP"
+            }
           ],
           "rows": [
-            { "_key": "row-0", "label": "Employee Only", "cells": ["$125.50", "$148.75", "$82.30"] },
-            { "_key": "row-1", "label": "Employee + Spouse", "cells": ["$298.40", "$342.10", "$195.60"] },
-            { "_key": "row-2", "label": "Employee + Child(ren)", "cells": ["$245.80", "$285.50", "$162.40"] },
-            { "_key": "row-3", "label": "Family", "cells": ["$465.20", "$525.80", "$310.50"] }
+            {
+              "_key": "row-0",
+              "label": "TEAM MEMBER ONLY",
+              "cells": [
+                "$91.19"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "TEAM MEMBER + SPOUSE/DP",
+              "cells": [
+                "$295.66"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "TEAM MEMBER + CHILD(REN)",
+              "cells": [
+                "$241.90"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "TEAM MEMBER + FAMILY",
+              "cells": [
+                "$416.61"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "TEAM MEMBER + 1 DEPENDENT",
+              "cells": [
+                "\t6|"
+              ]
+            }
           ]
         },
         {
           "_key": "tbl-1",
           "tableTitle": "Dental Plans",
-          "tableDescription": "Bi-weekly employee payroll contributions for dental coverage.",
+          "tableDescription": "Bi-weekly associate payroll contributions for dental coverage.",
           "templateId": "overview-dental",
           "columns": [
-            { "_key": "col-0", "key": "basic_plan", "label": "Basic Plan" },
-            { "_key": "col-1", "key": "premium_plan", "label": "Premium Plan" }
+            {
+              "_key": "col-0",
+              "key": "anthem_blue_cross___ppo",
+              "label": "ANTHEM BLUE CROSS - PPO"
+            }
           ],
           "rows": [
-            { "_key": "row-0", "label": "Employee Only", "cells": ["$5.20", "$8.75"] },
-            { "_key": "row-1", "label": "Employee + Spouse", "cells": ["$14.50", "$22.30"] },
-            { "_key": "row-2", "label": "Employee + Child(ren)", "cells": ["$12.80", "$19.60"] },
-            { "_key": "row-3", "label": "Family", "cells": ["$22.10", "$34.50"] }
+            {
+              "_key": "row-0",
+              "label": "TEAM MEMBER ONLY",
+              "cells": [
+                "$19.37"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "TEAM MEMBER + SPOUSE/DP",
+              "cells": [
+                "$42.57"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "TEAM MEMBER + CHILD(REN)",
+              "cells": [
+                "\t6|"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "TEAM MEMBER + FAMILY",
+              "cells": [
+                "$64.43"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "TEAM MEMBER + 1 DEPENDENT",
+              "cells": [
+                "\t6|"
+              ]
+            }
           ]
         },
         {
           "_key": "tbl-2",
-          "tableTitle": "Vision Plan",
-          "tableDescription": "Bi-weekly employee payroll contributions for vision coverage.",
+          "tableTitle": "Vision Plans",
+          "tableDescription": "Bi-weekly associate payroll contributions for vision coverage.",
           "templateId": "overview-vision",
           "columns": [
-            { "_key": "col-0", "key": "eyemed_select", "label": "EyeMed Select" }
+            {
+              "_key": "col-0",
+              "key": "insight___ppo",
+              "label": "INSIGHT - PPO"
+            }
           ],
           "rows": [
-            { "_key": "row-0", "label": "Employee Only", "cells": ["$4.50"] },
-            { "_key": "row-1", "label": "Employee + Spouse", "cells": ["$9.20"] },
-            { "_key": "row-2", "label": "Employee + Child(ren)", "cells": ["$9.80"] },
-            { "_key": "row-3", "label": "Family", "cells": ["$15.60"] }
+            {
+              "_key": "row-0",
+              "label": "TEAM MEMBER ONLY",
+              "cells": [
+                "$3.36"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "TEAM MEMBER + SPOUSE/DP",
+              "cells": [
+                "$6.40"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "TEAM MEMBER + CHILD(REN)",
+              "cells": [
+                "\t6|"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "TEAM MEMBER + FAMILY",
+              "cells": [
+                "$9.39"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "TEAM MEMBER + 1 DEPENDENT",
+              "cells": [
+                "\t6|"
+              ]
+            }
           ]
         }
       ],
       "order": 1
     },
     {
-      "_id": "pa-ch-eligibility-qualifying-life-events",
+      "_id": "pram-ch-eligibility-qualifying-life-ev",
       "title": "Eligibility & Qualifying Life Events",
-      "description": "Who is eligible for benefits, dependent coverage, and qualifying life event information.",
+      "description": "Information about who is eligible for benefits, eligible dependents, enrollment, and qualifying life events.",
       "slug": "eligibility-qualifying-life-events",
       "icon": "check-circle",
       "content": [
@@ -312,7 +436,7 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "All regular full-time and part-time employees working 30 or more hours per week are eligible for Premier America benefits. Coverage begins on the first of the month following your date of hire.",
+              "text": "If you are a full-time team member of Premier America Credit Union who is regularly scheduled to be working at least 20 hours per week on a continual basis (excluding internal and external temporary staff), you are eligible to participate in medical, dental, vision, life and disability plans, and additional benefits.",
               "marks": []
             }
           ],
@@ -326,7 +450,7 @@
             {
               "_type": "span",
               "_key": "span-h-0",
-              "text": "Eligible Employees",
+              "text": "Eligibility",
               "marks": []
             }
           ],
@@ -340,7 +464,35 @@
             {
               "_type": "span",
               "_key": "span-p-0-0",
-              "text": "Full-time and part-time employees scheduled to work 30 or more hours per week are eligible for the full benefits package. Seasonal and temporary employees are not eligible.",
+              "text": "If you are a full-time team member of Premier America Credit Union who is regularly scheduled to be working at least 20 hours per week on a continual basis (excluding internal and external temporary staff), you are eligible to participate in medical, dental, vision, life and disability plans, and additional benefits.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-1",
+              "text": "Full-time team member regularly scheduled at least 20 hours/week on a continual basis",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-2",
+              "text": "Excluding internal and external temporary staff",
               "marks": []
             }
           ],
@@ -368,7 +520,7 @@
             {
               "_type": "span",
               "_key": "span-p-1-0",
-              "text": "Legal spouse or domestic partner.",
+              "text": "Your legal spouse/domestic partner",
               "marks": []
             }
           ],
@@ -382,7 +534,21 @@
             {
               "_type": "span",
               "_key": "span-p-1-1",
-              "text": "Children up to age 26 (including biological, adopted, step-children, and children placed for adoption). Disabled dependents over age 26 who are incapable of self-support may also be eligible.",
+              "text": "Children under the age of 26, including birth children, stepchildren, legally adopted children, children placed for adoption, foster children, and children for whom you or your spouse/domestic partner have legal guardianship",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-1-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-1-2",
+              "text": "Dependent children 26 or more years old, unmarried, primarily supported by you, incapable of self-sustaining employment due to mental or physical disability (periodic certification may be required)",
               "marks": []
             }
           ],
@@ -396,7 +562,7 @@
             {
               "_type": "span",
               "_key": "span-h-2",
-              "text": "When to Enroll",
+              "text": "Enrollment",
               "marks": []
             }
           ],
@@ -410,7 +576,7 @@
             {
               "_type": "span",
               "_key": "span-p-2-0",
-              "text": "New Hire Enrollment: You must enroll within 31 days of your hire date.",
+              "text": "Elections effective first day of the month following hire date",
               "marks": []
             }
           ],
@@ -424,21 +590,7 @@
             {
               "_type": "span",
               "_key": "span-p-2-1",
-              "text": "Open Enrollment: Held annually, typically in November for a January 1 effective date.",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "p-2-2",
-          "style": "normal",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-p-2-2",
-              "text": "Qualifying Life Event: You have 31 days from the date of the event to make changes.",
+              "text": "Benefits cannot be changed until the next enrollment period except for Qualifying Life Events (QLE)",
               "marks": []
             }
           ],
@@ -452,7 +604,7 @@
             {
               "_type": "span",
               "_key": "span-h-3",
-              "text": "Common Qualifying Life Events",
+              "text": "Common Qualifying Events",
               "marks": []
             }
           ],
@@ -466,7 +618,7 @@
             {
               "_type": "span",
               "_key": "span-p-3-0",
-              "text": "Marriage, divorce, or legal separation",
+              "text": "Changes in your life may permit you to update your coverage at points throughout the year, outside of the open enrollment period.",
               "marks": []
             }
           ],
@@ -480,7 +632,7 @@
             {
               "_type": "span",
               "_key": "span-p-3-1",
-              "text": "Birth, adoption, or placement for adoption of a child",
+              "text": "When a Qualifying Life Event (QLE) occurs, you have 30 days to request changes to your coverage. Your change in coverage must be consistent with your change in status.",
               "marks": []
             }
           ],
@@ -494,7 +646,7 @@
             {
               "_type": "span",
               "_key": "span-p-3-2",
-              "text": "Loss or gain of other coverage (e.g., spouse's employer plan)",
+              "text": "Change in number of dependents (birth, adoption, loss of eligibility)",
               "marks": []
             }
           ],
@@ -508,7 +660,7 @@
             {
               "_type": "span",
               "_key": "span-p-3-3",
-              "text": "Death of a spouse or dependent",
+              "text": "Change in legal marital status (marriage, divorce, legal separation)",
               "marks": []
             }
           ],
@@ -522,7 +674,105 @@
             {
               "_type": "span",
               "_key": "span-p-3-4",
-              "text": "Change in employment status that affects eligibility",
+              "text": "Change in spouse/domestic partner\u0002s employment status resulting in loss or gain of coverage",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-5",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-5",
+              "text": "Entitlement to Medicare or Medicaid",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-6",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-6",
+              "text": "Eligibility for coverage through the Marketplace (Healthcare.gov)",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-7",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-7",
+              "text": "Changes in address or location that may affect coverage",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-8",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-8",
+              "text": "Turning 26 and losing coverage through a parent's plan",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-9",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-9",
+              "text": "Change in employment status from full time to part time or vice versa resulting in gain or loss of eligibility",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-10",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-10",
+              "text": "Death in the family leading to change in dependents or loss of coverage",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-11",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-11",
+              "text": "Changes making you no longer eligible for Medicaid or Children\u0002s Health Insurance Program (CHIP)",
               "marks": []
             }
           ],
@@ -532,10 +782,10 @@
       "order": 2
     },
     {
-      "_id": "pa-ch-medical-plans",
-      "title": "Medical Plans",
-      "description": "Detailed comparison of HMO, PPO, and HDHP medical plan options provided through Aetna.",
-      "slug": "medical-plans",
+      "_id": "pram-ch-hdhp-medical-plan",
+      "title": "HDHP Medical Plan",
+      "description": "High Deductible Health Plan (HDHP) with Anthem Blue Cross. Preventive care covered 100% in-network. Includes prescription drug coverage integrated with medical.",
+      "slug": "hdhp-medical-plan",
       "icon": "heart",
       "content": [
         {
@@ -546,7 +796,7 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "Premier America offers three medical plan options through Aetna, each designed to meet different needs and budgets. All plans include 100% coverage for in-network preventive care, access to telehealth, and comprehensive prescription drug benefits.",
+              "text": "High Deductible Health Plan (HDHP) with Anthem Blue Cross. Preventive care covered 100% in-network. Includes prescription drug coverage integrated with medical.",
               "marks": []
             }
           ],
@@ -560,7 +810,7 @@
             {
               "_type": "span",
               "_key": "span-h-0",
-              "text": "HMO Plan",
+              "text": "Copays",
               "marks": []
             }
           ],
@@ -568,13 +818,31 @@
         },
         {
           "_type": "block",
-          "_key": "p-0-0",
+          "_key": "li-0-0",
           "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
           "children": [
             {
               "_type": "span",
-              "_key": "span-p-0-0",
-              "text": "The HMO plan offers the lowest out-of-pocket costs with a focus on in-network care. You'll select a Primary Care Physician (PCP) who coordinates your care and provides referrals to specialists. This plan is ideal if you prefer predictable costs and are comfortable staying within the Aetna network.",
+              "_key": "span-li-0-0",
+              "text": "Copays are fixed amounts paid at time of service.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-1",
+              "text": "E.g., $5 or $15 for medications or office visits.",
               "marks": []
             }
           ],
@@ -588,7 +856,7 @@
             {
               "_type": "span",
               "_key": "span-h-1",
-              "text": "PPO Plan",
+              "text": "Deductible",
               "marks": []
             }
           ],
@@ -596,13 +864,31 @@
         },
         {
           "_type": "block",
-          "_key": "p-1-0",
+          "_key": "li-1-0",
           "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
           "children": [
             {
               "_type": "span",
-              "_key": "span-p-1-0",
-              "text": "The PPO plan provides greater flexibility to see any provider without a referral. You'll pay less when you use in-network providers, but you also have coverage for out-of-network providers at higher cost-sharing. This plan is ideal if you value choice and flexibility in your healthcare.",
+              "_key": "span-li-1-0",
+              "text": "Individual deductible: $1,650 in-network, $4,950 out-of-network.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-1",
+              "text": "Family deductible: $4,100 total in-network ($3,300 per family member), $9,900 out-of-network ($4,950 per family member).",
               "marks": []
             }
           ],
@@ -616,7 +902,7 @@
             {
               "_type": "span",
               "_key": "span-h-2",
-              "text": "HDHP with HSA",
+              "text": "Out-of-Pocket Maximum",
               "marks": []
             }
           ],
@@ -624,253 +910,31 @@
         },
         {
           "_type": "block",
-          "_key": "p-2-0",
+          "_key": "li-2-0",
           "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
           "children": [
             {
               "_type": "span",
-              "_key": "span-p-2-0",
-              "text": "The High Deductible Health Plan is paired with a Health Savings Account (HSA). It has lower premiums and higher deductibles. Premier America contributes $750 (individual) or $1,500 (family) annually to your HSA. HSA funds roll over year to year and are yours to keep. This plan is ideal for generally healthy individuals who want to save on premiums and build tax-advantaged savings for healthcare.",
+              "_key": "span-li-2-0",
+              "text": "Individual out-of-pocket max: $4,250 in-network, $12,750 out-of-network.",
               "marks": []
             }
           ],
           "markDefs": []
-        }
-      ],
-      "tables": [
-        {
-          "_key": "tbl-0",
-          "tableTitle": "Medical Plan Comparison",
-          "tableDescription": "Side-by-side comparison of key plan features.",
-          "templateId": "medical-comparison",
-          "columns": [
-            { "_key": "col-0", "key": "hmo_plan", "label": "HMO Plan" },
-            { "_key": "col-1", "key": "ppo_plan", "label": "PPO Plan" },
-            { "_key": "col-2", "key": "hdhp_hsa", "label": "HDHP w/ HSA" }
-          ],
-          "rows": [
-            { "_key": "row-0", "label": "Annual Deductible (Individual / Family)", "cells": ["$500 / $1,000", "$1,000 / $2,000", "$3,000 / $6,000"] },
-            { "_key": "row-1", "label": "Out-of-Pocket Max (Individual / Family)", "cells": ["$3,000 / $6,000", "$5,000 / $10,000", "$6,500 / $13,000"] },
-            { "_key": "row-2", "label": "PCP Visit", "cells": ["$25 copay", "$30 copay", "20% after deductible"] },
-            { "_key": "row-3", "label": "Specialist Visit", "cells": ["$40 copay", "$50 copay", "20% after deductible"] },
-            { "_key": "row-4", "label": "Urgent Care", "cells": ["$50 copay", "$75 copay", "20% after deductible"] },
-            { "_key": "row-5", "label": "Emergency Room", "cells": ["$200 copay", "$250 copay", "20% after deductible"] },
-            { "_key": "row-6", "label": "Inpatient Hospital", "cells": ["$250/day (5-day max)", "20% after deductible", "20% after deductible"] },
-            { "_key": "row-7", "label": "Preventive Care", "cells": ["$0 (100% covered)", "$0 (100% covered)", "$0 (100% covered)"] },
-            { "_key": "row-8", "label": "Telehealth", "cells": ["$10 copay", "$20 copay", "20% after deductible"] },
-            {
-              "_key": "row-9",
-              "label": "Prescription Drugs",
-              "cells": ["$10 / $30 / $60", "$15 / $40 / $75", "20% after deductible"],
-              "isSection": false
-            },
-            { "_key": "row-10", "label": "Employer HSA Contribution", "cells": ["N/A", "N/A", "$750 / $1,500"] }
-          ]
-        }
-      ],
-      "order": 3
-    },
-    {
-      "_id": "pa-ch-dental-plans",
-      "title": "Dental Plans",
-      "description": "Comparison of Basic and Premium dental plan options through Delta Dental.",
-      "slug": "dental-plans",
-      "icon": "smile",
-      "content": [
+        },
         {
           "_type": "block",
-          "_key": "block-0",
+          "_key": "li-2-1",
           "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
           "children": [
             {
               "_type": "span",
-              "_key": "span-0",
-              "text": "Premier America offers two dental plans through Delta Dental. Both plans cover preventive care, basic services, and major services. Using in-network providers helps you maximize your benefits and minimize out-of-pocket costs.",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "header-0",
-          "style": "h3",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-h-0",
-              "text": "Basic Plan",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "p-0-0",
-          "style": "normal",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-p-0-0",
-              "text": "The Basic plan covers preventive and diagnostic services at 100% with no deductible. Basic services like fillings are covered at 80%, and major services like crowns and bridges are covered at 50% after meeting your annual deductible.",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "header-1",
-          "style": "h3",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-h-1",
-              "text": "Premium Plan",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "p-1-0",
-          "style": "normal",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-p-1-0",
-              "text": "The Premium plan offers enhanced coverage with higher annual maximums and orthodontia coverage for children and adults. Preventive care is covered at 100%, basic services at 90%, and major services at 60%. Orthodontia is covered at 50% with a $2,000 lifetime maximum.",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        }
-      ],
-      "tables": [
-        {
-          "_key": "tbl-0",
-          "tableTitle": "Dental Plan Comparison",
-          "tableDescription": "Side-by-side comparison of dental plan features.",
-          "templateId": "dental-comparison",
-          "columns": [
-            { "_key": "col-0", "key": "basic_plan", "label": "Basic Plan" },
-            { "_key": "col-1", "key": "premium_plan", "label": "Premium Plan" }
-          ],
-          "rows": [
-            { "_key": "row-0", "label": "Annual Deductible (Individual)", "cells": ["$50", "$25"] },
-            { "_key": "row-1", "label": "Annual Maximum", "cells": ["$1,500", "$2,500"] },
-            { "_key": "row-2", "label": "Preventive & Diagnostic (exams, cleanings, x-rays)", "cells": ["100%", "100%"] },
-            { "_key": "row-3", "label": "Basic Services (fillings, extractions)", "cells": ["80%", "90%"] },
-            { "_key": "row-4", "label": "Major Services (crowns, bridges, dentures)", "cells": ["50%", "60%"] },
-            { "_key": "row-5", "label": "Orthodontia (children & adults)", "cells": ["Not covered", "50% ($2,000 lifetime max)"] },
-            { "_key": "row-6", "label": "Waiting Period for Major Services", "cells": ["12 months", "6 months"] }
-          ]
-        }
-      ],
-      "order": 4
-    },
-    {
-      "_id": "pa-ch-life-disability-insurance",
-      "title": "Life & Disability Insurance",
-      "description": "Company-paid and voluntary life insurance, plus short-term and long-term disability coverage through Lincoln Financial.",
-      "slug": "life-disability-insurance",
-      "icon": "shield",
-      "content": [
-        {
-          "_type": "block",
-          "_key": "block-0",
-          "style": "normal",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-0",
-              "text": "Premier America provides company-paid life and disability insurance to help protect you and your family in the event of illness, injury, or death. Additional voluntary coverage is available at group rates.",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "header-0",
-          "style": "h3",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-h-0",
-              "text": "Company-Paid Basic Life & AD&D",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "p-0-0",
-          "style": "normal",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-p-0-0",
-              "text": "Premier America provides all eligible employees with Basic Life Insurance and Accidental Death & Dismemberment (AD&D) coverage equal to 1.5x your annual base salary, up to a maximum of $500,000. This benefit is provided at no cost to you.",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "header-1",
-          "style": "h3",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-h-1",
-              "text": "Voluntary Supplemental Life Insurance",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "p-1-0",
-          "style": "normal",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-p-1-0",
-              "text": "You may purchase additional life insurance for yourself (up to $500,000), your spouse (up to $250,000), and your children ($10,000 per child). Guaranteed issue amounts are available during initial enrollment without medical evidence of insurability.",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "header-2",
-          "style": "h3",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-h-2",
-              "text": "Short-Term Disability (STD)",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "p-2-0",
-          "style": "normal",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-p-2-0",
-              "text": "Company-paid STD provides 60% of your weekly base earnings (up to $1,500/week) for up to 26 weeks if you are unable to work due to a non-work-related illness or injury. Benefits begin after a 7-day elimination period for illness and day 1 for accidents.",
+              "_key": "span-li-2-1",
+              "text": "Family out-of-pocket max: $8,500 total in-network ($4,250 per family member), $25,500 out-of-network ($12,750 per family member).",
               "marks": []
             }
           ],
@@ -884,7 +948,7 @@
             {
               "_type": "span",
               "_key": "span-h-3",
-              "text": "Long-Term Disability (LTD)",
+              "text": "In-Network vs Out-of-Network",
               "marks": []
             }
           ],
@@ -892,13 +956,181 @@
         },
         {
           "_type": "block",
-          "_key": "p-3-0",
+          "_key": "li-3-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-0",
+              "text": "**In-network**",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-1",
+              "text": "Providers contracted with the insurance company to provide healthcare services at negotiated discounted rates",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-2",
+              "text": "Visiting in-network providers generally costs less for covered services",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-3",
+              "text": "**Out-of-network**",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-4",
+              "text": "Providers not contracted with insurance company; services may cost more or be partially covered",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-5",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-5",
+              "text": "Out-of-network providers may bill you for amounts beyond plan allowances",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-6",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-6",
+              "text": "Visit www.anthem.com or call Customer Care at 833-913-2236 to verify if a provider is in-network.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-4",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-4",
+              "text": "Help with Selecting Your Medical Coverage",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-4-0",
           "style": "normal",
           "children": [
             {
               "_type": "span",
-              "_key": "span-p-3-0",
-              "text": "Company-paid LTD provides 60% of your monthly base earnings (up to $10,000/month) if you remain disabled beyond the STD benefit period. LTD benefits begin after 180 days of disability and can continue until age 65, depending on your age at the time of disability.",
+              "_key": "span-p-4-0",
+              "text": "ALEX benefits counselor helps you understand and choose medical coverage options.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-4-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-4-1",
+              "text": "Prescription drug coverage through Anthem Blue Cross includes generic, preferred, non-preferred, and specialty drugs.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-4-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-4-2",
+              "text": "Virtual visits through LiveHealth Online provide confidential 1-on-1 counseling and virtual medical doctors.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-4-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-4-3",
+              "text": "**Toolkit App**: LiveHealth Online app",
               "marks": []
             }
           ],
@@ -908,32 +1140,302 @@
       "tables": [
         {
           "_key": "tbl-0",
-          "tableTitle": "Life & Disability Benefits Summary",
-          "tableDescription": "Overview of company-paid and voluntary coverage.",
-          "templateId": "life-disability-summary",
+          "tableTitle": "Premium Rates",
+          "tableDescription": "Bi-weekly associate payroll contributions for HDHP coverage",
+          "templateId": "medical-premiums",
           "columns": [
-            { "_key": "col-0", "key": "benefit", "label": "Benefit" },
-            { "_key": "col-1", "key": "coverage", "label": "Coverage" },
-            { "_key": "col-2", "key": "cost", "label": "Cost to You" }
+            {
+              "_key": "col-0",
+              "key": "hdhp",
+              "label": "HDHP"
+            }
           ],
           "rows": [
-            { "_key": "row-0", "label": "Basic Life & AD&D", "cells": ["1.5x salary (max $500K)", "Company-paid"] },
-            { "_key": "row-1", "label": "Voluntary Employee Life", "cells": ["Up to $500,000", "Employee-paid (group rates)"] },
-            { "_key": "row-2", "label": "Voluntary Spouse Life", "cells": ["Up to $250,000", "Employee-paid (group rates)"] },
-            { "_key": "row-3", "label": "Voluntary Child Life", "cells": ["$10,000 per child", "Employee-paid (group rates)"] },
-            { "_key": "row-4", "label": "Short-Term Disability", "cells": ["60% of weekly pay (max $1,500/wk)", "Company-paid"] },
-            { "_key": "row-5", "label": "Long-Term Disability", "cells": ["60% of monthly pay (max $10K/mo)", "Company-paid"] }
+            {
+              "_key": "row-0",
+              "label": "TEAM MEMBER ONLY",
+              "cells": [
+                "$91.19"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "TEAM MEMBER + SPOUSE/DP",
+              "cells": [
+                "$295.66"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "TEAM MEMBER + CHILD(REN)",
+              "cells": [
+                "$241.90"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "TEAM MEMBER + FAMILY",
+              "cells": [
+                "$416.61"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "TEAM MEMBER + 1 DEPENDENT",
+              "cells": [
+                "\t6|"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-1",
+          "tableTitle": "Plan Benefits Summary",
+          "tableDescription": "Comprehensive coverage details for HDHP plan - HSA eligible",
+          "templateId": "medical-benefits",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "hdhp_in",
+              "label": "HDHP Plan",
+              "subLabel": "In-network"
+            },
+            {
+              "_key": "col-1",
+              "key": "hdhp_out",
+              "label": "HDHP Plan",
+              "subLabel": "Out-of-network"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Annual deductible",
+              "cells": [
+                "$1,650",
+                "$4,950"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Out-of-pocket maximum",
+              "cells": [
+                "$4,250",
+                "$12,750"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Coinsurance (your share)",
+              "cells": [
+                "—",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Preventive care",
+              "cells": [
+                "No charge",
+                "Deductible, then 40% coinsurance"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Primary physician office visit",
+              "cells": [
+                "Deductible, then 20% coinsurance",
+                "Deductible, then 40% coinsurance"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "Specialist office visit",
+              "cells": [
+                "Deductible, then 20% coinsurance",
+                "Deductible, then 40% coinsurance"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "Independent labs",
+              "cells": [
+                "Deductible, then 20% coinsurance",
+                "Deductible, then 40% coinsurance"
+              ]
+            },
+            {
+              "_key": "row-7",
+              "label": "Outpatient x-rays",
+              "cells": [
+                "—",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-8",
+              "label": "Imaging (MRI, CT, PET, etc.)",
+              "cells": [
+                "—",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-9",
+              "label": "Convenience Clinic Visit",
+              "cells": [
+                "Deductible, then 20% coinsurance",
+                "Deductible, then 40% coinsurance"
+              ]
+            },
+            {
+              "_key": "row-10",
+              "label": "Teladoc Virtual Visit",
+              "cells": [
+                "Deductible, then 20% coinsurance",
+                "Deductible, then 40% coinsurance"
+              ]
+            },
+            {
+              "_key": "row-11",
+              "label": "Urgent Care Center",
+              "cells": [
+                "Deductible, then 20% coinsurance",
+                "Deductible, then 40% coinsurance"
+              ]
+            },
+            {
+              "_key": "row-12",
+              "label": "Emergency Room",
+              "cells": [
+                "Deductible, then 20% coinsurance",
+                "Deductible, then 20% coinsurance"
+              ]
+            },
+            {
+              "_key": "row-13",
+              "label": "Inpatient Hospitalization",
+              "cells": [
+                "Deductible, then 20% coinsurance",
+                "Deductible, then 40% coinsurance"
+              ]
+            },
+            {
+              "_key": "row-14",
+              "label": "Outpatient Surgery",
+              "cells": [
+                "Deductible, then 20% coinsurance",
+                "Deductible, then 40% coinsurance"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-2",
+          "tableTitle": "Prescription Drug Coverage",
+          "tableDescription": "Prescription costs are determined by the tier assigned to each specific prescription drug.",
+          "templateId": "medical-rx",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "hdhp",
+              "label": "Cost"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Preventive Medication",
+              "cells": [
+                "No charge in-network"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Pharmacy Deductible",
+              "cells": [
+                "Included in medical deductible"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Retail (30-day supply)",
+              "cells": [],
+              "isSection": true
+            },
+            {
+              "_key": "row-3",
+              "label": "Tier one",
+              "cells": [
+                "$5/$15 copay after deductible"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Tier two",
+              "cells": [
+                "$40 copay after deductible"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "Tier three",
+              "cells": [
+                "$60 copay after deductible"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "Speciality",
+              "cells": [
+                "30%, up to $250 copay after deductible"
+              ]
+            },
+            {
+              "_key": "row-7",
+              "label": "Mail order (90-day supply)",
+              "cells": [],
+              "isSection": true
+            },
+            {
+              "_key": "row-8",
+              "label": "Tier one",
+              "cells": [
+                "$10/$30 copay after deductible"
+              ]
+            },
+            {
+              "_key": "row-9",
+              "label": "Tier two",
+              "cells": [
+                "$100 copay after deductible"
+              ]
+            },
+            {
+              "_key": "row-10",
+              "label": "Tier three",
+              "cells": [
+                "$150 copay after deductible"
+              ]
+            },
+            {
+              "_key": "row-11",
+              "label": "Speciality",
+              "cells": [
+                "30%, up to $250 copay after deductible"
+              ]
+            }
           ]
         }
       ],
-      "order": 5
+      "order": 3
     },
     {
-      "_id": "pa-ch-flexible-spending-accounts",
-      "title": "Flexible Spending Accounts",
-      "description": "Healthcare FSA and Dependent Care FSA information, contribution limits, and eligible expenses.",
-      "slug": "flexible-spending-accounts",
-      "icon": "credit-card",
+      "_id": "pram-ch-dental-plan",
+      "title": "Dental Plan",
+      "description": "Dental coverage options and benefits comparison.",
+      "slug": "dental-plan",
+      "icon": "smile",
       "content": [
         {
           "_type": "block",
@@ -943,7 +1445,118 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "Flexible Spending Accounts (FSAs) allow you to set aside pre-tax dollars to pay for eligible healthcare and dependent care expenses. By using pre-tax dollars, you reduce your taxable income and save money on expenses you're already paying for.",
+              "text": "Routine oral health care provided through Anthem Blue Cross with access to a dentist network. Out-of-network services incur higher costs and may be subject to Reasonable and Customary charges. Network dentists can be found on the Anthem Blue Cross website.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Dental",
+          "templateId": "dental-benefits",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "plan1_in",
+              "label": "ANTHEM BLUE CROSS - PPO",
+              "subLabel": "In-network"
+            },
+            {
+              "_key": "col-1",
+              "key": "plan1_out",
+              "label": "ANTHEM BLUE CROSS - PPO",
+              "subLabel": "Out-of-network"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Calendar Year Deductible Individual",
+              "cells": [
+                "$50",
+                "$50"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Calendar Year Deductible Family",
+              "cells": [
+                "$150",
+                "$150"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Calendar Year Maximum Per Person",
+              "cells": [
+                "$1,500",
+                "$1,500"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Preventive Services (Exams, X-rays, Cleanings, Fluoride, Sealants, Space Maintainers, Palliative)",
+              "cells": [
+                "No charge",
+                "No charge"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Basic Services (Fillings, Extractions, Repair of Crowns/Inlays/Onlays/Bridges/Dentures, Periodontics, Oral Surgery, Anesthesia)",
+              "cells": [
+                "20% coinsurance after deductible",
+                "20% coinsurance after deductible"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "Major Services (Crowns, Bridges, Dentures, Implants)",
+              "cells": [
+                "50% coinsurance after deductible",
+                "50% coinsurance after deductible"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "Orthodontics (Diagnostic, Active, Retention Treatment for Adults and Dependents)",
+              "cells": [
+                "50% coinsurance",
+                "\t6|"
+              ]
+            },
+            {
+              "_key": "row-7",
+              "label": "Orthodontic Lifetime Maximum",
+              "cells": [
+                "$1,500",
+                "\t6|"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 4
+    },
+    {
+      "_id": "pram-ch-vision-benefits",
+      "title": "Vision Benefits",
+      "description": "Vision coverage options and benefits comparison.",
+      "slug": "vision-benefits",
+      "icon": "eye",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "Vision care is provided by EyeMed under the INSIGHT - PPO plan. Coverage includes regular exams, lenses, frames, and contacts with allowances and copays as shown. Services have specific frequency limits.",
               "marks": []
             }
           ],
@@ -957,7 +1570,7 @@
             {
               "_type": "span",
               "_key": "span-h-0",
-              "text": "Healthcare FSA",
+              "text": "Notes & Disclaimers",
               "marks": []
             }
           ],
@@ -971,7 +1584,150 @@
             {
               "_type": "span",
               "_key": "span-p-0-0",
-              "text": "The Healthcare FSA lets you contribute up to $3,200 per year in pre-tax dollars to pay for eligible medical, dental, and vision expenses not covered by your insurance. This includes copays, deductibles, prescription costs, and many over-the-counter items. Your full annual election is available on day one of the plan year.",
+              "text": "Includes LASIK and PRK benefit; Hearing care; Eyeglass lens upgrades; Continued eyewear savings.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Vision Coverage Comparison",
+          "templateId": "vision-benefits",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "plan1_in",
+              "label": "INSIGHT - PPO",
+              "subLabel": "In-network"
+            },
+            {
+              "_key": "col-1",
+              "key": "plan1_out",
+              "label": "INSIGHT - PPO",
+              "subLabel": "Out-of-network (reimbursement)"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Eye Exam",
+              "cells": [
+                "$20 copay",
+                "Up to $40 reimbursement"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Frequency",
+              "cells": [
+                "Every 12 months",
+                "Every 12 months"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Lenses Single Vision",
+              "cells": [
+                "No charge",
+                "Up to $30 reimbursement"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Frequency",
+              "cells": [
+                "Every 12 months",
+                "Every 12 months"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Lenses Bifocal",
+              "cells": [
+                "No charge",
+                "Up to $50 reimbursement"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "Frequency",
+              "cells": [
+                "Every 12 months",
+                "Every 12 months"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "Lenses Trifocal",
+              "cells": [
+                "No charge",
+                "Up to $70 reimbursement"
+              ]
+            },
+            {
+              "_key": "row-7",
+              "label": "Contacts Elective",
+              "cells": [
+                "$130 allowance",
+                "Up to $130 reimbursement"
+              ]
+            },
+            {
+              "_key": "row-8",
+              "label": "Frequency",
+              "cells": [
+                "Every 12 months",
+                "Every 12 months"
+              ]
+            },
+            {
+              "_key": "row-9",
+              "label": "Contacts Medically Necessary",
+              "cells": [
+                "No charge",
+                "Up to $210 reimbursement"
+              ]
+            },
+            {
+              "_key": "row-10",
+              "label": "Frames Allowance",
+              "cells": [
+                "$130 allowance then 20% off remaining balance",
+                "Up to $91 reimbursement"
+              ]
+            },
+            {
+              "_key": "row-11",
+              "label": "Frequency",
+              "cells": [
+                "Every 12 months",
+                "Every 12 months"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 5
+    },
+    {
+      "_id": "pram-ch-employee-assistance-program-ea",
+      "title": "Employee Assistance Program (EAP)",
+      "description": "The Team Member Assistance Program (EAP) provides confidential mental, emotional, and physical health support free of charge for team members and their families, regardless of medical plan enrollment.",
+      "slug": "employee-assistance-program-eap",
+      "icon": "users",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "The Team Member Assistance Program (EAP) provides confidential mental, emotional, and physical health support free of charge for team members and their families, regardless of medical plan enrollment. It offers 24/7 access to licensed professionals by phone, and a limited number of face-to-face visits per issue. Additional services include legal and financial assistance.",
               "marks": []
             }
           ],
@@ -979,13 +1735,41 @@
         },
         {
           "_type": "block",
-          "_key": "p-0-1",
+          "_key": "block-1",
           "style": "normal",
           "children": [
             {
               "_type": "span",
-              "_key": "span-p-0-1",
-              "text": "Note: If you enroll in the HDHP with HSA, you may only enroll in a Limited Purpose FSA, which covers only dental and vision expenses.",
+              "_key": "span-1",
+              "text": "Services available 24/7 via telephone, face-to-face, or web-based assistance.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "Overview",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-0",
+              "text": "The Team Member Assistance Program (EAP) provides confidential mental, emotional, and physical health support free of charge for team members and their families, regardless of medical plan enrollment. It offers 24/7 access to licensed professionals by phone, and a limited number of face-to-face visits per issue. Additional services include legal and financial assistance.",
               "marks": []
             }
           ],
@@ -999,7 +1783,7 @@
             {
               "_type": "span",
               "_key": "span-h-1",
-              "text": "Dependent Care FSA",
+              "text": "Free Visits",
               "marks": []
             }
           ],
@@ -1013,7 +1797,583 @@
             {
               "_type": "span",
               "_key": "span-p-1-0",
-              "text": "The Dependent Care FSA lets you contribute up to $5,000 per year ($2,500 if married filing separately) in pre-tax dollars to pay for eligible dependent care expenses. This includes daycare, preschool, before/after school programs, and elder care for dependents who live with you. Unlike the Healthcare FSA, funds are only available as contributions are made through payroll deductions.",
+              "text": "Designated number of face-to-face visits per issue at no cost.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-2",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-2",
+              "text": "Services include:",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-0",
+              "text": "Emotional health and wellbeing",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-1",
+              "text": "Job pressures",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-2",
+              "text": "Stress, anxiety, depression",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-3",
+              "text": "Alcohol or drug dependency",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-4",
+              "text": "Marriage or family problems",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-5",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-5",
+              "text": "Grief and loss",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-6",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-6",
+              "text": "Financial or legal advice",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "order": 6
+    },
+    {
+      "_id": "pram-ch-health-savings-account-hsa-fle",
+      "title": "Health Savings Account (HSA) & Flexible Spending Account (FSA)",
+      "description": "HSA and FSA account options for tax-advantaged savings.",
+      "slug": "health-savings-account-hsa-flexible-spending-account-fsa",
+      "icon": "dollar-sign",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "Understand your tax-advantaged savings account options.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "What is a Health Savings Account?",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-0",
+              "text": "Your HSA can be used for qualified expenses for you, your legal spouse/domestic partner, and/or tax dependent(s), even if they are not covered by your plan.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-1",
+              "text": "If not enrolled in an HDHP but have unused HSA funds from a previous account, those funds can still be used for qualified expenses.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "Benefits of HSA",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-0",
+              "text": "HSA funds never expire; unused funds roll over annually.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-1",
+              "text": "You can contribute to your HSA on a pre-tax basis through payroll deduction.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-2",
+              "text": "Employer provides seed money of $1,100 for team member or $2,100 for family.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-3",
+              "text": "You own your HSA account and manage it.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-4",
+              "text": "Account is portable and has no vesting or forfeiture provisions.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-2",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-2",
+              "text": "Who is eligible for an HSA?",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-0",
+              "text": "Must be enrolled in an HSA-eligible High Deductible Health Plan.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-1",
+              "text": "Cannot be covered by non-HDHP spouse/domestic partner or parent\u0002s plan.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-2",
+              "text": "Cannot have a Healthcare FSA or Health Reimbursement Account.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-3",
+              "text": "Cannot be claimed as a dependent on another\u0002s tax return.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-4",
+              "text": "Cannot be enrolled in Medicare or TRICARE.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-5",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-5",
+              "text": "Cannot have received VA medical benefits except for service-related care in past 90 days.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-3",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-3",
+              "text": "How to manage your HSA account",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-0",
+              "text": "Use debit card for qualified medical expenses; must have funds available.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-1",
+              "text": "Keep receipts for tax purposes.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-2",
+              "text": "Can save and roll funds over year to year.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-4",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-4",
+              "text": "Eligible expenses",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-4-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-4-0",
+              "text": "Doctors\u0002 visits, eye exams, prescription expenses, laser eye surgery, menstrual products, PPE, over-the-counter medications.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-5",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-5",
+              "text": "What is a Flexible Spending Account?",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-5-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-5-0",
+              "text": "Flexible Spending Account (FSA) is a tax-free account you contribute pre-tax dollars to pay for certain out-of-pocket medical, dental, vision, and dependent care expenses. Limited to $3,300 annually for Healthcare FSA and up to $5,000 for Dependent Care FSA. You cannot have both HSA and Healthcare FSA simultaneously. Includes Healthcare FSA, Dependent Care FSA, and Limited Use FSA (for dental and vision).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-6",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-6",
+              "text": "Understanding different types of FSAs",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-6-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-6-0",
+              "text": "Healthcare FSA cannot be held with an HSA.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-6-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-6-1",
+              "text": "Dependent Care FSA pays for child or elder care expenses.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-6-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-6-2",
+              "text": "Limited Use FSA is for dental and vision expenses for HDHP and HSA holders.",
               "marks": []
             }
           ],
@@ -1023,409 +2383,1667 @@
       "tables": [
         {
           "_key": "tbl-0",
-          "tableTitle": "FSA Comparison",
-          "tableDescription": "Key features of Healthcare and Dependent Care FSAs.",
-          "templateId": "fsa-comparison",
+          "tableTitle": "Premier America Credit Union Employer Contribution",
+          "templateId": "hsa-employer-contribution",
           "columns": [
-            { "_key": "col-0", "key": "healthcare_fsa", "label": "Healthcare FSA" },
-            { "_key": "col-1", "key": "dependent_care_fsa", "label": "Dependent Care FSA" }
+            {
+              "_key": "col-0",
+              "key": "hsa-ec-col-0",
+              "label": "Team Member Only"
+            },
+            {
+              "_key": "col-1",
+              "key": "hsa-ec-col-1",
+              "label": "Team Member + Family"
+            }
           ],
           "rows": [
-            { "_key": "row-0", "label": "Annual Contribution Limit", "cells": ["$3,200", "$5,000 ($2,500 if MFS)"] },
-            { "_key": "row-1", "label": "Eligible Expenses", "cells": ["Medical, dental, vision copays, deductibles, prescriptions, OTC items", "Daycare, preschool, before/after school care, elder care"] },
-            { "_key": "row-2", "label": "Funds Availability", "cells": ["Full amount available Jan 1", "As payroll contributions are made"] },
-            { "_key": "row-3", "label": "Use-It-or-Lose-It", "cells": ["Yes ($640 rollover allowed)", "Yes (no rollover)"] },
-            { "_key": "row-4", "label": "Grace Period", "cells": ["March 15 of following year", "March 15 of following year"] },
-            { "_key": "row-5", "label": "Compatible with HDHP/HSA?", "cells": ["Limited Purpose FSA only", "Yes"] }
+            {
+              "_key": "row-0",
+              "label": "Employer Seed Money",
+              "cells": [
+                "$1,100",
+                "$2,100"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-1",
+          "tableTitle": "2025 HSA Funding Limits",
+          "templateId": "hsa-contribution-limits",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "hsa-cl-col-0",
+              "label": "2025 Contribution Limit"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Team Member",
+              "cells": [
+                "$4,300"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Family",
+              "cells": [
+                "$8,550"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Catch-up Contribution (Ages 55+)",
+              "cells": [
+                "$1,000"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-2",
+          "tableTitle": "FSA Types Overview",
+          "templateId": "fsa-types-comparison",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "fsa-type-col-0",
+              "label": "Healthcare FSA"
+            },
+            {
+              "_key": "col-1",
+              "key": "fsa-type-col-1",
+              "label": "Dependent Care FSA"
+            },
+            {
+              "_key": "col-2",
+              "key": "fsa-type-col-2",
+              "label": "Limited Use FSA"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Plan Eligibility",
+              "cells": [
+                "Eligible unless enrolled in HSA",
+                "Available even if you waive other coverage",
+                "Available if enrolled in HDHP and HSA"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Annual Contribution Limit",
+              "cells": [
+                "$3,300",
+                "$5,000",
+                "$3,300"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Description",
+              "cells": [
+                "Pays for qualified medical expenses",
+                "Pays for dependent care expenses",
+                "Pays for eligible dental and vision expenses"
+              ]
+            }
           ]
         }
       ],
-      "order": 6
+      "order": 7
+    },
+    {
+      "_id": "pram-ch-survivor-benefits",
+      "title": "Survivor Benefits",
+      "description": "Basic Life and AD&D insurance is provided automatically to full-time team members through Mutual of Omaha, providing $50,000 in coverage. Coverage includes Basic Life and Accidental Death and Dismembe",
+      "slug": "survivor-benefits",
+      "icon": "umbrella",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "Basic Life and AD&D insurance is provided automatically to full-time team members through Mutual of Omaha, providing $50,000 in coverage. Coverage includes Basic Life and Accidental Death and Dismemberment (AD&D).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "RS&H provides Basic Life and Accidental Death & Dismemberment Insurance (AD&D)",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-0",
+              "text": "Basic Life and AD&D insurance is provided automatically to full-time team members through Mutual of Omaha, providing $50,000 in coverage. Coverage includes Basic Life and Accidental Death and Dismemberment (AD&D).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "Coverage amount",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-0",
+              "text": "Basic Life and AD&D insurance benefit is $50,000.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-1",
+              "text": "Eligible team members may purchase voluntary life insurance in increments up to $500,000 (not exceeding 5 times annual salary).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-2",
+              "text": "Spouse coverage available up to 100% of team member\u0002s election up to $250,000.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-3",
+              "text": "Children coverage available up to 100% of team member\u0002s election up to $10,000 ($2,000 minimum).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-2",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-2",
+              "text": "AD&D Coverage",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-0",
+              "text": "Premier America Credit Union provides Basic Life and AD&D insurance coverage through Mutual of Omaha. Coverage guarantees benefit payments continue to designated survivors in case of death or dismemberment.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-1",
+              "text": "Basic Life and AD&D insurance benefit is $50,000.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-2",
+              "text": "Coverage is automatic for full-time team members even if other coverage is waived.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-3",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-3",
+              "text": "Other Voluntary benefits",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-0",
+              "text": "Optional voluntary life insurance plans are available for team members, spouses/domestic partners, and children with premiums paid through payroll deductions. Evidence of insurability is required for higher coverage amounts.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-1",
+              "text": "Voluntary life insurance",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-2",
+              "text": "Voluntary AD&D insurance",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-4",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-4",
+              "text": "Designating Beneficiaries",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-4-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-4-0",
+              "text": "Name a primary and contingent beneficiary with full information. Benefits payments cannot usually be made to a minor; proceeds may be held until minor reaches age 18.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "order": 8
+    },
+    {
+      "_id": "pram-ch-supplemental-health",
+      "title": "Supplemental Health",
+      "description": "Supplemental health benefits provided by Allstate.",
+      "slug": "supplemental-health",
+      "icon": "plus-circle",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "Provider: Allstate",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "What is Supplemental Health?",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-0",
+              "text": "Supplemental health benefits provide additional coverage that helps cover expenses not paid by medical plans.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-1",
+              "text": "Coverage options include accident insurance, critical illness insurance, and hospital indemnity insurance.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "Critical Illness Coverage",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-0",
+              "text": "Guaranteed issue coverage with no medical questions.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-1",
+              "text": "Benefits payable based on date of covered event or diagnosis.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-2",
+              "text": "Wellness benefit payable once per calendar year for specified services.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-2",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-2",
+              "text": "Covered illness include:",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-0",
+              "text": "Cancer",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-1",
+              "text": "Heart Attack",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-2",
+              "text": "Stroke",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-3",
+              "text": "Coma",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-4",
+              "text": "Paralysis",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-5",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-5",
+              "text": "Loss of Sight",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-6",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-6",
+              "text": "Loss of Hearing",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-7",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-7",
+              "text": "Loss of Speech",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-8",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-8",
+              "text": "Benign Brain Tumor",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-9",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-9",
+              "text": "Coronary Disease",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-10",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-10",
+              "text": "Carcinoma in Situ",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-11",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-11",
+              "text": "Major Organ Failure",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-12",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-12",
+              "text": "Skin Cancer",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-13",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-13",
+              "text": "Life Threatening Cancer",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-3",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-3",
+              "text": "Payment frequency",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-0",
+              "text": "Payment made as lump sum upon diagnosis or event.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-4",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-4",
+              "text": "Accident Coverage",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-4-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-4-0",
+              "text": "Benefits payable for accidents occurring outside of work.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-4-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-4-1",
+              "text": "Helps pay deductibles, copays, and day-to-day expenses.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-4-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-4-2",
+              "text": "Benefits paid to you directly to use as you wish.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-5",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-5",
+              "text": "Notes & Disclaimers",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-5-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-5-0",
+              "text": "This is a fixed indemnity policy, not health insurance.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-5-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-5-1",
+              "text": "Payments under this policy are limited dollar amounts and not based on medical bills.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-5-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-5-2",
+              "text": "Policy is not a substitute for comprehensive health insurance.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Associate cost summary",
+          "templateId": "critical-illness-costs",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "tier",
+              "label": "Critical Illness and Cancer Insurance"
+            },
+            {
+              "_key": "col-1",
+              "key": "benefit",
+              "label": "Benefit"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Team Member Only",
+              "cells": [
+                "See rate chart by age and coverage amount"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Team Member + Spouse",
+              "cells": [
+                "See rate chart by age and coverage amount"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-1",
+          "tableTitle": "Coverage Details",
+          "templateId": "accident-payouts",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "service",
+              "label": "Accident Insurance"
+            },
+            {
+              "_key": "col-1",
+              "key": "amount",
+              "label": "Coverage Amount"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Hospital Admission",
+              "cells": [
+                "$300"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Intensive Care Confinement",
+              "cells": [
+                "$600"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Ambulance (Air / Ground)",
+              "cells": [
+                "$600 / $200"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Initial Care Visit",
+              "cells": [
+                "$100"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Emergency Care Treatment",
+              "cells": [
+                "$100"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "Physician Follow-up Care",
+              "cells": [
+                "$100"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "Major Diagnostic Exam",
+              "cells": [
+                "$200"
+              ]
+            },
+            {
+              "_key": "row-7",
+              "label": "X-Ray",
+              "cells": [
+                "$200"
+              ]
+            },
+            {
+              "_key": "row-8",
+              "label": "Medical Mobility Devices",
+              "cells": [
+                "Up to $250"
+              ]
+            },
+            {
+              "_key": "row-9",
+              "label": "Open Fractures",
+              "cells": [
+                "Up to $5,000"
+              ]
+            },
+            {
+              "_key": "row-10",
+              "label": "Open Dislocations",
+              "cells": [
+                "Up to $5,000"
+              ]
+            },
+            {
+              "_key": "row-11",
+              "label": "Blood, Plasma, Platelets",
+              "cells": [
+                "$600"
+              ]
+            },
+            {
+              "_key": "row-12",
+              "label": "Burns",
+              "cells": [
+                "Up to $1,000"
+              ]
+            },
+            {
+              "_key": "row-13",
+              "label": "Concussion",
+              "cells": [
+                "$600"
+              ]
+            },
+            {
+              "_key": "row-14",
+              "label": "Traumatic Brain Injury",
+              "cells": [
+                "$20,000"
+              ]
+            },
+            {
+              "_key": "row-15",
+              "label": "Open Abdominal or Thoracic Surgery",
+              "cells": [
+                "$2,000"
+              ]
+            },
+            {
+              "_key": "row-16",
+              "label": "Occupational, Physical and Speech Therapy",
+              "cells": [
+                "$60"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-2",
+          "tableTitle": "Payroll Contributions",
+          "templateId": "accident-contributions",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "tier",
+              "label": "Accident Insurance"
+            },
+            {
+              "_key": "col-1",
+              "key": "cost",
+              "label": "Bi-weekly Associate Payroll Contributions"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Team Member Only",
+              "cells": [
+                "$3.74"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Team Member + Spouse",
+              "cells": [
+                "$6.47"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Team Member + Child(ren)",
+              "cells": [
+                "$10.47"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Team Member + Family",
+              "cells": [
+                "$13.38"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 9
+    },
+    {
+      "_id": "pram-ch-income-protection-disability",
+      "title": "Income Protection (Disability)",
+      "description": "Short-term and long-term disability insurance and income protection benefits.",
+      "slug": "income-protection-disability",
+      "icon": "briefcase",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "Premier America Credit Union offers both Short-Term Disability (STD) and Long-Term Disability (LTD) insurance to help protect your income in case of injury or illness.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "Understand your disability insurance options.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "Overview",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-0",
+              "text": "Premier America Credit Union offers both Short-Term Disability (STD) and Long-Term Disability (LTD) insurance to help protect your income in case of injury or illness.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-1",
+              "text": "STD replaces 55% of income for up to 90 days after a short waiting period.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-2",
+              "text": "LTD replaces 50% of income for long-term disability, benefits last until Social Security Normal Retirement Age or recovery.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "Short-Term Disability (STD) Insurance",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-0",
+              "text": "Replaces 55% of your income for short-term disability.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-1",
+              "text": "Weekly maximum benefit is $1,075.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-2",
+              "text": "Elimination period: Day 1 for accident/injury; Day 8 for illness.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-3",
+              "text": "Maximum benefit period: 90 days.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-2",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-2",
+              "text": "Basic Long-Term Disability (LTD) Insurance",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-0",
+              "text": "Available at no cost to team members.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-1",
+              "text": "Replaces 50% of your income for long-term disability.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-2",
+              "text": "Monthly maximum benefit: $6,000.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-3",
+              "text": "Elimination period: 90 days.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-4",
+              "text": "Maximum benefit period: until Social Security Normal Retirement Age or recovery.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-3",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-3",
+              "text": "Notes & Disclaimers",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-0",
+              "text": "If employer pays LTD premiums, benefits are taxable income when paid.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-1",
+              "text": "If team member pays with after-tax dollars, benefits are not taxable.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "order": 10
+    },
+    {
+      "_id": "pram-ch-additional-voluntary-benefits",
+      "title": "Additional Voluntary Benefits",
+      "description": "Premier America Credit Union offers various voluntary benefits for team members and their families to make life easier and provide financial protection.",
+      "slug": "additional-voluntary-benefits",
+      "icon": "gift",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "Premier America Credit Union offers various voluntary benefits for team members and their families to make life easier and provide financial protection.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "tabs",
+          "_key": "tabs-10",
+          "items": [
+            {
+              "_key": "tab-item-0",
+              "title": "Pet Insurance",
+              "content": [
+                {
+                  "_type": "block",
+                  "_key": "block-0",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-0",
+                      "text": "Pet insurance provides coverage for veterinary expenses related to accidents and illnesses, including X-rays, medications, vet visits, surgeries, and hospital stays.",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-1",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-1",
+                      "text": "**How it works**\nPolicies available for dogs, cats, birds, reptiles, and exotic pets. Optional wellness coverage available for dogs and cats.",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-2",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-2",
+                      "text": "Provider: Nationwide",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-3",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-3",
+                      "text": "Accident and illness coverage",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-4",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-4",
+                      "text": "Preventive care reimbursement for wellness plans",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                }
+              ],
+              "link": "Contact Nationwide to enroll or for more information.",
+              "linkLabel": "Get a Quote"
+            },
+            {
+              "_key": "tab-item-1",
+              "title": "Identity Protection Plan",
+              "content": [
+                {
+                  "_type": "block",
+                  "_key": "block-0",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-0",
+                      "text": "The Elite Identity plans include data, device, and identity protection, along with financial wellness solutions.",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-1",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-1",
+                      "text": "**How it works**\nIncludes proactive privacy tools and identity theft insurance. Provides professional restoration services and personal finance tools.",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-2",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-2",
+                      "text": "Provider: Experian",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                }
+              ]
+            },
+            {
+              "_key": "tab-item-2",
+              "title": "529 Worksite College Savings Program",
+              "content": [
+                {
+                  "_type": "block",
+                  "_key": "block-0",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-0",
+                      "text": "The 529 plan helps families save for future education expenses, similar to IRAs and 401(k) plans for retirement.",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-1",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-1",
+                      "text": "**How it works**\nAdministered by ScholarShare529; handles paperwork and oversees investments.",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 11
     }
   ],
   "openEnrollment": {
-    "title": "2026 Open Enrollment",
-    "description": "Open Enrollment for the 2026 plan year. Review your options and make your elections before the deadline.",
-    "startDate": "2025-11-01",
-    "endDate": "2025-11-22",
-    "enrollmentLink": "https://enrollment.premieramerica.com",
-    "benefitsGuideUrl": "/content/uploads/premier-america-benefits-guide.pdf",
+    "title": "Welcome to Open Enrollment",
+    "description": "Review and update your benefits selections for the upcoming plan year.",
     "daysLeftLabel": "Days Left",
-    "periodLabel": "November 1 - November 22, 2025",
-    "statusTitle": "Open Enrollment Status",
-    "statusDescription": "Make your benefit elections for the 2026 plan year.",
-    "checklistLabel": "Enrollment Checklist",
-    "checklistSubtext": "Follow these steps to complete your enrollment",
-    "changesLabel": "What's New for 2026",
-    "changesSubtext": "Review the benefit changes for the upcoming year",
+    "periodLabel": "Open Enrollment Period",
+    "statusTitle": "Action Needed",
+    "statusDescription": "Review and update your selections now",
+    "checklistLabel": "Review Enrollment Checklist",
+    "checklistSubtext": "Prepare for open enrollment",
+    "changesLabel": "Discover Benefit Changes",
+    "changesSubtext": "What's new this year",
     "enrollLabel": "Enroll Now",
-    "enrollSubtext": "Complete your elections online"
+    "enrollSubtext": "Complete your enrollment",
+    "benefitsGuideUrl": "https://kyhxmyhtowrqmhglmkhu.supabase.co/storage/v1/object/public/employer-assets/premier-america/benefits-guide.pdf"
   },
   "benefitChangesPage": {
-    "title": "2026 Benefit Changes",
-    "description": [
-      {
-        "_type": "block",
-        "_key": "block-0",
-        "style": "normal",
-        "children": [
-          {
-            "_type": "span",
-            "_key": "span-0",
-            "text": "Premier America continually reviews its benefits offerings to ensure competitive, comprehensive coverage for all employees. Below are the key changes for the 2026 plan year.",
-            "marks": []
-          }
-        ],
-        "markDefs": []
-      }
-    ],
-    "alertMessage": [
-      {
-        "_type": "block",
-        "_key": "alert-0",
-        "style": "normal",
-        "children": [
-          {
-            "_type": "span",
-            "_key": "span-alert-0",
-            "text": "Important: Please review all changes carefully during the Open Enrollment period. Elections cannot be changed until the next Open Enrollment unless you experience a qualifying life event.",
-            "marks": []
-          }
-        ],
-        "markDefs": []
-      }
-    ],
-    "changes": [
-      {
-        "_key": "change-0",
-        "type": "new",
-        "title": "New HDHP with HSA Option",
-        "description": [
-          {
-            "_type": "block",
-            "_key": "block-0",
-            "style": "normal",
-            "children": [
-              {
-                "_type": "span",
-                "_key": "span-0",
-                "text": "For 2026, Premier America is introducing a High Deductible Health Plan (HDHP) paired with a Health Savings Account (HSA). The company will contribute $750 (individual) or $1,500 (family) annually to your HSA. This plan offers the lowest monthly premiums and allows you to build tax-advantaged savings for current and future healthcare expenses.",
-                "marks": []
-              }
-            ],
-            "markDefs": []
-          }
-        ]
-      },
-      {
-        "_key": "change-1",
-        "type": "update",
-        "title": "Enhanced Dental Premium Plan — Orthodontia Added",
-        "description": [
-          {
-            "_type": "block",
-            "_key": "block-0",
-            "style": "normal",
-            "children": [
-              {
-                "_type": "span",
-                "_key": "span-0",
-                "text": "The Premium Dental plan now includes orthodontia coverage for both children and adults at 50% coinsurance with a $2,000 lifetime maximum. This enhancement provides significant savings for families needing braces or other orthodontic treatment.",
-                "marks": []
-              }
-            ],
-            "markDefs": []
-          }
-        ]
-      },
-      {
-        "_key": "change-2",
-        "type": "update",
-        "title": "Increased Company HSA Contribution",
-        "description": [
-          {
-            "_type": "block",
-            "_key": "block-0",
-            "style": "normal",
-            "children": [
-              {
-                "_type": "span",
-                "_key": "span-0",
-                "text": "Premier America has increased its annual HSA seed contribution from $500/$1,000 to $750/$1,500 (individual/family) for employees enrolled in the HDHP. This increase helps offset the higher deductible and provides additional tax-free funds for healthcare expenses.",
-                "marks": []
-              }
-            ],
-            "markDefs": []
-          }
-        ]
-      },
-      {
-        "_key": "change-3",
-        "type": "new",
-        "title": "Telehealth Access Expanded",
-        "description": [
-          {
-            "_type": "block",
-            "_key": "block-0",
-            "style": "normal",
-            "children": [
-              {
-                "_type": "span",
-                "_key": "span-0",
-                "text": "All medical plans now include enhanced telehealth benefits with 24/7 access to board-certified physicians, mental health counselors, and dermatologists. HMO members pay just $10 per visit, PPO members $20, and HDHP members pay 20% after deductible.",
-                "marks": []
-              }
-            ],
-            "markDefs": []
-          }
-        ]
-      }
-    ],
-    "ctaTitle": "Ready to Enroll?",
-    "ctaDescription": "Visit the enrollment portal to make your benefit elections for 2026."
+    "title": "What's New This Year",
+    "description": "Review the latest changes and improvements to your benefits package.",
+    "alertMessage": "Review all changes before making your elections during open enrollment.",
+    "changes": [],
+    "ctaTitle": "Ready to Review Your Benefits?",
+    "ctaDescription": "Contact HR for any questions."
   },
   "enrollmentChecklist": {
     "title": "Enrollment Checklist",
-    "description": [
-      {
-        "_type": "block",
-        "_key": "block-0",
-        "style": "normal",
-        "children": [
-          {
-            "_type": "span",
-            "_key": "span-0",
-            "text": "Follow these steps to ensure a smooth and complete benefits enrollment for the 2026 plan year.",
-            "marks": []
-          }
-        ],
-        "markDefs": []
-      }
-    ],
-    "items": [
-      {
-        "_key": "item-0",
-        "step": 1,
-        "title": "Review Your Current Coverage",
-        "description": [
-          {
-            "_type": "block",
-            "_key": "block-0",
-            "style": "normal",
-            "children": [
-              {
-                "_type": "span",
-                "_key": "span-0",
-                "text": "Take a look at your current benefits elections and consider whether they still meet your needs. Think about any life changes that occurred this year and how they might affect your coverage needs for 2026.",
-                "marks": []
-              }
-            ],
-            "markDefs": []
-          }
-        ]
-      },
-      {
-        "_key": "item-1",
-        "step": 2,
-        "title": "Review What's New for 2026",
-        "description": [
-          {
-            "_type": "block",
-            "_key": "block-0",
-            "style": "normal",
-            "children": [
-              {
-                "_type": "span",
-                "_key": "span-0",
-                "text": "Check the Benefit Changes page to learn about new plan options, coverage improvements, and any cost changes. Pay particular attention to the new HDHP/HSA option and the enhanced dental orthodontia coverage.",
-                "marks": []
-              }
-            ],
-            "markDefs": []
-          }
-        ]
-      },
-      {
-        "_key": "item-2",
-        "step": 3,
-        "title": "Gather Your Information",
-        "description": [
-          {
-            "_type": "block",
-            "_key": "block-0",
-            "style": "normal",
-            "children": [
-              {
-                "_type": "span",
-                "_key": "span-0",
-                "text": "You'll need Social Security numbers and dates of birth for any dependents you plan to enroll. If adding a new dependent, have a copy of your marriage certificate, birth certificate, or adoption paperwork available.",
-                "marks": []
-              }
-            ],
-            "markDefs": []
-          }
-        ]
-      },
-      {
-        "_key": "item-3",
-        "step": 4,
-        "title": "Make Your Elections Online",
-        "description": [
-          {
-            "_type": "block",
-            "_key": "block-0",
-            "style": "normal",
-            "children": [
-              {
-                "_type": "span",
-                "_key": "span-0",
-                "text": "Log in to the enrollment portal at enrollment.premieramerica.com and complete your benefit elections. Be sure to designate your beneficiaries and review your elections summary before submitting. Print or save a confirmation for your records.",
-                "marks": []
-              }
-            ],
-            "markDefs": []
-          }
-        ]
-      }
-    ],
-    "ctaTitle": "Need Help?",
-    "ctaDescription": "Contact the HR Benefits Team at benefits@premieramerica.com or call 1-800-555-9999 for assistance with your enrollment."
+    "description": "Use this step-by-step checklist to prepare for open enrollment.",
+    "items": [],
+    "ctaTitle": "Ready to Enroll?",
+    "ctaDescription": "Once you've completed this checklist, you're ready to make your benefit elections."
   },
   "retirementPlanning": {
-    "heroTitle": "Plan for Your Future",
-    "heroDescription": [
-      {
-        "_type": "block",
-        "_key": "block-0",
-        "style": "normal",
-        "children": [
-          {
-            "_type": "span",
-            "_key": "span-0",
-            "text": "Premier America is committed to helping you build a secure financial future. Take advantage of our retirement savings plans with generous company matching to grow your nest egg.",
-            "marks": []
-          }
-        ],
-        "markDefs": []
-      }
-    ],
-    "featuresTitle": "Retirement Benefits",
-    "sections": [
-      {
-        "_key": "section-0",
-        "title": "401(k) Savings Plan",
-        "content": [
-          {
-            "_type": "block",
-            "_key": "block-0",
-            "style": "normal",
-            "children": [
-              {
-                "_type": "span",
-                "_key": "span-0",
-                "text": "Premier America offers a 401(k) plan through Fidelity Investments. You can contribute up to the IRS annual limit ($23,500 for 2026, plus an additional $7,500 catch-up contribution if you're age 50 or older). Both pre-tax (Traditional) and after-tax (Roth) contribution options are available.",
-                "marks": []
-              }
-            ],
-            "markDefs": []
-          },
-          {
-            "_type": "block",
-            "_key": "block-1",
-            "style": "normal",
-            "children": [
-              {
-                "_type": "span",
-                "_key": "span-1",
-                "text": "Company Match: Premier America matches 100% of the first 4% of your salary that you contribute, plus 50% of the next 2%. That's a maximum company match of 5% of your eligible compensation. You are immediately vested in your own contributions, and company matching contributions vest over 3 years (33% per year).",
-                "marks": []
-              }
-            ],
-            "markDefs": []
-          }
-        ]
-      },
-      {
-        "_key": "section-1",
-        "title": "Investment Options",
-        "content": [
-          {
-            "_type": "block",
-            "_key": "block-0",
-            "style": "normal",
-            "children": [
-              {
-                "_type": "span",
-                "_key": "span-0",
-                "text": "The 401(k) plan offers a diversified menu of investment options including target-date funds, index funds, actively managed funds, and a self-directed brokerage option. All funds have been carefully selected by our Investment Committee and are reviewed quarterly.",
-                "marks": []
-              }
-            ],
-            "markDefs": []
-          },
-          {
-            "_type": "block",
-            "_key": "block-1",
-            "style": "normal",
-            "children": [
-              {
-                "_type": "span",
-                "_key": "span-1",
-                "text": "If you don't make an investment election, your contributions will be automatically invested in the target-date fund closest to your expected retirement year based on age 65.",
-                "marks": []
-              }
-            ],
-            "markDefs": []
-          }
-        ]
-      },
-      {
-        "_key": "section-2",
-        "title": "Financial Wellness Resources",
-        "content": [
-          {
-            "_type": "block",
-            "_key": "block-0",
-            "style": "normal",
-            "children": [
-              {
-                "_type": "span",
-                "_key": "span-0",
-                "text": "Premier America provides access to free financial planning tools and resources through Fidelity, including one-on-one consultations with financial advisors, retirement readiness assessments, online calculators, and educational webinars covering topics like debt management, saving for college, and Social Security planning.",
-                "marks": []
-              }
-            ],
-            "markDefs": []
-          }
-        ]
-      }
-    ],
-    "ctaButtonText": "Access Your 401(k) Account"
+    "heroTitle": "Plan for Your Future"
   },
-  "documents": [
-    {
-      "_id": "pa-doc-benefits-guide",
-      "title": "2026 Benefits Guide",
-      "fileUrl": "/content/uploads/premier-america-benefits-guide.pdf",
-      "fileType": "pdf"
-    },
-    {
-      "_id": "pa-doc-enrollment-form",
-      "title": "Enrollment Change Form",
-      "fileUrl": "/content/uploads/premier-america-enrollment-form.pdf",
-      "fileType": "pdf"
-    },
-    {
-      "_id": "pa-doc-hsa-guide",
-      "title": "HSA Quick Start Guide",
-      "fileUrl": "/content/uploads/premier-america-hsa-guide.pdf",
-      "fileType": "pdf"
-    },
-    {
-      "_id": "pa-doc-401k-summary",
-      "title": "401(k) Plan Summary",
-      "fileUrl": "/content/uploads/premier-america-401k-summary.pdf",
-      "fileType": "pdf"
-    }
-  ]
+  "documents": []
 }
