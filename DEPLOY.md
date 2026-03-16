@@ -3,6 +3,7 @@
 ## 1. Supabase
 
 - **Bucket:** `employer-assets` must exist and be **public** (Storage → employer-assets → make public).
+- **Table:** For serverless extraction pipeline, create table `content_drafts` by running `scripts/supabase-content-drafts-table.sql` once in Supabase → SQL Editor. This is cheaper and faster than storing JSON in Storage.
 - **Env (Vercel):** Add `NEXT_PUBLIC_SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` (Settings → API in Supabase).
 
 ## 2. Vercel project
@@ -17,6 +18,8 @@
 | `ADMIN_TOKEN` | Secret token for /admin access |
 | `LLAMA_CLOUD_API_KEY` | For PDF extraction |
 | `NEXT_PUBLIC_DEFAULT_EMPLOYER` | Optional: default employer when no subdomain (e.g. `rs-h`) |
+| `GITHUB_TOKEN` | Optional: GitHub PAT with `repo` scope for auto-commit after extraction (serverless) |
+| `GITHUB_REPO` | Optional: repo as `owner/repo` (e.g. `acolyteai/rsandh-hub`) for auto-commit |
 
 ## 3. Subdomain per employer
 
@@ -26,11 +29,10 @@
   - **A/CNAME** for `*.benefits.acolyteai.com` → Vercel (Vercel will show the target).
 - Update **proxy.ts** so `BASE_DOMAINS` / subdomain logic uses your real domain. Currently it uses `benefits.acolyteai.com` and `localhost`. If your domain is different, change the constant in `proxy.ts`.
 
-## 4. Content on Vercel
+## 4. Content on Vercel & serverless extraction (EROFS fix)
 
 - The app reads content from **local JSON files** (`content/*.published.json`) in the repo. So whatever is in the repo at build time is what the site serves.
-- For persistent content edits on Vercel you’d need to move content to Supabase (or another store) later; for now, content is from the repo and PDFs/logos are in Supabase.
-
+- When extraction runs on Vercel, the app uploads generated JSON to Supabase and (if GITHUB_TOKEN and GITHUB_REPO are set) commits it to the repo via GitHub API, triggering a new deploy. Without those env vars, the UI offers a Download so you can add the file to the repo manually.’d 
 ## 5. Verify
 
 - **Global admin:** `https://benefits.acolyteai.com/admin` (no subdomain) → Clients list + Import.

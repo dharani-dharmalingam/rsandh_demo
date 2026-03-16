@@ -41,8 +41,8 @@ export function BenefitsEditor({ pageData, chapters, onPageChange, onChaptersCha
 
   return (
     <div className="space-y-6">
-      <Card className="p-6">
-        <h3 className="text-lg font-semibold text-slate-900 mb-4">Benefits Overview Page</h3>
+      <Card className="border-slate-200 bg-white p-6 rounded-xl shadow-sm">
+        <h3 className="text-base font-semibold text-slate-900 mb-4">Benefits Overview Page</h3>
         <div className="space-y-4">
           <FieldInput
             label="Page Title"
@@ -59,14 +59,14 @@ export function BenefitsEditor({ pageData, chapters, onPageChange, onChaptersCha
       </Card>
 
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-slate-900">Benefit Chapters ({chapters.length})</h3>
+        <h3 className="text-base font-semibold text-slate-900">Benefit Chapters ({chapters.length})</h3>
         <Button onClick={addChapter} size="sm">
           <Plus className="h-4 w-4 mr-1" /> Add Chapter
         </Button>
       </div>
 
       {chapters.map((chapter, idx) => (
-        <Card key={chapter._id} className="p-6">
+        <Card key={chapter._id} className="border-slate-200 bg-white p-6 rounded-xl shadow-sm">
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-2">
               <GripVertical className="h-5 w-5 text-slate-400" />

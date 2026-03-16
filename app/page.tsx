@@ -7,7 +7,7 @@ import { BenefitCard } from '@/components/benefit-card';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { FloatingAssistant } from '@/components/floating-assistant';
-import { FileText, HelpCircle, TrendingUp, Building2, Globe, Building, LayoutGrid } from 'lucide-react';
+import { FileText, HelpCircle, TrendingUp, ArrowRight } from 'lucide-react';
 import { Metadata } from 'next';
 import { listEmployers, getPublishedContent } from '@/lib/content';
 import type { BenefitChapterData, OpenEnrollmentData, RetirementPlanningData } from '@/lib/content/types';
@@ -281,82 +281,78 @@ function DirectoryPage() {
         slug: content.client.slug,
         name: content.client.name,
         themeColor: content.client.themeColor,
-        description: content.siteSettings?.footerAbout,
       };
     } catch {
-      return { slug, name: slug, themeColor: undefined, description: undefined };
+      return { slug, name: slug, themeColor: undefined };
     }
   });
 
-  const getClientIcon = (slug: string) => {
-    if (slug === 'abc-corp') return Building2;
-    if (slug === 'rs-h') return Building;
-    if (slug === 'premier-america') return Globe;
-    if (slug === 'global-tech') return Globe;
-    return LayoutGrid;
-  };
-
-  const getClientTheme = (slug: string) => {
-    const themes: Record<string, { bg: string; hover: string }> = {
-      'rs-h': { bg: 'bg-blue-600', hover: 'hover:bg-blue-700' },
-      'premier-america': { bg: 'bg-emerald-600', hover: 'hover:bg-emerald-700' },
-      'abc-corp': { bg: 'bg-emerald-600', hover: 'hover:bg-emerald-700' },
-      'global-tech': { bg: 'bg-indigo-600', hover: 'hover:bg-indigo-700' },
+  const getThemeStyles = (slug: string) => {
+    const themes: Record<string, { gradient: string; hover: string; ring: string }> = {
+      'rs-h': { gradient: 'from-slate-800 to-slate-700', hover: 'hover:from-slate-700 hover:to-slate-600', ring: 'focus-visible:ring-slate-400' },
+      'premier-america': { gradient: 'from-emerald-700 to-emerald-600', hover: 'hover:from-emerald-600 hover:to-emerald-500', ring: 'focus-visible:ring-emerald-400' },
+      'lehr': { gradient: 'from-blue-700 to-blue-600', hover: 'hover:from-blue-600 hover:to-blue-500', ring: 'focus-visible:ring-blue-400' },
+      'abc-corp': { gradient: 'from-emerald-700 to-emerald-600', hover: 'hover:from-emerald-600 hover:to-emerald-500', ring: 'focus-visible:ring-emerald-400' },
+      'global-tech': { gradient: 'from-indigo-700 to-indigo-600', hover: 'hover:from-indigo-600 hover:to-indigo-500', ring: 'focus-visible:ring-indigo-400' },
     };
-    return themes[slug] || { bg: 'bg-blue-600', hover: 'hover:bg-blue-700' };
+    return themes[slug] || { gradient: 'from-slate-800 to-slate-700', hover: 'hover:from-slate-700 hover:to-slate-600', ring: 'focus-visible:ring-slate-400' };
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-white flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-        <div className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-blue-50/50 rounded-full blur-[120px]" />
-        <div className="absolute top-[60%] -right-[5%] w-[40%] h-[50%] bg-indigo-50/50 rounded-full blur-[100px]" />
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-blue-50 via-slate-50 to-indigo-50 flex flex-col justify-center py-16 px-4 sm:px-6 lg:px-8">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-blue-200/40 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 -left-32 w-80 h-80 bg-indigo-200/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-1/4 w-64 h-64 bg-emerald-200/30 rounded-full blur-3xl" />
       </div>
 
       <SectionWrapper className="relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-bold uppercase tracking-widest mb-6 shadow-sm">
+        <div className="text-center mb-14 opacity-0 animate-fade-in" style={{ animationDelay: '0ms', animationFillMode: 'forwards' }}>
+          <span className="inline-block px-4 py-1.5 rounded-full bg-blue-600 text-white text-xs font-semibold uppercase tracking-widest mb-6 shadow-sm">
             Enterprise Directory
-          </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight drop-shadow-sm">
+          </span>
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-3 tracking-tight">
             Benefits Portal Directory
           </h1>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-medium">
-            Securely access your personalized employee benefits, retirement planning, and corporate resources.
+          <p className="text-slate-600 max-w-lg mx-auto text-base">
+            Select your organization to access your benefits portal
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
-          {clients.map((client: any) => {
-            const Icon = getClientIcon(client.slug);
-            const theme = getClientTheme(client.slug);
-
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          {clients.map((client: any, index: number) => {
+            const theme = getThemeStyles(client.slug);
             return (
-              <Card
+              <Link
                 key={client.slug}
-                className="group relative overflow-hidden bg-white/80 backdrop-blur-md border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out rounded-[2.5rem]"
+                href={`/?employer=${client.slug}`}
+                className="block opacity-0 animate-fade-up focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-400 rounded-2xl"
+                style={{ animationDelay: `${120 + index * 80}ms`, animationFillMode: 'forwards' }}
               >
-                <div className="p-10 flex flex-col items-center text-center">
-                  <div className={`${theme.bg} p-6 rounded-3xl text-white mb-8 shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500`}>
-                    <Icon className="h-10 w-10" />
+                <div
+                  className={`
+                    group relative overflow-hidden
+                    bg-white/60 backdrop-blur-xl rounded-2xl
+                    border border-white/60
+                    shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-slate-300/50
+                    px-8 py-10
+                    transition-all duration-300 ease-out
+                    hover:-translate-y-1 hover:scale-[1.02]
+                    hover:bg-white/80
+                    active:scale-[0.99]
+                  `}
+                >
+                  <div className="flex flex-col items-center justify-center min-h-[100px] gap-2">
+                    <span className="text-2xl font-bold text-slate-800 group-hover:text-slate-900 transition-colors">
+                      {client.name}
+                    </span>
+                    <ArrowRight className="h-5 w-5 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all duration-300" />
                   </div>
-                  <h2 className="text-3xl font-bold text-slate-900 mb-4 tracking-tight drop-shadow-sm">
-                    {client.name}
-                  </h2>
-                  <p className="text-slate-500 mb-10 min-h-[4rem] leading-relaxed font-medium px-4">
-                    {client.description || 'Employee benefits and insurance management portal.'}
-                  </p>
-                  <Button
-                    asChild
-                    className={`w-full h-16 ${theme.bg} ${theme.hover} text-white text-lg font-bold rounded-2xl shadow-lg transition-all duration-300 active:scale-95 border-0`}
-                  >
-                    <Link href={`/?employer=${client.slug}`}>
-                      Enter Portal
-                    </Link>
-                  </Button>
-                  <div className={`absolute bottom-0 left-0 w-full h-1.5 ${theme.bg} transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 opacity-20`} />
+                  <div
+                    className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${theme.gradient} ${theme.hover} transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out rounded-b-2xl`}
+                  />
                 </div>
-              </Card>
+              </Link>
             );
           })}
         </div>

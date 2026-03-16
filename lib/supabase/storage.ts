@@ -65,3 +65,4 @@ export async function downloadAsBuffer(storagePath: string): Promise<Buffer> {
   if (!data) throw new Error('No data returned from Supabase')
   return Buffer.from(await data.arrayBuffer())
 }
+

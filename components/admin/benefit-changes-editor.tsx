@@ -38,8 +38,8 @@ export function BenefitChangesEditor({ data, onChange }: Props) {
 
   return (
     <div className="space-y-6">
-      <Card className="p-6">
-        <h3 className="text-lg font-semibold text-slate-900 mb-4">Page Header</h3>
+      <Card className="border-slate-200 bg-white p-6 rounded-xl shadow-sm">
+        <h3 className="text-base font-semibold text-slate-900 mb-4">Page Header</h3>
         <div className="space-y-4">
           <FieldInput label="Title" value={data.title} onChange={(v) => update('title', v)} />
           <FieldInput label="CTA Title" value={data.ctaTitle} onChange={(v) => update('ctaTitle', v)} />
@@ -48,14 +48,14 @@ export function BenefitChangesEditor({ data, onChange }: Props) {
       </Card>
 
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-slate-900">Changes ({(data.changes || []).length})</h3>
+        <h3 className="text-base font-semibold text-slate-900">Changes ({(data.changes || []).length})</h3>
         <Button onClick={addChange} size="sm">
           <Plus className="h-4 w-4 mr-1" /> Add Change
         </Button>
       </div>
 
       {(data.changes || []).map((change, idx) => (
-        <Card key={change._key} className="p-6">
+        <Card key={change._key} className="border-slate-200 bg-white p-6 rounded-xl shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <h4 className="font-semibold text-slate-900">{change.title || 'Untitled Change'}</h4>
             <Button variant="ghost" size="sm" onClick={() => removeChange(idx)} className="text-red-500 hover:text-red-700 hover:bg-red-50">

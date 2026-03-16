@@ -54,7 +54,13 @@ export function BenefitsImportWizard({ clientSlug, onComplete }: BenefitsImportW
   const [themeColor, setThemeColor] = useState('#1e40af');
   const [chapters, setChapters] = useState<string[]>([]);
 
-  const [phase2Result, setPhase2Result] = useState<{ message: string; chaptersCount: number } | null>(null);
+  const [phase2Result, setPhase2Result] = useState<{
+    message: string;
+    chaptersCount: number;
+    committedToGit?: boolean;
+    generatedContent?: unknown;
+    filename?: string;
+  } | null>(null);
   const [progress, setProgress] = useState(0);
 
   const runPhase1 = async () => {
@@ -173,25 +179,27 @@ export function BenefitsImportWizard({ clientSlug, onComplete }: BenefitsImportW
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Step Indicator */}
-      <div className="flex items-center gap-2 text-sm text-slate-500">
-        <StepDot active={step === 'upload'} done={['detecting', 'review', 'extracting', 'complete'].includes(step)} label="Upload" />
-        <StepLine />
-        <StepDot active={step === 'detecting'} done={['review', 'extracting', 'complete'].includes(step)} label="Detect" />
-        <StepLine />
-        <StepDot active={step === 'review'} done={['extracting', 'complete'].includes(step)} label="Review" />
-        <StepLine />
-        <StepDot active={step === 'extracting'} done={step === 'complete'} label="Extract" />
-        <StepLine />
-        <StepDot active={step === 'complete'} done={false} label="Done" />
-      </div>
+      <nav className="flex items-center gap-1 rounded-lg border border-slate-200 bg-white p-2 shadow-sm" aria-label="Extraction steps">
+        <div className="flex items-center flex-1 min-w-0">
+          <StepDot active={step === 'upload'} done={['detecting', 'review', 'extracting', 'complete'].includes(step)} label="Upload" />
+          <StepLine />
+          <StepDot active={step === 'detecting'} done={['review', 'extracting', 'complete'].includes(step)} label="Detect" />
+          <StepLine />
+          <StepDot active={step === 'review'} done={['extracting', 'complete'].includes(step)} label="Review" />
+          <StepLine />
+          <StepDot active={step === 'extracting'} done={step === 'complete'} label="Extract" />
+          <StepLine />
+          <StepDot active={step === 'complete'} done={false} label="Done" />
+        </div>
+      </nav>
 
       {/* ── Step: Upload ── */}
       {step === 'upload' && (
-        <Card className="p-6 space-y-6">
+        <Card className="border-slate-200 bg-white p-6 rounded-xl shadow-sm space-y-6">
           <div>
-            <h3 className="text-lg font-semibold text-slate-900">Upload Benefits Guide</h3>
+            <h3 className="text-base font-semibold text-slate-900">Upload Benefits Guide</h3>
             <p className="text-sm text-slate-500 mt-1">
               Upload an employer benefits guide PDF. The AI extraction pipeline will detect plans and generate structured content automatically.
             </p>
@@ -199,10 +207,12 @@ export function BenefitsImportWizard({ clientSlug, onComplete }: BenefitsImportW
 
           {/* PDF Upload */}
           <div className="space-y-2">
-            <Label>Benefits Guide PDF *</Label>
+            <Label className="text-sm font-medium text-slate-700">Benefits Guide PDF *</Label>
             <div
-              className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
-                pdfFile ? 'border-blue-300 bg-blue-50' : 'border-slate-300 hover:border-blue-400 hover:bg-slate-50'
+              className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-all ${
+                pdfFile
+                  ? 'border-slate-300 bg-slate-50'
+                  : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50/50'
               }`}
               onClick={() => fileInputRef.current?.click()}
             >
@@ -215,7 +225,7 @@ export function BenefitsImportWizard({ clientSlug, onComplete }: BenefitsImportW
               />
               {pdfFile ? (
                 <div className="flex items-center justify-center gap-3">
-                  <FileText className="h-8 w-8 text-blue-600" />
+                  <FileText className="h-8 w-8 text-slate-600" />
                   <div className="text-left">
                     <p className="font-medium text-slate-900">{pdfFile.name}</p>
                     <p className="text-sm text-slate-500">{(pdfFile.size / (1024 * 1024)).toFixed(1)} MB</p>
@@ -235,7 +245,7 @@ export function BenefitsImportWizard({ clientSlug, onComplete }: BenefitsImportW
                 <div className="space-y-2">
                   <Upload className="h-10 w-10 text-slate-400 mx-auto" />
                   <p className="text-slate-600 font-medium">Click to upload or drag & drop</p>
-                  <p className="text-sm text-slate-400">PDF files only</p>
+                  <p className="text-sm text-slate-500">PDF only, max size per platform limits</p>
                 </div>
               )}
             </div>
@@ -243,7 +253,7 @@ export function BenefitsImportWizard({ clientSlug, onComplete }: BenefitsImportW
 
           {/* Logo Upload (optional) */}
           <div className="space-y-2">
-            <Label>Company Logo (optional)</Label>
+            <Label className="text-sm font-medium text-slate-700">Company Logo (optional)</Label>
             <div className="flex items-center gap-3">
               <input
                 ref={logoInputRef}
@@ -263,7 +273,7 @@ export function BenefitsImportWizard({ clientSlug, onComplete }: BenefitsImportW
             </div>
           </div>
 
-          <Button onClick={runPhase1} disabled={!pdfFile} className="bg-blue-600 hover:bg-blue-700">
+          <Button onClick={runPhase1} disabled={!pdfFile} className="bg-slate-900 hover:bg-slate-800">
             <Sparkles className="h-4 w-4 mr-2" />
             Start AI Extraction
           </Button>
@@ -272,40 +282,44 @@ export function BenefitsImportWizard({ clientSlug, onComplete }: BenefitsImportW
 
       {/* ── Step: Detecting (Phase 1 progress) ── */}
       {step === 'detecting' && (
-        <Card className="p-6 space-y-4">
-          <div className="flex items-center gap-3">
-            <Loader2 className="h-6 w-6 animate-spin text-blue-600" />
+        <Card className="border-slate-200 bg-white p-8 rounded-xl shadow-sm space-y-5">
+          <div className="flex items-start gap-4">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-slate-100">
+              <Loader2 className="h-5 w-5 animate-spin text-slate-600" />
+            </div>
             <div>
-              <h3 className="text-lg font-semibold text-slate-900">Analyzing PDF...</h3>
-              <p className="text-sm text-slate-500">Detecting benefit plans and document structure. This may take a few minutes.</p>
+              <h3 className="text-base font-semibold text-slate-900">Analyzing PDF</h3>
+              <p className="text-sm text-slate-500 mt-1">Detecting benefit plans and document structure. This may take a few minutes.</p>
             </div>
           </div>
-          <Progress value={progress} className="h-2" />
-          <p className="text-xs text-slate-400 text-right">{Math.round(progress)}%</p>
+          <div className="space-y-2">
+            <Progress value={progress} className="h-2" />
+            <p className="text-xs text-slate-500 text-right">{Math.round(progress)}%</p>
+          </div>
         </Card>
       )}
 
       {/* ── Step: Review (Phase 1 results) ── */}
       {step === 'review' && editedPlans && (
-        <Card className="p-6 space-y-6">
+        <Card className="border-slate-200 bg-white p-6 rounded-xl shadow-sm space-y-6">
           <div>
-            <h3 className="text-lg font-semibold text-slate-900 flex items-center gap-2">
+            <h3 className="text-base font-semibold text-slate-900 flex items-center gap-2">
               <CheckCircle2 className="h-5 w-5 text-green-600" />
               Plans Detected
             </h3>
             <p className="text-sm text-slate-500 mt-1">
-              Review and edit the detected plans below. You can add, remove, or rename plans before extraction.
+              Review and edit the detected plans below. Add, remove, or rename plans before extraction.
             </p>
           </div>
 
           {/* Company Info */}
           <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-1">
-              <Label>Company Name</Label>
-              <Input value={companyName} onChange={(e) => setCompanyName(e.target.value)} />
+            <div className="space-y-1.5">
+              <Label className="text-sm font-medium text-slate-700">Company Name</Label>
+              <Input value={companyName} onChange={(e) => setCompanyName(e.target.value)} className="h-10" />
             </div>
-            <div className="space-y-1">
-              <Label>Theme Color</Label>
+            <div className="space-y-1.5">
+              <Label className="text-sm font-medium text-slate-700">Theme Color</Label>
               <div className="flex items-center gap-2">
                 <input
                   type="color"
@@ -350,9 +364,9 @@ export function BenefitsImportWizard({ clientSlug, onComplete }: BenefitsImportW
             />
           </div>
 
-          {/* Detected Chapters - editable so you can add missed chapters */}
+          {/* Detected Chapters */}
           <div className="space-y-2">
-            <Label>Chapters to Extract</Label>
+            <Label className="text-sm font-medium text-slate-700">Chapters to Extract</Label>
             <p className="text-xs text-slate-500 mb-1">
               Add, remove, or rename chapters. Phase 2 will extract content for each chapter listed here.
             </p>
@@ -396,7 +410,7 @@ export function BenefitsImportWizard({ clientSlug, onComplete }: BenefitsImportW
               <ArrowLeft className="h-4 w-4 mr-2" />
               Start Over
             </Button>
-            <Button onClick={runPhase2} className="bg-blue-600 hover:bg-blue-700">
+            <Button onClick={runPhase2} className="bg-slate-900 hover:bg-slate-800">
               Confirm & Extract Content
               <ArrowRight className="h-4 w-4 ml-2" />
             </Button>
@@ -406,41 +420,75 @@ export function BenefitsImportWizard({ clientSlug, onComplete }: BenefitsImportW
 
       {/* ── Step: Extracting (Phase 2 progress) ── */}
       {step === 'extracting' && (
-        <Card className="p-6 space-y-4">
-          <div className="flex items-center gap-3">
-            <Loader2 className="h-6 w-6 animate-spin text-blue-600" />
+        <Card className="border-slate-200 bg-white p-8 rounded-xl shadow-sm space-y-5">
+          <div className="flex items-start gap-4">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-slate-100">
+              <Loader2 className="h-5 w-5 animate-spin text-slate-600" />
+            </div>
             <div>
-              <h3 className="text-lg font-semibold text-slate-900">Extracting Content...</h3>
-              <p className="text-sm text-slate-500">
+              <h3 className="text-base font-semibold text-slate-900">Extracting Content</h3>
+              <p className="text-sm text-slate-500 mt-1">
                 Running template-based extraction on the confirmed plans. This may take several minutes.
               </p>
             </div>
           </div>
-          <Progress value={progress} className="h-2" />
-          <p className="text-xs text-slate-400 text-right">{Math.round(progress)}%</p>
+          <div className="space-y-2">
+            <Progress value={progress} className="h-2" />
+            <p className="text-xs text-slate-500 text-right">{Math.round(progress)}%</p>
+          </div>
         </Card>
       )}
 
       {/* ── Step: Complete ── */}
       {step === 'complete' && phase2Result && (
-        <Card className="p-6 space-y-4">
-          <div className="flex items-center gap-3">
-            <CheckCircle2 className="h-8 w-8 text-green-600" />
+        <Card className="border-slate-200 bg-white p-8 rounded-xl shadow-sm space-y-6">
+          <div className="flex items-start gap-4">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-100">
+              <CheckCircle2 className="h-5 w-5 text-green-600" />
+            </div>
             <div>
-              <h3 className="text-lg font-semibold text-slate-900">Extraction Complete!</h3>
+              <h3 className="text-base font-semibold text-slate-900">Extraction Complete</h3>
               <p className="text-sm text-slate-500">{phase2Result.message}</p>
             </div>
           </div>
-          <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-sm text-green-800">
+          <div className="rounded-lg border border-green-200 bg-green-50 p-4 text-sm text-green-800">
             <strong>{phase2Result.chaptersCount}</strong> benefit chapters extracted and saved.
-            Content has been published and is now live on the site.
+            {phase2Result.committedToGit
+              ? ' Content was committed to the repo; Vercel will deploy automatically.'
+              : phase2Result.generatedContent
+                ? ' Download the file below and add it to your repo (e.g. content/) then redeploy to publish.'
+                : ' Content has been published and is now live on the site.'}
           </div>
+          {phase2Result.generatedContent != null && phase2Result.filename && !phase2Result.committedToGit ? (
+            <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-amber-800">
+              <p className="text-sm text-amber-800 mb-2">
+                Auto-commit was not available. Download the generated content and add it to your repo, or set GITHUB_TOKEN and GITHUB_REPO to enable auto-commit next time.
+              </p>
+              <Button
+                variant="outline"
+                className="border-amber-400 text-amber-800 hover:bg-amber-100"
+                onClick={() => {
+                  const blob = new Blob([JSON.stringify(phase2Result.generatedContent, null, 2)], {
+                    type: 'application/json',
+                  });
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement('a');
+                  a.href = url;
+                  a.download = phase2Result.filename ?? 'content.published.json';
+                  a.click();
+                  URL.revokeObjectURL(url);
+                }}
+              >
+                Download {phase2Result.filename}
+              </Button>
+            </div>
+          ) : null}
           <div className="flex items-center gap-3">
             <Button variant="outline" onClick={reset}>
               Import Another
             </Button>
             {onComplete && (
-              <Button onClick={onComplete} className="bg-blue-600 hover:bg-blue-700">
+              <Button onClick={onComplete} className="bg-slate-900 hover:bg-slate-800">
                 Go to Content Editor
               </Button>
             )}
@@ -450,11 +498,13 @@ export function BenefitsImportWizard({ clientSlug, onComplete }: BenefitsImportW
 
       {/* ── Step: Error ── */}
       {step === 'error' && (
-        <Card className="p-6 space-y-4">
-          <div className="flex items-center gap-3">
-            <AlertCircle className="h-8 w-8 text-red-600" />
+        <Card className="border-red-200 bg-white p-8 rounded-xl shadow-sm space-y-6">
+          <div className="flex items-start gap-4">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-100">
+              <AlertCircle className="h-5 w-5 text-red-600" />
+            </div>
             <div>
-              <h3 className="text-lg font-semibold text-red-900">Extraction Failed</h3>
+              <h3 className="text-base font-semibold text-red-900">Extraction Failed</h3>
               <p className="text-sm text-red-600">{error}</p>
             </div>
           </div>
@@ -470,15 +520,15 @@ export function BenefitsImportWizard({ clientSlug, onComplete }: BenefitsImportW
 
 function StepDot({ active, done, label }: { active: boolean; done: boolean; label: string }) {
   return (
-    <div className="flex items-center gap-1.5">
+    <div className="flex items-center gap-2 shrink-0">
       <div
-        className={`h-3 w-3 rounded-full border-2 transition-colors ${
+        className={`h-2.5 w-2.5 rounded-full border-2 transition-colors ${
           done ? 'bg-green-500 border-green-500' :
-          active ? 'bg-blue-600 border-blue-600' :
+          active ? 'bg-slate-900 border-slate-900' :
           'bg-white border-slate-300'
         }`}
       />
-      <span className={`text-xs ${active ? 'text-blue-600 font-medium' : done ? 'text-green-600' : 'text-slate-400'}`}>
+      <span className={`text-xs font-medium ${active ? 'text-slate-900' : done ? 'text-green-600' : 'text-slate-400'}`}>
         {label}
       </span>
     </div>
@@ -486,7 +536,7 @@ function StepDot({ active, done, label }: { active: boolean; done: boolean; labe
 }
 
 function StepLine() {
-  return <div className="flex-1 h-px bg-slate-200 min-w-[20px]" />;
+  return <div className="flex-1 h-px bg-slate-200 min-w-[12px]" />;
 }
 
 function PlanListEditor({
@@ -504,7 +554,7 @@ function PlanListEditor({
 }) {
   return (
     <div className="space-y-2">
-      <Label>{label}</Label>
+      <Label className="text-sm font-medium text-slate-700">{label}</Label>
       {plans.length === 0 && (
         <p className="text-sm text-slate-400 italic">None detected</p>
       )}

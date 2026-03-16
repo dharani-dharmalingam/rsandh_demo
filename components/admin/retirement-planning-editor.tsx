@@ -37,8 +37,8 @@ export function RetirementPlanningEditor({ data, onChange }: Props) {
 
   return (
     <div className="space-y-6">
-      <Card className="p-6">
-        <h3 className="text-lg font-semibold text-slate-900 mb-4">Hero Section</h3>
+      <Card className="border-slate-200 bg-white p-6 rounded-xl shadow-sm">
+        <h3 className="text-base font-semibold text-slate-900 mb-4">Hero Section</h3>
         <div className="space-y-4">
           <FieldInput label="Hero Title" value={data.heroTitle} onChange={(v) => update('heroTitle', v)} />
           <FieldInput label="Features Title" value={data.featuresTitle} onChange={(v) => update('featuresTitle', v)} />
@@ -48,14 +48,14 @@ export function RetirementPlanningEditor({ data, onChange }: Props) {
       </Card>
 
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-slate-900">Planning Sections ({(data.sections || []).length})</h3>
+        <h3 className="text-base font-semibold text-slate-900">Planning Sections ({(data.sections || []).length})</h3>
         <Button onClick={addSection} size="sm">
           <Plus className="h-4 w-4 mr-1" /> Add Section
         </Button>
       </div>
 
       {(data.sections || []).map((section, idx) => (
-        <Card key={section._key} className="p-6">
+        <Card key={section._key} className="border-slate-200 bg-white p-6 rounded-xl shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <h4 className="font-semibold text-slate-900">{section.title || 'Untitled Section'}</h4>
             <Button variant="ghost" size="sm" onClick={() => removeSection(idx)} className="text-red-500 hover:text-red-700 hover:bg-red-50">

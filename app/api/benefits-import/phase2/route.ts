@@ -11,8 +11,10 @@ import path from 'node:path'
 import { extractWithConfirmedPlans } from '@/lib/benefits-import/extract'
 import { transformToSanitySchema } from '@/lib/benefits-import/transform'
 import { seedPayloadToLocalContent } from '@/lib/benefits-import/to-local-content'
-import { saveContent, publishContent } from '@/lib/content'
+import { saveContent, publishContent, isContentWrittenToTmp } from '@/lib/content'
 import { isSupabaseConfigured, getPublicUrl, downloadAsBuffer } from '@/lib/supabase/storage'
+import { upsertContentJson } from '@/lib/supabase/content-store'
+import { commitContentToGit } from '@/lib/git-commit'
 import type { DetectedPlans, CustomTemplateDefinition } from '@/lib/benefits-import/types'
 
 export const maxDuration = 300
@@ -105,9 +107,43 @@ export async function POST(request: Request) {
         : `/content/uploads/${fileAssetId}`
     }
 
+    const usedTmp = isContentWrittenToTmp()
+
+    if (usedTmp) {
+      // Serverless: no local disk. Upload to Supabase and commit to Git.
+      let gitResult: { success: boolean; message: string } | null = null
+      if (isSupabaseConfigured()) {
+        try {
+          await upsertContentJson(clientSlug, localContent)
+          console.log(`[benefits-import] Content stored in Supabase table content_drafts for ${clientSlug}`)
+          gitResult = await commitContentToGit(clientSlug, localContent)
+          if (gitResult.success) {
+            console.log(`[benefits-import] Content committed to Git: ${gitResult.message}`)
+          } else {
+            console.warn(`[benefits-import] Git commit skipped or failed: ${gitResult.message}`)
+          }
+        } catch (uploadOrCommitErr) {
+          console.error('[benefits-import] Supabase upload or Git commit error:', uploadOrCommitErr)
+          gitResult = {
+            success: false,
+            message: uploadOrCommitErr instanceof Error ? uploadOrCommitErr.message : 'Upload or commit failed',
+          }
+        }
+      }
+      const message = gitResult?.success
+        ? `Site content generated for client "${clientSlug}" and committed to the repo. Deployment will run automatically.`
+        : gitResult?.message ?? `Site content generated for client "${clientSlug}". Download the JSON below and add it to your repo, or set GITHUB_TOKEN and GITHUB_REPO to enable auto-commit.`
+      return NextResponse.json({
+        success: true,
+        message,
+        chaptersCount: localContent.benefitChapters.length,
+        committedToGit: gitResult?.success ?? false,
+        ...(!gitResult?.success && { generatedContent: localContent, filename: `${clientSlug}.published.json` }),
+      })
+    }
+
     saveContent(clientSlug, localContent)
     publishContent(clientSlug)
-
     console.log(`[benefits-import] Content saved and published for client: ${clientSlug}`)
 
     return NextResponse.json({

@@ -22,8 +22,8 @@ export function SiteSettingsEditor({ data, clientData, onChange, onClientChange 
 
   return (
     <div className="space-y-6">
-      <Card className="p-6">
-        <h3 className="text-lg font-semibold text-slate-900 mb-4">Client Info</h3>
+      <Card className="border-slate-200 bg-white p-6 rounded-xl shadow-sm">
+        <h3 className="text-base font-semibold text-slate-900 mb-4">Client Info</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <FieldInput
             label="Company Name"
@@ -45,8 +45,8 @@ export function SiteSettingsEditor({ data, clientData, onChange, onClientChange 
         </div>
       </Card>
 
-      <Card className="p-6">
-        <h3 className="text-lg font-semibold text-slate-900 mb-4">Branding</h3>
+      <Card className="border-slate-200 bg-white p-6 rounded-xl shadow-sm">
+        <h3 className="text-base font-semibold text-slate-900 mb-4">Branding</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <FieldInput
             label="Client Name (Display)"
@@ -73,8 +73,8 @@ export function SiteSettingsEditor({ data, clientData, onChange, onClientChange 
         </div>
       </Card>
 
-      <Card className="p-6">
-        <h3 className="text-lg font-semibold text-slate-900 mb-4">Footer</h3>
+      <Card className="border-slate-200 bg-white p-6 rounded-xl shadow-sm">
+        <h3 className="text-base font-semibold text-slate-900 mb-4">Footer</h3>
         <div className="space-y-4">
           <FieldInput
             label="Footer About Text"

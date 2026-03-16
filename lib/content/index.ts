@@ -1,12 +1,33 @@
 import fs from "node:fs";
 import path from "node:path";
+import os from "node:os";
 import type { EmployerContent } from "./types";
 
+/** Directory for reading published content (repo/bundle). */
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
+/** In serverless (Vercel, Lambda) the app dir is read-only. Use /tmp for writes. */
+function isServerless(): boolean {
+  return process.env.VERCEL === "1" || process.cwd().startsWith("/var/task");
+}
+
+/** Directory for writing draft/published during extraction. Writable in serverless. */
+function getWritableContentDir(): string {
+  if (isServerless()) {
+    return path.join(os.tmpdir(), "rsandh-content");
+  }
+  return CONTENT_DIR;
+}
+
+/** True when content writes go to /tmp (ephemeral). Caller may return payload in API response. */
+export function isContentWrittenToTmp(): boolean {
+  return isServerless();
+}
+
 function ensureContentDir() {
-  if (!fs.existsSync(CONTENT_DIR)) {
-    fs.mkdirSync(CONTENT_DIR, { recursive: true });
+  const writable = getWritableContentDir();
+  if (!fs.existsSync(writable)) {
+    fs.mkdirSync(writable, { recursive: true });
   }
 }
 
@@ -15,7 +36,11 @@ function publishedPath(slug: string) {
 }
 
 function draftPath(slug: string) {
-  return path.join(CONTENT_DIR, `${slug}.draft.json`);
+  return path.join(getWritableContentDir(), `${slug}.draft.json`);
+}
+
+function writablePublishedPath(slug: string) {
+  return path.join(getWritableContentDir(), `${slug}.published.json`);
 }
 
 export function getPublishedContent(slug: string): EmployerContent {
@@ -43,7 +68,9 @@ export function saveContent(slug: string, data: EmployerContent): void {
 
 export function publishContent(slug: string): void {
   const draft = draftPath(slug);
-  const published = publishedPath(slug);
+  const published = isServerless()
+    ? writablePublishedPath(slug)
+    : publishedPath(slug);
 
   if (fs.existsSync(draft)) {
     fs.copyFileSync(draft, published);
@@ -54,7 +81,8 @@ export function publishContent(slug: string): void {
 }
 
 export function hasDraft(slug: string): boolean {
-  return fs.existsSync(draftPath(slug));
+  const draft = draftPath(slug);
+  return fs.existsSync(draft);
 }
 
 export function listEmployers(): string[] {

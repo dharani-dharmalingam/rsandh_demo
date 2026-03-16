@@ -23,7 +23,7 @@ function extractSubdomain(host: string): string | null {
   return null;
 }
 
-export function proxy(request: NextRequest) {
+function proxy(request: NextRequest) {
   const host = request.headers.get("host") ?? "";
   const { pathname, searchParams } = request.nextUrl;
 
@@ -57,6 +57,10 @@ export function proxy(request: NextRequest) {
       }
       const loginUrl = request.nextUrl.clone();
       loginUrl.pathname = "/admin/login";
+      // Preserve employer (and any other) query params so after login we can redirect to the correct client admin
+      if (searchParams.has("employer")) {
+        loginUrl.searchParams.set("employer", searchParams.get("employer")!);
+      }
       return NextResponse.redirect(loginUrl);
     }
   }
@@ -97,6 +101,8 @@ export function proxy(request: NextRequest) {
 
   return response;
 }
+
+export default proxy;
 
 export const config = {
   matcher: [
