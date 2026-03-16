@@ -346,24 +346,10 @@
               ]
             },
             {
-              "_key": "row-2",
-              "label": "TEAM MEMBER + CHILD(REN)",
-              "cells": [
-                "\t6|"
-              ]
-            },
-            {
               "_key": "row-3",
               "label": "TEAM MEMBER + FAMILY",
               "cells": [
                 "$64.43"
-              ]
-            },
-            {
-              "_key": "row-4",
-              "label": "TEAM MEMBER + 1 DEPENDENT",
-              "cells": [
-                "\t6|"
               ]
             }
           ]
@@ -396,24 +382,10 @@
               ]
             },
             {
-              "_key": "row-2",
-              "label": "TEAM MEMBER + CHILD(REN)",
-              "cells": [
-                "\t6|"
-              ]
-            },
-            {
-              "_key": "row-3",
+              "_key": "row-4",
               "label": "TEAM MEMBER + FAMILY",
               "cells": [
-                "$9.39"
-              ]
-            },
-            {
-              "_key": "row-4",
-              "label": "TEAM MEMBER + 1 DEPENDENT",
-              "cells": [
-                "\t6|"
+                " $9.39 "
               ]
             }
           ]
@@ -1228,8 +1200,8 @@
               "_key": "row-2",
               "label": "Coinsurance (your share)",
               "cells": [
-                "—",
-                "—"
+                " 20%*",
+                "40%*"
               ]
             },
             {
@@ -1525,7 +1497,7 @@
               "label": "Orthodontics (Diagnostic, Active, Retention Treatment for Adults and Dependents)",
               "cells": [
                 "50% coinsurance",
-                "\t6|"
+                "50% coinsurance"
               ]
             },
             {
@@ -1533,7 +1505,7 @@
               "label": "Orthodontic Lifetime Maximum",
               "cells": [
                 "$1,500",
-                "\t6|"
+                "$1,500"
               ]
             }
           ]
