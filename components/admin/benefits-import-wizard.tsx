@@ -18,7 +18,9 @@ import {
   Trash2,
   Plus,
   Sparkles,
+  ExternalLink,
 } from 'lucide-react';
+import Link from 'next/link';
 import type { DetectedPlans } from '@/lib/benefits-import/types';
 
 type WizardStep = 'upload' | 'detecting' | 'review' | 'extracting' | 'complete' | 'error';
@@ -455,18 +457,24 @@ export function BenefitsImportWizard({ clientSlug, onComplete }: BenefitsImportW
             <strong>{phase2Result.chaptersCount}</strong> benefit chapters extracted and saved.
             {phase2Result.committedToGit
               ? ' Content was committed to the repo; Vercel will deploy automatically.'
-              : phase2Result.generatedContent
+              : phase2Result.generatedContent != null
                 ? ' Download the file below and add it to your repo (e.g. content/) then redeploy to publish.'
                 : ' Content has been published and is now live on the site.'}
           </div>
-          {phase2Result.generatedContent != null && phase2Result.filename && !phase2Result.committedToGit ? (
-            <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-amber-800">
-              <p className="text-sm text-amber-800 mb-2">
-                Auto-commit was not available. Download the generated content and add it to your repo, or set GITHUB_TOKEN and GITHUB_REPO to enable auto-commit next time.
+          {phase2Result.generatedContent != null && !phase2Result.committedToGit ? (
+            <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
+              Auto-commit was not available. Download the generated content and add it to your repo, or set GITHUB_TOKEN and GITHUB_REPO to enable auto-commit next time.
+            </div>
+          ) : null}
+          {phase2Result.generatedContent != null ? (
+            <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+              <p className="text-sm font-medium text-slate-700 mb-2">Download extracted content</p>
+              <p className="text-xs text-slate-500 mb-3">
+                Save a copy of the generated JSON (e.g. for backup or local use).
               </p>
               <Button
                 variant="outline"
-                className="border-amber-400 text-amber-800 hover:bg-amber-100"
+                className="border-slate-300 text-slate-700 hover:bg-slate-100"
                 onClick={() => {
                   const blob = new Blob([JSON.stringify(phase2Result.generatedContent, null, 2)], {
                     type: 'application/json',
@@ -474,18 +482,29 @@ export function BenefitsImportWizard({ clientSlug, onComplete }: BenefitsImportW
                   const url = URL.createObjectURL(blob);
                   const a = document.createElement('a');
                   a.href = url;
-                  a.download = phase2Result.filename ?? 'content.published.json';
+                  a.download = phase2Result.filename ?? `${clientSlug}.published.json`;
                   a.click();
                   URL.revokeObjectURL(url);
                 }}
               >
-                Download {phase2Result.filename}
+                Download {phase2Result.filename ?? `${clientSlug}.published.json`}
               </Button>
             </div>
           ) : null}
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <Button variant="outline" onClick={reset}>
               Import Another
+            </Button>
+            <Button variant="outline" asChild className="border-blue-200 text-blue-700 hover:bg-blue-50">
+              <Link
+                href={`/?employer=${encodeURIComponent(clientSlug)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2"
+              >
+                <ExternalLink className="h-4 w-4" />
+                View client page
+              </Link>
             </Button>
             {onComplete && (
               <Button onClick={onComplete} className="bg-slate-900 hover:bg-slate-800">

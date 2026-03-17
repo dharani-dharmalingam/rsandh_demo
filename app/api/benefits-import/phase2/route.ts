@@ -138,7 +138,8 @@ export async function POST(request: Request) {
         message,
         chaptersCount: localContent.benefitChapters.length,
         committedToGit: gitResult?.success ?? false,
-        ...(!gitResult?.success && { generatedContent: localContent, filename: `${clientSlug}.published.json` }),
+        generatedContent: localContent,
+        filename: `${clientSlug}.published.json`,
       })
     }
 
@@ -150,6 +151,8 @@ export async function POST(request: Request) {
       success: true,
       message: `Site content generated for client "${clientSlug}".`,
       chaptersCount: localContent.benefitChapters.length,
+      generatedContent: localContent,
+      filename: `${clientSlug}.published.json`,
     })
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Phase 2 extraction failed'

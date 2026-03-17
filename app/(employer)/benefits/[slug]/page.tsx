@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { SectionWrapper } from '@/components/section-wrapper';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink, Mail } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import { PortableText } from '@/components/portable-text';
 import { getEmployerSlug } from '@/lib/content/get-employer';
@@ -183,6 +183,17 @@ export default async function BenefitDetailPage({ params }: Props) {
   const imageUrl = chapter.image || null;
   const hasTables = chapter.tables && chapter.tables.length > 0;
 
+  const settings = content.siteSettings;
+  const quickAccess = settings?.quickAccess ?? [];
+  const contactInfo = settings?.contactInfo ?? [];
+  const ukgItem = quickAccess.find((q: { title?: string }) => q.title?.toLowerCase() === 'ukg');
+  const alexItem = quickAccess.find((q: { title?: string }) => q.title?.toLowerCase() === 'alex');
+  const contactUsHref =
+    contactInfo.find((c: { href?: string }) => c.href?.startsWith('mailto:'))?.href ??
+    (contactInfo[0] && /^[\w.-]+@[\w.-]+/.test(String((contactInfo[0] as { value?: string }).value))
+      ? `mailto:${(contactInfo[0] as { value: string }).value}`
+      : '/contacts');
+
   return (
     <div>
       {/* Back Link */}
@@ -205,6 +216,48 @@ export default async function BenefitDetailPage({ params }: Props) {
           <p className="text-lg text-slate-400">No image available</p>
         )}
       </div>
+
+      {/* Quick Access */}
+      <SectionWrapper className="bg-white">
+        <div className="max-w-4xl mx-auto rounded-xl border border-slate-200 bg-slate-50/80 p-6 shadow-sm">
+          <h2 className="text-lg font-bold text-slate-900 mb-5 text-center">Quick Access</h2>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Button asChild variant="default" className="bg-[#1a365d] hover:bg-[#2d4a7c] text-white shrink-0 rounded-lg px-5 py-2.5">
+              <a
+                href={ukgItem?.href || '#'}
+                target={ukgItem?.href?.startsWith('http') ? '_blank' : undefined}
+                rel={ukgItem?.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="inline-flex items-center gap-2 no-underline"
+              >
+                UKG
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </Button>
+            <Button asChild variant="default" className="bg-[#1a365d] hover:bg-[#2d4a7c] text-white shrink-0 rounded-lg px-5 py-2.5">
+              <a
+                href={alexItem?.href || '#'}
+                target={alexItem?.href?.startsWith('http') ? '_blank' : undefined}
+                rel={alexItem?.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="inline-flex items-center gap-2 no-underline"
+              >
+                Alex
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </Button>
+            <Button asChild variant="default" className="bg-[#1a365d] hover:bg-[#2d4a7c] text-white shrink-0 rounded-lg px-5 py-2.5">
+              <Link href="/contacts" className="inline-flex items-center gap-2 no-underline">
+                Contacts Directory
+              </Link>
+            </Button>
+            <Button asChild variant="default" className="bg-[#1a365d] hover:bg-[#2d4a7c] text-white shrink-0 rounded-lg px-5 py-2.5">
+              <a href={contactUsHref} className="inline-flex items-center gap-2 no-underline">
+                <Mail className="h-4 w-4" />
+                Contact Us
+              </a>
+            </Button>
+          </div>
+        </div>
+      </SectionWrapper>
 
       {/* Content */}
       <SectionWrapper className="bg-white">

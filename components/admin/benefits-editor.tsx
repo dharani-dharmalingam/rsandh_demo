@@ -7,6 +7,29 @@ import { Plus, Trash2, GripVertical } from 'lucide-react';
 import { ChapterTablesEditor } from './table-editor';
 import type { BenefitsPageData, BenefitChapterData } from '@/lib/content/types';
 
+/** Portable Text blocks → array of plain text strings (one per block). */
+function portableBlocksToParagraphs(blocks: unknown[] | undefined): string[] {
+  if (!Array.isArray(blocks) || blocks.length === 0) return [];
+  return blocks.map((block: unknown) => {
+    const b = block as { children?: { text?: string }[] };
+    if (!Array.isArray(b?.children)) return '';
+    return (b.children as { text?: string }[])
+      .map((c) => c?.text ?? '')
+      .join('');
+  });
+}
+
+/** Plain text paragraphs → Portable Text blocks (same shape as extraction). */
+function paragraphsToPortableBlocks(paragraphs: string[]): unknown[] {
+  return paragraphs.map((text, i) => ({
+    _type: 'block',
+    _key: `block-${i}`,
+    style: 'normal',
+    children: [{ _type: 'span', _key: `span-${i}`, text, marks: [] }],
+    markDefs: [],
+  }));
+}
+
 interface Props {
   pageData: BenefitsPageData;
   chapters: BenefitChapterData[];
@@ -122,6 +145,65 @@ export function BenefitsEditor({ pageData, chapters, onPageChange, onChaptersCha
               onChange={(v) => updateChapter(idx, 'description', v)}
               type="textarea"
             />
+          </div>
+
+          {/* Section content (paragraphs) — the body text shown on the site (e.g. Medical/Dental/Vision intro text) */}
+          <div className="mt-6">
+            <h5 className="text-sm font-semibold text-slate-700 mb-2">Section content (paragraphs)</h5>
+            <p className="text-xs text-slate-500 mb-3">
+              These paragraphs appear on the benefit page below the description (e.g. &quot;Medical benefits are provided through…&quot;). Edit or add more.
+            </p>
+            <div className="space-y-3">
+              {(portableBlocksToParagraphs(chapter.content).length > 0
+                ? portableBlocksToParagraphs(chapter.content)
+                : ['']
+              ).map((para, pIdx) => (
+                <div key={pIdx} className="flex gap-2 items-start">
+                  <textarea
+                    className="flex-1 min-h-[80px] text-sm border border-slate-300 rounded-lg p-3 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 resize-y"
+                    placeholder={`Paragraph ${pIdx + 1}`}
+                    value={para}
+                    onChange={(e) => {
+                      const current = portableBlocksToParagraphs(chapter.content);
+                      const next = [...current];
+                      next[pIdx] = e.target.value;
+                      if (next.length === 1 && next[0] === '') {
+                        updateChapter(idx, 'content', []);
+                        return;
+                      }
+                      updateChapter(idx, 'content', paragraphsToPortableBlocks(next));
+                    }}
+                  />
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      const current = portableBlocksToParagraphs(chapter.content);
+                      const next = current.filter((_, i) => i !== pIdx);
+                      updateChapter(idx, 'content', next.length ? paragraphsToPortableBlocks(next) : []);
+                    }}
+                    className="text-slate-400 hover:text-red-600 hover:bg-red-50 shrink-0 mt-1"
+                    title="Remove paragraph"
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
+                </div>
+              ))}
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  const current = portableBlocksToParagraphs(chapter.content);
+                  const next = current.length === 0 ? ['', ''] : [...current, ''];
+                  updateChapter(idx, 'content', paragraphsToPortableBlocks(next));
+                }}
+                className="text-blue-600 border-blue-200 hover:bg-blue-50"
+              >
+                <Plus className="h-4 w-4 mr-1" /> Add paragraph
+              </Button>
+            </div>
           </div>
 
           {/* Table Editor */}
