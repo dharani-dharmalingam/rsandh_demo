@@ -1,0 +1,5841 @@
+{
+  "client": {
+    "name": "LeadsOnline, LLC",
+    "slug": "leads-online",
+    "themeColor": "#1e40af"
+  },
+  "siteSettings": {
+    "clientName": "LeadsOnline, LLC",
+    "shortName": "LeadsOnline, LLC",
+    "logoText": "LeadsOnline, LLC Benefits",
+    "footerAbout": "Comprehensive benefits administration and support for the valued employees of LeadsOnline, LLC.",
+    "quickAccess": [
+      {
+        "title": "Important Contact Information",
+        "description": "Find phone numbers, policy numbers and email addresses for all your benefit providers.",
+        "href": "/leads-online/contacts",
+        "iconName": "phone"
+      },
+      {
+        "title": "Document Hub",
+        "description": "Access your benefits guide, plan summaries, and enrollment forms.",
+        "href": "/leads-online/document-hub",
+        "iconName": "file-text"
+      },
+      {
+        "title": "Enroll Now",
+        "description": "Complete your benefit elections during the open enrollment period.",
+        "href": "/leads-online/enrollment-checklist",
+        "iconName": "clipboard-check"
+      }
+    ],
+    "contactInfo": [
+      {
+        "label": "Lockton On Call",
+        "value": "833-972-1467"
+      },
+      {
+        "label": "Aetna",
+        "value": "888-416-2277",
+        "href": "www.aetna.com"
+      },
+      {
+        "label": "Optum Bank",
+        "value": "800-791-9361",
+        "href": "www.optumbank.com"
+      },
+      {
+        "label": "Allstate",
+        "value": "800-521-3535",
+        "href": "www.allstatebenefits.com/mybenefits"
+      },
+      {
+        "label": "New York Life",
+        "value": "800-225-5695",
+        "href": "www.newyorklife.com"
+      },
+      {
+        "label": "New York Life",
+        "value": "888-842-4462",
+        "href": "www.newyorklife.com"
+      },
+      {
+        "label": "New York Life",
+        "value": "800-344-9752",
+        "href": "www.guidanceresources.com"
+      },
+      {
+        "label": "Cigna",
+        "value": "800-244-6224",
+        "href": "my.cigna.com"
+      },
+      {
+        "label": "United Healthcare",
+        "value": "866-801-4409",
+        "href": "www.myuhc.com"
+      },
+      {
+        "label": "LeadsOnline Human Resources",
+        "value": "people@leadsonline.com"
+      },
+      {
+        "label": "Lockton On Call Email",
+        "value": "leadsonlinebenefits@bac.lockton.com"
+      },
+      {
+        "label": "LegalEASE",
+        "value": "800-562-2929",
+        "href": "www.legaleaseplan.com"
+      },
+      {
+        "label": "Teladoc Health",
+        "value": "855-835-2362",
+        "href": "www.teladoc.com/aetna"
+      },
+      {
+        "label": "ASPCA Pet Insurance",
+        "value": "866-204-6764",
+        "href": "www.aspcapetinsurance.com"
+      }
+    ],
+    "quickLinks": [
+      {
+        "label": "Home",
+        "href": "/leads-online"
+      },
+      {
+        "label": "Benefits",
+        "href": "/leads-online/benefits"
+      },
+      {
+        "label": "Document Hub",
+        "href": "/leads-online/document-hub"
+      },
+      {
+        "label": "Contacts",
+        "href": "/leads-online/contacts"
+      }
+    ],
+    "footerContactTitle": "Contact",
+    "footerContactDescription": "Have questions? Reach out to our support team.",
+    "copyrightText": "© 2026 LeadsOnline, LLC. All rights reserved.",
+    "clientLogo": "https://kyhxmyhtowrqmhglmkhu.supabase.co/storage/v1/object/public/employer-assets/leads-online/logo.png"
+  },
+  "benefitsPage": {
+    "title": "Your Benefits at a Glance",
+    "description": "Explore the complete range of benefits available to LeadsOnline, LLC employees."
+  },
+  "benefitChapters": [
+    {
+      "_id": "leon-ch-overview-of-available-plans",
+      "title": "Overview of Available Plans",
+      "description": "Overview of all available benefit plans for LeadsOnline, LLC employees.",
+      "slug": "overview-of-available-plans",
+      "icon": "list",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "Review and compare all benefit plans available to LeadsOnline, LLC employees.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "Medical Plans",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-0",
+              "text": "Medical benefits are provided through Aetna and include coverage for both in-network and out-of-network providers. You can find a list of Aetna network providers by visiting www.aetna.com or calling their Customer Care at 888-416-2277. To get the most value out of your plan, visit in-network providers whenever possible.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-1",
+              "text": "3 medical plans available: HDHP Gold, HDHP Platinum, PPO",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "Dental Plans",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-1-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-1-0",
+              "text": "Dental benefits are provided by Cigna and cover routine care and more. Staying in network helps reduce out-of-pocket costs and avoid charges beyond Reasonable and Customary limits. In-network dentists can be found at my.cigna.com.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-1-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-1-1",
+              "text": "2 dental plans available: BASE PPO and BUY-UP PPO",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-2",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-2",
+              "text": "Vision Plans",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-2-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-2-0",
+              "text": "Vision benefits are provided by United Healthcare and cover eye exams, lenses, contacts, frames, and more with in-network and out-of-network options.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-2-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-2-1",
+              "text": "2 vision plans available: BASE PLAN and BUY-UP PLAN",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Medical Plans",
+          "tableDescription": "Bi-weekly associate payroll contributions for medical coverage.",
+          "templateId": "overview-medical",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "hdhp_gold",
+              "label": "HDHP Gold"
+            },
+            {
+              "_key": "col-1",
+              "key": "hdhp_platinum",
+              "label": "HDHP Platinum"
+            },
+            {
+              "_key": "col-2",
+              "key": "ppo",
+              "label": "PPO"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "TEAM MEMBER ONLY",
+              "cells": [
+                "$0.00",
+                "$64.11",
+                "$156.74"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "TEAM MEMBER + SPOUSE",
+              "cells": [
+                "$128.52",
+                "$283.65",
+                "$507.84"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "TEAM MEMBER + CHILD(REN)",
+              "cells": [
+                "$24.03",
+                "$140.06",
+                "$307.74"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "TEAM MEMBER + FAMILY",
+              "cells": [
+                "$132.63",
+                "$346.10",
+                "$654.60"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-1",
+          "tableTitle": "Dental Plans",
+          "tableDescription": "Bi-weekly associate payroll contributions for dental coverage.",
+          "templateId": "overview-dental",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "base_ppo",
+              "label": "BASE PPO"
+            },
+            {
+              "_key": "col-1",
+              "key": "buy_up_ppo",
+              "label": "BUY-UP PPO"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "TEAM MEMBER ONLY",
+              "cells": [
+                "$0.00",
+                "$6.25"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "TEAM MEMBER + SPOUSE",
+              "cells": [
+                "$6.59",
+                "$19.10"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "TEAM MEMBER + CHILD(REN)",
+              "cells": [
+                "$6.92",
+                "$23.96"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "TEAM MEMBER + FAMILY",
+              "cells": [
+                "$10.69",
+                "$35.43"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-2",
+          "tableTitle": "Vision Plans",
+          "tableDescription": "Bi-weekly associate payroll contributions for vision coverage.",
+          "templateId": "overview-vision",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "base_plan",
+              "label": "BASE PLAN"
+            },
+            {
+              "_key": "col-1",
+              "key": "buy_up_plan",
+              "label": "BUY-UP PLAN"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "TEAM MEMBER ONLY",
+              "cells": [
+                "$0.00",
+                "$1.40"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "TEAM MEMBER + SPOUSE",
+              "cells": [
+                "$1.45",
+                "$4.11"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "TEAM MEMBER + CHILD(REN)",
+              "cells": [
+                "$1.71",
+                "$4.82"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "TEAM MEMBER + FAMILY",
+              "cells": [
+                "$2.40",
+                "$6.79"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 1
+    },
+    {
+      "_id": "leon-ch-eligibility-qualifying-life-ev",
+      "title": "Eligibility & Qualifying Life Events",
+      "description": "Information about who is eligible for benefits, eligible dependents, enrollment, and qualifying life events.",
+      "slug": "eligibility-qualifying-life-events",
+      "icon": "check-circle",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "LeadsOnline’s benefits are designed to support your unique needs.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "Eligibility",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-0",
+              "text": "LeadsOnline’s benefits are designed to support your unique needs.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-1",
+              "text": "You are a full-time Team Member of LeadsOnline who is regularly scheduled to work 30 or more hours.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-2",
+              "text": "Eligible to participate in medical, dental, vision, life and disability plans, and additional benefits.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "Eligible Dependents",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-1-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-1-0",
+              "text": "Your legal spouse (or common-law spouse where recognized).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-1-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-1-1",
+              "text": "Domestic partners.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-1-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-1-2",
+              "text": "Children under age 26 (includes birth children, stepchildren, legally adopted children, children placed for adoption, foster children, and children for whom you or your spouse have legal guardianship).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-1-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-1-3",
+              "text": "Dependent children 26 or more years old, unmarried and primarily supported by you and incapable of self-sustaining employment due to mental or physical disability (periodic certification may be required).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-2",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-2",
+              "text": "Enrollment",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-2-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-2-0",
+              "text": "Coverage effective January 1, 2025; for new hires coverage effective date of hire.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-2-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-2-1",
+              "text": "Benefits cannot be changed until the next enrollment period unless a Qualifying Life Event occurs.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-2-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-2-2",
+              "text": "This is an ACTIVE enrollment; every eligible Team Member must make elections to receive benefits.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-2-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-2-3",
+              "text": "Elections made remain in place until the following enrollment period unless a Qualifying Life Event occurs.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-2-4",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-2-4",
+              "text": "Verification of dependent eligibility may be required upon enrollment.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-3",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-3",
+              "text": "Common Qualifying Events",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-0",
+              "text": "Changes in your life may permit you to update your coverage at points throughout the year, outside of the open enrollment period.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-1",
+              "text": "When a Qualifying Life Event occurs, you have 30 days to request changes to your coverage. Your change must be consistent with your status change.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-2",
+              "text": "A change in number of dependents (birth, adoption, or losing eligible dependent status).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-3",
+              "text": "Change in spouse’s employment status causing loss or gain of coverage.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-4",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-4",
+              "text": "Change in employment status resulting in gain or loss of eligibility.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-5",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-5",
+              "text": "Changes causing ineligibility for Medicaid or Children's Health Insurance Program (CHIP).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-6",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-6",
+              "text": "Death in the family leading to change in dependents or loss of coverage.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-7",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-7",
+              "text": "Turning 26 and losing coverage through a parent's plan.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-8",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-8",
+              "text": "Changes in address or location affecting coverage.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-9",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-9",
+              "text": "Eligibility through healthcare marketplace.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-10",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-10",
+              "text": "Legal marital status changes (marriage, divorce, legal separation).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "order": 2
+    },
+    {
+      "_id": "leon-ch-hdhp-gold-medical-plan",
+      "title": "HDHP Gold Medical Plan",
+      "description": "HDHP Gold is a high-deductible health plan that covers preventive services at 100% in-network and requires meeting deductibles for other services.",
+      "slug": "hdhp-gold-medical-plan",
+      "icon": "heart",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "HDHP Gold is a high-deductible health plan that covers preventive services at 100% in-network and requires meeting deductibles for other services.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "Copays",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-0",
+              "text": "Copays are a fixed amount paid at the time of service, after the deductible is met.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "Deductible",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-0",
+              "text": "Annual deductible is $3,500 individual, $7,000 family in-network.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-1",
+              "text": "Out-of-network deductibles are higher.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-2",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-2",
+              "text": "Out-of-Pocket Maximum",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-0",
+              "text": "Out-of-pocket maximum is $6,350 individual, $12,700 family in-network.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-1",
+              "text": "Once reached, coinsurance payments stop.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-3",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-3",
+              "text": "In-network vs Out-of-network",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-0",
+              "text": "**In-network**",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-1",
+              "text": "Providers that contract with your insurance company provide healthcare services at negotiated discounted rates.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-2",
+              "text": "In-network providers usually result in lower out-of-pocket costs for covered services.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-3",
+              "text": "Using in-network providers helps you get the highest level of coverage and savings.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-4",
+              "text": "**Out-of-network**",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-5",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-5",
+              "text": "Providers not contracted with your insurance company may result in higher costs.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-6",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-6",
+              "text": "Out-of-network services may only be covered up to Reasonable and Customary limits.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-7",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-7",
+              "text": "You may be balance billed for charges above the allowed amounts.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-8",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-8",
+              "text": "Visit www.aetna.com or call customer care to check if a provider is in-network.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-4",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-4",
+              "text": "Help with Selecting Your Medical Coverage",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-4-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-4-0",
+              "text": "ALEX is a benefits counselor tool to assist you in selecting the best medical coverage based on your needs.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-4-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-4-1",
+              "text": "Prescription drugs are covered through Aetna, coordinated with your medical plan. Costs vary by drug tier (generic, preferred, non-preferred).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-4-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-4-2",
+              "text": "Virtual visits are available through Teladoc with a copay up to $56 for general health issues, accessible 24/7.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-4-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-4-3",
+              "text": "**Toolkit App**: www.aetna.com",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Premium Rates",
+          "tableDescription": "Bi-weekly associate payroll contributions for HDHP Gold coverage",
+          "templateId": "medical-premiums",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "hdhp_gold",
+              "label": "HDHP Gold"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "TEAM MEMBER ONLY",
+              "cells": [
+                "$0.00"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "TEAM MEMBER + SPOUSE",
+              "cells": [
+                "$128.52"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "TEAM MEMBER + CHILD(REN)",
+              "cells": [
+                "$24.03"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "TEAM MEMBER + FAMILY",
+              "cells": [
+                "$132.63"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-1",
+          "tableTitle": "Plan Benefits Summary",
+          "tableDescription": "Comprehensive coverage details for HDHP Gold plan - HSA eligible",
+          "templateId": "medical-benefits",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "hdhp_gold_in",
+              "label": "HDHP Gold Plan",
+              "subLabel": "In-network"
+            },
+            {
+              "_key": "col-1",
+              "key": "hdhp_gold_out",
+              "label": "HDHP Gold Plan",
+              "subLabel": "Out-of-network"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Annual deductible",
+              "cells": [
+                "$3,500",
+                "$15,000"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Out-of-pocket maximum",
+              "cells": [
+                "$6,350",
+                "$30,000"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Coinsurance (your share)",
+              "cells": [
+                "—",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Preventive care",
+              "cells": [
+                "100% covered",
+                "50% covered"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Primary physician office visit",
+              "cells": [
+                "30% after deductible",
+                "50%"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "Specialist office visit",
+              "cells": [
+                "30% after deductible",
+                "50%"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "Independent labs",
+              "cells": [
+                "30% after deductible",
+                "50%"
+              ]
+            },
+            {
+              "_key": "row-7",
+              "label": "Outpatient x-rays",
+              "cells": [
+                "—",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-8",
+              "label": "Imaging (MRI, CT, PET, etc.)",
+              "cells": [
+                "—",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-9",
+              "label": "Convenience Clinic Visit",
+              "cells": [
+                "30% after deductible",
+                "50%"
+              ]
+            },
+            {
+              "_key": "row-10",
+              "label": "Teladoc Virtual Visit",
+              "cells": [
+                "30% after deductible",
+                "50%"
+              ]
+            },
+            {
+              "_key": "row-11",
+              "label": "Urgent Care Center",
+              "cells": [
+                "30% after deductible",
+                "50%"
+              ]
+            },
+            {
+              "_key": "row-12",
+              "label": "Emergency Room",
+              "cells": [
+                "30% after deductible",
+                "50%"
+              ]
+            },
+            {
+              "_key": "row-13",
+              "label": "Inpatient Hospitalization",
+              "cells": [
+                "30% after deductible",
+                "50%"
+              ]
+            },
+            {
+              "_key": "row-14",
+              "label": "Outpatient Surgery",
+              "cells": [
+                "30% after deductible",
+                "50%"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-2",
+          "tableTitle": "Prescription Drug Coverage",
+          "tableDescription": "Prescription costs are determined by the tier assigned to each specific prescription drug.",
+          "templateId": "medical-rx",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "hdhp_gold",
+              "label": "Cost"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Preventive Medication",
+              "cells": [
+                "$0 after deductible"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Pharmacy Deductible",
+              "cells": [
+                "Combined with medical deductible"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Retail (30-day supply)",
+              "cells": [],
+              "isSection": true
+            },
+            {
+              "_key": "row-3",
+              "label": "Tier one",
+              "cells": [
+                "$10 after deductible"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Tier two",
+              "cells": [
+                "$35 after deductible"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "Tier three",
+              "cells": [
+                "$60 after deductible"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "Speciality",
+              "cells": [
+                "Not specified"
+              ]
+            },
+            {
+              "_key": "row-7",
+              "label": "Mail order (90-day supply)",
+              "cells": [],
+              "isSection": true
+            },
+            {
+              "_key": "row-8",
+              "label": "Tier one",
+              "cells": [
+                "$25 after deductible"
+              ]
+            },
+            {
+              "_key": "row-9",
+              "label": "Tier two",
+              "cells": [
+                "$87.50 after deductible"
+              ]
+            },
+            {
+              "_key": "row-10",
+              "label": "Tier three",
+              "cells": [
+                "$150 after deductible"
+              ]
+            },
+            {
+              "_key": "row-11",
+              "label": "Speciality",
+              "cells": [
+                "Not specified"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 3
+    },
+    {
+      "_id": "leon-ch-hdhp-platinum-medical-plan",
+      "title": "HDHP Platinum Medical Plan",
+      "description": "HDHP Platinum is a high-deductible health plan with lower deductibles and higher premiums than Gold. Preventive care is covered at 100% in-network.",
+      "slug": "hdhp-platinum-medical-plan",
+      "icon": "heart",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "HDHP Platinum is a high-deductible health plan with lower deductibles and higher premiums than Gold. Preventive care is covered at 100% in-network.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "Copays",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-0",
+              "text": "Copays are a fixed amount paid at the time of service, after the deductible is met.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "Deductible",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-0",
+              "text": "Annual deductible is $1,650 individual, $3,300 family in-network.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-1",
+              "text": "Out-of-network deductibles are higher.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-2",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-2",
+              "text": "Out-of-Pocket Maximum",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-0",
+              "text": "Out-of-pocket maximum is $3,000 individual, $6,000 family in-network.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-1",
+              "text": "Once reached, coinsurance payments stop.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-3",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-3",
+              "text": "In-network vs Out-of-network",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-0",
+              "text": "**In-network**",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-1",
+              "text": "Providers that contract with your insurance company provide healthcare services at negotiated discounted rates.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-2",
+              "text": "In-network providers usually result in lower out-of-pocket costs for covered services.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-3",
+              "text": "Using in-network providers helps you get the highest level of coverage and savings.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-4",
+              "text": "**Out-of-network**",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-5",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-5",
+              "text": "Providers not contracted with your insurance company may result in higher costs.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-6",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-6",
+              "text": "Out-of-network services may only be covered up to Reasonable and Customary limits.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-7",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-7",
+              "text": "You may be balance billed for charges above the allowed amounts.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-8",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-8",
+              "text": "Visit www.aetna.com or call customer care to check if a provider is in-network.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-4",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-4",
+              "text": "Help with Selecting Your Medical Coverage",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-4-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-4-0",
+              "text": "ALEX is a benefits counselor tool to assist you in selecting the best medical coverage based on your needs.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-4-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-4-1",
+              "text": "Prescription drugs are covered through Aetna, coordinated with your medical plan. Costs vary by drug tier (generic, preferred, non-preferred).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-4-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-4-2",
+              "text": "Virtual visits are available through Teladoc with a copay up to $56 for general health issues, accessible 24/7.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-4-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-4-3",
+              "text": "**Toolkit App**: www.aetna.com",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Premium Rates",
+          "tableDescription": "Bi-weekly associate payroll contributions for HDHP Platinum coverage",
+          "templateId": "medical-premiums",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "hdhp_platinum",
+              "label": "HDHP Platinum"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "TEAM MEMBER ONLY",
+              "cells": [
+                "$64.11"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "TEAM MEMBER + SPOUSE",
+              "cells": [
+                "$283.65"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "TEAM MEMBER + CHILD(REN)",
+              "cells": [
+                "$140.06"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "TEAM MEMBER + FAMILY",
+              "cells": [
+                "$346.10"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-1",
+          "tableTitle": "Plan Benefits Summary",
+          "tableDescription": "Comprehensive coverage details for HDHP Platinum plan - HSA eligible",
+          "templateId": "medical-benefits",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "hdhp_platinum_in",
+              "label": "HDHP Platinum Plan",
+              "subLabel": "In-network"
+            },
+            {
+              "_key": "col-1",
+              "key": "hdhp_platinum_out",
+              "label": "HDHP Platinum Plan",
+              "subLabel": "Out-of-network"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Annual deductible",
+              "cells": [
+                "$1,650",
+                "$15,000"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Out-of-pocket maximum",
+              "cells": [
+                "$3,000",
+                "$30,000"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Coinsurance (your share)",
+              "cells": [
+                "—",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Preventive care",
+              "cells": [
+                "100% covered",
+                "50% covered"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Primary physician office visit",
+              "cells": [
+                "10% after deductible",
+                "50%"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "Specialist office visit",
+              "cells": [
+                "10% after deductible",
+                "50%"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "Independent labs",
+              "cells": [
+                "10% after deductible",
+                "50%"
+              ]
+            },
+            {
+              "_key": "row-7",
+              "label": "Outpatient x-rays",
+              "cells": [
+                "—",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-8",
+              "label": "Imaging (MRI, CT, PET, etc.)",
+              "cells": [
+                "—",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-9",
+              "label": "Convenience Clinic Visit",
+              "cells": [
+                "10% after deductible",
+                "50%"
+              ]
+            },
+            {
+              "_key": "row-10",
+              "label": "Teladoc Virtual Visit",
+              "cells": [
+                "10% after deductible",
+                "50%"
+              ]
+            },
+            {
+              "_key": "row-11",
+              "label": "Urgent Care Center",
+              "cells": [
+                "10% after deductible",
+                "50%"
+              ]
+            },
+            {
+              "_key": "row-12",
+              "label": "Emergency Room",
+              "cells": [
+                "10% after deductible",
+                "50%"
+              ]
+            },
+            {
+              "_key": "row-13",
+              "label": "Inpatient Hospitalization",
+              "cells": [
+                "10% after deductible",
+                "50%"
+              ]
+            },
+            {
+              "_key": "row-14",
+              "label": "Outpatient Surgery",
+              "cells": [
+                "10% after deductible",
+                "50%"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-2",
+          "tableTitle": "Prescription Drug Coverage",
+          "tableDescription": "Prescription costs are determined by the tier assigned to each specific prescription drug.",
+          "templateId": "medical-rx",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "hdhp_platinum",
+              "label": "Cost"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Preventive Medication",
+              "cells": [
+                "$0 after deductible"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Pharmacy Deductible",
+              "cells": [
+                "Combined with medical deductible"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Retail (30-day supply)",
+              "cells": [],
+              "isSection": true
+            },
+            {
+              "_key": "row-3",
+              "label": "Tier one",
+              "cells": [
+                "$10 after deductible"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Tier two",
+              "cells": [
+                "$35 after deductible"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "Tier three",
+              "cells": [
+                "$60 after deductible"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "Speciality",
+              "cells": [
+                "Not specified"
+              ]
+            },
+            {
+              "_key": "row-7",
+              "label": "Mail order (90-day supply)",
+              "cells": [],
+              "isSection": true
+            },
+            {
+              "_key": "row-8",
+              "label": "Tier one",
+              "cells": [
+                "$25 after deductible"
+              ]
+            },
+            {
+              "_key": "row-9",
+              "label": "Tier two",
+              "cells": [
+                "$87.50 after deductible"
+              ]
+            },
+            {
+              "_key": "row-10",
+              "label": "Tier three",
+              "cells": [
+                "$150 after deductible"
+              ]
+            },
+            {
+              "_key": "row-11",
+              "label": "Speciality",
+              "cells": [
+                "Not specified"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 4
+    },
+    {
+      "_id": "leon-ch-ppo-medical-plan",
+      "title": "PPO Medical Plan",
+      "description": "PPO plan offers lower deductibles with copays for many services, higher premiums, and coverage for in-network and out-of-network providers.",
+      "slug": "ppo-medical-plan",
+      "icon": "heart",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "PPO plan offers lower deductibles with copays for many services, higher premiums, and coverage for in-network and out-of-network providers.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "Copays",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-0",
+              "text": "Copays apply as fixed amounts for services, e.g., $25 for primary care, $50 for specialists.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-1",
+              "text": "Out-of-network copays and coinsurance are 50%.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "Deductible",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-0",
+              "text": "Annual deductible is $750 individual, $1,500 family in-network and $15,000 out-of-network.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-2",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-2",
+              "text": "Out-of-Pocket Maximum",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-0",
+              "text": "Out-of-pocket maximum is $2,500 individual, $5,000 family in-network.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-1",
+              "text": "Once reached, the plan pays 100%.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-3",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-3",
+              "text": "In-network vs Out-of-network",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-0",
+              "text": "**In-network**",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-1",
+              "text": "Providers that contract with your insurance company provide healthcare services at negotiated discounted rates.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-2",
+              "text": "In-network providers usually result in lower out-of-pocket costs for covered services.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-3",
+              "text": "Using in-network providers helps you get the highest level of coverage and savings.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-4",
+              "text": "**Out-of-network**",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-5",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-5",
+              "text": "Providers not contracted with your insurance company may result in higher costs.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-6",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-6",
+              "text": "Out-of-network services may only be covered up to Reasonable and Customary limits.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-7",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-7",
+              "text": "You may be balance billed for charges above the allowed amounts.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-8",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-8",
+              "text": "Visit www.aetna.com or call customer care to check if a provider is in-network.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-4",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-4",
+              "text": "Help with Selecting Your Medical Coverage",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-4-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-4-0",
+              "text": "ALEX is a benefits counselor tool to assist you in selecting the best medical coverage based on your needs.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-4-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-4-1",
+              "text": "Prescription drugs are covered through Aetna, coordinated with your medical plan. Costs vary by drug tier (generic, preferred, non-preferred).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-4-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-4-2",
+              "text": "Virtual visits are available through Teladoc with a copay up to $56 for general health issues, accessible 24/7.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-4-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-4-3",
+              "text": "**Toolkit App**: www.aetna.com",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Premium Rates",
+          "tableDescription": "Bi-weekly associate payroll contributions for PPO coverage",
+          "templateId": "medical-premiums",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "ppo",
+              "label": "PPO"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "TEAM MEMBER ONLY",
+              "cells": [
+                "$156.74"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "TEAM MEMBER + SPOUSE",
+              "cells": [
+                "$507.84"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "TEAM MEMBER + CHILD(REN)",
+              "cells": [
+                "$307.74"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "TEAM MEMBER + FAMILY",
+              "cells": [
+                "$654.60"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-1",
+          "tableTitle": "Plan Benefits Summary",
+          "tableDescription": "Comprehensive coverage details for PPO plan - Not HSA eligible",
+          "templateId": "medical-benefits",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "ppo_in",
+              "label": "PPO Plan",
+              "subLabel": "In-network"
+            },
+            {
+              "_key": "col-1",
+              "key": "ppo_out",
+              "label": "PPO Plan",
+              "subLabel": "Out-of-network"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Annual deductible",
+              "cells": [
+                "$750",
+                "$15,000"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Out-of-pocket maximum",
+              "cells": [
+                "$2,500",
+                "$30,000"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Coinsurance (your share)",
+              "cells": [
+                "—",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Preventive care",
+              "cells": [
+                "100% covered",
+                "50% covered"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Primary physician office visit",
+              "cells": [
+                "$25 copay",
+                "50% coinsurance"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "Specialist office visit",
+              "cells": [
+                "$50 copay",
+                "50% coinsurance"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "Independent labs",
+              "cells": [
+                "0% coinsurance",
+                "50% coinsurance"
+              ]
+            },
+            {
+              "_key": "row-7",
+              "label": "Outpatient x-rays",
+              "cells": [
+                "—",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-8",
+              "label": "Imaging (MRI, CT, PET, etc.)",
+              "cells": [
+                "—",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-9",
+              "label": "Convenience Clinic Visit",
+              "cells": [
+                "$25 copay",
+                "50% coinsurance"
+              ]
+            },
+            {
+              "_key": "row-10",
+              "label": "Teladoc Virtual Visit",
+              "cells": [
+                "$25 copay",
+                "50% coinsurance"
+              ]
+            },
+            {
+              "_key": "row-11",
+              "label": "Urgent Care Center",
+              "cells": [
+                "$75 copay",
+                "50% coinsurance"
+              ]
+            },
+            {
+              "_key": "row-12",
+              "label": "Emergency Room",
+              "cells": [
+                "$300 copay",
+                "50% coinsurance"
+              ]
+            },
+            {
+              "_key": "row-13",
+              "label": "Inpatient Hospitalization",
+              "cells": [
+                "$2500 coinsurance",
+                "50% coinsurance"
+              ]
+            },
+            {
+              "_key": "row-14",
+              "label": "Outpatient Surgery",
+              "cells": [
+                "$0 coinsurance",
+                "50% coinsurance"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-2",
+          "tableTitle": "Prescription Drug Coverage",
+          "tableDescription": "Prescription costs are determined by the tier assigned to each specific prescription drug.",
+          "templateId": "medical-rx",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "ppo",
+              "label": "Cost"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Preventive Medication",
+              "cells": [
+                "$0"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Pharmacy Deductible",
+              "cells": [
+                "N/A"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Retail (30-day supply)",
+              "cells": [],
+              "isSection": true
+            },
+            {
+              "_key": "row-3",
+              "label": "Tier one",
+              "cells": [
+                "$10"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Tier two",
+              "cells": [
+                "$35"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "Tier three",
+              "cells": [
+                "$70"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "Speciality",
+              "cells": [
+                "Not specified"
+              ]
+            },
+            {
+              "_key": "row-7",
+              "label": "Mail order (90-day supply)",
+              "cells": [],
+              "isSection": true
+            },
+            {
+              "_key": "row-8",
+              "label": "Tier one",
+              "cells": [
+                "$25"
+              ]
+            },
+            {
+              "_key": "row-9",
+              "label": "Tier two",
+              "cells": [
+                "$87.50"
+              ]
+            },
+            {
+              "_key": "row-10",
+              "label": "Tier three",
+              "cells": [
+                "$175"
+              ]
+            },
+            {
+              "_key": "row-11",
+              "label": "Speciality",
+              "cells": [
+                "Not specified"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 5
+    },
+    {
+      "_id": "leon-ch-dental-plan",
+      "title": "Dental Plan",
+      "description": "Dental coverage options and benefits comparison.",
+      "slug": "dental-plan",
+      "icon": "smile",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "LeadsOnline offers affordable dental plans through Cigna with two options: Base PPO and Buy-Up PPO. Staying in-network with Cigna reduces costs and avoids balance billing for amounts above Reasonable and Customary charges.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Dental",
+          "templateId": "dental-benefits",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "plan1_in",
+              "label": "BASE PPO",
+              "subLabel": "In-network"
+            },
+            {
+              "_key": "col-1",
+              "key": "plan1_out",
+              "label": "BASE PPO",
+              "subLabel": "Out-of-network"
+            },
+            {
+              "_key": "col-2",
+              "key": "plan2_in",
+              "label": "BUY-UP PPO",
+              "subLabel": "In-network"
+            },
+            {
+              "_key": "col-3",
+              "key": "plan2_out",
+              "label": "BUY-UP PPO",
+              "subLabel": "Out-of-network"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Annual deductible",
+              "cells": [
+                "$50 individual / $150 family",
+                "$50 individual / $150 family",
+                "$50 individual / $150 family",
+                "$50 individual / $150 family"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Annual maximum",
+              "cells": [
+                "$1,500 per person",
+                "$1,500 per person",
+                "$2,500 per person",
+                "$2,500 per person"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Preventive services",
+              "cells": [
+                "0% coinsurance",
+                "0% coinsurance",
+                "0% coinsurance",
+                "0% coinsurance"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Basic services",
+              "cells": [
+                "20% coinsurance",
+                "20% coinsurance",
+                "10% coinsurance",
+                "10% coinsurance"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Major services",
+              "cells": [
+                "50% coinsurance",
+                "50% coinsurance",
+                "40% coinsurance",
+                "40% coinsurance"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "Orthodontics",
+              "cells": [
+                "N/A",
+                "N/A",
+                "50% coinsurance",
+                "N/A"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 6
+    },
+    {
+      "_id": "leon-ch-vision-benefits",
+      "title": "Vision Benefits",
+      "description": "Vision coverage options and benefits comparison.",
+      "slug": "vision-benefits",
+      "icon": "eye",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "Vision benefits are provided by United Healthcare with two plan options: Base Plan and Buy-Up Plan. Benefits include copays for exams, lenses, frames, and contact lenses with frequency limits.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "Notes & Disclaimers",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-0",
+              "text": "* Copay applies to services and lenses where mentioned.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Vision Coverage Comparison",
+          "templateId": "vision-benefits",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "plan1_in",
+              "label": "BASE PLAN",
+              "subLabel": "In-network"
+            },
+            {
+              "_key": "col-1",
+              "key": "plan1_out",
+              "label": "BASE PLAN",
+              "subLabel": "Out-of-network (reimbursement)"
+            },
+            {
+              "_key": "col-2",
+              "key": "plan2_in",
+              "label": "BUY-UP PLAN",
+              "subLabel": "In-network"
+            },
+            {
+              "_key": "col-3",
+              "key": "plan2_out",
+              "label": "BUY-UP PLAN",
+              "subLabel": "Out-of-network (reimbursement)"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Eye Exam",
+              "cells": [
+                "$20 copay",
+                "Up to $40",
+                "$10 copay",
+                "Up to $40"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Frequency",
+              "cells": [
+                "Every 12 months",
+                "Every 12 months",
+                "Every 12 months",
+                "Every 12 months"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Lenses - Single Vision",
+              "cells": [
+                "$20 copay",
+                "Up to $40",
+                "$10 copay",
+                "Up to $40"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Frequency",
+              "cells": [
+                "Every 12 months",
+                "Every 12 months",
+                "Every 12 months",
+                "Every 12 months"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Lenses - Bifocal",
+              "cells": [
+                "$20 copay",
+                "Up to $60",
+                "$10 copay",
+                "Up to $60"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "Frequency",
+              "cells": [
+                "Every 12 months",
+                "Every 12 months",
+                "Every 12 months",
+                "Every 12 months"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "Lenses - Trifocal",
+              "cells": [
+                "$20 copay",
+                "Up to $80",
+                "$10 copay",
+                "Up to $80"
+              ]
+            },
+            {
+              "_key": "row-7",
+              "label": "Frequency",
+              "cells": [
+                "Every 12 months",
+                "Every 12 months",
+                "Every 12 months",
+                "Every 12 months"
+              ]
+            },
+            {
+              "_key": "row-8",
+              "label": "Lenses - Lenticular",
+              "cells": [
+                "$20 copay",
+                "Up to $80",
+                "$10 copay",
+                "Up to $80"
+              ]
+            },
+            {
+              "_key": "row-9",
+              "label": "Frequency",
+              "cells": [
+                "Every 12 months",
+                "Every 12 months",
+                "Every 12 months",
+                "Every 12 months"
+              ]
+            },
+            {
+              "_key": "row-10",
+              "label": "Contacts - Elective",
+              "cells": [
+                "$120 allowance",
+                "Up to $95",
+                "$175 allowance",
+                "Up to $150"
+              ]
+            },
+            {
+              "_key": "row-11",
+              "label": "Frequency",
+              "cells": [
+                "Every 12 months",
+                "Every 12 months",
+                "Every 12 months",
+                "Every 12 months"
+              ]
+            },
+            {
+              "_key": "row-12",
+              "label": "Contacts - Medically Necessary",
+              "cells": [
+                "Covered in full after copay",
+                "Up to $210",
+                "Covered in full after copay",
+                "Up to $210"
+              ]
+            },
+            {
+              "_key": "row-13",
+              "label": "Frames",
+              "cells": [
+                "$20 copay",
+                "N/A",
+                "$10 copay",
+                "N/A"
+              ]
+            },
+            {
+              "_key": "row-14",
+              "label": "Frequency",
+              "cells": [
+                "Every 24 months",
+                "Every 24 months",
+                "Every 12 months",
+                "Every 12 months"
+              ]
+            },
+            {
+              "_key": "row-15",
+              "label": "Frame Allowance",
+              "cells": [
+                "$120 allowance",
+                "Up to $45",
+                "$175 allowance",
+                "Up to $45"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 7
+    },
+    {
+      "_id": "leon-ch-employee-assistance-program-ea",
+      "title": "Employee Assistance Program (EAP)",
+      "description": "Employee Assistance Program (EAP) provides confidential mental, emotional, and physical health support and legal and financial help at no cost to employees and their families, whether or not enrolled ",
+      "slug": "employee-assistance-program-eap",
+      "icon": "users",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "Employee Assistance Program (EAP) provides confidential mental, emotional, and physical health support and legal and financial help at no cost to employees and their families, whether or not enrolled in the company medical plan. A maximum of 3 face-to-face or virtual visits per incident per year with licensed professionals is included. Services are confidential.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "Services are available 24/7 by phone and online.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "Overview",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-0",
+              "text": "Employee Assistance Program (EAP) provides confidential mental, emotional, and physical health support and legal and financial help at no cost to employees and their families, whether or not enrolled in the company medical plan. A maximum of 3 face-to-face or virtual visits per incident per year with licensed professionals is included. Services are confidential.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "Free Visits",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-1-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-1-0",
+              "text": "3 face-to-face or virtual visits per issue per year at no cost.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-2",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-2",
+              "text": "Services include:",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-0",
+              "text": "Emotional health and wellbeing",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-1",
+              "text": "Job pressures",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-2",
+              "text": "Stress, anxiety, depression",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-3",
+              "text": "Alcohol or drug dependency",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-4",
+              "text": "Marriage or family problems",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-5",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-5",
+              "text": "Grief and loss",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-6",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-6",
+              "text": "Financial or legal advice",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "order": 8
+    },
+    {
+      "_id": "leon-ch-health-savings-account-hsa-fle",
+      "title": "Health Savings Account (HSA) & Flexible Spending Account (FSA)",
+      "description": "HSA and FSA account options for tax-advantaged savings.",
+      "slug": "health-savings-account-hsa-flexible-spending-account-fsa",
+      "icon": "dollar-sign",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "Understand your tax-advantaged savings account options.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "What is a Health Savings Account?",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-0",
+              "text": "You must be enrolled in an HSA-eligible High Deductible Health Plan (HDHP) to contribute to an HSA.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-1",
+              "text": "You cannot be covered by a non-HDHP plan of a spouse or parent.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-2",
+              "text": "You or your spouse cannot have a Healthcare Flexible Spending Account or Health Reimbursement Account.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-3",
+              "text": "You cannot be claimed as a dependent on someone else’s tax return.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-4",
+              "text": "You cannot be enrolled in Medicare or TRICARE.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-5",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-5",
+              "text": "You must not have received recent Department of Veterans Affairs medical benefits for non-service related care.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "Benefits of HSA",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-0",
+              "text": "HSA funds can be used for qualified medical expenses including doctors’ visits, eye exams, prescription expenses, laser eye surgery, menstrual products, PPE, over-the-counter medications, and more.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-1",
+              "text": "Funds roll over year to year and do not expire.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-2",
+              "text": "HSA contributions are tax-free, money grows tax-free, and withdrawals for qualified expenses are tax-free.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-3",
+              "text": "You own your HSA account and can manage it however you choose.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-4",
+              "text": "HSA funds are portable and can be used even if you change jobs.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-5",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-5",
+              "text": "LeadsOnline contributes to your HSA on a biweekly basis.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-6",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-6",
+              "text": "HSAs can help save for healthcare costs in retirement.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-2",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-2",
+              "text": "Who is eligible for an HSA?",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-0",
+              "text": "Your election of the HDHP with LeadsOnline is required to open an HSA account.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-1",
+              "text": "Eligibility criteria as mentioned in HSA definition.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-3",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-3",
+              "text": "How to manage your HSA account",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-0",
+              "text": "Use the debit card issued by Optum Bank to pay for qualified medical expenses directly.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-1",
+              "text": "Save and roll over unused funds year over year.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-2",
+              "text": "Keep receipts for qualified expenses for tax purposes.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-4",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-4",
+              "text": "Eligible expenses",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-4-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-4-0",
+              "text": "Doctors visits",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-4-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-4-1",
+              "text": "Eye exams",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-4-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-4-2",
+              "text": "Prescription costs",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-4-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-4-3",
+              "text": "Menstrual products",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-4-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-4-4",
+              "text": "PPE",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-4-5",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-4-5",
+              "text": "Over-the-counter medications",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-5",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-5",
+              "text": "What is a Flexible Spending Account?",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-5-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-5-0",
+              "text": "A Flexible Spending Account (FSA) is a special tax-free account in which you put money to pay for certain out-of-pocket qualified medical expenses. Contributions are made pre-tax and reduce your taxable income. Eligible expenses include deductibles, copays, coinsurance, menstrual products, PPE, and over-the-counter medications. The Dependent Care FSA can be used to pay for elder or child care expenses.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-6",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-6",
+              "text": "Understanding different types of FSAs",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-6-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-6-0",
+              "text": "The Healthcare FSA covers medical, dental, vision, prescriptions, and other qualified healthcare costs.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-6-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-6-1",
+              "text": "The Limited Use FSA works with HSAs and covers eligible dental and vision expenses.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-6-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-6-2",
+              "text": "The Dependent Care FSA covers care for eligible dependents and is independent of medical coverage elections.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-6-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-6-3",
+              "text": "Dependent Care FSA expenses cannot be claimed on federal taxes if claimed through FSA.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-6-4",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-6-4",
+              "text": "FSA funds must be used by the end of the plan year or they are forfeited, although up to $660 may be rolled over for Healthcare FSAs.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-6-5",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-6-5",
+              "text": "FSA debit cards can be used where accepted, but receipts may be requested for validation.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "LeadsOnline HSA Employer Contribution",
+          "templateId": "hsa-employer-contribution",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "hsa-ec-col-0",
+              "label": "Team Member"
+            },
+            {
+              "_key": "col-1",
+              "key": "hsa-ec-col-1",
+              "label": "Family"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Employer Contribution",
+              "cells": [
+                "$1,250",
+                "$2,500"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-1",
+          "tableTitle": "HSA Funding Limits",
+          "templateId": "hsa-contribution-limits",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "hsa-cl-col-0",
+              "label": "2025 Contribution Limit"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Team Member",
+              "cells": [
+                "$4,300"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Family",
+              "cells": [
+                "$8,550"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Catch-Up Contribution (Ages 55+)",
+              "cells": [
+                "$1,000"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-2",
+          "tableTitle": "Flexible Spending Account Types Comparison",
+          "templateId": "fsa-types-comparison",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "fsa-type-col-0",
+              "label": "Healthcare FSA"
+            },
+            {
+              "_key": "col-1",
+              "key": "fsa-type-col-1",
+              "label": "Limited Use FSA"
+            },
+            {
+              "_key": "col-2",
+              "key": "fsa-type-col-2",
+              "label": "Dependent Care FSA"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Plan Eligibility",
+              "cells": [
+                "All Team Members",
+                "Team Members enrolled in an HSA-eligible HDHP",
+                "All Team Members"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Annual Contribution Limit",
+              "cells": [
+                "$3,300",
+                "$3,300",
+                "$5,000"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Description",
+              "cells": [
+                "Pre-tax funds to pay qualified healthcare expenses",
+                "Pre-tax funds for eligible dental and vision expenses only",
+                "Pre-tax funds for dependent care expenses including child or elder care"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 9
+    },
+    {
+      "_id": "leon-ch-survivor-benefits",
+      "title": "Survivor Benefits",
+      "description": "LeadsOnline provides Basic Life and Accidental Death and Dismemberment (AD&D) insurance as part of basic coverage through New York Life. Coverage guarantees benefits to your designated survivors and i",
+      "slug": "survivor-benefits",
+      "icon": "umbrella",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "LeadsOnline provides Basic Life and Accidental Death and Dismemberment (AD&D) insurance as part of basic coverage through New York Life. Coverage guarantees benefits to your designated survivors and is automatic for full-time Team Members even if other coverage is waived.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "RS&H provides Basic Life and Accidental Death & Dismemberment Insurance (AD&D)",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-0",
+              "text": "LeadsOnline provides Basic Life and Accidental Death and Dismemberment (AD&D) insurance as part of basic coverage through New York Life. Coverage guarantees benefits to your designated survivors and is automatic for full-time Team Members even if other coverage is waived.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "Coverage amount",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-0",
+              "text": "Basic Life and AD&D insurance benefit is 2x annual earnings, up to $250,000.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-1",
+              "text": "Eligible Team Members may purchase voluntary life and AD&D insurance with premiums paid through payroll deductions.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-2",
+              "text": "Voluntary Life coverage amounts available are 1 to 5 times annual earnings, up to $650,000 with guaranteed issue amounts up to $350,000 for team members and $50,000 for spouses.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-3",
+              "text": "Voluntary Child Life coverage available from $500 to $10,000 depending on age.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-4",
+              "text": "Beneficiary designation is required to specify who receives life insurance benefits including primary and contingent beneficiaries. Benefit payments for minors may be held until age 18.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-2",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-2",
+              "text": "AD&D Coverage",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-0",
+              "text": "Basic AD&D insurance covers accidental loss of limbs, paralysis, or death while covered. Voluntary AD&D insurance provides additional coverage.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-1",
+              "text": "Coverage includes lump sum payment for accidental death or dismemberment.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-2",
+              "text": "Voluntary AD&D coverage premiums are age- and tobacco status-based.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-3",
+              "text": "Voluntary Life and AD&D insurance rates for team members and spouses vary by age group and are charged per $1,000 of coverage via biweekly payroll deductions.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-3",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-3",
+              "text": "Other Voluntary benefits",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-0",
+              "text": "Additional voluntary benefits include Voluntary life insurance, Voluntary AD&D insurance, with more details available in the full benefits guide.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-1",
+              "text": "Voluntary life insurance plans",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-2",
+              "text": "Voluntary AD&D insurance plans",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-4",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-4",
+              "text": "Designating Beneficiaries",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-4-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-4-0",
+              "text": "Beneficiaries should be named with full details; payments to minors are handled specially.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "order": 10
+    },
+    {
+      "_id": "leon-ch-supplemental-health",
+      "title": "Supplemental Health",
+      "description": "Supplemental health benefits provided by Allstate.",
+      "slug": "supplemental-health",
+      "icon": "plus-circle",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "Provider: Allstate",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "What is Supplemental Health?",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-0",
+              "text": "Supplemental Health Benefits provide options to cover unexpected expenses not covered by medical plans.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "Critical Illness Coverage",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-0",
+              "text": "Pays lump-sum benefit upon diagnosis of covered illness.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-1",
+              "text": "No preexisting condition exclusion if diagnosis occurs after policy effective date.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-2",
+              "text": "Wellness benefit of $50 payable for each covered member completing certain screenings.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-2",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-2",
+              "text": "Covered illness include:",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-0",
+              "text": "Cancer",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-1",
+              "text": "Heart Attack",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-2",
+              "text": "Stroke",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-3",
+              "text": "Kidney Failure",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-4",
+              "text": "Major Organ Transplant",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-5",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-5",
+              "text": "Alzheimer's Disease",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-6",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-6",
+              "text": "Multiple Sclerosis",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-7",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-7",
+              "text": "Parkinson's Disease",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-3",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-3",
+              "text": "Payment frequency",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-0",
+              "text": "Multiple payments possible if different diagnoses occur.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-1",
+              "text": "Wellness benefit payable for completed health screenings.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-4",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-4",
+              "text": "Accident Coverage",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-4-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-4-0",
+              "text": "Provides benefits for expenses related to accidental injuries occurring outside of work.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-4-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-4-1",
+              "text": "Covers hospital stays, emergency care, urgent care, fractures, dislocations, burns, coma, ambulance and transportation, and more.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-5",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-5",
+              "text": "Notes & Disclaimers",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-5-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-5-0",
+              "text": "This is a fixed indemnity policy, not health insurance. It pays a limited dollar amount for sickness or hospitalization but does not cover actual medical bills or replace comprehensive health insurance.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Associate cost summary",
+          "templateId": "critical-illness-costs",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "tier",
+              "label": "Critical Illness and Cancer Insurance"
+            },
+            {
+              "_key": "col-1",
+              "key": "benefit",
+              "label": "Benefit"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Team Member’s Age <25",
+              "cells": [
+                "$10,000 - $20,000"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "25-29",
+              "cells": [
+                "$10,000 - $20,000"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "30-34",
+              "cells": [
+                "$10,000 - $20,000"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "35-39",
+              "cells": [
+                "$10,000 - $20,000"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "40-44",
+              "cells": [
+                "$10,000 - $20,000"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "45-49",
+              "cells": [
+                "$10,000 - $20,000"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "50-54",
+              "cells": [
+                "$10,000 - $20,000"
+              ]
+            },
+            {
+              "_key": "row-7",
+              "label": "55-59",
+              "cells": [
+                "$10,000 - $20,000"
+              ]
+            },
+            {
+              "_key": "row-8",
+              "label": "60-64",
+              "cells": [
+                "$10,000 - $20,000"
+              ]
+            },
+            {
+              "_key": "row-9",
+              "label": "65-69",
+              "cells": [
+                "$10,000 - $20,000"
+              ]
+            },
+            {
+              "_key": "row-10",
+              "label": "70-74",
+              "cells": [
+                "$10,000 - $20,000"
+              ]
+            },
+            {
+              "_key": "row-11",
+              "label": "75-79",
+              "cells": [
+                "$10,000 - $20,000"
+              ]
+            },
+            {
+              "_key": "row-12",
+              "label": "80+",
+              "cells": [
+                "$10,000 - $20,000"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-1",
+          "tableTitle": "Coverage Details",
+          "templateId": "accident-payouts",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "service",
+              "label": "Accident Insurance"
+            },
+            {
+              "_key": "col-1",
+              "key": "amount",
+              "label": "Coverage Amount"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Hospitalization",
+              "cells": [
+                "$1,000 + $200 per day"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "ICU Confinement",
+              "cells": [
+                "$400 per day"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Emergency Care",
+              "cells": [
+                "$200"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Urgent Care",
+              "cells": [
+                "$100"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Fractures",
+              "cells": [
+                "Up to $4,000"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "Dislocations",
+              "cells": [
+                "Up to $4,000"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "Diagnostic Exam/Imaging",
+              "cells": [
+                "Up to $200"
+              ]
+            },
+            {
+              "_key": "row-7",
+              "label": "Burns",
+              "cells": [
+                "Up to $1,000"
+              ]
+            },
+            {
+              "_key": "row-8",
+              "label": "Concussion",
+              "cells": [
+                "$300"
+              ]
+            },
+            {
+              "_key": "row-9",
+              "label": "Coma",
+              "cells": [
+                "$20,000"
+              ]
+            },
+            {
+              "_key": "row-10",
+              "label": "Ruptured Disc",
+              "cells": [
+                "$1,000"
+              ]
+            },
+            {
+              "_key": "row-11",
+              "label": "Open Abdominal Surgery",
+              "cells": [
+                "Up to $2,000"
+              ]
+            },
+            {
+              "_key": "row-12",
+              "label": "Lacerations",
+              "cells": [
+                "$100"
+              ]
+            },
+            {
+              "_key": "row-13",
+              "label": "Tendon/Ligament Repair",
+              "cells": [
+                "$1,000"
+              ]
+            },
+            {
+              "_key": "row-14",
+              "label": "Ambulance (Air/Ground)",
+              "cells": [
+                "$600/$200"
+              ]
+            },
+            {
+              "_key": "row-15",
+              "label": "Eye Injury",
+              "cells": [
+                "$200"
+              ]
+            },
+            {
+              "_key": "row-16",
+              "label": "Appliance Benefit",
+              "cells": [
+                "$250"
+              ]
+            },
+            {
+              "_key": "row-17",
+              "label": "Transportation (per trip)",
+              "cells": [
+                "Up to $800"
+              ]
+            },
+            {
+              "_key": "row-18",
+              "label": "Annual Wellness Benefit",
+              "cells": [
+                "$25 (2x)"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-2",
+          "tableTitle": "Payroll Contributions",
+          "templateId": "accident-contributions",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "tier",
+              "label": "Accident Insurance"
+            },
+            {
+              "_key": "col-1",
+              "key": "cost",
+              "label": "Bi-weekly Associate Payroll Contributions"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Team Member Only",
+              "cells": [
+                "$5.90"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Team Member + Spouse",
+              "cells": [
+                "$9.49"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Team Member + Child(ren)",
+              "cells": [
+                "$13.59"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Team Member + Family",
+              "cells": [
+                "$17.41"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 11
+    },
+    {
+      "_id": "leon-ch-income-protection-disability",
+      "title": "Income Protection (Disability)",
+      "description": "Short-term and long-term disability insurance and income protection benefits.",
+      "slug": "income-protection-disability",
+      "icon": "briefcase",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "LeadsOnline offers disability coverage at no cost to help protect income if you become disabled.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "Understand your disability insurance options.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "Overview",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-0",
+              "text": "LeadsOnline offers disability coverage at no cost to help protect income if you become disabled.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-1",
+              "text": "Short-Term Disability (STD) replaces 60% of income for short-term disability.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-0-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-0-2",
+              "text": "Long-Term Disability (LTD) replaces 60% of income for long-term disability.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "Basic Short-Term Disability (STD) Insurance",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-0",
+              "text": "Benefits are paid if you become partially or totally disabled for a short time.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-1",
+              "text": "Certain exclusions and pre-existing condition limitations may apply.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-2",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-2",
+              "text": "Basic Long-Term Disability (LTD) Insurance",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-0",
+              "text": "Benefits replace 60% of income for extended disability.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-1",
+              "text": "Certain exclusions and pre-existing condition limitations may apply.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-3",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-3",
+              "text": "Notes & Disclaimers",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-0",
+              "text": "STD weekly maximum benefit is $2,000 with a 7-day elimination period and max benefit period of 13 weeks.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "p-3-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-p-3-1",
+              "text": "LTD monthly maximum benefit is $10,000 with a 90-day elimination period and benefits payable until Social Security Normal Retirement Age or recovery.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "order": 12
+    },
+    {
+      "_id": "leon-ch-additional-voluntary-benefits",
+      "title": "Additional Voluntary Benefits",
+      "description": "LeadsOnline offers various additional voluntary benefits to employees including pet insurance, legal coverage, and identity theft protection.",
+      "slug": "additional-voluntary-benefits",
+      "icon": "gift",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "LeadsOnline offers various additional voluntary benefits to employees including pet insurance, legal coverage, and identity theft protection.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "tabs",
+          "_key": "tabs-12",
+          "items": [
+            {
+              "_key": "tab-item-0",
+              "title": "Pet Insurance",
+              "content": [
+                {
+                  "_type": "block",
+                  "_key": "block-0",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-0",
+                      "text": "Policies provide coverage for veterinary expenses related to accidents and illnesses including X-rays, medications, surgeries, and hospital stays.",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-1",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-1",
+                      "text": "**How it works**\nPolicies are customizable with annual limits, deductibles, and reimbursement options.",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-2",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-2",
+                      "text": "Provider: ASPCA",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-3",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-3",
+                      "text": "Covers accidents",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-4",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-4",
+                      "text": "Covers illnesses",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-5",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-5",
+                      "text": "Covers hereditary conditions",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-6",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-6",
+                      "text": "Covers dental disease",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-7",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-7",
+                      "text": "Covers behavioral issues",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-8",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-8",
+                      "text": "Covers exam fees",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-9",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-9",
+                      "text": "Covers diagnostic imaging",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-10",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-10",
+                      "text": "Covers lab tests",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-11",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-11",
+                      "text": "Covers hospitalization",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-12",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-12",
+                      "text": "Covers surgery",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-13",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-13",
+                      "text": "Covers chemotherapy",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-14",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-14",
+                      "text": "Covers acupuncture",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-15",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-15",
+                      "text": "Covers stem cell therapy",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-16",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-16",
+                      "text": "Covers prescription food",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-17",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-17",
+                      "text": "Covers supplements",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-18",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-18",
+                      "text": "Covers rehabilitation",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-19",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-19",
+                      "text": "Offers accident-only coverage plan",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-20",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-20",
+                      "text": "Preventive care coverage can be added for extra cost",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                }
+              ],
+              "link": "www.aspcapetinsurance.com/LeadsOnline",
+              "linkLabel": "Get a Quote"
+            },
+            {
+              "_key": "tab-item-1",
+              "title": "Identity Theft Protection",
+              "content": [
+                {
+                  "_type": "block",
+                  "_key": "block-0",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-0",
+                      "text": "Company-paid benefit providing monitoring, alerts, live support, and restoration help to protect employees and families from identity theft.",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-1",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-1",
+                      "text": "Identity Alert System",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-2",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-2",
+                      "text": "Lost-wallet protection",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-3",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-3",
+                      "text": "Address change verification",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-4",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-4",
+                      "text": "Privacy Monitor",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-5",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-5",
+                      "text": "Live member service support",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-6",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-6",
+                      "text": "Identity-restoration support",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-7",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-7",
+                      "text": "Data-breach notifications",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 13
+    }
+  ],
+  "openEnrollment": {
+    "title": "Welcome to Open Enrollment",
+    "description": "Review and update your benefits selections for the upcoming plan year.",
+    "daysLeftLabel": "Days Left",
+    "periodLabel": "Open Enrollment Period",
+    "statusTitle": "Action Needed",
+    "statusDescription": "Review and update your selections now",
+    "checklistLabel": "Review Enrollment Checklist",
+    "checklistSubtext": "Prepare for open enrollment",
+    "changesLabel": "Discover Benefit Changes",
+    "changesSubtext": "What's new this year",
+    "enrollLabel": "Enroll Now",
+    "enrollSubtext": "Complete your enrollment",
+    "benefitsGuideUrl": "https://kyhxmyhtowrqmhglmkhu.supabase.co/storage/v1/object/public/employer-assets/leads-online/benefits-guide.pdf"
+  },
+  "benefitChangesPage": {
+    "title": "What's New This Year",
+    "description": "Review the latest changes and improvements to your benefits package.",
+    "alertMessage": "Review all changes before making your elections during open enrollment.",
+    "changes": [],
+    "ctaTitle": "Ready to Review Your Benefits?",
+    "ctaDescription": "Contact HR for any questions."
+  },
+  "enrollmentChecklist": {
+    "title": "Enrollment Checklist",
+    "description": "Use this step-by-step checklist to prepare for open enrollment.",
+    "items": [],
+    "ctaTitle": "Ready to Enroll?",
+    "ctaDescription": "Once you've completed this checklist, you're ready to make your benefit elections."
+  },
+  "retirementPlanning": {
+    "heroTitle": "Plan for Your Future"
+  },
+  "documents": []
+}
