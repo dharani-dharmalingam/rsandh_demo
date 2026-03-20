@@ -1,0 +1,4319 @@
+{
+  "client": {
+    "name": "RS&H",
+    "slug": "rsandh",
+    "themeColor": "#2563eb"
+  },
+  "siteSettings": {
+    "clientName": "RS&H",
+    "shortName": "RS&H",
+    "logoText": "RS&H Your 2026 Benefits",
+    "footerAbout": "Comprehensive benefits administration and support for the valued employees of RS&H.",
+    "quickAccess": [
+      {
+        "title": "Find a Doctor",
+        "description": "Search in-network providers using MyHealthToolkit or contact Blue Cross Blue Shield at 1.800.830.1501.",
+        "href": "https://www.myhealthtoolkitfl.com",
+        "iconName": "stethoscope"
+      },
+      {
+        "title": "Get Benefits Help",
+        "description": "Health Advocate assists with benefits questions, claim issues, and finding providers — available 24/7 at 1.866.799.2728.",
+        "href": "https://www.healthadvocate.com/members",
+        "iconName": "headset"
+      },
+      {
+        "title": "Enroll in Benefits",
+        "description": "Access your enrollment portal through Blaze > UKG icon > Menu > Myself > Open Enrollment.",
+        "href": "https://start.myalex.com/rsh",
+        "iconName": "clipboard"
+      }
+    ],
+    "contactInfo": [
+      {
+        "label": "Blue Cross Blue Shield (Medical)",
+        "value": "1.800.830.1501",
+        "href": "https://www.myhealthtoolkitfl.com"
+      },
+      {
+        "label": "Mutual of Omaha (Life / CI / Accident)",
+        "value": "1.800.775.8805",
+        "href": "https://www.mutualofomaha.com"
+      },
+      {
+        "label": "Mutual of Omaha (Disability)",
+        "value": "1.800.877.5176",
+        "href": "https://www.mutualofomaha.com"
+      },
+      {
+        "label": "MetLife (Dental)",
+        "value": "1.800.275.4638",
+        "href": "https://www.metlife.com/dental"
+      },
+      {
+        "label": "Vision Service Plan (VSP)",
+        "value": "1.800.877.7195",
+        "href": "https://www.vsp.com"
+      },
+      {
+        "label": "Fidelity (HSA)",
+        "value": "800.544.3716",
+        "href": "https://www.fidelity.com"
+      },
+      {
+        "label": "Fidelity (FSA)",
+        "value": "833.299.5089",
+        "href": "https://www.fidelity.com"
+      },
+      {
+        "label": "Fidelity (401k)",
+        "value": "800.835.5095",
+        "href": "https://www.fidelity.com"
+      },
+      {
+        "label": "Health Advocate (EAP & Benefits Assistance)",
+        "value": "1.866.799.2728",
+        "href": "https://www.healthadvocate.com/members"
+      },
+      {
+        "label": "Allstate Identity Protection",
+        "value": "1.800.789.2720",
+        "href": "https://www.myaip.com/rsandh"
+      },
+      {
+        "label": "PetPartners (Pet Insurance)",
+        "value": "1.866.774.1113",
+        "href": "https://www.petpartners.com"
+      },
+      {
+        "label": "MetLife (Legal Plan)",
+        "value": "1.800.821.6400",
+        "href": "https://info.legalplans.com"
+      },
+      {
+        "label": "Farmers GroupSelect (Auto Insurance)",
+        "value": "1.800.422.4272"
+      }
+    ],
+    "quickLinks": [
+      {
+        "label": "Home",
+        "href": "/rsandh"
+      },
+      {
+        "label": "Benefits",
+        "href": "/rsandh/benefits"
+      },
+      {
+        "label": "Document Hub",
+        "href": "/rsandh/document-hub"
+      },
+      {
+        "label": "Contacts",
+        "href": "/rsandh/contacts"
+      }
+    ],
+    "footerContactTitle": "Contact",
+    "footerContactDescription": "Have questions? Reach out to our support team.",
+    "copyrightText": "© 2026 RS&H. All rights reserved."
+  },
+  "benefitsPage": {
+    "title": "Your Benefits at a Glance",
+    "description": "Explore the complete range of benefits available to RS&H employees."
+  },
+  "benefitChapters": [
+    {
+      "_id": "rs-ch-eligibility-enrollment",
+      "title": "Eligibility & Enrollment",
+      "description": "Overview of who qualifies for benefits, enrollment deadlines, qualifying life events, and how to make changes.",
+      "slug": "eligibility-enrollment",
+      "icon": "check-circle",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "Benefits are available to all full-time and part-time associates working a minimum of 20 hours per week and their eligible dependents.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "If you enroll during Open Enrollment, your benefits become effective January 1, 2026. New hire benefits become effective the first day of the month following your date of hire.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "You may only change elections during Open Enrollment or when you experience a qualifying life event. Changes due to a qualifying life event must be made within 30 days of that event.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "Eligible Dependents",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-0",
+              "text": "Spouse or Domestic Partner",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-1",
+              "text": "Children from birth to age 26 (includes natural, legally adopted, stepchildren, and unmarried dependent children of any age who are mentally or physically disabled and dependent on you for support)",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "How to Enroll — Open Enrollment",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-0",
+              "text": "Visit Blaze and select the UKG icon.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-1",
+              "text": "Navigate to Menu > Myself > Open Enrollment.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-2",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-2",
+              "text": "How to Enroll — New Hire or Newly Eligible",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-0",
+              "text": "Visit Blaze and select the UKG icon.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-2-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-2-1",
+              "text": "Navigate to Menu > Myself > Life Events > I am Enrolling in Benefits.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-3",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-3",
+              "text": "Qualifying Life Events",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-0",
+              "text": "Birth, legal adoption, or placement for adoption",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-1",
+              "text": "Change in marital status",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-2",
+              "text": "Dependent child reaches age 26",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-3",
+              "text": "Spouse gains or loses employment or eligibility with current employer",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-4",
+              "text": "Death of a covered dependent",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-5",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-5",
+              "text": "Spouse or dependent becomes eligible or ineligible for Medicare/Medicaid or SCHIP",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-6",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-6",
+              "text": "Change in residence that changes eligibility for coverage",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-3-7",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-3-7",
+              "text": "Court-ordered change",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Enrollment Deadlines by Associate Type",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "type",
+              "label": "Associate Type"
+            },
+            {
+              "_key": "col-1",
+              "key": "opportunity",
+              "label": "Enrollment Opportunity"
+            },
+            {
+              "_key": "col-2",
+              "key": "effective",
+              "label": "Coverage Effective Date"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Current Associate",
+              "cells": [
+                "Current Associate",
+                "Annually during open enrollment period",
+                "Start of plan year"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "New Hire",
+              "cells": [
+                "New Hire",
+                "Must enroll within 10 days of hire",
+                "1st day of the month following date of hire"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Qualified Life Event",
+              "cells": [
+                "Qualified Life Event",
+                "Changes must be made within 30 days of life event",
+                "Date of life event"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 1
+    },
+    {
+      "_id": "rs-ch-medical-prescription-drug",
+      "title": "Medical & Prescription Drug",
+      "description": "BlueCross BlueShield medical coverage with three plan options: PPO, Prime HDHP (HSA-eligible), and Alternate HDHP (HSA-eligible), plus comprehensive prescription drug coverage.",
+      "slug": "medical-prescription-drug",
+      "icon": "heart",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "Your medical benefits are provided by BlueCross BlueShield and include coverage for both in-network and out-of-network providers. All plans participate in the same network.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "Choosing an in-network provider provides significant savings. The PPO Plan is not HSA-eligible; the Prime HDHP and Alternate HDHP plans are HSA-eligible.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "Schedule your annual wellness visit with an in-network provider — it's covered at no cost to you.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "Pharmacy Tips",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-0",
+              "text": "Find an in-network pharmacy or use the drug cost estimator at www.optumrx.com.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-1",
+              "text": "Discount sites like GoodRx and WellRx provide instant savings (note: prescriptions acquired under these plans do not go through your insurance).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-2",
+              "text": "Ask your provider or pharmacist if a generic or mail order option is available.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-3",
+              "text": "Generic contraceptives and diaphragms are covered in full.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Medical Plan Comparison (In-Network)",
+          "tableDescription": "This is a summary of coverage. In-network services are based on negotiated charges.",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "benefit",
+              "label": "Benefit"
+            },
+            {
+              "_key": "col-1",
+              "key": "ppo",
+              "label": "PPO Plan (you pay)"
+            },
+            {
+              "_key": "col-2",
+              "key": "prime_hdhp",
+              "label": "Prime HDHP (you pay)"
+            },
+            {
+              "_key": "col-3",
+              "key": "alt_hdhp",
+              "label": "Alternate HDHP (you pay)"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "In-Network",
+              "cells": [
+                "In-Network",
+                "In-network",
+                "In-network",
+                "In-network"
+              ],
+              "isSection": true
+            },
+            {
+              "_key": "row-1",
+              "label": "Annual deductible",
+              "cells": [
+                "Annual deductible",
+                "$2,000 per person / $6,000 family maximum",
+                "$1,800 single / $3,600 family",
+                "$3,400 per person / $6,800 family maximum"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Out-of-pocket maximum",
+              "cells": [
+                "Out-of-pocket maximum",
+                "$6,000 per person / $12,000 family maximum",
+                "$4,500 single / $9,000 family",
+                "$6,350 per person / $12,700 family maximum"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Coinsurance (your share)",
+              "cells": [
+                "Coinsurance (your share)",
+                "20%",
+                "20%",
+                "20%"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Preventive care",
+              "cells": [
+                "Preventive care",
+                "100% Covered",
+                "100% Covered",
+                "100% Covered"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "Primary physician office visit",
+              "cells": [
+                "Primary physician office visit",
+                "$30 copay",
+                "20% after deductible",
+                "20% after deductible"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "Specialist office visit",
+              "cells": [
+                "Specialist office visit",
+                "$55 copay",
+                "20% after deductible",
+                "20% after deductible"
+              ]
+            },
+            {
+              "_key": "row-7",
+              "label": "Independent labs",
+              "cells": [
+                "Independent labs",
+                "100% Covered",
+                "100% after deductible",
+                "100% after deductible"
+              ]
+            },
+            {
+              "_key": "row-8",
+              "label": "Outpatient x-rays",
+              "cells": [
+                "Outpatient x-rays",
+                "100% Covered",
+                "100% after deductible",
+                "100% after deductible"
+              ]
+            },
+            {
+              "_key": "row-9",
+              "label": "Imaging (MRI, CT, PET, etc.)",
+              "cells": [
+                "Imaging (MRI, CT, PET, etc.)",
+                "$250 copay per scan",
+                "20% after deductible",
+                "20% after deductible"
+              ]
+            },
+            {
+              "_key": "row-10",
+              "label": "Convenience Clinic Visit",
+              "cells": [
+                "Convenience Clinic Visit",
+                "$30 copay",
+                "20% after deductible",
+                "20% after deductible"
+              ]
+            },
+            {
+              "_key": "row-11",
+              "label": "Teladoc Virtual Visit",
+              "cells": [
+                "Teladoc Virtual Visit",
+                "No cost",
+                "No cost",
+                "No cost"
+              ]
+            },
+            {
+              "_key": "row-12",
+              "label": "Urgent Care Center",
+              "cells": [
+                "Urgent Care Center",
+                "$75 copay",
+                "20% after deductible",
+                "20% after deductible"
+              ]
+            },
+            {
+              "_key": "row-13",
+              "label": "Emergency Room",
+              "cells": [
+                "Emergency Room",
+                "$500 copay",
+                "20% after deductible",
+                "20% after deductible"
+              ]
+            },
+            {
+              "_key": "row-14",
+              "label": "Inpatient Hospitalization",
+              "cells": [
+                "Inpatient Hospitalization",
+                "20%",
+                "20% after deductible",
+                "20% after deductible"
+              ]
+            },
+            {
+              "_key": "row-15",
+              "label": "Outpatient Surgery",
+              "cells": [
+                "Outpatient Surgery",
+                "20%",
+                "20% after deductible",
+                "20% after deductible"
+              ]
+            },
+            {
+              "_key": "row-16",
+              "label": "Out-of-Network Coverage (plus balance billing)",
+              "cells": [
+                "Out-of-Network Coverage (plus balance billing)",
+                "—",
+                "—",
+                "—"
+              ],
+              "isSection": true
+            },
+            {
+              "_key": "row-17",
+              "label": "Annual Deductible (out-of-network)",
+              "cells": [
+                "Annual Deductible",
+                "$4,500 / $13,500",
+                "$3,000 / $6,000",
+                "$5,000 / $10,000"
+              ]
+            },
+            {
+              "_key": "row-18",
+              "label": "Coinsurance out-of-network",
+              "cells": [
+                "Coinsurance (your share)",
+                "50%",
+                "40%",
+                "40%"
+              ]
+            },
+            {
+              "_key": "row-19",
+              "label": "Out-of-pocket maximum (out-of-network)",
+              "cells": [
+                "Out-of-pocket maximum",
+                "$9,000 / $18,000",
+                "$6,000 / $12,000",
+                "$10,000 / $20,000"
+              ]
+            },
+            {
+              "_key": "row-20",
+              "label": "Prescription Drugs",
+              "cells": [
+                "Prescription Drugs",
+                "—",
+                "—",
+                "—"
+              ],
+              "isSection": true
+            },
+            {
+              "_key": "row-21",
+              "label": "Preventive Medication",
+              "cells": [
+                "Preventive Medication",
+                "Based on tier",
+                "Covered 100%",
+                "Covered 100%"
+              ]
+            },
+            {
+              "_key": "row-22",
+              "label": "Pharmacy Deductible",
+              "cells": [
+                "Pharmacy Deductible",
+                "Not applicable",
+                "Combined with Medical",
+                "Combined with Medical"
+              ]
+            },
+            {
+              "_key": "row-23",
+              "label": "Retail (30-day supply)",
+              "cells": [
+                "Retail (30-day supply)",
+                "—",
+                "—",
+                "—"
+              ],
+              "isSection": true
+            },
+            {
+              "_key": "row-24",
+              "label": "Tier one (retail)",
+              "cells": [
+                "Tier one",
+                "$15 copay",
+                "$15 copay after ded",
+                "$15 copay after ded"
+              ]
+            },
+            {
+              "_key": "row-25",
+              "label": "Tier two (retail)",
+              "cells": [
+                "Tier two",
+                "$50 copay",
+                "$50 copay after ded",
+                "$50 copay after ded"
+              ]
+            },
+            {
+              "_key": "row-26",
+              "label": "Tier three (retail)",
+              "cells": [
+                "Tier three",
+                "$90 copay",
+                "$90 copay after ded",
+                "$90 copay after ded"
+              ]
+            },
+            {
+              "_key": "row-27",
+              "label": "Specialty (retail)",
+              "cells": [
+                "Specialty",
+                "$150 copay",
+                "$15/$50/$90 copay after ded",
+                "$15/$50/$90 copay after ded"
+              ]
+            },
+            {
+              "_key": "row-28",
+              "label": "Mail Order (90-day supply)",
+              "cells": [
+                "Mail Order (90-day supply)",
+                "—",
+                "—",
+                "—"
+              ],
+              "isSection": true
+            },
+            {
+              "_key": "row-29",
+              "label": "Tier one (mail order)",
+              "cells": [
+                "Tier one",
+                "$30 copay",
+                "$30 copay after ded",
+                "$30 copay after ded"
+              ]
+            },
+            {
+              "_key": "row-30",
+              "label": "Tier two (mail order)",
+              "cells": [
+                "Tier two",
+                "$100 copay",
+                "$100 copay after ded",
+                "$100 copay after ded"
+              ]
+            },
+            {
+              "_key": "row-31",
+              "label": "Tier three (mail order)",
+              "cells": [
+                "Tier three",
+                "$180 copay",
+                "$180 copay after ded",
+                "$180 copay after ded"
+              ]
+            },
+            {
+              "_key": "row-32",
+              "label": "Specialty (mail order)",
+              "cells": [
+                "Specialty",
+                "$300 copay",
+                "$30/$100/$180 copay after ded",
+                "$30/$100/$180 copay after ded"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 2
+    },
+    {
+      "_id": "rs-ch-dental",
+      "title": "Dental",
+      "description": "MetLife dental coverage with Core and Enhanced plan options, covering preventive, basic, major, and orthodontia services for in-network and out-of-network providers.",
+      "slug": "dental",
+      "icon": "smile",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "Dental plans cover diagnostic and preventive care, plus basic and major services. Although you can choose any dental provider, you will generally pay less when you visit an in-network dentist.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "To locate an in-network provider, visit www.metlife.com/dental.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "Associates can elect dental coverage regardless of their medical enrollment status.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "MetLife Plus Dentist Advantages",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-0",
+              "text": "Quality Assurance: Dentists are monitored for proper licensing, cleanliness and safety.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-1",
+              "text": "No balance billing: You won't be charged more than the contracted rate.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-2",
+              "text": "No pre-payment: You'll pay only your portion of the bill — insurance pays your dentist directly.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-3",
+              "text": "Lower prices: Through reduced fees.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Dental Plan Comparison",
+          "tableDescription": "Adult orthodontia is available on the Enhanced Plan only. Coinsurance amounts reflect what the employee pays.",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "benefit",
+              "label": "Benefit"
+            },
+            {
+              "_key": "col-1",
+              "key": "core_in",
+              "label": "Core Plan — In-Network"
+            },
+            {
+              "_key": "col-2",
+              "key": "core_out",
+              "label": "Core Plan — Out-of-Network"
+            },
+            {
+              "_key": "col-3",
+              "key": "enhanced_in",
+              "label": "Enhanced Plan — In-Network"
+            },
+            {
+              "_key": "col-4",
+              "key": "enhanced_out",
+              "label": "Enhanced Plan — Out-of-Network"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Annual deductible (Individual/Family)",
+              "cells": [
+                "Annual deductible (Individual/Family)",
+                "$50/$150",
+                "$100/$300",
+                "$50/$150",
+                "$50/$150"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Annual maximum (per person)",
+              "cells": [
+                "Annual maximum (per person)",
+                "$1,750",
+                "$1,750",
+                "$2,500",
+                "$2,500"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Diagnostic and preventive care",
+              "cells": [
+                "Diagnostic and preventive care",
+                "100% Covered",
+                "100% Covered",
+                "100% Covered",
+                "100% Covered"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Basic services",
+              "cells": [
+                "Basic services",
+                "100% Covered",
+                "20% + balance billing",
+                "20% + balance billing",
+                "20% + balance billing"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Major services",
+              "cells": [
+                "Major services",
+                "40%",
+                "50%",
+                "50%",
+                "50% + balance billing"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "Orthodontia*",
+              "cells": [
+                "Orthodontia*",
+                "50% (children to age 19)",
+                "50%",
+                "50% (adults & children)",
+                "50%"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "Orthodontia lifetime maximum",
+              "cells": [
+                "Orthodontia lifetime maximum",
+                "$1,500",
+                "$1,500",
+                "$1,500",
+                "$1,500"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 3
+    },
+    {
+      "_id": "rs-ch-vision",
+      "title": "Vision",
+      "description": "VSP vision coverage with Core and Enhanced plan options, covering eye exams, frames, lenses, contact lenses, and laser surgery discounts.",
+      "slug": "vision",
+      "icon": "eye",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "Vision benefits include coverage for eye exams, lenses and frames, contact lenses, and discounts for laser surgery.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "The vision plan is built around network providers who offer higher benefits at lower cost. Use an in-network provider for the most value.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "Associates can elect vision coverage regardless of their medical enrollment status.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-3",
+              "text": "Your annual Well Vision Exam can help detect early signs of health issues like diabetes and high blood pressure.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Vision Plan Comparison",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "benefit",
+              "label": "Benefit"
+            },
+            {
+              "_key": "col-1",
+              "key": "core_in",
+              "label": "Core VSP — In-Network"
+            },
+            {
+              "_key": "col-2",
+              "key": "core_out",
+              "label": "Core VSP — Out-of-Network (Reimbursement)"
+            },
+            {
+              "_key": "col-3",
+              "key": "enhanced_in",
+              "label": "Enhanced VSP — In-Network"
+            },
+            {
+              "_key": "col-4",
+              "key": "enhanced_out",
+              "label": "Enhanced VSP — Out-of-Network (Reimbursement)"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Eye Exam (every 12 months)",
+              "cells": [
+                "Eye Exam (every 12 months)",
+                "$10 copay",
+                "Up to $45",
+                "$10 copay",
+                "Up to $45"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Frames (every 24 months)",
+              "cells": [
+                "Frames (every 24 months)",
+                "—",
+                "—",
+                "—",
+                "—"
+              ],
+              "isSection": true
+            },
+            {
+              "_key": "row-2",
+              "label": "New frames",
+              "cells": [
+                "New frames",
+                "$130 allowance, then 20% off balance",
+                "Up to $70",
+                "$200 allowance, then 20% off balance",
+                "Up to $70"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Lenses (every 12 months)",
+              "cells": [
+                "Lenses (every 12 months)",
+                "—",
+                "—",
+                "—",
+                "—"
+              ],
+              "isSection": true
+            },
+            {
+              "_key": "row-4",
+              "label": "Single",
+              "cells": [
+                "Single",
+                "Up to $30",
+                "—",
+                "Up to $30",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "Bifocal",
+              "cells": [
+                "Bifocal",
+                "$15 copay",
+                "Up to $50",
+                "$15 copay",
+                "Up to $50"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "Trifocal",
+              "cells": [
+                "Trifocal",
+                "Up to $65",
+                "—",
+                "Up to $65",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-7",
+              "label": "Contact Lenses (every 12 months)",
+              "cells": [
+                "Contact Lenses (every 12 months)",
+                "—",
+                "—",
+                "—",
+                "—"
+              ],
+              "isSection": true
+            },
+            {
+              "_key": "row-8",
+              "label": "Elective",
+              "cells": [
+                "Elective",
+                "$150 allowance",
+                "Up to $105",
+                "$200 allowance",
+                "Up to $105"
+              ]
+            },
+            {
+              "_key": "row-9",
+              "label": "Medically necessary",
+              "cells": [
+                "Medically necessary",
+                "100% covered",
+                "Up to $210",
+                "100% covered",
+                "Up to $210"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 4
+    },
+    {
+      "_id": "rs-ch-associate-payroll-contribution",
+      "title": "Associate Payroll Contributions",
+      "description": "Bi-weekly employee premium contributions for medical, dental, and vision plans across all coverage tiers.",
+      "slug": "associate-payroll-contributions",
+      "icon": "list",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "The following tables show the bi-weekly payroll deduction amounts you pay for each benefit plan and coverage tier.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "Additional rate information can be found in your enrollment portal.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Medical — Bi-Weekly Premium Contributions",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "tier",
+              "label": "Coverage Tier"
+            },
+            {
+              "_key": "col-1",
+              "key": "ppo",
+              "label": "PPO Plan"
+            },
+            {
+              "_key": "col-2",
+              "key": "prime_hdhp",
+              "label": "Prime HDHP"
+            },
+            {
+              "_key": "col-3",
+              "key": "alt_hdhp",
+              "label": "Alternate HDHP"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Associate",
+              "cells": [
+                "Associate",
+                "$159.98",
+                "$71.24",
+                "$41.03"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Associate + Spouse",
+              "cells": [
+                "Associate + Spouse",
+                "$362.40",
+                "$183.65",
+                "$126.02"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Associate + Child(ren)",
+              "cells": [
+                "Associate + Child(ren)",
+                "$299.78",
+                "$150.36",
+                "$102.94"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Family",
+              "cells": [
+                "Family",
+                "$552.04",
+                "$288.80",
+                "$199.99"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-1",
+          "tableTitle": "Dental — Bi-Weekly Premium Contributions",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "tier",
+              "label": "Coverage Tier"
+            },
+            {
+              "_key": "col-1",
+              "key": "core",
+              "label": "Core Dental Plan"
+            },
+            {
+              "_key": "col-2",
+              "key": "enhanced",
+              "label": "Enhanced Dental Plan"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Associate",
+              "cells": [
+                "Associate",
+                "$4.67",
+                "$6.99"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Associate + Spouse",
+              "cells": [
+                "Associate + Spouse",
+                "$13.80",
+                "$19.87"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Associate + Child(ren)",
+              "cells": [
+                "Associate + Child(ren)",
+                "$12.11",
+                "$17.81"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Family",
+              "cells": [
+                "Family",
+                "$20.96",
+                "$30.68"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-2",
+          "tableTitle": "Vision — Bi-Weekly Premium Contributions",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "tier",
+              "label": "Coverage Tier"
+            },
+            {
+              "_key": "col-1",
+              "key": "core",
+              "label": "Core VSP Plan"
+            },
+            {
+              "_key": "col-2",
+              "key": "enhanced",
+              "label": "Enhanced VSP Plan"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Associate",
+              "cells": [
+                "Associate",
+                "$3.90",
+                "$8.98"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Associate + Spouse",
+              "cells": [
+                "Associate + Spouse",
+                "$7.81",
+                "$17.96"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Associate + Child(ren)",
+              "cells": [
+                "Associate + Child(ren)",
+                "$8.36",
+                "$19.22"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Family",
+              "cells": [
+                "Family",
+                "$13.32",
+                "$30.65"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 5
+    },
+    {
+      "_id": "rs-ch-health-savings-account-hsa",
+      "title": "Health Savings Account (HSA)",
+      "description": "Tax-advantaged HSA available to associates enrolled in the Prime or Alternate HDHP, with RS&H employer contributions and managed through Fidelity NetBenefits.",
+      "slug": "health-savings-account-hsa",
+      "icon": "dollar-sign",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "A Health Savings Account (HSA) is designed to be paired with a qualified High Deductible Health Plan (HDHP) and provides a smart way to save for current and future healthcare needs.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "HSA offers a Triple Tax Advantage: contributions are tax-free, interest earned is tax-free, and withdrawals for qualified health expenses are tax-free.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "Access and manage your HSA through your Fidelity NetBenefit account at NetBenefits.com.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-3",
+              "text": "You can make changes to your contribution amount anytime throughout the year through the benefit portal.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "HSA Eligibility Requirements",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-0",
+              "text": "You are enrolled in the HDHP (Prime or Alternate).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-1",
+              "text": "You are not covered by a spouse's plan.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-2",
+              "text": "No one else can claim you as a dependent.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-3",
+              "text": "You are not enrolled in Medicare, TRICARE, or TRICARE for Life.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-4",
+              "text": "You have not received VA benefits in the past 3 months.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "HSA Advantages",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-0",
+              "text": "Use the account to pay for qualified healthcare expenses.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-1",
+              "text": "Unspent dollars roll over each year and are yours to keep, even if you retire or leave the company.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-2",
+              "text": "You can invest your HSA funds so your available healthcare dollars can grow over time.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "RS&H HSA Employer Contributions",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "tier",
+              "label": "Coverage Tier"
+            },
+            {
+              "_key": "col-1",
+              "key": "prime",
+              "label": "Prime HDHP"
+            },
+            {
+              "_key": "col-2",
+              "key": "alternate",
+              "label": "Alternate HDHP"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Associate",
+              "cells": [
+                "Associate",
+                "$600",
+                "$800"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "All Others (Associate + Spouse/Child/Family)",
+              "cells": [
+                "All Others",
+                "$1,200",
+                "$1,400"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 6
+    },
+    {
+      "_id": "rs-ch-flexible-spending-account-fsa",
+      "title": "Flexible Spending Account (FSA)",
+      "description": "Tax-advantaged FSA options for healthcare, limited purpose (dental/vision for HDHP enrollees), and dependent care expenses, administered through Fidelity.",
+      "slug": "flexible-spending-account-fsa",
+      "icon": "dollar-sign",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "A flexible spending account (FSA) is a tax-advantaged account that reimburses you for qualified healthcare or dependent care expenses using pre-tax dollars.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "HDHP Prime and HDHP Alternate enrollees may only use a Limited Purpose FSA for eligible dental and vision expenses.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "Eligible claims must be incurred between January 1 and December 31. All claims must be submitted by March 15.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-3",
+              "text": "Up to $660 of unused funds from the prior year may roll over into the new plan year. Any unused amount above $660 is forfeited.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-4",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-4",
+              "text": "Transit and Parking FSAs allow pre-tax contributions of up to $340 per month each for 2026 and may be enrolled at any time during the year.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "FSA Plan Comparison",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "feature",
+              "label": "Feature"
+            },
+            {
+              "_key": "col-1",
+              "key": "healthcare",
+              "label": "Healthcare FSA"
+            },
+            {
+              "_key": "col-2",
+              "key": "limited",
+              "label": "Limited Purpose FSA"
+            },
+            {
+              "_key": "col-3",
+              "key": "dependent",
+              "label": "Dependent Care FSA"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Eligibility",
+              "cells": [
+                "Eligibility",
+                "Associates enrolled in PPO or waived medical coverage",
+                "HDHP Prime & HDHP Alternate enrollees",
+                "Associates with qualifying dependents"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Annual Contribution Limit",
+              "cells": [
+                "Annual Contribution Limit",
+                "$3,400",
+                "$3,400",
+                "$7,500 (or $3,750 if married filing separately)"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Eligible Expenses",
+              "cells": [
+                "Eligible Expenses",
+                "Medical, dental, vision, and other qualified health expenses (see IRS Publication 502)",
+                "Dental and vision expenses only",
+                "Care for dependent children under 13, dependents over 13 unable to self-care, or elderly parents in your home"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 7
+    },
+    {
+      "_id": "rs-ch-life-insurance",
+      "title": "Life Insurance",
+      "description": "RS&H provides Basic Life and AD&D at no cost through Mutual of Omaha, plus optional Voluntary Life and AD&D coverage for associates, spouses, and dependents.",
+      "slug": "life-insurance",
+      "icon": "umbrella",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "RS&H provides Basic Life Insurance and Accidental Death & Dismemberment (AD&D) at no cost to you in the amount of your annual salary (up to $1,000,000) through Mutual of Omaha.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "Coverage is automatic but you must designate a beneficiary. Please be sure your beneficiary is up to date.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "At age 65, your life insurance amount begins to reduce by a percentage of the original coverage amount.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-3",
+              "text": "Voluntary Life insurance is available to you, your spouse, and your dependent children for additional coverage.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "AD&D — How It Pays",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-0",
+              "text": "Death: If your death is caused by an accident, the AD&D benefit pays in addition to your life insurance (your beneficiary receives both).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-1",
+              "text": "Dismemberment: If you lose a covered body part or its function due to an accident, you may receive a percentage of the total AD&D benefit.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Basic Life Insurance — Age Reduction Schedule",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "age",
+              "label": "At Age"
+            },
+            {
+              "_key": "col-1",
+              "key": "reduction",
+              "label": "Policy Reduces By"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "65",
+              "cells": [
+                "65",
+                "35%"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "70",
+              "cells": [
+                "70",
+                "45%"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "75",
+              "cells": [
+                "75",
+                "70%"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "80",
+              "cells": [
+                "80",
+                "80%"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-1",
+          "tableTitle": "Voluntary Life Insurance Coverage Options",
+          "tableDescription": "If you don't enroll when first available or elect above Guaranteed Issue, Evidence of Insurability (EOI) is required.",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "type",
+              "label": "Insurance Coverage"
+            },
+            {
+              "_key": "col-1",
+              "key": "benefit",
+              "label": "Benefit"
+            },
+            {
+              "_key": "col-2",
+              "key": "guaranteed",
+              "label": "Guaranteed Issue (New Hire Only)"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Voluntary Associate Life",
+              "cells": [
+                "Voluntary Associate Life",
+                "Increments of $10,000 up to $450,000",
+                "$250,000"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Voluntary Spouse Life",
+              "cells": [
+                "Voluntary Spouse Life",
+                "Increments of $5,000 up to $225,000",
+                "$50,000"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Voluntary Child Life",
+              "cells": [
+                "Voluntary Child Life",
+                "Increments of $5,000 up to $10,000",
+                "N/A"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-2",
+          "tableTitle": "Voluntary AD&D Insurance",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "type",
+              "label": "Insurance Coverage"
+            },
+            {
+              "_key": "col-1",
+              "key": "benefit",
+              "label": "AD&D Benefit"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Available increments",
+              "cells": [
+                "Available increments",
+                "$25,000"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Maximum coverage",
+              "cells": [
+                "Maximum coverage",
+                "$500,000 (amounts over $250,000 cannot exceed 10x annual salary)"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Spouse Only",
+              "cells": [
+                "Spouse Only",
+                "50% of your total coverage amount"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Child Only",
+              "cells": [
+                "Child Only",
+                "15% of your total coverage amount per child"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Spouse & Child",
+              "cells": [
+                "Spouse & Child",
+                "40% for spouse; 10% per child"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 8
+    },
+    {
+      "_id": "rs-ch-disability-insurance",
+      "title": "Disability Insurance",
+      "description": "Short-Term and Long-Term Disability coverage through Mutual of Omaha, providing income protection when you are unable to work due to illness or injury.",
+      "slug": "disability-insurance",
+      "icon": "briefcase",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "Short-Term Disability (STD) insurance through Mutual of Omaha provides income protection on a short-term basis. The Core Plan is provided by RS&H at no cost. A Buy-Up Plan is available for additional protection.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "Long-Term Disability (LTD) insurance provides lasting income protection if you are unable to return to work. This coverage is provided by RS&H at no cost through Mutual of Omaha.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "Don't wait — file your claim as soon as possible after your disability begins to avoid delays in benefit payments.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Short-Term Disability Plans",
+          "tableDescription": "*Pre-existing exclusion: No coverage for disability in the first six months if you received treatment for that condition in the three months before coverage began.",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "feature",
+              "label": "Feature"
+            },
+            {
+              "_key": "col-1",
+              "key": "core",
+              "label": "STD Core Plan"
+            },
+            {
+              "_key": "col-2",
+              "key": "buyup",
+              "label": "STD Buy-Up Plan*"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Your cost",
+              "cells": [
+                "Your cost",
+                "Provided by RS&H at no cost",
+                "Depends on your earnings"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "When benefits begin",
+              "cells": [
+                "When benefits begin",
+                "After 7 calendar days of inability to work",
+                "After 7 calendar days of inability to work"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "How much it pays",
+              "cells": [
+                "How much it pays",
+                "60% of income up to $3,500 per week",
+                "Additional 30% of income up to $2,000 per week"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "How long payments last",
+              "cells": [
+                "How long payments last",
+                "Up to 180 days",
+                "Up to 180 days"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Benefit tax status",
+              "cells": [
+                "Benefit tax status",
+                "Taxable income",
+                "Tax-free income"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-1",
+          "tableTitle": "Long-Term Disability Plan",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "feature",
+              "label": "Feature"
+            },
+            {
+              "_key": "col-1",
+              "key": "ltd",
+              "label": "LTD Plan"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Your cost",
+              "cells": [
+                "Your cost",
+                "Provided by RS&H at no cost"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "When benefits begin",
+              "cells": [
+                "When benefits begin",
+                "After 180 calendar days of inability to work"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "How much it pays",
+              "cells": [
+                "How much it pays",
+                "60% of income up to $20,000 per month"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "How long payments last",
+              "cells": [
+                "How long payments last",
+                "Up to your Social Security Normal Retirement Age if you remain unable to work"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Benefit tax status",
+              "cells": [
+                "Benefit tax status",
+                "Taxable income"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 9
+    },
+    {
+      "_id": "rs-ch-voluntary-benefits-supplementa",
+      "title": "Voluntary Benefits — Supplemental Health",
+      "description": "Accident Insurance and Critical Illness & Cancer Insurance through Mutual of Omaha, designed to cover out-of-pocket expenses from covered accidents or diagnoses.",
+      "slug": "voluntary-benefits-supplemental-health",
+      "icon": "plus-circle",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "These supplemental health options protect your family's finances in case of an unforeseen injury or illness. Both plans are offered through Mutual of Omaha.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "Accident Insurance helps ease the financial pain of a covered accident — payments are made directly to you based on injuries and treatments.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "Critical Illness coverage pays a lump sum benefit regardless of any medical insurance in place; funds are yours to use at your discretion.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-3",
+              "text": "You may take both policies with you if you retire or leave RS&H.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "Accident Insurance Highlights",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-0",
+              "text": "Family coverage is available.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-1",
+              "text": "Medical questions are never required.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-2",
+              "text": "Coverage pays per covered accident; no limitation on the number of accidents.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-3",
+              "text": "You may take this policy with you if you retire or leave RS&H.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "Critical Illness — Covered Conditions",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-0",
+              "text": "Cancer",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-1",
+              "text": "Stroke",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-2",
+              "text": "Heart Attack",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-3",
+              "text": "Coronary Bypass Surgery",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-4",
+              "text": "Major Organ Transplant",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-5",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-5",
+              "text": "Advanced Parkinson's",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-6",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-6",
+              "text": "Advanced Alzheimer's",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-7",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-7",
+              "text": "End Stage Renal Failure (pays at 25%)",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-8",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-8",
+              "text": "Childhood and Developmental conditions",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-9",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-9",
+              "text": "And more",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Accident Insurance — Coverage Amounts",
+          "tableDescription": "Service is payable when treatment is sought due to a covered accident.",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "coverage",
+              "label": "Coverage"
+            },
+            {
+              "_key": "col-1",
+              "key": "amount",
+              "label": "Amount"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Urgent Care / X-Ray",
+              "cells": [
+                "Urgent Care / X-Ray",
+                "$125 / $150"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Hospital Admission and Confinement*",
+              "cells": [
+                "Hospital Admission and Confinement*",
+                "$2,500 Admission / $700 per day (up to 365 days)"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Fracture / Dislocation (per schedule)",
+              "cells": [
+                "Fracture / Dislocation",
+                "Up to $5,000 / $6,000"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Appliance (Crutches/Wheelchair/Walker)",
+              "cells": [
+                "Appliance",
+                "$200"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Health Screening Benefit (per person, per year)",
+              "cells": [
+                "Health Screening Benefit",
+                "$50"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-1",
+          "tableTitle": "Accident Insurance — Bi-Weekly Payroll Contributions",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "tier",
+              "label": "Coverage Tier"
+            },
+            {
+              "_key": "col-1",
+              "key": "cost",
+              "label": "Bi-Weekly Cost"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Associate Only",
+              "cells": [
+                "Associate Only",
+                "$5.08"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Associate + Spouse",
+              "cells": [
+                "Associate + Spouse",
+                "$7.38"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Associate + Child(ren)",
+              "cells": [
+                "Associate + Child(ren)",
+                "$11.54"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Family",
+              "cells": [
+                "Family",
+                "$13.38"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-2",
+          "tableTitle": "Critical Illness & Cancer Insurance — Benefit Amounts",
+          "tableDescription": "Your cost depends on age, coverage tier, and tobacco status. Children are covered at no additional cost.",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "coverage",
+              "label": "Coverage"
+            },
+            {
+              "_key": "col-1",
+              "key": "benefit",
+              "label": "Benefit"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Associate Only",
+              "cells": [
+                "Associate Only",
+                "$10,000"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Covered Spouse",
+              "cells": [
+                "Covered Spouse",
+                "$10,000"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Covered Dependent",
+              "cells": [
+                "Covered Dependent",
+                "$5,000"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 10
+    },
+    {
+      "_id": "rs-ch-401-k-retirement-savings-plan",
+      "title": "401(k) Retirement Savings Plan",
+      "description": "RS&H 401(k) plan with 50% company match up to 6% of pay, Roth option, automatic enrollment at 6%, and a five-year vesting schedule administered through Fidelity.",
+      "slug": "401-k-retirement-savings-plan",
+      "icon": "trending-up",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "The RS&H 401(k) plan allows you to contribute part of your salary toward retirement while deferring taxes. You can save up to 75% of your base pay with before-tax contributions, subject to IRS limits.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "A Roth 401(k) option is available with post-tax contributions. You can also contribute up to 75% of base pay to Roth, subject to IRS limits.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "All associates over age 18, including temporary and part-time, are eligible to participate.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-3",
+              "text": "RS&H makes a 50% matching contribution on the amount of your contribution, up to 6% of your pay. 2/3 of the match is contributed in cash each pay period; 1/3 is contributed in company stock annually.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-4",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-4",
+              "text": "Example: An associate earning $75,000 contributing 6% contributes $4,500. RS&H matches $2,250 ($1,500 in cash + $750 in company stock).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-5",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-5",
+              "text": "You have the option to rollover 401(k) funds from a previous employer. Contact Fidelity at 800.835.5095.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "Automatic Enrollment",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-0",
+              "text": "All new associates are automatically enrolled at 6% of pay (pre-tax).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-1",
+              "text": "Default investment: T. Rowe Price Target Date Retirement Funds matched to your age.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-2",
+              "text": "You have approximately 45 days from your date of hire to contact Fidelity to opt out or change your deferral amount.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-3",
+              "text": "Contact Fidelity at NetBenefits.com or by calling 800.835.5095.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "Employee Ownership Opportunities",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-0",
+              "text": "401(k) Plan — Stock Match & Supplemental Contributions",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-1",
+              "text": "Annual Stock Offerings",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-2",
+              "text": "Incentive Programs",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "2026 Annual Contribution Limits",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "age",
+              "label": "Age"
+            },
+            {
+              "_key": "col-1",
+              "key": "standard",
+              "label": "Standard Contribution"
+            },
+            {
+              "_key": "col-2",
+              "key": "catchup",
+              "label": "Catch-Up Contribution"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Under 50",
+              "cells": [
+                "Under 50",
+                "$24,500",
+                "Not eligible"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "50–59",
+              "cells": [
+                "50–59",
+                "$32,500",
+                "Eligible"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "60–63 (Super Catch-Up)",
+              "cells": [
+                "60–63",
+                "$35,750",
+                "Eligible (Super Catch-Up)"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-1",
+          "tableTitle": "Vesting Schedule",
+          "tableDescription": "940 hours worked in a calendar year equals one Year of Service. Your own contributions are always 100% vested.",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "years",
+              "label": "Years of Service"
+            },
+            {
+              "_key": "col-1",
+              "key": "pct",
+              "label": "Vesting Percentage"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Less than 1 year",
+              "cells": [
+                "Less than 1 year",
+                "0%"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "1 but less than 2 years",
+              "cells": [
+                "1 but less than 2 years",
+                "20%"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "2 but less than 3 years",
+              "cells": [
+                "2 but less than 3 years",
+                "40%"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "3 but less than 4 years",
+              "cells": [
+                "3 but less than 4 years",
+                "60%"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "4 but less than 5 years",
+              "cells": [
+                "4 but less than 5 years",
+                "80%"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "5 or more years",
+              "cells": [
+                "5 or more years",
+                "100%"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 11
+    },
+    {
+      "_id": "rs-ch-employee-assistance-program-ea",
+      "title": "Employee Assistance Program (EAP)",
+      "description": "Confidential 24/7 support through Health Advocate, offering six free visits per incident with licensed professionals covering a wide range of personal, family, and financial challenges.",
+      "slug": "employee-assistance-program-eap",
+      "icon": "users",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "RS&H offers all associates and their families access to a confidential Employee Assistance Program (EAP) through Health Advocate, available 24/7.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "Six free visits (virtual or in person) with licensed professionals per incident.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "Health Advocate also provides Core Advocacy services to assist with benefits questions, claim resolution, medical bill explanation, finding providers, and making appointments.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-3",
+              "text": "Contact Health Advocate at 1.866.799.2728 or www.healthadvocate.com/members. Reference Plan: RS&H.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "EAP Services Include",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-0",
+              "text": "Mental health: anxiety, depression, stress, eating disorders, post-traumatic stress disorder",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-1",
+              "text": "Substance use: alcohol, smoking",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-2",
+              "text": "Family: adoption, child and elder care, divorce and child custody, marriage",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-3",
+              "text": "Financial: debt and bankruptcy, buying a car or home, wills",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-4",
+              "text": "Health: cancer, diabetes, fitness, dieting, heart health, pregnancy",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-5",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-5",
+              "text": "Life events: grieving, military life, student life, hurricane preparedness",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-6",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-6",
+              "text": "And more",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "order": 12
+    },
+    {
+      "_id": "rs-ch-additional-voluntary-benefits",
+      "title": "Additional Voluntary Benefits",
+      "description": "Supplemental programs including Identity Theft Protection, Pet Insurance, Legal Plan, and Auto Insurance to support your everyday life beyond core medical coverage.",
+      "slug": "additional-voluntary-benefits",
+      "icon": "gift",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "Your well-being goes beyond medical coverage. Take advantage of these extra benefits designed to support your everyday life.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "tabs",
+          "_key": "tabs-12",
+          "items": [
+            {
+              "_key": "tab-item-0",
+              "title": "Identity Theft Protection",
+              "content": [
+                {
+                  "_type": "block",
+                  "_key": "block-0",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-0",
+                      "text": "Allstate Identity Protection provides identity, financial account, and tri-bureau credit monitoring; dark web and social media monitoring; 24/7 alerts and fraud recovery; phishing protection; military-grade VPN; password manager; and personal device protection tools.",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-1",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-1",
+                      "text": "Up to $1 million in identity theft expense reimbursement, or $2 million per family. Family coverage includes anyone 'under roof, under wallet' — parents, grandparents, college kids, or dependents.",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-2",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-2",
+                      "text": "Associate Only: $9.50/month | Associate + Family: $17.50/month",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-3",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-3",
+                      "text": "Contact: 1.800.789.2720 | www.myaip.com/rsandh",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                }
+              ]
+            },
+            {
+              "_key": "tab-item-1",
+              "title": "Pet Insurance",
+              "content": [
+                {
+                  "_type": "block",
+                  "_key": "block-0",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-0",
+                      "text": "Pet insurance through PetPartners covers dogs and cats. Get reimbursed for veterinary bills including accidents, illnesses, injuries, and cancer coverage.",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-1",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-1",
+                      "text": "Enroll anytime at www.petpartners.com/enroll?p=RSandH. Apply discount code 'RSH10' and enroll under partner name 'RS and H'.",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-2",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-2",
+                      "text": "Contact: 866.774.1113 | help@petpartners.com",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                }
+              ]
+            },
+            {
+              "_key": "tab-item-2",
+              "title": "Legal Plan",
+              "content": [
+                {
+                  "_type": "block",
+                  "_key": "block-0",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-0",
+                      "text": "MetLaw covers you, your spouse, and dependents for a flat monthly fee. Includes unlimited telephone and office consultations with an attorney.",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-1",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-1",
+                      "text": "Services include estate planning, immigration assistance, document preparation & review, elder law, and family law.",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-2",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-2",
+                      "text": "Bi-weekly cost: $10.38",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-3",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-3",
+                      "text": "Contact: 1.800.821.6400 | info.legalplans.com",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                }
+              ]
+            },
+            {
+              "_key": "tab-item-3",
+              "title": "Auto Insurance",
+              "content": [
+                {
+                  "_type": "block",
+                  "_key": "block-0",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-0",
+                      "text": "RS&H offers associates the opportunity to purchase auto insurance through Farmers GroupSelect at discounted group rates.",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-1",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-1",
+                      "text": "Pay through convenient payroll deductions. Coverage may be kept if you change jobs.",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "_key": "block-2",
+                  "style": "normal",
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "span-2",
+                      "text": "Contact: 1.800.422.4272",
+                      "marks": []
+                    }
+                  ],
+                  "markDefs": []
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 13
+    },
+    {
+      "_id": "rs-ch-paid-time-off-holidays",
+      "title": "Paid Time Off & Holidays",
+      "description": "RS&H provides 8 paid holidays plus a floating holiday, vacation accrual based on tenure, personal leave, leave bank, paid parental leave, and bereavement leave.",
+      "slug": "paid-time-off-holidays",
+      "icon": "calendar",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "RS&H believes time away is necessary to allow you to refresh yourself physically and mentally.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "Benefit-eligible associates receive paid time off for 8 observed holidays plus one floating holiday per accrual year.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "Vacation allowance is based on your tenure with RS&H and credited on your date of hire and each January thereafter.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-3",
+              "text": "Personal Leave (PL) is available for personal illness, family emergencies, medical appointments, and other situations. Unused PL transfers to a Leave Bank (max 240 hours).",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-0",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-0",
+              "text": "Observed Holidays",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-0",
+              "text": "New Year's Day",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-1",
+              "text": "Martin Luther King Jr. Day",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-2",
+              "text": "Memorial Day",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-3",
+              "text": "Independence Day",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-4",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-4",
+              "text": "Labor Day",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-5",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-5",
+              "text": "Thanksgiving",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-6",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-6",
+              "text": "Day after Thanksgiving",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-7",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-7",
+              "text": "Christmas Day",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-0-8",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-0-8",
+              "text": "Floating Holiday (1 additional day per accrual year)",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "header-1",
+          "style": "h3",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-h-1",
+              "text": "Additional Leave",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-0",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-0",
+              "text": "Paid Parental Leave: Up to 2 weeks paid leave per birth or adoption (child aged 17 and under). Associates with accrued Leave Bank hours may use up to 40 additional hours for a third week.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-1",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-1",
+              "text": "Bereavement Leave: Up to 3 days for the death or imminent death of immediate family members.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-2",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-2",
+              "text": "Jury Duty: Paid leave based on standard working hours.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "li-1-3",
+          "style": "normal",
+          "listItem": "bullet",
+          "level": 1,
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-li-1-3",
+              "text": "Flexible Work Arrangements: Available as an additional benefit.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Vacation Accrual Schedule",
+          "tableDescription": "Full vacation allowance is credited at the beginning of each calendar year. New hires receive a prorated value based on hire date.",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "years",
+              "label": "Years of Service"
+            },
+            {
+              "_key": "col-1",
+              "key": "entitlement",
+              "label": "Vacation Entitlement"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "New Hire (less than 1 year)",
+              "cells": [
+                "Less than 1 year",
+                "3.07 hours per payroll period (prorated)"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "1 but less than 3 years",
+              "cells": [
+                "1 but less than 3 years",
+                "10 days"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "3 but less than 5 years",
+              "cells": [
+                "3 but less than 5 years",
+                "12 days"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "5 but less than 7 years",
+              "cells": [
+                "5 but less than 7 years",
+                "15 days"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "7 but less than 9 years",
+              "cells": [
+                "7 but less than 9 years",
+                "16 days"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "9 but less than 12 years",
+              "cells": [
+                "9 but less than 12 years",
+                "17 days"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "12 but less than 15 years",
+              "cells": [
+                "12 but less than 15 years",
+                "18 days"
+              ]
+            },
+            {
+              "_key": "row-7",
+              "label": "15 but less than 20 years",
+              "cells": [
+                "15 but less than 20 years",
+                "19 days"
+              ]
+            },
+            {
+              "_key": "row-8",
+              "label": "20 or more years",
+              "cells": [
+                "20 or more years",
+                "20 days"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 14
+    }
+  ],
+  "openEnrollment": {
+    "title": "Your 2026 Benefits",
+    "description": "Your Journey. Your Rewards. Our Shared Future.",
+    "daysLeftLabel": "Days Left",
+    "periodLabel": "Open Enrollment Period",
+    "statusTitle": "Action Needed",
+    "statusDescription": "Review and update your selections now",
+    "checklistLabel": "Review Enrollment Checklist",
+    "checklistSubtext": "Prepare for open enrollment",
+    "changesLabel": "Discover Benefit Changes",
+    "changesSubtext": "What's new this year",
+    "enrollLabel": "Enroll Now",
+    "enrollSubtext": "Complete your enrollment"
+  },
+  "benefitChangesPage": {
+    "title": "What's New This Year",
+    "description": "Review the latest changes and improvements to your benefits package.",
+    "alertMessage": "Review all changes before making your elections during open enrollment.",
+    "changes": [
+      {
+        "_key": "change-1",
+        "type": "new",
+        "title": "Super Catch-Up Contribution (Ages 60–63)",
+        "description": "Associates aged 60–63 are now eligible for the Super Catch-Up contribution limit of $35,750 per year for the 401(k) plan."
+      },
+      {
+        "_key": "change-2",
+        "type": "update",
+        "title": "Enhanced Dental Plan — Annual Maximum Increase",
+        "description": "The Enhanced Dental Plan annual maximum has increased to $2,500 per person (in-network and out-of-network)."
+      },
+      {
+        "_key": "change-3",
+        "type": "update",
+        "title": "HSA Employer Contributions",
+        "description": "RS&H contributes $600/$1,200 (Associate/All Others) for Prime HDHP and $800/$1,400 for Alternate HDHP enrollees."
+      }
+    ],
+    "ctaTitle": "Ready to Review Your Benefits?",
+    "ctaDescription": "Contact HR for any questions."
+  },
+  "enrollmentChecklist": {
+    "title": "Enrollment Checklist",
+    "description": "Use this step-by-step checklist to prepare for open enrollment.",
+    "items": [
+      {
+        "_key": "step-1",
+        "step": 1,
+        "title": "Determine Your Eligibility",
+        "description": "Full-time and part-time associates working minimum 20 hours per week are eligible. New hires must enroll within 10 days of hire."
+      },
+      {
+        "_key": "step-2",
+        "step": 2,
+        "title": "Review Your Benefit Options",
+        "description": "Use ALEX at start.myalex.com/rsh to get personalized guidance on which plans make the most sense for you."
+      },
+      {
+        "_key": "step-3",
+        "step": 3,
+        "title": "Enroll via the Benefits Portal",
+        "description": "Visit Blaze, select the UKG icon, then navigate to Menu > Myself > Open Enrollment (or Life Events > I am Enrolling in Benefits for new hires)."
+      },
+      {
+        "_key": "step-4",
+        "step": 4,
+        "title": "Designate Your Beneficiaries",
+        "description": "Ensure your beneficiary is up to date for life insurance, AD&D, and retirement accounts."
+      },
+      {
+        "_key": "step-5",
+        "step": 5,
+        "title": "Set Up HSA or FSA Contributions",
+        "description": "If enrolling in an HDHP, set up your HSA contribution amount in the benefit portal. FSA elections are also made during enrollment."
+      },
+      {
+        "_key": "step-6",
+        "step": 6,
+        "title": "Set Your 401(k) Contribution",
+        "description": "You are automatically enrolled at 6%. Visit NetBenefits.com or call 800.835.5095 within 45 days of hire to adjust or opt out."
+      }
+    ],
+    "ctaTitle": "Ready to Enroll?",
+    "ctaDescription": "Once you've completed this checklist, you're ready to make your benefit elections."
+  },
+  "retirementPlanning": {
+    "heroTitle": "401(k) Retirement Savings Plan",
+    "heroDescription": "RS&H helps you build long-term financial security through a 401(k) plan with a 50% company match up to 6% of your pay, Roth option, and employee ownership opportunities — all administered through Fidelity.",
+    "featuresTitle": "Your Retirement Benefits",
+    "sections": [
+      {
+        "_key": "s-0",
+        "title": "Company Match",
+        "content": "RS&H matches 50% of your contributions up to 6% of your pay. 2/3 of the match is contributed in cash per pay period; 1/3 is contributed in company stock annually."
+      },
+      {
+        "_key": "s-1",
+        "title": "Vesting",
+        "content": "You become fully vested in RS&H contributions after 5 years of service. Your own contributions and their growth are always 100% vested."
+      },
+      {
+        "_key": "s-2",
+        "title": "Employee Ownership",
+        "content": "Employee ownership is a bedrock principle at RS&H. Associates can participate through the 401(k) Stock Match, Annual Stock Offerings, and Incentive Programs."
+      }
+    ],
+    "ctaButtonText": "Learn More"
+  },
+  "documents": []
+}
