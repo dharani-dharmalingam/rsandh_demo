@@ -81,7 +81,21 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "Medical Benefits",
+              "text": "Our medical coverage helps maintain your wellbeing through preventive care, access to an extensive network of providers, and affordable prescription medication. Medical coverage is provided by UHC.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "To see a current list of network providers online, visit www.myuhc.com.",
               "marks": []
             }
           ],
@@ -105,7 +119,49 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "Health Savings Account (HSA)",
+              "text": "With a Health Savings Account (HSA), contributions and withdrawals for qualified medical expenses are tax-free. Your HSA can be used for qualified expenses for you, your spouse and/or tax dependent(s), even if they are not covered by your plan.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "If you are not enrolled in a HDHP but you have unused HSA funds from a previous account, those funds can still be used for qualified medical expenses. The annual maximum contribution limit to HSAs is set by the IRS each year.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "2025 IRS Maximum Contributions: Individual $4,300 | Family $8,550 | Catch-Up (Ages 55+) $1,000.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-3",
+              "text": "You must be enrolled in the HDHP plan to contribute to a Health Savings Account (HSA).",
               "marks": []
             }
           ],
@@ -129,7 +185,21 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "Voluntary Dental Benefits",
+              "text": "LEHR offers affordable dental plan options for routine care and beyond. Coverage is available from UHC. Employees may purchase dental insurance on a voluntary basis.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "Bi-weekly contributions for DPPO: Employee Only $14.10 | Employee + Spouse $27.89 | Employee + Child(ren) $38.87 | Employee + Family $57.26.",
               "marks": []
             }
           ],
@@ -153,7 +223,49 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "Voluntary Vision Benefits",
+              "text": "Employees may purchase vision insurance on a voluntary basis through UHC.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "In-Network benefits: Exams $10 copay (every 12 months), Single Vision Lenses $25 copay, Bifocal $25 copay (every 12 months), Trifocal $25 copay, Frames $25 copay with $150 allowance.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "Elective Contacts: $150 allowance in-network and out-of-network (every 12 months). Medically Necessary Contacts: Covered in full in-network, $210 allowance out-of-network.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-3",
+              "text": "Out-of-Network benefits: Exams $40 allowance, Single Vision Lenses $40 allowance, Bifocal $60 allowance, Trifocal $80 allowance, Frames $45 allowance.",
               "marks": []
             }
           ],
@@ -177,7 +289,21 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "Basic Life and AD&D Insurance",
+              "text": "LEHR provides employees with Basic Life and AD&D insurance as part of your basic coverage through Unum, which guarantees that your spouse or other designated survivor(s) continue to receive benefits after death.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "Your Basic Life and AD&D insurance benefit is $10,000. If you are a full-time employee, you automatically receive Life and AD&D insurance even if you waive other coverage.",
               "marks": []
             }
           ],
@@ -201,7 +327,35 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "Voluntary Life and AD&D Insurance",
+              "text": "You may purchase Voluntary Life/AD&D insurance for yourself in $10,000 increments, up to a maximum of the lesser of 5x earnings or $500,000. Evidence of Insurability (EOI) is required over $100,000.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "Voluntary Life/AD&D insurance is available in $5,000 increments for your spouse, up to the lesser of the employee amount or $250,000. EOI is required over $25,000.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "You may purchase Voluntary Life/AD&D insurance in $2,000 increments for your child(ren), up to $10,000. EOI is not required for children.",
               "marks": []
             }
           ],
@@ -212,9 +366,9 @@
     },
     {
       "_id": "desu-ch-voluntary-short-term-disabilit",
-      "title": "Voluntary Short-Term Disability (STD)",
+      "title": "Voluntary Short-Term Disability (STD) Insurance",
       "description": "",
-      "slug": "voluntary-short-term-disability-std",
+      "slug": "voluntary-short-term-disability-std-insurance",
       "icon": "file-text",
       "content": [
         {
@@ -225,7 +379,21 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "Voluntary Short-Term Disability (STD)",
+              "text": "LEHR offers disability coverage to protect you financially in the event you cannot work due to a debilitating illness or injury. A portion of your income is protected until you can return to work. Employees may purchase disability insurance on a voluntary basis.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "Weekly Maximum Benefit: 60% of your income, up to $1,500. Elimination Period: 7 days. Maximum Benefit Period: 12 weeks.",
               "marks": []
             }
           ],
@@ -236,9 +404,9 @@
     },
     {
       "_id": "desu-ch-voluntary-long-term-disability",
-      "title": "Voluntary Long-Term Disability (LTD)",
+      "title": "Voluntary Long-Term Disability (LTD) Insurance",
       "description": "",
-      "slug": "voluntary-long-term-disability-ltd",
+      "slug": "voluntary-long-term-disability-ltd-insurance",
       "icon": "file-text",
       "content": [
         {
@@ -249,7 +417,21 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "Voluntary Long-Term Disability (LTD)",
+              "text": "Long-term disability coverage protects a portion of your income until you can return to work or you reach retirement age.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "Monthly Maximum Benefit: 60% of your income, up to $6,500. Elimination Period: 90 days. Maximum Benefit Period: Payments last for as long as you are disabled or until you reach your Social Security Normal Retirement Age, whichever is sooner.",
               "marks": []
             }
           ],
