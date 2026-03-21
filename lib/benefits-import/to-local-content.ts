@@ -55,7 +55,7 @@ export function seedPayloadToLocalContent(
       _id: ch._id,
       title: ch.title,
       description: ch.description,
-      slug: ch.slug?.current ?? ch.title.toLowerCase().replace(/\s+/g, '-'),
+      slug: ch.slug?.current ?? ch.title?.toLowerCase().replace(/\s+/g, '-') ?? 'chapter',
       icon: ch.icon,
       content: ch.content,
       tables: ch.tables?.map((t: any) => ({

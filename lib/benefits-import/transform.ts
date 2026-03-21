@@ -41,7 +41,7 @@ function slugPrefix(clientSlug: string): string {
  * Create a URL-safe slug from a title string.
  */
 function toSlug(title: string): string {
-  return title
+  return (title ?? '')
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '') || 'untitled'
@@ -95,7 +95,7 @@ const CATEGORY_ALIASES: Record<string, string> = {
 }
 
 function normalizeCategory(raw: string): string {
-  const lower = raw.toLowerCase().trim()
+  const lower = (raw ?? '').toLowerCase().trim()
   if (CATEGORY_ICON_MAP[lower]) return lower
   for (const [alias, category] of Object.entries(CATEGORY_ALIASES)) {
     if (lower.includes(alias)) return category
@@ -147,8 +147,8 @@ export async function transformToSanitySchema(
 
   // ── Benefit Chapters ──
   const benefitChapters = extracted.chapters.slice(0, 20).map((ch, i) => {
-    const chapterSlug = toSlug(ch.title).slice(0, 96)
-    const category = normalizeCategory(ch.category)
+    const chapterSlug = toSlug(ch.title ?? '').slice(0, 96)
+    const category = normalizeCategory(ch.category ?? 'other')
     const icon = CATEGORY_ICON_MAP[category] ?? CATEGORY_ICON_MAP['other']
 
     // ── Content Transformation ──
