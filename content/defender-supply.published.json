@@ -1,14 +1,14 @@
 {
   "client": {
-    "name": "LEHR",
+    "name": "Defender Supply (LEHR)",
     "slug": "defender-supply",
-    "themeColor": "#0057B8"
+    "themeColor": "#2563eb"
   },
   "siteSettings": {
-    "clientName": "LEHR",
-    "shortName": "LEHR",
-    "logoText": "LEHR Benefits",
-    "footerAbout": "Comprehensive benefits administration and support for the valued employees of LEHR.",
+    "clientName": "Defender Supply (LEHR)",
+    "shortName": "Defender Supply (LEHR)",
+    "logoText": "Defender Supply (LEHR) Benefits",
+    "footerAbout": "Comprehensive benefits administration and support for the valued employees of Defender Supply (LEHR).",
     "quickAccess": [
       {
         "title": "Important Contact Information",
@@ -30,13 +30,40 @@
       }
     ],
     "contactInfo": [
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {}
+      {
+        "label": "Medical (UHC)",
+        "value": "866-633-2446",
+        "href": "https://www.myuhc.com"
+      },
+      {
+        "label": "Dental (UHC)",
+        "value": "877-816-3596",
+        "href": "https://www.myuhc.com"
+      },
+      {
+        "label": "Vision (UHC)",
+        "value": "800-638-3120",
+        "href": "https://www.myuhc.com"
+      },
+      {
+        "label": "HSA (Optum)",
+        "value": "866-633-2446",
+        "href": "https://www.myuhc.com"
+      },
+      {
+        "label": "Life & AD&D (Unum)",
+        "value": "800-679-3054",
+        "href": "https://www.unum.com"
+      },
+      {
+        "label": "Disability (Unum)",
+        "value": "800-679-3054",
+        "href": "https://www.unum.com"
+      },
+      {
+        "label": "Defender Supply HR - Christina Jackson",
+        "value": "903-771-1683"
+      }
     ],
     "quickLinks": [
       {
@@ -58,20 +85,20 @@
     ],
     "footerContactTitle": "Contact",
     "footerContactDescription": "Have questions? Reach out to our support team.",
-    "copyrightText": "© 2026 LEHR. All rights reserved.",
+    "copyrightText": "© 2026 Defender Supply (LEHR). All rights reserved.",
     "clientLogo": "https://kyhxmyhtowrqmhglmkhu.supabase.co/storage/v1/object/public/employer-assets/defender-supply/logo.png"
   },
   "benefitsPage": {
     "title": "Your Benefits at a Glance",
-    "description": "Explore the complete range of benefits available to LEHR employees."
+    "description": "Explore the complete range of benefits available to Defender Supply (LEHR) employees."
   },
   "benefitChapters": [
     {
-      "_id": "desu-ch-medical-benefits",
-      "title": "Medical Benefits",
-      "description": "",
-      "slug": "medical-benefits",
-      "icon": "file-text",
+      "_id": "desu-ch-eligibility",
+      "title": "Eligibility",
+      "description": "Who qualifies for benefits and when coverage begins.",
+      "slug": "eligibility",
+      "icon": "check-circle",
       "content": [
         {
           "_type": "block",
@@ -81,7 +108,7 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "Coverage provided by UHC",
+              "text": "Full-time employees of LEHR who are regularly scheduled to work at least 30 hours a week are eligible for benefits.",
               "marks": []
             }
           ],
@@ -95,69 +122,7 @@
             {
               "_type": "span",
               "_key": "span-1",
-              "text": "Visit www.myuhc.com for a current list of network providers",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        }
-      ],
-      "order": 1
-    },
-    {
-      "_id": "desu-ch-voluntary-dental-benefits",
-      "title": "Voluntary Dental Benefits",
-      "description": "",
-      "slug": "voluntary-dental-benefits",
-      "icon": "file-text",
-      "content": [
-        {
-          "_type": "block",
-          "_key": "block-0",
-          "style": "normal",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-0",
-              "text": "DPPO Bi-Weekly: Employee Only $14.10 | Employee + Spouse $27.89 | Employee + Child(ren) $38.87 | Employee + Family $57.26",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        }
-      ],
-      "order": 2
-    },
-    {
-      "_id": "desu-ch-voluntary-vision-benefits",
-      "title": "Voluntary Vision Benefits",
-      "description": "",
-      "slug": "voluntary-vision-benefits",
-      "icon": "file-text",
-      "content": [
-        {
-          "_type": "block",
-          "_key": "block-0",
-          "style": "normal",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-0",
-              "text": "Exams: $10 copay in-network / $40 allowance out-of-network (every 12 months)",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "block-1",
-          "style": "normal",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-1",
-              "text": "Single Vision Lenses: $25 copay in-network / $40 allowance out-of-network",
+              "text": "Elections are effective the 1st of the month following 60 days of employment.",
               "marks": []
             }
           ],
@@ -171,7 +136,371 @@
             {
               "_type": "span",
               "_key": "span-2",
-              "text": "Bifocal Lenses: $25 copay in-network / $60 allowance out-of-network (every 12 months)",
+              "text": "This is an ACTIVE enrollment — current benefit elections will not roll over. All eligible employees must make elections in order to receive benefits in 2025.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "order": 1
+    },
+    {
+      "_id": "desu-ch-medical-benefits",
+      "title": "Medical Benefits",
+      "description": "UHC medical coverage with three plan options: HDHP, Base Copay, and Buy-Up Copay.",
+      "slug": "medical-benefits",
+      "icon": "heart",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "Medical coverage is provided by UHC, available nationwide. To see a current list of network providers, visit www.myuhc.com.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "UHC medical plans provide coverage for in-network providers only. Out-of-network providers are not covered except for Emergency Room when true emergency.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "*After deductible",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Medical Plan Comparison",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "benefit",
+              "label": "Benefit"
+            },
+            {
+              "_key": "col-1",
+              "key": "hdhp",
+              "label": "HDHP"
+            },
+            {
+              "_key": "col-2",
+              "key": "base-copay",
+              "label": "Base Copay"
+            },
+            {
+              "_key": "col-3",
+              "key": "buy-up-copay",
+              "label": "Buy-Up Copay"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "ANNUAL DEDUCTIBLE",
+              "cells": [
+                "—",
+                "—",
+                "—"
+              ],
+              "isSection": true
+            },
+            {
+              "_key": "row-1",
+              "label": "Single",
+              "cells": [
+                "$4,000",
+                "$5,000",
+                "$2,000"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Family",
+              "cells": [
+                "$8,000",
+                "$10,000",
+                "$4,000"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Coinsurance (Plan Pays)",
+              "cells": [
+                "80%",
+                "80%",
+                "80%"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "ANNUAL OUT-OF-POCKET MAXIMUM",
+              "cells": [
+                "—",
+                "—",
+                "—"
+              ],
+              "isSection": true
+            },
+            {
+              "_key": "row-5",
+              "label": "Single",
+              "cells": [
+                "$6,000",
+                "$7,150",
+                "$5,000"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "Family",
+              "cells": [
+                "$12,000",
+                "$14,300",
+                "$10,000"
+              ]
+            },
+            {
+              "_key": "row-7",
+              "label": "COPAYS / COINSURANCE (YOU PAY)",
+              "cells": [
+                "—",
+                "—",
+                "—"
+              ],
+              "isSection": true
+            },
+            {
+              "_key": "row-8",
+              "label": "Primary Care",
+              "cells": [
+                "20%*",
+                "$35",
+                "$30"
+              ]
+            },
+            {
+              "_key": "row-9",
+              "label": "Specialist Services",
+              "cells": [
+                "20%*",
+                "$70",
+                "$60"
+              ]
+            },
+            {
+              "_key": "row-10",
+              "label": "Outpatient",
+              "cells": [
+                "20%*",
+                "$350 + 20%*",
+                "20%*"
+              ]
+            },
+            {
+              "_key": "row-11",
+              "label": "Inpatient",
+              "cells": [
+                "20%*",
+                "$350 + 20%*",
+                "20%*"
+              ]
+            },
+            {
+              "_key": "row-12",
+              "label": "Urgent Care",
+              "cells": [
+                "20%*",
+                "$50",
+                "$50"
+              ]
+            },
+            {
+              "_key": "row-13",
+              "label": "Emergency Room",
+              "cells": [
+                "20%*",
+                "$350 + 20%*",
+                "20%*"
+              ]
+            },
+            {
+              "_key": "row-14",
+              "label": "RX COPAYS",
+              "cells": [
+                "—",
+                "—",
+                "—"
+              ],
+              "isSection": true
+            },
+            {
+              "_key": "row-15",
+              "label": "Tier 1",
+              "cells": [
+                "$10*",
+                "$10",
+                "$10"
+              ]
+            },
+            {
+              "_key": "row-16",
+              "label": "Tier 2",
+              "cells": [
+                "$35*",
+                "$35",
+                "$35"
+              ]
+            },
+            {
+              "_key": "row-17",
+              "label": "Tier 3",
+              "cells": [
+                "$70*",
+                "$60",
+                "$60"
+              ]
+            },
+            {
+              "_key": "row-18",
+              "label": "Mail Order Rx",
+              "cells": [
+                "2.5x",
+                "2.5x",
+                "2.5x"
+              ]
+            },
+            {
+              "_key": "row-19",
+              "label": "Specialty Pharmacy",
+              "cells": [
+                "Included in Rx copays",
+                "Included in Rx copays",
+                "Included in Rx copays"
+              ]
+            },
+            {
+              "_key": "row-20",
+              "label": "BI-WEEKLY CONTRIBUTIONS",
+              "cells": [
+                "—",
+                "—",
+                "—"
+              ],
+              "isSection": true
+            },
+            {
+              "_key": "row-21",
+              "label": "Employee Only",
+              "cells": [
+                "$23.08",
+                "$42.02",
+                "$70.43"
+              ]
+            },
+            {
+              "_key": "row-22",
+              "label": "Employee + Spouse",
+              "cells": [
+                "$266.62",
+                "$311.33",
+                "$378.37"
+              ]
+            },
+            {
+              "_key": "row-23",
+              "label": "Employee + Child(ren)",
+              "cells": [
+                "$173.50",
+                "$208.36",
+                "$260.63"
+              ]
+            },
+            {
+              "_key": "row-24",
+              "label": "Employee + Family",
+              "cells": [
+                "$434.94",
+                "$497.46",
+                "$591.21"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 2
+    },
+    {
+      "_id": "desu-ch-health-savings-account-hsa",
+      "title": "Health Savings Account (HSA)",
+      "description": "Tax-free savings account for qualified medical expenses, available with HDHP enrollment.",
+      "slug": "health-savings-account-hsa",
+      "icon": "dollar-sign",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "With a Health Savings Account (HSA), contributions and withdrawals for qualified medical expenses are tax-free.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "Your HSA can be used for qualified expenses for you, your spouse and/or tax dependent(s), even if they are not covered by your plan.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "If you are not enrolled in a HDHP but have unused HSA funds from a previous account, those funds can still be used for qualified medical expenses.",
               "marks": []
             }
           ],
@@ -185,7 +514,7 @@
             {
               "_type": "span",
               "_key": "span-3",
-              "text": "Trifocal Lenses: $25 copay in-network / $80 allowance out-of-network",
+              "text": "Must be enrolled in the HDHP plan to contribute to an HSA.",
               "marks": []
             }
           ],
@@ -199,7 +528,575 @@
             {
               "_type": "span",
               "_key": "span-4",
-              "text": "Elective Contacts: $150 allowance in-network and out-of-network (every 12 months)",
+              "text": "The annual maximum contribution limit to HSAs is set by the IRS each year.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "2025 Annual HSA Contribution Limits",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "coverage",
+              "label": "Coverage Type"
+            },
+            {
+              "_key": "col-1",
+              "key": "limit",
+              "label": "IRS Maximum"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Individual",
+              "cells": [
+                "$4,300"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Family",
+              "cells": [
+                "$8,550"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Catch-Up Contribution (Ages 55+)",
+              "cells": [
+                "$1,000"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 3
+    },
+    {
+      "_id": "desu-ch-voluntary-dental-benefits",
+      "title": "Voluntary Dental Benefits",
+      "description": "DPPO dental coverage through UHC for routine care and beyond.",
+      "slug": "voluntary-dental-benefits",
+      "icon": "smile",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "LEHR offers affordable dental plan options for routine care and beyond. Coverage is available from UHC.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "Employees may purchase dental insurance on a voluntary basis.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "*After deductible",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Dental DPPO Bi-Weekly Contributions",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "tier",
+              "label": "Coverage Tier"
+            },
+            {
+              "_key": "col-1",
+              "key": "premium",
+              "label": "Bi-Weekly Cost"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Employee Only",
+              "cells": [
+                "$14.10"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Employee + Spouse",
+              "cells": [
+                "$27.89"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Employee + Child(ren)",
+              "cells": [
+                "$38.87"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Employee + Family",
+              "cells": [
+                "$57.26"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-1",
+          "tableTitle": "Dental DPPO Coverage",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "service",
+              "label": "Service"
+            },
+            {
+              "_key": "col-1",
+              "key": "in-network",
+              "label": "In-Network"
+            },
+            {
+              "_key": "col-2",
+              "key": "out-of-network",
+              "label": "Out-of-Network"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "ANNUAL DEDUCTIBLE",
+              "cells": [
+                "—",
+                "—"
+              ],
+              "isSection": true
+            },
+            {
+              "_key": "row-1",
+              "label": "Individual",
+              "cells": [
+                "$50",
+                "$50"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Family",
+              "cells": [
+                "$150",
+                "$150"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "ANNUAL MAXIMUM",
+              "cells": [
+                "—",
+                "—"
+              ],
+              "isSection": true
+            },
+            {
+              "_key": "row-4",
+              "label": "Per Person",
+              "cells": [
+                "$1,250",
+                "$1,250"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "COVERED SERVICES",
+              "cells": [
+                "—",
+                "—"
+              ],
+              "isSection": true
+            },
+            {
+              "_key": "row-6",
+              "label": "Preventive (Oral Exams, Cleanings, Fluoride, Sealants, Space Maintainers)",
+              "cells": [
+                "100%",
+                "100%"
+              ]
+            },
+            {
+              "_key": "row-7",
+              "label": "Basic (Fillings, Oral Surgery, Simple Extractions)",
+              "cells": [
+                "80%*",
+                "80%*"
+              ]
+            },
+            {
+              "_key": "row-8",
+              "label": "Major (Root Canal, Periodontics, Crowns, Dentures, Bridges)",
+              "cells": [
+                "50%*",
+                "50%*"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 4
+    },
+    {
+      "_id": "desu-ch-voluntary-vision-benefits",
+      "title": "Voluntary Vision Benefits",
+      "description": "Comprehensive vision coverage through UHC.",
+      "slug": "voluntary-vision-benefits",
+      "icon": "eye",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "LEHR offers a comprehensive vision benefit provided by UHC.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "Employees may purchase vision insurance on a voluntary basis.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "*Fitting and Evaluation fee applied to contact lens allowance.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Vision Bi-Weekly Contributions",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "tier",
+              "label": "Coverage Tier"
+            },
+            {
+              "_key": "col-1",
+              "key": "premium",
+              "label": "Bi-Weekly Cost"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Employee Only",
+              "cells": [
+                "$2.87"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "Employee + Spouse",
+              "cells": [
+                "$5.73"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "Employee + Child(ren)",
+              "cells": [
+                "$6.50"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "Employee + Family",
+              "cells": [
+                "$10.12"
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "tbl-1",
+          "tableTitle": "Vision Coverage Details",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "service",
+              "label": "Service"
+            },
+            {
+              "_key": "col-1",
+              "key": "in-network",
+              "label": "In-Network"
+            },
+            {
+              "_key": "col-2",
+              "key": "out-of-network",
+              "label": "Out-of-Network"
+            },
+            {
+              "_key": "col-3",
+              "key": "frequency",
+              "label": "Frequency"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "EXAMS",
+              "cells": [
+                "—",
+                "—",
+                "—"
+              ],
+              "isSection": true
+            },
+            {
+              "_key": "row-1",
+              "label": "Copay",
+              "cells": [
+                "$10 copay",
+                "$40 allowance",
+                "12 months"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "LENSES",
+              "cells": [
+                "—",
+                "—",
+                "—"
+              ],
+              "isSection": true
+            },
+            {
+              "_key": "row-3",
+              "label": "Single Vision",
+              "cells": [
+                "$25 copay",
+                "$40 allowance",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "Bifocal",
+              "cells": [
+                "$25 copay",
+                "$60 allowance",
+                "12 months"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "Trifocal",
+              "cells": [
+                "$25 copay",
+                "$80 allowance",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "CONTACTS (In Lieu of Lenses and Frames)",
+              "cells": [
+                "—",
+                "—",
+                "—"
+              ],
+              "isSection": true
+            },
+            {
+              "_key": "row-7",
+              "label": "Fitting and Evaluation*",
+              "cells": [
+                "Included in allowance",
+                "N/A",
+                "12 months"
+              ]
+            },
+            {
+              "_key": "row-8",
+              "label": "Elective",
+              "cells": [
+                "$150 allowance",
+                "$150 allowance",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-9",
+              "label": "Medically Necessary",
+              "cells": [
+                "Covered in full",
+                "$210 allowance",
+                "—"
+              ]
+            },
+            {
+              "_key": "row-10",
+              "label": "FRAMES",
+              "cells": [
+                "—",
+                "—",
+                "—"
+              ],
+              "isSection": true
+            },
+            {
+              "_key": "row-11",
+              "label": "Copay",
+              "cells": [
+                "$25 copay",
+                "N/A",
+                "24 months"
+              ]
+            },
+            {
+              "_key": "row-12",
+              "label": "Allowance",
+              "cells": [
+                "$150 allowance",
+                "$45 allowance",
+                "—"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": 5
+    },
+    {
+      "_id": "desu-ch-survivor-benefits-life-ad-d",
+      "title": "Survivor Benefits (Life & AD&D)",
+      "description": "Basic and voluntary life and AD&D insurance through Unum.",
+      "slug": "survivor-benefits-life-ad-d",
+      "icon": "umbrella",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "LEHR provides employees with Basic Life and AD&D insurance through Unum. Your Basic Life and AD&D insurance benefit is $10,000.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "Full-time employees automatically receive Life and AD&D insurance even if they waive other coverage.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "Voluntary Life/AD&D for yourself: $10,000 increments, up to the lesser of 5x earnings or $500,000. EOI required over $100,000.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-3",
+              "text": "Voluntary Life/AD&D for spouse: $5,000 increments, up to the lesser of employee amount or $250,000. EOI required over $25,000.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-4",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-4",
+              "text": "Voluntary Life/AD&D for child(ren): $2,000 increments, up to $10,000. EOI not required.",
               "marks": []
             }
           ],
@@ -213,7 +1110,7 @@
             {
               "_type": "span",
               "_key": "span-5",
-              "text": "Medically Necessary Contacts: Covered in full in-network / $210 allowance out-of-network",
+              "text": "Benefits subject to age reduction schedule: 65% at age 65, 50% at age 70.",
               "marks": []
             }
           ],
@@ -227,191 +1124,111 @@
             {
               "_type": "span",
               "_key": "span-6",
-              "text": "Frames: $25 copay with $150 allowance in-network / $45 allowance out-of-network",
+              "text": "Voluntary AD&D rate: $0.020 per $1,000 coverage. Voluntary Child Life rate: $0.400 per $1,000 coverage.",
               "marks": []
             }
           ],
           "markDefs": []
         }
       ],
-      "order": 3
-    },
-    {
-      "_id": "desu-ch-health-savings-account-hsa",
-      "title": "Health Savings Account (HSA)",
-      "description": "",
-      "slug": "health-savings-account-hsa",
-      "icon": "file-text",
-      "content": [
+      "tables": [
         {
-          "_type": "block",
-          "_key": "block-0",
-          "style": "normal",
-          "children": [
+          "_key": "tbl-0",
+          "tableTitle": "Voluntary Life Insurance Rates (per $1,000/month)",
+          "columns": [
             {
-              "_type": "span",
-              "_key": "span-0",
-              "text": "IRS Maximum Individual Contribution: $4,300",
-              "marks": []
+              "_key": "col-0",
+              "key": "age",
+              "label": "Age (as of Jan 1, 2025)"
+            },
+            {
+              "_key": "col-1",
+              "key": "rate",
+              "label": "Employee/Spouse Rate"
             }
           ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "block-1",
-          "style": "normal",
-          "children": [
+          "rows": [
             {
-              "_type": "span",
-              "_key": "span-1",
-              "text": "IRS Maximum Family Contribution: $8,550",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "block-2",
-          "style": "normal",
-          "children": [
+              "_key": "row-0",
+              "label": "Under 35",
+              "cells": [
+                "$0.070"
+              ]
+            },
             {
-              "_type": "span",
-              "_key": "span-2",
-              "text": "Catch-Up Contribution (Ages 55+): $1,000",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        }
-      ],
-      "order": 4
-    },
-    {
-      "_id": "desu-ch-basic-life-and-ad-d-insurance",
-      "title": "Basic Life and AD&D Insurance",
-      "description": "",
-      "slug": "basic-life-and-ad-d-insurance",
-      "icon": "file-text",
-      "content": [
-        {
-          "_type": "block",
-          "_key": "block-0",
-          "style": "normal",
-          "children": [
+              "_key": "row-1",
+              "label": "35-39",
+              "cells": [
+                "$0.100"
+              ]
+            },
             {
-              "_type": "span",
-              "_key": "span-0",
-              "text": "Benefit Amount: $10,000",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "block-1",
-          "style": "normal",
-          "children": [
+              "_key": "row-2",
+              "label": "40-44",
+              "cells": [
+                "$0.150"
+              ]
+            },
             {
-              "_type": "span",
-              "_key": "span-1",
-              "text": "Carrier: Unum",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "block-2",
-          "style": "normal",
-          "children": [
+              "_key": "row-3",
+              "label": "45-49",
+              "cells": [
+                "$0.270"
+              ]
+            },
             {
-              "_type": "span",
-              "_key": "span-2",
-              "text": "Cost: Employer-paid",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        }
-      ],
-      "order": 5
-    },
-    {
-      "_id": "desu-ch-voluntary-life-and-ad-d-insura",
-      "title": "Voluntary Life and AD&D Insurance",
-      "description": "",
-      "slug": "voluntary-life-and-ad-d-insurance",
-      "icon": "file-text",
-      "content": [
-        {
-          "_type": "block",
-          "_key": "block-0",
-          "style": "normal",
-          "children": [
+              "_key": "row-4",
+              "label": "50-54",
+              "cells": [
+                "$0.460"
+              ]
+            },
             {
-              "_type": "span",
-              "_key": "span-0",
-              "text": "Employee: $10,000 increments, up to lesser of 5x earnings or $500,000. EOI required over $100,000.",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "block-1",
-          "style": "normal",
-          "children": [
+              "_key": "row-5",
+              "label": "55-59",
+              "cells": [
+                "$0.790"
+              ]
+            },
             {
-              "_type": "span",
-              "_key": "span-1",
-              "text": "Spouse: $5,000 increments, up to lesser of employee amount or $250,000. EOI required over $25,000.",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "block-2",
-          "style": "normal",
-          "children": [
+              "_key": "row-6",
+              "label": "60-64",
+              "cells": [
+                "$0.830"
+              ]
+            },
             {
-              "_type": "span",
-              "_key": "span-2",
-              "text": "Child(ren): $2,000 increments, up to $10,000. No EOI required.",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "block-3",
-          "style": "normal",
-          "children": [
+              "_key": "row-7",
+              "label": "65-69",
+              "cells": [
+                "$1.470"
+              ]
+            },
             {
-              "_type": "span",
-              "_key": "span-3",
-              "text": "Voluntary Life Rates (per $1,000): Under 35 $0.070 | 35-39 $0.070 | 40-44 $0.150 | 45-49 $0.230 | 50-54 $0.310 | 55-59 $0.390 | 60-64 $0.510 | 65-69 $0.620 | 70+ $0.620",
-              "marks": []
+              "_key": "row-8",
+              "label": "70-74",
+              "cells": [
+                "$2.570"
+              ]
+            },
+            {
+              "_key": "row-9",
+              "label": "75+",
+              "cells": [
+                "$4.100"
+              ]
             }
-          ],
-          "markDefs": []
+          ]
         }
       ],
       "order": 6
     },
     {
-      "_id": "desu-ch-voluntary-short-term-disabilit",
-      "title": "Voluntary Short-Term Disability (STD) Insurance",
-      "description": "",
-      "slug": "voluntary-short-term-disability-std-insurance",
-      "icon": "file-text",
+      "_id": "desu-ch-income-protection-disability",
+      "title": "Income Protection (Disability)",
+      "description": "Voluntary STD and LTD coverage through Unum to protect your income.",
+      "slug": "income-protection-disability",
+      "icon": "briefcase",
       "content": [
         {
           "_type": "block",
@@ -421,7 +1238,7 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "Weekly Maximum Benefit: 60% of income, up to $1,500",
+              "text": "LEHR offers disability coverage to protect you financially if you cannot work due to a debilitating illness or injury.",
               "marks": []
             }
           ],
@@ -435,7 +1252,7 @@
             {
               "_type": "span",
               "_key": "span-1",
-              "text": "Elimination Period: 7 days",
+              "text": "A portion of your income is protected until you can return to work or reach retirement age.",
               "marks": []
             }
           ],
@@ -449,7 +1266,7 @@
             {
               "_type": "span",
               "_key": "span-2",
-              "text": "Maximum Benefit Period: 12 weeks",
+              "text": "Employees may purchase disability insurance on a voluntary basis.",
               "marks": []
             }
           ],
@@ -463,80 +1280,141 @@
             {
               "_type": "span",
               "_key": "span-3",
-              "text": "STD Rates (per $10 benefit): Under 25 $0.090 | 25-29 $0.160 | 30-34 $0.240 | 35-39 $0.220 | 45-49 $0.230 | 50-54 $0.310 | 55-59 $0.390 | 60-64 $0.510 | 65-69 $0.620 | 70+ $0.620",
+              "text": "Voluntary STD: 60% of income up to $1,500/week. Elimination period: 7 days. Maximum benefit period: 12 weeks.",
               "marks": []
             }
           ],
           "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-4",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-4",
+              "text": "Voluntary LTD: 60% of income up to $6,500/month. Elimination period: 90 days. Benefits last until disabled or Social Security Normal Retirement Age.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "tables": [
+        {
+          "_key": "tbl-0",
+          "tableTitle": "Voluntary STD/LTD Rates by Age",
+          "columns": [
+            {
+              "_key": "col-0",
+              "key": "age",
+              "label": "Age Range (as of Jan 1, 2025)"
+            },
+            {
+              "_key": "col-1",
+              "key": "std",
+              "label": "STD (per $10 Benefit)"
+            },
+            {
+              "_key": "col-2",
+              "key": "ltd",
+              "label": "LTD (per $100 Covered Payroll)"
+            }
+          ],
+          "rows": [
+            {
+              "_key": "row-0",
+              "label": "Under 25",
+              "cells": [
+                "$0.090",
+                "$0.070"
+              ]
+            },
+            {
+              "_key": "row-1",
+              "label": "25-29",
+              "cells": [
+                "$0.160",
+                "$0.100"
+              ]
+            },
+            {
+              "_key": "row-2",
+              "label": "30-34",
+              "cells": [
+                "$0.240",
+                "$0.190"
+              ]
+            },
+            {
+              "_key": "row-3",
+              "label": "35-39",
+              "cells": [
+                "$0.220",
+                "$0.300"
+              ]
+            },
+            {
+              "_key": "row-4",
+              "label": "40-44",
+              "cells": [
+                "$0.200",
+                "$0.500"
+              ]
+            },
+            {
+              "_key": "row-5",
+              "label": "45-49",
+              "cells": [
+                "$0.230",
+                "$0.720"
+              ]
+            },
+            {
+              "_key": "row-6",
+              "label": "50-54",
+              "cells": [
+                "$0.310",
+                "$0.950"
+              ]
+            },
+            {
+              "_key": "row-7",
+              "label": "55-59",
+              "cells": [
+                "$0.390",
+                "$1.160"
+              ]
+            },
+            {
+              "_key": "row-8",
+              "label": "60-64",
+              "cells": [
+                "$0.510",
+                "$1.120"
+              ]
+            },
+            {
+              "_key": "row-9",
+              "label": "65-69",
+              "cells": [
+                "$0.620",
+                "$0.830"
+              ]
+            },
+            {
+              "_key": "row-10",
+              "label": "70+",
+              "cells": [
+                "$0.620",
+                "$0.640"
+              ]
+            }
+          ]
         }
       ],
       "order": 7
-    },
-    {
-      "_id": "desu-ch-voluntary-long-term-disability",
-      "title": "Voluntary Long-Term Disability (LTD) Insurance",
-      "description": "",
-      "slug": "voluntary-long-term-disability-ltd-insurance",
-      "icon": "file-text",
-      "content": [
-        {
-          "_type": "block",
-          "_key": "block-0",
-          "style": "normal",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-0",
-              "text": "Monthly Maximum Benefit: 60% of income, up to $6,500",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "block-1",
-          "style": "normal",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-1",
-              "text": "Elimination Period: 90 days",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "block-2",
-          "style": "normal",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-2",
-              "text": "Maximum Benefit Period: Until Social Security Normal Retirement Age or no longer disabled, whichever is sooner",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "block-3",
-          "style": "normal",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-3",
-              "text": "LTD Rates (per $100 payroll): Under 25 $0.070 | 25-29 $0.100 | 30-34 $0.190 | 35-39 $0.300 | 45-49 $0.720 | 50-54 $0.950 | 55-59 $1.160 | 60-64 $1.120 | 65-69 $0.830 | 70+ $0.640",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        }
-      ],
-      "order": 8
     }
   ],
   "openEnrollment": {
