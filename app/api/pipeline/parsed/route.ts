@@ -9,15 +9,25 @@
  */
 
 import { NextResponse } from 'next/server'
-import { getParsedMarkdown, saveExtractedData } from '@/lib/supabase/pipeline-store'
+import { getParsedMarkdown, saveExtractedData, getExtractedData } from '@/lib/supabase/pipeline-store'
 import type { ExtractedBenefitsData } from '@/lib/benefits-import/types'
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const slug = searchParams.get('slug')?.trim()
+  const view = searchParams.get('view')
 
   if (!slug) {
     return NextResponse.json({ error: 'Missing query param: slug' }, { status: 400 })
+  }
+
+  // ?view=extracted — return extracted_documents for debugging
+  if (view === 'extracted') {
+    const extracted = await getExtractedData(slug)
+    if (!extracted) {
+      return NextResponse.json({ error: `No extracted data found for "${slug}"` }, { status: 404 })
+    }
+    return NextResponse.json({ success: true, slug, extracted_data: extracted })
   }
 
   const result = await getParsedMarkdown(slug)
