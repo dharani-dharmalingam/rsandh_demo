@@ -152,9 +152,20 @@ export async function transformToSanitySchema(
     const icon = CATEGORY_ICON_MAP[category] ?? CATEGORY_ICON_MAP['other']
 
     // ── Content Transformation ──
-    const contentBlocks: any[] = textToBlocks(
-      ch.contentParagraphs?.length ? ch.contentParagraphs : [ch.description || ch.title]
-    )
+    // Normalize alternate field names Claude may use (details, summary, content, paragraphs → contentParagraphs)
+    const chAny = ch as any
+    const resolvedParagraphs: string[] =
+      ch.contentParagraphs?.length ? ch.contentParagraphs :
+      Array.isArray(chAny.details) ? chAny.details :
+      typeof chAny.details === 'string' ? [chAny.details] :
+      Array.isArray(chAny.summary) ? chAny.summary :
+      typeof chAny.summary === 'string' ? [chAny.summary] :
+      Array.isArray(chAny.content) ? chAny.content :
+      typeof chAny.content === 'string' ? [chAny.content] :
+      Array.isArray(chAny.paragraphs) ? chAny.paragraphs :
+      [ch.description || ch.title || '']
+
+    const contentBlocks: any[] = textToBlocks(resolvedParagraphs)
 
     if (ch.sections?.length) {
       ch.sections.forEach((section: any, sIdx: number) => {
