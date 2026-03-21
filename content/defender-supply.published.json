@@ -81,7 +81,7 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "Our medical coverage helps maintain your wellbeing through preventive care, access to an extensive network of providers, and affordable prescription medication. Medical coverage is provided by UHC.",
+              "text": "Coverage provided by UHC",
               "marks": []
             }
           ],
@@ -95,7 +95,7 @@
             {
               "_type": "span",
               "_key": "span-1",
-              "text": "To see a current list of network providers online, visit www.myuhc.com.",
+              "text": "Visit www.myuhc.com for a current list of network providers",
               "marks": []
             }
           ],
@@ -103,72 +103,6 @@
         }
       ],
       "order": 1
-    },
-    {
-      "_id": "desu-ch-health-savings-account-hsa",
-      "title": "Health Savings Account (HSA)",
-      "description": "",
-      "slug": "health-savings-account-hsa",
-      "icon": "file-text",
-      "content": [
-        {
-          "_type": "block",
-          "_key": "block-0",
-          "style": "normal",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-0",
-              "text": "With a Health Savings Account (HSA), contributions and withdrawals for qualified medical expenses are tax-free. Your HSA can be used for qualified expenses for you, your spouse and/or tax dependent(s), even if they are not covered by your plan.",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "block-1",
-          "style": "normal",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-1",
-              "text": "If you are not enrolled in a HDHP but you have unused HSA funds from a previous account, those funds can still be used for qualified medical expenses. The annual maximum contribution limit to HSAs is set by the IRS each year.",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "block-2",
-          "style": "normal",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-2",
-              "text": "2025 IRS Maximum Contributions: Individual $4,300 | Family $8,550 | Catch-Up (Ages 55+) $1,000.",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "block-3",
-          "style": "normal",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-3",
-              "text": "You must be enrolled in the HDHP plan to contribute to a Health Savings Account (HSA).",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        }
-      ],
-      "order": 2
     },
     {
       "_id": "desu-ch-voluntary-dental-benefits",
@@ -185,28 +119,14 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "LEHR offers affordable dental plan options for routine care and beyond. Coverage is available from UHC. Employees may purchase dental insurance on a voluntary basis.",
-              "marks": []
-            }
-          ],
-          "markDefs": []
-        },
-        {
-          "_type": "block",
-          "_key": "block-1",
-          "style": "normal",
-          "children": [
-            {
-              "_type": "span",
-              "_key": "span-1",
-              "text": "Bi-weekly contributions for DPPO: Employee Only $14.10 | Employee + Spouse $27.89 | Employee + Child(ren) $38.87 | Employee + Family $57.26.",
+              "text": "DPPO Bi-Weekly: Employee Only $14.10 | Employee + Spouse $27.89 | Employee + Child(ren) $38.87 | Employee + Family $57.26",
               "marks": []
             }
           ],
           "markDefs": []
         }
       ],
-      "order": 3
+      "order": 2
     },
     {
       "_id": "desu-ch-voluntary-vision-benefits",
@@ -223,7 +143,7 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "Employees may purchase vision insurance on a voluntary basis through UHC.",
+              "text": "Exams: $10 copay in-network / $40 allowance out-of-network (every 12 months)",
               "marks": []
             }
           ],
@@ -237,7 +157,7 @@
             {
               "_type": "span",
               "_key": "span-1",
-              "text": "In-Network benefits: Exams $10 copay (every 12 months), Single Vision Lenses $25 copay, Bifocal $25 copay (every 12 months), Trifocal $25 copay, Frames $25 copay with $150 allowance.",
+              "text": "Single Vision Lenses: $25 copay in-network / $40 allowance out-of-network",
               "marks": []
             }
           ],
@@ -251,7 +171,7 @@
             {
               "_type": "span",
               "_key": "span-2",
-              "text": "Elective Contacts: $150 allowance in-network and out-of-network (every 12 months). Medically Necessary Contacts: Covered in full in-network, $210 allowance out-of-network.",
+              "text": "Bifocal Lenses: $25 copay in-network / $60 allowance out-of-network (every 12 months)",
               "marks": []
             }
           ],
@@ -265,7 +185,101 @@
             {
               "_type": "span",
               "_key": "span-3",
-              "text": "Out-of-Network benefits: Exams $40 allowance, Single Vision Lenses $40 allowance, Bifocal $60 allowance, Trifocal $80 allowance, Frames $45 allowance.",
+              "text": "Trifocal Lenses: $25 copay in-network / $80 allowance out-of-network",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-4",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-4",
+              "text": "Elective Contacts: $150 allowance in-network and out-of-network (every 12 months)",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-5",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-5",
+              "text": "Medically Necessary Contacts: Covered in full in-network / $210 allowance out-of-network",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-6",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-6",
+              "text": "Frames: $25 copay with $150 allowance in-network / $45 allowance out-of-network",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        }
+      ],
+      "order": 3
+    },
+    {
+      "_id": "desu-ch-health-savings-account-hsa",
+      "title": "Health Savings Account (HSA)",
+      "description": "",
+      "slug": "health-savings-account-hsa",
+      "icon": "file-text",
+      "content": [
+        {
+          "_type": "block",
+          "_key": "block-0",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-0",
+              "text": "IRS Maximum Individual Contribution: $4,300",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-1",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-1",
+              "text": "IRS Maximum Family Contribution: $8,550",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "Catch-Up Contribution (Ages 55+): $1,000",
               "marks": []
             }
           ],
@@ -289,7 +303,7 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "LEHR provides employees with Basic Life and AD&D insurance as part of your basic coverage through Unum, which guarantees that your spouse or other designated survivor(s) continue to receive benefits after death.",
+              "text": "Benefit Amount: $10,000",
               "marks": []
             }
           ],
@@ -303,7 +317,21 @@
             {
               "_type": "span",
               "_key": "span-1",
-              "text": "Your Basic Life and AD&D insurance benefit is $10,000. If you are a full-time employee, you automatically receive Life and AD&D insurance even if you waive other coverage.",
+              "text": "Carrier: Unum",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "Cost: Employer-paid",
               "marks": []
             }
           ],
@@ -327,7 +355,7 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "You may purchase Voluntary Life/AD&D insurance for yourself in $10,000 increments, up to a maximum of the lesser of 5x earnings or $500,000. Evidence of Insurability (EOI) is required over $100,000.",
+              "text": "Employee: $10,000 increments, up to lesser of 5x earnings or $500,000. EOI required over $100,000.",
               "marks": []
             }
           ],
@@ -341,7 +369,7 @@
             {
               "_type": "span",
               "_key": "span-1",
-              "text": "Voluntary Life/AD&D insurance is available in $5,000 increments for your spouse, up to the lesser of the employee amount or $250,000. EOI is required over $25,000.",
+              "text": "Spouse: $5,000 increments, up to lesser of employee amount or $250,000. EOI required over $25,000.",
               "marks": []
             }
           ],
@@ -355,7 +383,21 @@
             {
               "_type": "span",
               "_key": "span-2",
-              "text": "You may purchase Voluntary Life/AD&D insurance in $2,000 increments for your child(ren), up to $10,000. EOI is not required for children.",
+              "text": "Child(ren): $2,000 increments, up to $10,000. No EOI required.",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-3",
+              "text": "Voluntary Life Rates (per $1,000): Under 35 $0.070 | 35-39 $0.070 | 40-44 $0.150 | 45-49 $0.230 | 50-54 $0.310 | 55-59 $0.390 | 60-64 $0.510 | 65-69 $0.620 | 70+ $0.620",
               "marks": []
             }
           ],
@@ -379,7 +421,7 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "LEHR offers disability coverage to protect you financially in the event you cannot work due to a debilitating illness or injury. A portion of your income is protected until you can return to work. Employees may purchase disability insurance on a voluntary basis.",
+              "text": "Weekly Maximum Benefit: 60% of income, up to $1,500",
               "marks": []
             }
           ],
@@ -393,7 +435,35 @@
             {
               "_type": "span",
               "_key": "span-1",
-              "text": "Weekly Maximum Benefit: 60% of your income, up to $1,500. Elimination Period: 7 days. Maximum Benefit Period: 12 weeks.",
+              "text": "Elimination Period: 7 days",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "Maximum Benefit Period: 12 weeks",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-3",
+              "text": "STD Rates (per $10 benefit): Under 25 $0.090 | 25-29 $0.160 | 30-34 $0.240 | 35-39 $0.220 | 45-49 $0.230 | 50-54 $0.310 | 55-59 $0.390 | 60-64 $0.510 | 65-69 $0.620 | 70+ $0.620",
               "marks": []
             }
           ],
@@ -417,7 +487,7 @@
             {
               "_type": "span",
               "_key": "span-0",
-              "text": "Long-term disability coverage protects a portion of your income until you can return to work or you reach retirement age.",
+              "text": "Monthly Maximum Benefit: 60% of income, up to $6,500",
               "marks": []
             }
           ],
@@ -431,7 +501,35 @@
             {
               "_type": "span",
               "_key": "span-1",
-              "text": "Monthly Maximum Benefit: 60% of your income, up to $6,500. Elimination Period: 90 days. Maximum Benefit Period: Payments last for as long as you are disabled or until you reach your Social Security Normal Retirement Age, whichever is sooner.",
+              "text": "Elimination Period: 90 days",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-2",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-2",
+              "text": "Maximum Benefit Period: Until Social Security Normal Retirement Age or no longer disabled, whichever is sooner",
+              "marks": []
+            }
+          ],
+          "markDefs": []
+        },
+        {
+          "_type": "block",
+          "_key": "block-3",
+          "style": "normal",
+          "children": [
+            {
+              "_type": "span",
+              "_key": "span-3",
+              "text": "LTD Rates (per $100 payroll): Under 25 $0.070 | 25-29 $0.100 | 30-34 $0.190 | 35-39 $0.300 | 45-49 $0.720 | 50-54 $0.950 | 55-59 $1.160 | 60-64 $1.120 | 65-69 $0.830 | 70+ $0.640",
               "marks": []
             }
           ],
