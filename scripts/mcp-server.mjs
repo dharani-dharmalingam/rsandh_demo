@@ -105,7 +105,7 @@ server.tool(
 // ── Tool 4: get_markdown ──────────────────────────────────────────────────────
 server.tool(
   'get_markdown',
-  'Fetch the full parsed markdown. Read carefully and extract all benefit plans, premiums, contacts, eligibility.',
+  'Fetch the full parsed markdown from the database. Read it carefully — you must extract ALL content including: (1) every markdown table (premium rates, plan comparisons, copays, deductibles, out-of-pocket maxes) converted to tables[] with columns[] and rows[]; (2) definition boxes, callout boxes, highlighted text as contentParagraphs; (3) bullet lists as sections[] with isList:true; (4) contact info (phone, email, website, group numbers) as contactInfo[]; (5) enrollment steps as enrollmentChecklist[]. Do not skip tables — they are the most important content.',
   {
     slug: z.string().describe('Company slug'),
   },
@@ -127,7 +127,33 @@ server.tool(
   'Save your structured ExtractedBenefitsData JSON to the database.',
   {
     slug: z.string().describe('Company slug'),
-    extracted_data: z.record(z.any()).describe('Full ExtractedBenefitsData JSON. REQUIRED fields: companyName (string), chapters (array of objects). Each chapter MUST have: title (string), category (string — one of: medical, dental, vision, hdhp, hmo, ppo, fsa-hsa, hsa, eap, supplemental, disability, life-insurance, retirement, wellness, paid-time-off, voluntary-benefits, eligibility, overview, other), contentParagraphs (array of strings), description (string). Do NOT use fields named "details", "summary", "content", or "paragraphs" — use contentParagraphs instead.'),
+    extracted_data: z.record(z.any()).describe(`Full ExtractedBenefitsData JSON with this EXACT structure:
+{
+  companyName: string,
+  themeColor?: string,
+  chapters: [
+    {
+      title: string,
+      description: string,
+      category: string,  // one of: medical, dental, vision, hdhp, hmo, ppo, fsa-hsa, hsa, eap, supplemental, disability, life-insurance, retirement, wellness, paid-time-off, voluntary-benefits, eligibility, overview, other
+      contentParagraphs: string[],  // ALL paragraph text and definition box content. NEVER use "details", "summary", "content" or "paragraphs" — ALWAYS use "contentParagraphs"
+      sections?: [ { title: string, paragraphs: string[], isList?: boolean } ],
+      tables?: [
+        {
+          tableTitle: string,
+          tableDescription?: string,
+          columns: [ { key: string, label: string, subLabel?: string } ],
+          rows: [ { label: string, cells: string[], isSection?: boolean } ]
+        }
+      ]
+    }
+  ],
+  detectedPlans?: { medicalPlans: string[], dentalPlans: string[], visionPlans: string[], premiumTiers: string[] },
+  contactInfo?: [ { label: string, value: string, href?: string, groupNumber?: string } ],
+  enrollmentChecklist?: [ { title: string, description: string } ],
+  benefitChanges?: [ { type: "new"|"update", title: string, description: string } ]
+}
+IMPORTANT: Every markdown table in the document MUST be converted to a tables[] entry. cells[] array length must match columns[] length exactly. Use isSection:true for category header rows.`),
   },
   async ({ slug, extracted_data }) => {
     const { ok, data } = await api('/api/pipeline/parsed', {
