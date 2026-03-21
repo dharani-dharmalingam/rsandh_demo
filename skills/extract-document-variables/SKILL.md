@@ -1,35 +1,97 @@
 ---
 name: extract-document-variables
-description: Extract structured variables from a markdown or text document using the project's extraction schema. Use this skill whenever the user wants to pull named fields from a converted PDF or markdown file — company name, plan names, benefit chapters, contact info, premium tables, etc. — to feed the microsite pipeline. Trigger on any mention of "extract variables", "parse into JSON", "get fields from document", "structured extraction", or as the second step after pdf-to-markdown-llamaparse.
+description: Extract structured variables from the parsed markdown stored in Supabase. Use this skill whenever the user wants to pull named fields from a parsed benefits guide — company name, plan names, benefit chapters, contact info, premium tables, etc. — to feed the microsite pipeline. Trigger on any mention of "extract variables", "extract for <slug>", "parse into JSON", "get fields from document", "structured extraction", or as the second step after pdf-to-markdown-llamaparse.
 ---
 
-# Extract Variables from Document
+# Skill 2 — Extract Document Variables
 
-Convert a parsed markdown document (output of `pdf-to-markdown-llamaparse`) into structured JSON that matches the project's `ExtractedBenefitsData` type. This JSON is the input for the `microsite-from-template` skill.
+**Pipeline role:** Second step. Reads the parsed markdown from `parsed_documents`, performs two-phase LLM-assisted extraction (Claude does this directly), and saves the result to `extracted_documents`.
 
 ## Pipeline context
 
 ```
-content/<slug>-parsed.md  →  [this skill]  →  content/<slug>-extracted.json
-                                             →  microsite-from-template
+parsed_documents table: { slug, markdown }
+     ↓  [this skill — GET /api/pipeline/parsed + POST /api/pipeline/parsed]
+extracted_documents table: { slug, extracted_data }
+     ↓
+Skill 3: microsite-from-template
 ```
 
-## How the existing pipeline does it (for reference)
+## Steps
 
-The project's current import (`lib/benefits-import/extract.ts`) skips the markdown step entirely: it sends the raw PDF + a JSON schema to the LlamaExtract API and gets structured JSON back. The `assembleExtractedData()` function in that file shows exactly how the API response is shaped into `ExtractedBenefitsData`.
+### Phase 1 — Fetch markdown and detect structure
 
-This skill does the equivalent, but from **markdown** input rather than PDF. Since LlamaExtract can't take markdown, you'll use LLM-assisted extraction or rule-based parsing instead.
+#### 1. Fetch the markdown
 
-## Target schema
+```http
+GET /api/pipeline/parsed?slug=<slug>
+```
 
-The output must match `ExtractedBenefitsData` from `lib/benefits-import/types.ts`. Read that file first. Key shape:
+Returns:
+```json
+{
+  "slug": "rs-h",
+  "markdown": "## Medical Benefits\n...",
+  "wordCount": 4218,
+  "storagePath": "rs-h/benefits-guide.pdf"
+}
+```
+
+#### 2. Analyze the markdown (Claude does this — no extra API call)
+
+Scan the markdown and extract the Phase 1 structure:
+
+```typescript
+interface Phase1Result {
+  companyName: string        // first # heading or "Company: ..." line
+  themeColor?: string        // hex if visible, otherwise null
+  medicalPlans: string[]     // column headers in medical comparison tables
+  dentalPlans: string[]      // column headers in dental tables
+  visionPlans: string[]      // column headers in vision tables
+  premiumTiers: string[]     // row labels: "Employee Only", "Family", etc.
+  chaptersList: string[]     // all ## headings
+}
+```
+
+Rules for finding each field:
+- `companyName` → first `# Heading` or a "Company: …" line near the top
+- `medicalPlans` → column headers in tables under "Medical" section (e.g. "PPO", "HDHP")
+- `dentalPlans`, `visionPlans` → same pattern in dental/vision sections
+- `premiumTiers` → row labels in premium tables (e.g. "Employee Only", "Employee + Spouse", "Family")
+- `chaptersList` → every `## Heading` title
+- `themeColor` → usually not in markdown; default to `null`
+
+#### 3. Show Phase 1 checkpoint
+
+Display the detected structure:
+
+> **Phase 1 — Detected structure for {slug}**
+>
+> - **Company:** {companyName}
+> - **Medical plans:** {medicalPlans.join(', ')}
+> - **Dental plans:** {dentalPlans.join(', ')}
+> - **Vision plans:** {visionPlans.join(', ')}
+> - **Premium tiers:** {premiumTiers.join(', ')}
+> - **Chapters ({n}):** {chaptersList.join(', ')}
+>
+> Does this look right? Should any chapters or plans be added or removed?
+
+**Wait for the user to confirm or correct before proceeding to Phase 2.**
+
+---
+
+### Phase 2 — Full extraction
+
+With the confirmed plan names and chapter list, extract the complete `ExtractedBenefitsData` from the markdown.
+
+#### Target schema (from `lib/benefits-import/types.ts`)
 
 ```typescript
 interface ExtractedBenefitsData {
   companyName: string
-  themeColor?: string                // hex, e.g. "#1e40af"
-  chapters: ExtractedChapter[]       // one per benefit section
-  detectedPlans: DetectedPlans       // plan names and tier names
+  themeColor?: string
+  chapters: ExtractedChapter[]
+  detectedPlans: DetectedPlans        // confirmed values from Phase 1
   landingPage?: { heroTitle, heroSubtitle, ... }
   retirementPlanning?: { ... }
   contactInfo?: { label, value, href?, groupNumber? }[]
@@ -40,174 +102,83 @@ interface ExtractedBenefitsData {
 }
 ```
 
-### DetectedPlans
-
-```typescript
-interface DetectedPlans {
-  medicalPlans: string[]    // e.g. ["PPO", "HDHP", "HMO"]
-  dentalPlans: string[]     // e.g. ["Core Plan", "Enhanced Plan"]
-  visionPlans: string[]     // e.g. ["Core VSP", "Enhanced VSP"]
-  premiumTiers: string[]    // e.g. ["Employee Only", "Employee + Spouse", "Family"]
-}
-```
-
-### ExtractedChapter
-
-Each chapter in `chapters[]` must have:
-
-```typescript
-interface ExtractedChapter {
-  title: string
-  description: string                   // 1–2 sentence summary
-  category: BenefitCategory
-  contentParagraphs: string[]
-  sections?: ExtractedChapterSection[]  // sub-headings with paragraphs
-  tables?: ExtractedTable[]
-  tabs?: { title, contentParagraphs, link?, linkLabel? }[]
-}
-```
-
-`BenefitCategory` values (from `lib/benefits-import/types.ts`):
-`eligibility`, `overview`, `medical`, `hdhp`, `hmo`, `ppo`, `dental`, `vision`, `fsa-hsa`, `hsa`, `eap`, `supplemental`, `disability`, `life-insurance`, `retirement`, `pet-insurance`, `college-savings`, `wellness`, `paid-time-off`, `voluntary-benefits`, `other`.
-
-### ExtractedTable
-
-```typescript
-interface ExtractedTable {
-  templateId?: string       // links to TABLE_TEMPLATES in tableTemplates.ts (optional)
-  tableTitle: string
-  tableDescription?: string
-  columns: { key: string; label: string; subLabel?: string }[]
-  rows: { label: string; cells: string[]; isSection?: boolean }[]
-}
-```
-
-`cells[]` must match `columns[]` in length and order. Use `isSection: true` for rows that are category headers (e.g. "Retail (30-day)") rather than data rows.
-
-### ExtractedChapterSection
-
-```typescript
-interface ExtractedChapterSection {
-  title: string
-  paragraphs: string[]
-  isList?: boolean   // when true, paragraphs render as bullet list items
-}
-```
-
-## Two-phase extraction (recommended)
-
-### Phase 1 — detect plans and chapters (lightweight)
-
-Produce a `Phase1Result` first and confirm structure with the user:
-
-```typescript
-interface Phase1Result {
-  detectedPlans: DetectedPlans
-  chaptersList: string[]     // e.g. ["Medical", "Dental", "Vision", "FSA", "EAP", "Eligibility"]
-  companyName: string
-  themeColor?: string
-}
-```
-
-To build this from markdown:
-- `companyName` → first `# Heading` or a "Company: …" line near the top.
-- `medicalPlans` → look for plan name labels in comparison tables (e.g. column headers "PPO", "HDHP").
-- `dentalPlans`, `visionPlans` → same pattern in dental/vision sections.
-- `premiumTiers` → row labels in premium tables (e.g. "Employee Only", "Employee + Spouse").
-- `chaptersList` → all `## Heading` titles.
-- `themeColor` → usually not in markdown (it comes from PDF visuals). Default to `null` and let the microsite step fill it.
-
-Show Phase 1 results to the user and ask: "Does this look right? Should I add or remove any chapters or plans?"
-
-### Phase 2 — full extraction
-
-With confirmed plan names and chapter list, extract the complete `ExtractedBenefitsData`. The project's template system (`lib/benefits-import/templates/`) defines the chapter types and expected fields:
-
-| Template | Category | Key fields |
-|----------|----------|------------|
-| `overview` | `overview` | Premium tables per benefit type |
-| `eligibility` | `eligibility` | Requirements, dependents, enrollment, QLE |
-| `medical` | `medical` | Per-plan premiums, benefits summary, Rx tables |
-| `dental` | `dental` | Per-plan benefit rows (in/out of network) |
-| `vision` | `vision` | Per-plan benefit rows + frequency |
-| `eap` | `eap` | Services, free visits, availability |
-| `fsa-hsa` | `fsa-hsa` | HSA/FSA definitions, contribution tables |
-| `survivor-benefits` | `life-insurance` | Coverage, age reduction, AD&D |
-| `supplemental-health` | `supplemental` | Critical illness, accident tables |
-| `income-protection` | `disability` | STD/LTD tables |
-| `financial-wellbeing` | `retirement` | 401k limits, vesting, matching |
-| `paid-time-off` | `paid-time-off` | Holidays, vacation accrual |
-| `voluntary-benefits` | `voluntary-benefits` | Tabbed benefit cards |
-| `dynamic` | varies | Catch-all for unmatched chapters |
-
-Read the template files in `lib/benefits-import/templates/` to see the exact field shapes for each chapter type.
-
-## Extraction approach
-
-### Read the document
-
-```typescript
-import fs from 'fs'
-const markdown = fs.readFileSync('content/<slug>-parsed.md', 'utf-8')
-```
-
-### Map document structure to schema
+#### Mapping rules
 
 | Markdown pattern | Schema field |
-|------------------|--------------|
-| First `# Heading` or "Company: …" | `companyName` |
+|---|---|
+| First `# Heading` | `companyName` |
 | `## <Chapter Title>` | One `ExtractedChapter` per heading |
 | Markdown tables | `ExtractedTable` with `columns[]` + `rows[]` |
-| Bullet/numbered lists | Arrays or `sections[].paragraphs` with `isList: true` |
+| Bullet/numbered lists | `sections[].paragraphs` with `isList: true` |
 | Phone / Email / Website lines | `contactInfo[]` |
-| Checklist items (step-by-step) | `enrollmentChecklist[]` |
+| Step-by-step checklist items | `enrollmentChecklist[]` |
 
-### LLM-assisted extraction (recommended for complex documents)
+#### BenefitCategory values
+`eligibility` `overview` `medical` `hdhp` `hmo` `ppo` `dental` `vision` `fsa-hsa` `hsa` `eap` `supplemental` `disability` `life-insurance` `retirement` `pet-insurance` `college-savings` `wellness` `paid-time-off` `voluntary-benefits` `other`
 
-Send the markdown to Claude with a structured prompt. Use the `ExtractedBenefitsData` type as the target schema:
+#### ExtractedTable rules
+- `cells[]` must have the same length as `columns[]` and in the same order
+- Use `isSection: true` for category-header rows, not data rows
+- `tableTitle` should be descriptive (e.g. "Medical Premium Rates")
 
-```
-You are extracting structured data from a benefits guide.
-Output a single JSON object matching the ExtractedBenefitsData type.
-
-Confirmed plans: ${JSON.stringify(phase1.detectedPlans)}
-Chapter list: ${phase1.chaptersList.join(', ')}
-
-Rules:
-- companyName: from the document title or first heading
-- For each benefit chapter (## heading), create one ExtractedChapter
-- Assign the correct BenefitCategory from: eligibility, overview, medical, dental, ...
-- For each markdown table, create one ExtractedTable inside the chapter
-- cells[] must have the same length as columns[] and in the same order
-- Use isSection: true for category-header rows, not data rows
-- sections[].isList = true when the content is a bullet list
-
-Document:
-<markdown content>
-```
-
-Parse and validate the JSON response before writing.
-
-## Output
-
-Write to `content/<slug>-extracted.json` (UTF-8, pretty-printed):
-
-```typescript
-fs.writeFileSync(
-  `content/${slug}-extracted.json`,
-  JSON.stringify(extractedData, null, 2),
-  'utf-8'
-)
-```
-
-Verify before saving:
+#### Validation before saving
 - `companyName` is a non-empty string
 - `chapters` is a non-empty array
 - Each chapter has `title`, `category`, and `contentParagraphs`
 - `detectedPlans` has at least one plan in `medicalPlans`, `dentalPlans`, or `visionPlans`
 - All table `cells[]` arrays match their `columns[]` length
 
+---
+
+### Save Phase 2 — Checkpoint
+
+After extracting, save to `extracted_documents` via:
+
+```http
+POST /api/pipeline/parsed
+Content-Type: application/json
+
+{
+  "slug": "<slug>",
+  "extracted_data": { ...ExtractedBenefitsData }
+}
+```
+
+Returns:
+```json
+{
+  "success": true,
+  "slug": "rs-h",
+  "chaptersCount": 14,
+  "companyName": "RS&H",
+  "nextStep": "Extracted data saved. Review the chapter list above, then say: \"publish rs-h\""
+}
+```
+
+#### Show the Phase 2 checkpoint
+
+> **Extraction complete for {slug}**
+>
+> - **Company:** {companyName}
+> - **Chapters ({chaptersCount}):** {chapters.map(c => c.title).join(', ')}
+> - **Medical:** {detectedPlans.medicalPlans.join(', ')}
+> - **Dental:** {detectedPlans.dentalPlans.join(', ')}
+> - **Vision:** {detectedPlans.visionPlans.join(', ')}
+>
+> Does this look right? If yes, say: **"publish {slug}"**
+
+Wait for the user to confirm before triggering Skill 3.
+
+## What's stored
+
+| Table | Column | Value |
+|---|---|---|
+| `extracted_documents` | `slug` | employer slug (PK) |
+| `extracted_documents` | `extracted_data` | full `ExtractedBenefitsData` JSONB |
+
 ## Next step
 
-Hand the output to the `microsite-from-template` skill:
-> "Create a microsite from `content/premier-america-extracted.json`"
+Once the user confirms:
+> "publish {slug}"
+
+This triggers Skill 3 (`microsite-from-template`).

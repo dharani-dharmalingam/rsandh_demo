@@ -1,158 +1,117 @@
 ---
 name: microsite-from-template
-description: Create or update a microsite by transforming extracted variables into the project's EmployerContent format and writing a published content file. Use this skill whenever the user wants to generate a new employer portal, populate a site template with extracted data, or finalize the PDF-to-microsite pipeline. Trigger on any mention of "create microsite", "generate employer site", "populate template", "publish content", or as the third step after extract-document-variables.
+description: Create or update a microsite by transforming extracted variables into the project's EmployerContent format, saving to Supabase, and committing to Git for Vercel deployment. Use this skill whenever the user wants to generate a new employer portal, publish a site, or finalize the PDF-to-microsite pipeline. Trigger on any mention of "create microsite", "publish <slug>", "generate employer site", "populate template", or as the third step after extract-document-variables.
 ---
 
-# Microsite from Template
+# Skill 3 — Publish Microsite
 
-Take `ExtractedBenefitsData` JSON (output of `extract-document-variables`) and produce a fully deployable employer microsite by writing `content/<slug>.published.json`. The app reads this file to serve all employer-specific pages.
+**Pipeline role:** Final step. Reads `ExtractedBenefitsData` from `extracted_documents`, transforms it into `EmployerContent`, saves to `content_drafts`, commits `content/<slug>.published.json` to Git, and Vercel deploys automatically.
 
 ## Pipeline context
 
 ```
-content/<slug>-extracted.json  →  [this skill]  →  content/<slug>.published.json
-                                                  →  live microsite at /<slug>/*
+extracted_documents table: { slug, extracted_data }
+     ↓  [this skill — POST /api/pipeline/publish]
+content_drafts table: { slug, content }  +  Git commit → Vercel deploy
+     ↓
+Live microsite at /{slug}
 ```
 
-## How the app serves microsites
+## Steps
 
-The Next.js app routes employer requests based on the slug. All employer pages under `app/(employer)/` read content via `lib/content/index.ts`:
+### 1. Call the publish API
 
-- `getPublishedContent(slug)` → reads `content/<slug>.published.json`
-- `getDraftContent(slug)` → reads draft first, falls back to published
-- `saveContent(slug, data)` → writes `content/<slug>.draft.json`
-- `publishContent(slug)` → promotes draft to published
+```http
+POST /api/pipeline/publish
+Content-Type: application/json
 
-The `app/(employer)/layout.tsx` loads the content and passes site settings + chapters to `Header` and `Footer` components. Each page route (benefits, contacts, enrollment-checklist, etc.) reads the relevant section from the same content file.
-
-The root type is `EmployerContent` in `lib/content/types.ts`.
-
-## Transform chain
-
-The project has two transform functions that do the heavy lifting:
-
-```
-ExtractedBenefitsData  →  transformToSanitySchema()  →  SanitySeedPayload
-                       →  seedPayloadToLocalContent() →  EmployerContent
-```
-
-**Use these functions.** Don't rebuild the transform logic by hand. They handle:
-- Mapping chapter categories to icons (`CATEGORY_ICON_MAP` in `transform.ts`)
-- Converting plain paragraphs to Sanity Portable Text blocks
-- Generating deterministic `_id` values and slugs
-- Creating default quick-access cards, footer links, and enrollment labels
-- Building unified table structures with `_key` fields
-
-```typescript
-import { transformToSanitySchema } from '@/lib/benefits-import/transform'
-import { seedPayloadToLocalContent } from '@/lib/benefits-import/to-local-content'
-import { saveContent, publishContent } from '@/lib/content'
-import type { ExtractedBenefitsData } from '@/lib/benefits-import/types'
-import fs from 'fs'
-
-const slug = 'premier-america'
-
-// 1. Load extracted variables
-const extracted: ExtractedBenefitsData = JSON.parse(
-  fs.readFileSync(`content/${slug}-extracted.json`, 'utf-8')
-)
-
-// 2. Transform through the pipeline
-const seed = await transformToSanitySchema(extracted, slug)
-const content = seedPayloadToLocalContent(seed)
-
-// 3. Optionally add logo and benefits guide URL
-// content.siteSettings.clientLogo = '<URL-to-logo>'
-// content.openEnrollment.benefitsGuideUrl = '<URL-to-PDF>'
-
-// 4. Save as draft, then publish
-saveContent(slug, content)
-publishContent(slug)
-
-console.log(`Microsite ready: content/${slug}.published.json`)
-```
-
-## Serverless path (Supabase + Git)
-
-When running on Vercel or another serverless platform, the filesystem is read-only. The existing `app/api/benefits-import/phase2/route.ts` handles this by:
-
-1. Writing to Supabase `content_drafts` table via `upsertContentJson(slug, content)`.
-2. Committing to the Git repo via `commitContentToGit(slug, content)` (requires `GITHUB_TOKEN` and `GITHUB_REPO` env vars).
-
-If you're running this skill in a serverless context, follow the same pattern. Check `isContentWrittenToTmp()` from `lib/content/index.ts` to detect serverless.
-
-## EmployerContent structure
-
-The final JSON written to `content/<slug>.published.json` (see `lib/content/types.ts`):
-
-```
 {
-  client:              { name, slug, themeColor }
-  siteSettings:        { clientName, shortName, clientLogo?, logoText, footerAbout,
-                         quickLinks[], quickAccess[], contactInfo[], copyrightText, ... }
-  benefitsPage:        { title, description }
-  benefitChapters:     [{ _id, title, description, slug, icon, content (PortableText),
-                          tables[{ _key, tableTitle, columns[], rows[] }], order }]
-  openEnrollment:      { title, description, daysLeftLabel, periodLabel, benefitsGuideUrl?, ... }
-  benefitChangesPage:  { title, description, changes[] }
-  enrollmentChecklist: { title, description, items[{ step, title, description }] }
-  retirementPlanning:  { heroTitle, heroDescription, sections[] }
-  documents:           []
+  "slug": "<employer-slug>",
+  "logoAssetId": "<slug>/logo.png",   // optional — defaults to {slug}/logo.png
+  "themeColor": "#1e40af"             // optional — overrides extracted value
 }
 ```
 
-## Slug conventions
+Example:
+```http
+POST /api/pipeline/publish
+{ "slug": "rs-h" }
+```
 
-- Use lowercase, hyphenated slugs: `premier-america`, `rs-h`, `defender-supply`.
-- The slug appears in all URLs: `/<slug>/benefits`, `/<slug>/contacts`, etc.
-- Check existing slugs: `ls content/*.published.json` or call `listEmployers()` from `lib/content/index.ts`.
-- Set `NEXT_PUBLIC_DEFAULT_EMPLOYER=<slug>` in `.env.local` if subdomain routing isn't set up locally.
+### 2. What the API does (no action needed)
 
-## Available employer routes
+The route handles everything:
+1. Reads `extracted_data` from `extracted_documents` for the slug
+2. Runs `transformToSanitySchema()` + `seedPayloadToLocalContent()` from the existing transform pipeline
+3. Sets `siteSettings.clientLogo` = Supabase public URL for `{slug}/logo.png`
+4. Sets `openEnrollment.benefitsGuideUrl` = Supabase public URL for `{slug}/benefits-guide.pdf`
+5. Saves the result to `content_drafts` via `upsertContentJson()`
+6. Commits `content/{slug}.published.json` to Git via GitHub API → Vercel deploys
 
-| Route | Page | Content source |
-|-------|------|----------------|
-| `/<slug>` | Landing page | `openEnrollment`, `siteSettings.quickAccess` |
-| `/<slug>/benefits` | Benefits overview | `benefitsPage`, `benefitChapters` |
-| `/<slug>/benefits/<chapter-slug>` | Chapter detail | `benefitChapters[n]` |
-| `/<slug>/contacts` | Contact info | `siteSettings.contactInfo` |
-| `/<slug>/document-hub` | Documents | `documents[]` |
-| `/<slug>/enrollment-checklist` | Checklist | `enrollmentChecklist` |
-| `/<slug>/benefit-changes` | Changes | `benefitChangesPage` |
-| `/<slug>/retirement-planning` | Retirement | `retirementPlanning` |
+### 3. Show the final checkpoint
 
-## After writing the file
+The API returns:
+```json
+{
+  "success": true,
+  "slug": "rs-h",
+  "chaptersCount": 14,
+  "companyName": "RS&H",
+  "committedToGit": true,
+  "commitSha": "abc1234",
+  "message": "Published \"rs-h\" and committed to Git. Vercel is deploying."
+}
+```
 
-1. **Verify** the file was written: `ls content/<slug>.published.json`
-2. **Start dev server** if not running: `npm run dev`
-3. **Visit** `http://localhost:3000/<slug>` to preview
-4. **Spot-check** benefits and contacts pages for content and table accuracy
+Display to the user:
 
-## Customization after generation
+> **Microsite published for {companyName} (`{slug}`)**
+>
+> - **Chapters:** {chaptersCount}
+> - **Git commit:** `{commitSha}`
+> - **Status:** Vercel is deploying — site will be live at `/{slug}` in ~30 seconds
+>
+> ✓ Content saved to `content_drafts` table
+> ✓ `content/{slug}.published.json` committed to Git
+> ✓ Vercel deployment triggered automatically
 
-The content file is plain JSON — edit directly before or after publishing:
+If `committedToGit` is false, show the message from the API and advise the user to check `GITHUB_TOKEN` and `GITHUB_REPO` env vars.
 
-| Field | Path in JSON | Notes |
-|-------|-------------|-------|
-| Logo URL | `siteSettings.clientLogo` | Supabase URL or local `/content/uploads/` path |
-| Theme color | `client.themeColor` | Hex string (e.g. `"#1e40af"`) |
-| Hero title | `openEnrollment.title` | Landing page heading |
-| Quick access cards | `siteSettings.quickAccess[]` | 3 cards on landing page |
-| Chapter order | `benefitChapters[].order` | Lower = first |
-| Benefits guide PDF | `openEnrollment.benefitsGuideUrl` | Link for download |
+## What's stored / committed
 
-## Existing content files for reference
+| Destination | What |
+|---|---|
+| `content_drafts` table | Full `EmployerContent` JSON (slug PK) |
+| Git repo | `content/{slug}.published.json` |
+| Vercel | Auto-deploy triggered by the Git commit |
 
-- `content/rs-h.published.json` — full example with all fields populated
-- `content/premier-america.published.json` — another complete reference
-- `content/defender-supply.published.json` — third reference
+## App routes served after publish
 
-Read these to understand the expected structure when debugging or manually authoring content.
+| Route | Page |
+|---|---|
+| `/{slug}` | Landing page |
+| `/{slug}/benefits` | Benefits overview |
+| `/{slug}/benefits/{chapter}` | Chapter detail |
+| `/{slug}/contacts` | Contact info |
+| `/{slug}/enrollment-checklist` | Checklist |
+| `/{slug}/benefit-changes` | Changes |
+| `/{slug}/retirement-planning` | Retirement |
+| `/{slug}/document-hub` | Documents |
 
-## Checklist
+## Post-publish customisation
 
-- [ ] `content/<slug>-extracted.json` exists and validates (non-empty `companyName` and `chapters`)
-- [ ] Slug is unique — run `ls content/*.published.json`
-- [ ] `transformToSanitySchema()` + `seedPayloadToLocalContent()` ran without errors
-- [ ] `content/<slug>.published.json` written successfully
-- [ ] App serves `/<slug>` correctly in dev
+To adjust content after publishing, edit the row in `content_drafts` directly in Supabase, or re-run this skill with overrides:
+
+| Override | How |
+|---|---|
+| Theme color | Add `"themeColor": "#hex"` to the POST body |
+| Logo | Upload a new logo to Supabase Storage at `{slug}/logo.png`, then re-run |
+| Chapter content | Edit `extracted_documents.extracted_data` in Supabase, then re-run Skill 3 |
+
+## Troubleshooting
+
+| Symptom | Fix |
+|---|---|
+| `No extracted data found` | Run Skill 2 first — `extracted_documents` is empty for this slug |
+| `committedToGit: false` | Set `GITHUB_TOKEN` (PAT with `repo` scope) and `GITHUB_REPO` (`owner/repo`) in Vercel env vars |
+| Logo shows as broken | Confirm the logo was uploaded to `{slug}/logo.png` in the `employer-assets` Supabase bucket |

@@ -1,0 +1,837 @@
+{
+  "slug": "rsandh",
+  "extracted_data": {
+    "companyName": "RS&H",
+    "themeColor": null,
+    "landingPage": {
+      "heroTitle": "Your Journey. Your Rewards. Our Shared Future.",
+      "heroSubtitle": "Your 2026 Total Rewards program is designed to simplify and enhance your experience — built around your feedback and your unique needs.",
+      "explainerVideo": {
+        "title": "2026 Benefits Overview",
+        "description": "Watch a quick overview of your RS&H benefits for 2026.",
+        "url": ""
+      }
+    },
+    "detectedPlans": {
+      "medicalPlans": ["PPO Plan", "Prime HDHP", "Alternate HDHP"],
+      "dentalPlans": ["Core Plan", "Enhanced Plan"],
+      "visionPlans": ["Core VSP", "Enhanced VSP"],
+      "premiumTiers": ["Associate", "Associate + Spouse", "Associate + Child(ren)", "Family"]
+    },
+    "enrollmentChecklist": [
+      {
+        "title": "Review your benefit options",
+        "description": "Read through the 2026 Benefits Guide and use ALEX at start.myalex.com/rsh to get personalized guidance on which plans fit your needs."
+      },
+      {
+        "title": "Log in to the enrollment portal",
+        "description": "Visit Blaze and select the UKG icon, then navigate to Menu > Myself > Open Enrollment."
+      },
+      {
+        "title": "Elect your medical plan",
+        "description": "Choose from PPO Plan, Prime HDHP, or Alternate HDHP. Consider pairing an HDHP with an HSA for triple tax advantages."
+      },
+      {
+        "title": "Elect dental and vision coverage",
+        "description": "Select Core or Enhanced dental through MetLife, and Core VSP or Enhanced VSP for vision. These can be elected independently of medical."
+      },
+      {
+        "title": "Set up your HSA or FSA contributions",
+        "description": "If enrolling in Prime or Alternate HDHP, establish your HSA contribution via Fidelity. PPO enrollees may elect a Healthcare FSA up to $3,400."
+      },
+      {
+        "title": "Review voluntary and supplemental benefits",
+        "description": "Consider Voluntary Life, Accident, Critical Illness, Short-Term Disability Buy-Up, Pet Insurance, Legal Plan, and Identity Theft Protection."
+      },
+      {
+        "title": "Designate your beneficiaries",
+        "description": "Update your life insurance and AD&D beneficiary designations in UKG."
+      },
+      {
+        "title": "Confirm your 401(k) contribution",
+        "description": "You are auto-enrolled at 6%. Log in to NetBenefits.com to adjust your contribution or investment elections."
+      }
+    ],
+    "contactInfo": [
+      {
+        "label": "Medical — BlueCross BlueShield",
+        "value": "1-800-830-1501",
+        "href": "https://www.myhealthtoolkitfl.com",
+        "groupNumber": "71-6192N"
+      },
+      {
+        "label": "Dental — MetLife",
+        "value": "1-800-275-4638",
+        "href": "https://www.metlife.com/dental",
+        "groupNumber": "5986085"
+      },
+      {
+        "label": "Vision — Vision Service Plan (VSP)",
+        "value": "1-800-877-7195",
+        "href": "https://www.vsp.com",
+        "groupNumber": "30085963"
+      },
+      {
+        "label": "Life & Disability — Mutual of Omaha",
+        "value": "1-800-775-8805 (Life/CI/Accident) | 1-800-877-5176 (Disability)",
+        "href": "https://www.mutualofomaha.com",
+        "groupNumber": "G000AK86"
+      },
+      {
+        "label": "HSA & 401(k) — Fidelity",
+        "value": "1-800-835-5095",
+        "href": "https://www.netbenefits.com"
+      },
+      {
+        "label": "FSA — Fidelity",
+        "value": "1-833-299-5089",
+        "href": "https://www.netbenefits.com"
+      },
+      {
+        "label": "EAP & Benefits Assistance — Health Advocate",
+        "value": "1-866-799-2728 (24/7)",
+        "href": "https://www.healthadvocate.com/members"
+      },
+      {
+        "label": "Pet Insurance — PetPartners",
+        "value": "1-866-774-1113",
+        "href": "https://www.petpartners.com/"
+      },
+      {
+        "label": "Identity Theft — Allstate Identity Protection",
+        "value": "1-800-789-2720",
+        "href": "https://www.myaip.com/rsandh"
+      },
+      {
+        "label": "Legal Plan — MetLife MetLaw",
+        "value": "1-800-821-6400",
+        "href": "https://info.legalplans.com"
+      },
+      {
+        "label": "Auto Insurance — Farmers GroupSelect",
+        "value": "1-800-422-4272"
+      }
+    ],
+    "retirementPlanning": {
+      "heroTitle": "Build Your Future with the RS&H 401(k)",
+      "heroDescription": "The RS&H 401(k) plan lets you contribute pre-tax or Roth dollars toward retirement, with a 50% company match on up to 6% of your pay.",
+      "features": [
+        {
+          "icon": "piggy-bank",
+          "title": "Company Match",
+          "description": "RS&H matches 50% of your contributions up to 6% of pay — that's free money toward your retirement."
+        },
+        {
+          "icon": "chart-line",
+          "title": "Auto-Enrollment at 6%",
+          "description": "New associates are automatically enrolled at 6% of pay into T. Rowe Price Target Date Funds."
+        },
+        {
+          "icon": "building",
+          "title": "Employee Ownership",
+          "description": "1/3 of the company match is contributed in RS&H company stock — growing your stake in the firm."
+        },
+        {
+          "icon": "calendar",
+          "title": "5-Year Vesting Schedule",
+          "description": "Become 100% vested in company contributions after 5 years of service."
+        }
+      ],
+      "planningTitle": "401(k) Contribution Limits (2026)",
+      "sections": [
+        {
+          "title": "Standard Contribution",
+          "content": "Up to $24,500 for associates under age 50. Contribute to traditional 401(k), Roth 401(k), or a combination."
+        },
+        {
+          "title": "Catch-Up Contribution (Age 50–59)",
+          "content": "Up to $32,500 total annual contribution for associates ages 50–59."
+        },
+        {
+          "title": "Super Catch-Up (Age 60–63)",
+          "content": "Associates ages 60–63 may contribute up to $35,750 under the SECURE 2.0 super catch-up provision."
+        },
+        {
+          "title": "Rollover",
+          "content": "You may roll over funds from a prior employer's 401(k) into the RS&H plan. Contact Fidelity at 1-800-835-5095."
+        }
+      ],
+      "ctaButtonText": "Manage Your 401(k) at NetBenefits.com"
+    },
+    "chapters": [
+      {
+        "title": "General Information",
+        "description": "Eligibility rules, enrollment deadlines, and how to make benefit changes at RS&H.",
+        "category": "eligibility",
+        "contentParagraphs": [
+          "Benefits are available to all full-time and part-time associates working a minimum of 20 hours per week, and their eligible dependents.",
+          "If you enroll during Open Enrollment, your benefits become effective January 1, 2026. New hires are effective the first day of the month following your date of hire.",
+          "You may only change elections during Open Enrollment or within 30 days of a qualifying life event (marriage, birth/adoption, loss of other coverage, etc.)."
+        ],
+        "sections": [
+          {
+            "title": "Eligible Dependents",
+            "paragraphs": [
+              "Spouse or Domestic Partner",
+              "Children from birth to age 26 (natural, legally adopted, stepchildren)",
+              "Unmarried dependent children of any age who are mentally or physically disabled and dependent on you"
+            ],
+            "isList": true
+          },
+          {
+            "title": "How to Enroll",
+            "paragraphs": [
+              "Visit Blaze and select the UKG icon",
+              "Navigate to Menu > Myself > Open Enrollment",
+              "New hires must enroll within 10 days of hire via Menu > Myself > Life Events > I am Enrolling in Benefits"
+            ],
+            "isList": true
+          },
+          {
+            "title": "Qualifying Life Events",
+            "paragraphs": [
+              "Birth, legal adoption, or placement for adoption",
+              "Change in marital status",
+              "Dependent child reaches age 26",
+              "Spouse gains or loses employment or eligibility",
+              "Death of a covered dependent",
+              "Spouse or dependent becomes eligible/ineligible for Medicare/Medicaid",
+              "Change in residence that changes eligibility",
+              "Court-ordered change"
+            ],
+            "isList": true
+          }
+        ],
+        "tables": [
+          {
+            "tableTitle": "Enrollment Deadlines by Situation",
+            "columns": [
+              {"key": "situation", "label": "Situation"},
+              {"key": "opportunity", "label": "Enrollment Opportunity"},
+              {"key": "effective", "label": "Coverage Effective Date"}
+            ],
+            "rows": [
+              {"label": "Current Associate", "cells": ["Current Associate", "Annually during Open Enrollment", "Start of plan year (January 1)"]},
+              {"label": "New Hire", "cells": ["New Hire", "Within 10 days of hire", "1st day of the month following hire date"]},
+              {"label": "Qualifying Life Event", "cells": ["Qualifying Life Event", "Within 30 days of the life event", "Date of life event"]}
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Medical & Prescription Drug",
+        "description": "Compare RS&H's three BlueCross BlueShield medical plans — PPO, Prime HDHP, and Alternate HDHP — including deductibles, copays, and prescription drug coverage.",
+        "category": "medical",
+        "contentParagraphs": [
+          "Your medical benefits are provided by BlueCross BlueShield and include coverage for both in-network and out-of-network providers. All plans participate in the same network.",
+          "Use the My Health Toolkit app or myhealthtoolkitfl.com to estimate costs, manage claims, and find providers.",
+          "Not sure which plan is right for you? Use ALEX at start.myalex.com/rsh for personalized, confidential guidance."
+        ],
+        "tables": [
+          {
+            "tableTitle": "Medical Plan Comparison — In-Network",
+            "columns": [
+              {"key": "benefit", "label": "Benefit"},
+              {"key": "ppo", "label": "PPO Plan", "subLabel": "You Pay"},
+              {"key": "prime-hdhp", "label": "Prime HDHP", "subLabel": "You Pay"},
+              {"key": "alt-hdhp", "label": "Alternate HDHP", "subLabel": "You Pay"}
+            ],
+            "rows": [
+              {"label": "HSA Eligible", "cells": ["HSA Eligible", "No", "Yes", "Yes"], "isSection": false},
+              {"label": "Annual Deductible", "cells": ["Annual Deductible", "$2,000 / $6,000 family", "$1,800 / $3,600 family", "$3,400 / $6,800 family"]},
+              {"label": "Out-of-Pocket Maximum", "cells": ["Out-of-Pocket Maximum", "$6,000 / $12,000 family", "$4,500 / $9,000 family", "$6,350 / $12,700 family"]},
+              {"label": "Coinsurance (your share)", "cells": ["Coinsurance (your share)", "20%", "20%", "20%"]},
+              {"label": "Preventive Care", "cells": ["Preventive Care", "100% Covered", "100% Covered", "100% Covered"]},
+              {"label": "Primary Physician Visit", "cells": ["Primary Physician Visit", "$30 copay", "20% after deductible", "20% after deductible"]},
+              {"label": "Specialist Visit", "cells": ["Specialist Visit", "$55 copay", "20% after deductible", "20% after deductible"]},
+              {"label": "Teladoc Virtual Visit", "cells": ["Teladoc Virtual Visit", "No cost", "20% after deductible", "20% after deductible"]},
+              {"label": "Convenience Clinic", "cells": ["Convenience Clinic", "$30 copay", "20% after deductible", "20% after deductible"]},
+              {"label": "Urgent Care", "cells": ["Urgent Care", "$75 copay", "20% after deductible", "20% after deductible"]},
+              {"label": "Emergency Room", "cells": ["Emergency Room", "$500 copay", "20% after deductible", "20% after deductible"]},
+              {"label": "Inpatient Hospitalization", "cells": ["Inpatient Hospitalization", "20%", "20% after deductible", "20% after deductible"]},
+              {"label": "Outpatient Surgery", "cells": ["Outpatient Surgery", "20%", "20% after deductible", "20% after deductible"]},
+              {"label": "Imaging (MRI, CT, PET)", "cells": ["Imaging (MRI, CT, PET)", "$250 copay per scan", "20% after deductible", "20% after deductible"]},
+              {"label": "Independent Labs / Outpatient X-ray", "cells": ["Independent Labs / Outpatient X-ray", "100% Covered", "20% after deductible", "20% after deductible"]}
+            ]
+          },
+          {
+            "tableTitle": "Prescription Drug Coverage",
+            "columns": [
+              {"key": "drug-tier", "label": "Drug Tier"},
+              {"key": "ppo", "label": "PPO Plan"},
+              {"key": "prime-hdhp", "label": "Prime HDHP"},
+              {"key": "alt-hdhp", "label": "Alternate HDHP"}
+            ],
+            "rows": [
+              {"label": "Retail (30-day)", "cells": ["Retail (30-day)","","",""], "isSection": true},
+              {"label": "Tier 1 (Generic)", "cells": ["Tier 1 (Generic)", "$15 copay", "$15 copay after deductible", "$15 copay after deductible"]},
+              {"label": "Tier 2 (Preferred Brand)", "cells": ["Tier 2 (Preferred Brand)", "$50 copay", "$50 copay after deductible", "$50 copay after deductible"]},
+              {"label": "Tier 3 (Non-Preferred Brand)", "cells": ["Tier 3 (Non-Preferred Brand)", "$90 copay", "$90 copay after deductible", "$90 copay after deductible"]},
+              {"label": "Specialty", "cells": ["Specialty", "$150 copay", "$15/$50/$90 after deductible", "$15/$50/$90 after deductible"]},
+              {"label": "Mail Order (90-day)", "cells": ["Mail Order (90-day)","","",""], "isSection": true},
+              {"label": "Tier 1 (Generic)", "cells": ["Tier 1 (Generic)", "$30 copay", "$30 copay after deductible", "$30 copay after deductible"]},
+              {"label": "Tier 2 (Preferred Brand)", "cells": ["Tier 2 (Preferred Brand)", "$100 copay", "$100 copay after deductible", "$100 copay after deductible"]},
+              {"label": "Tier 3 (Non-Preferred Brand)", "cells": ["Tier 3 (Non-Preferred Brand)", "$180 copay", "$180 copay after deductible", "$180 copay after deductible"]},
+              {"label": "Specialty", "cells": ["Specialty", "$300 copay", "$30/$100/$180 after deductible", "$30/$100/$180 after deductible"]}
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Dental",
+        "description": "MetLife dental plans with in-network and out-of-network coverage for preventive, basic, and major services.",
+        "category": "dental",
+        "contentParagraphs": [
+          "Dental plans are provided through MetLife and cover diagnostic/preventive care, basic, and major services. You can use any dentist, but in-network providers save you more.",
+          "To find an in-network dentist, visit www.metlife.com/dental or use MetLife's mobile app.",
+          "With a MetLife Plus dentist: no balance billing, no pre-payment required, quality assurance monitoring, and lower negotiated prices."
+        ],
+        "tables": [
+          {
+            "tableTitle": "Dental Plan Comparison",
+            "columns": [
+              {"key": "benefit", "label": "Benefit"},
+              {"key": "core-in", "label": "Core Plan", "subLabel": "In-Network"},
+              {"key": "core-out", "label": "Core Plan", "subLabel": "Out-of-Network"},
+              {"key": "enhanced-in", "label": "Enhanced Plan", "subLabel": "In-Network"},
+              {"key": "enhanced-out", "label": "Enhanced Plan", "subLabel": "Out-of-Network"}
+            ],
+            "rows": [
+              {"label": "Annual Deductible (Individual/Family)", "cells": ["Annual Deductible (Individual/Family)", "$50/$150", "$100/$300", "$50/$150", "$50/$150"]},
+              {"label": "Annual Maximum (per person)", "cells": ["Annual Maximum (per person)", "$1,750", "$1,750", "$2,500", "$2,500"]},
+              {"label": "Diagnostic & Preventive Care", "cells": ["Diagnostic & Preventive Care", "100% Covered", "100% Covered", "100% Covered", "100% Covered"]},
+              {"label": "Basic Services", "cells": ["Basic Services", "100% Covered", "20% + balance billing", "20% + balance billing", "20% + balance billing"]},
+              {"label": "Major Services", "cells": ["Major Services", "40%", "50%", "50%", "50% + balance billing"]},
+              {"label": "Orthodontia", "cells": ["Orthodontia", "50% (children to age 19)", "50%", "50% (adults covered)", "50%"]},
+              {"label": "Orthodontia Lifetime Maximum", "cells": ["Orthodontia Lifetime Maximum", "$1,500", "$1,500", "$1,500", "$1,500"]}
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Vision",
+        "description": "VSP vision plans covering eye exams, frames, lenses, and contacts — with discounts on LASIK.",
+        "category": "vision",
+        "contentParagraphs": [
+          "Vision benefits are provided through Vision Service Plan (VSP) and cover eye exams, lenses, frames, contact lenses, and laser surgery discounts.",
+          "In-network providers offer higher benefits at lower cost. Visit www.vsp.com to find a provider.",
+          "Associates can elect dental and/or vision regardless of their medical enrollment status."
+        ],
+        "tables": [
+          {
+            "tableTitle": "Vision Plan Comparison",
+            "columns": [
+              {"key": "benefit", "label": "Benefit"},
+              {"key": "core-in", "label": "Core VSP", "subLabel": "In-Network"},
+              {"key": "core-out", "label": "Core VSP", "subLabel": "Out-of-Network"},
+              {"key": "enhanced-in", "label": "Enhanced VSP", "subLabel": "In-Network"},
+              {"key": "enhanced-out", "label": "Enhanced VSP", "subLabel": "Out-of-Network"}
+            ],
+            "rows": [
+              {"label": "Eye Exam (every 12 months)", "cells": ["Eye Exam (every 12 months)", "$10 copay", "Up to $45", "$10 copay", "Up to $45"]},
+              {"label": "Frames (every 24 months)", "cells": ["Frames (every 24 months)", "$130 allowance, then 20% off", "Up to $70", "$200 allowance, then 20% off", "Up to $70"]},
+              {"label": "Single Lenses (every 12 months)", "cells": ["Single Lenses (every 12 months)", "Up to $30", "", "Up to $30", ""]},
+              {"label": "Bifocal Lenses", "cells": ["Bifocal Lenses", "$15 copay", "Up to $50", "$15 copay", "Up to $50"]},
+              {"label": "Trifocal Lenses", "cells": ["Trifocal Lenses", "Up to $65", "", "Up to $65", ""]},
+              {"label": "Elective Contacts (every 12 months)", "cells": ["Elective Contacts (every 12 months)", "$150 allowance", "Up to $105", "$200 allowance", "Up to $105"]},
+              {"label": "Medically Necessary Contacts", "cells": ["Medically Necessary Contacts", "100% covered", "Up to $210", "100% covered", "Up to $210"]}
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Associate Payroll Contributions",
+        "description": "Bi-weekly premium amounts for medical, dental, and vision coverage based on coverage tier.",
+        "category": "overview",
+        "contentParagraphs": [
+          "The following are bi-weekly (per paycheck) payroll deductions for medical, dental, and vision coverage."
+        ],
+        "tables": [
+          {
+            "tableTitle": "Bi-Weekly Medical Premiums",
+            "columns": [
+              {"key": "tier", "label": "Coverage Tier"},
+              {"key": "ppo", "label": "PPO Plan"},
+              {"key": "prime-hdhp", "label": "Prime HDHP"},
+              {"key": "alt-hdhp", "label": "Alternate HDHP"}
+            ],
+            "rows": [
+              {"label": "Associate", "cells": ["Associate", "$159.98", "$71.24", "$41.03"]},
+              {"label": "Associate + Spouse", "cells": ["Associate + Spouse", "$362.40", "$183.65", "$126.02"]},
+              {"label": "Associate + Child(ren)", "cells": ["Associate + Child(ren)", "$299.78", "$150.36", "$102.94"]},
+              {"label": "Family", "cells": ["Family", "$552.04", "$288.80", "$199.99"]}
+            ]
+          },
+          {
+            "tableTitle": "Bi-Weekly Dental Premiums",
+            "columns": [
+              {"key": "tier", "label": "Coverage Tier"},
+              {"key": "core", "label": "Core Dental Plan"},
+              {"key": "enhanced", "label": "Enhanced Dental Plan"}
+            ],
+            "rows": [
+              {"label": "Associate", "cells": ["Associate", "$4.67", "$6.99"]},
+              {"label": "Associate + Spouse", "cells": ["Associate + Spouse", "$13.80", "$19.87"]},
+              {"label": "Associate + Child(ren)", "cells": ["Associate + Child(ren)", "$12.11", "$17.81"]},
+              {"label": "Family", "cells": ["Family", "$20.96", "$30.68"]}
+            ]
+          },
+          {
+            "tableTitle": "Bi-Weekly Vision Premiums",
+            "columns": [
+              {"key": "tier", "label": "Coverage Tier"},
+              {"key": "core", "label": "Core VSP Plan"},
+              {"key": "enhanced", "label": "Enhanced VSP Plan"}
+            ],
+            "rows": [
+              {"label": "Associate", "cells": ["Associate", "$3.90", "$8.98"]},
+              {"label": "Associate + Spouse", "cells": ["Associate + Spouse", "$7.81", "$17.96"]},
+              {"label": "Associate + Child(ren)", "cells": ["Associate + Child(ren)", "$8.36", "$19.22"]},
+              {"label": "Family", "cells": ["Family", "$13.32", "$30.65"]}
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Health Savings Account (HSA)",
+        "description": "Triple tax-advantaged savings account available with Prime HDHP and Alternate HDHP enrollment.",
+        "category": "hsa",
+        "contentParagraphs": [
+          "A Health Savings Account (HSA) is paired with a High Deductible Health Plan (HDHP) and provides a triple tax advantage: contributions are tax-free, interest earned is tax-free, and withdrawals for qualified health expenses are tax-free.",
+          "Access and manage your HSA through your Fidelity NetBenefits account at NetBenefits.com.",
+          "Unspent HSA dollars roll over each year and are yours to keep — even if you retire or leave RS&H. You can invest your HSA funds for long-term growth."
+        ],
+        "sections": [
+          {
+            "title": "HSA Eligibility Requirements",
+            "paragraphs": [
+              "Enrolled in Prime HDHP or Alternate HDHP",
+              "Not covered by a spouse's non-HDHP plan",
+              "Not enrolled in Medicare, TRICARE, or TRICARE for Life",
+              "No one else can claim you as a dependent",
+              "Have not received VA benefits in the past 3 months"
+            ],
+            "isList": true
+          }
+        ],
+        "tables": [
+          {
+            "tableTitle": "RS&H HSA Employer Contribution (Annual)",
+            "columns": [
+              {"key": "tier", "label": "Coverage Tier"},
+              {"key": "prime", "label": "Prime HDHP"},
+              {"key": "alternate", "label": "Alternate HDHP"}
+            ],
+            "rows": [
+              {"label": "Associate Only", "cells": ["Associate Only", "$600", "$800"]},
+              {"label": "All Others (Family Tiers)", "cells": ["All Others (Family Tiers)", "$1,200", "$1,400"]}
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Flexible Spending Account (FSA)",
+        "description": "Tax-advantaged accounts to pay for eligible healthcare, dependent care, transit, and parking expenses with pre-tax dollars.",
+        "category": "fsa-hsa",
+        "contentParagraphs": [
+          "A Flexible Spending Account (FSA) lets you set aside pre-tax dollars to pay for eligible healthcare or dependent care expenses.",
+          "Eligible claims must be incurred between January 1 and December 31. All claims must be submitted by March 15.",
+          "Up to $660 of unused Healthcare FSA funds may roll over to the new plan year. Any unused amount above $660 is forfeited.",
+          "HDHP enrollees must use a Limited Purpose FSA (dental and vision expenses only)."
+        ],
+        "tables": [
+          {
+            "tableTitle": "FSA Plan Comparison",
+            "columns": [
+              {"key": "feature", "label": "Feature"},
+              {"key": "healthcare", "label": "Healthcare FSA"},
+              {"key": "limited", "label": "Limited Purpose FSA"},
+              {"key": "dependent", "label": "Dependent Care FSA"}
+            ],
+            "rows": [
+              {"label": "Who Can Enroll", "cells": ["Who Can Enroll", "PPO or waived medical", "Prime HDHP or Alternate HDHP", "Associates with qualifying dependents"]},
+              {"label": "Annual Contribution Limit", "cells": ["Annual Contribution Limit", "$3,400", "$3,400", "$7,500 (or $3,750 if married filing separately)"]},
+              {"label": "Eligible Expenses", "cells": ["Eligible Expenses", "Medical, dental, vision, and other IRS-qualified expenses", "Dental and vision expenses only", "Dependent care for children under 13, disabled dependents, elderly parents in-home"]}
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Transit and Parking FSA",
+        "description": "Pre-tax accounts to pay for eligible commuting and work parking expenses.",
+        "category": "fsa-hsa",
+        "contentParagraphs": [
+          "A Transit FSA lets you use pre-tax dollars to pay for mass transit commuting expenses (train, bus, ferry). Contribute up to $340 per month in 2026.",
+          "A Parking FSA lets you pay for eligible work-related parking expenses (ramp or park-and-ride) with pre-tax dollars.",
+          "You may enroll in Transit or Parking FSAs at any time during the year — no qualifying event required.",
+          "Manage and access reimbursements through your Fidelity NetBenefits account at NetBenefits.com. Note: IRS regulations do not permit reimbursements for expenses older than 180 days."
+        ],
+        "sections": [
+          {
+            "title": "Ineligible Transit Expenses",
+            "paragraphs": [
+              "Tunnel, bridge, or highway tolls (EZ Pass)",
+              "Fuel, mileage, or other costs to operate a personal vehicle or taxi",
+              "Non-work related transportation or parking",
+              "Travel from office to business or client meetings",
+              "Transit or parking expenses of your spouse or dependents"
+            ],
+            "isList": true
+          }
+        ]
+      },
+      {
+        "title": "Life Insurance",
+        "description": "Basic Life and AD&D provided at no cost, plus voluntary supplemental coverage for you and your dependents through Mutual of Omaha.",
+        "category": "life-insurance",
+        "contentParagraphs": [
+          "RS&H provides Basic Life Insurance and Accidental Death & Dismemberment (AD&D) at no cost in the amount of your annual salary (up to $1,000,000) through Mutual of Omaha.",
+          "Although coverage is automatic, you must designate a beneficiary. Please keep your beneficiary designation up to date.",
+          "At age 65, your basic life insurance coverage begins to reduce: 35% reduction at 65, 45% at 70, 70% at 75, and 80% at 80."
+        ],
+        "tables": [
+          {
+            "tableTitle": "Voluntary Life Insurance Options",
+            "columns": [
+              {"key": "type", "label": "Coverage Type"},
+              {"key": "benefit", "label": "Benefit Amount"},
+              {"key": "gi", "label": "Guaranteed Issue (New Hire)"}
+            ],
+            "rows": [
+              {"label": "Voluntary Associate Life", "cells": ["Voluntary Associate Life", "Increments of $10,000 up to $450,000", "$250,000"]},
+              {"label": "Voluntary Spouse Life", "cells": ["Voluntary Spouse Life", "Increments of $5,000 up to $225,000", "$50,000"]},
+              {"label": "Voluntary Child Life", "cells": ["Voluntary Child Life", "Increments of $5,000 up to $10,000", "N/A"]}
+            ]
+          },
+          {
+            "tableTitle": "Voluntary AD&D Coverage",
+            "columns": [
+              {"key": "feature", "label": "Feature"},
+              {"key": "detail", "label": "Detail"}
+            ],
+            "rows": [
+              {"label": "Available Increments", "cells": ["Available Increments", "$25,000"]},
+              {"label": "Maximum Coverage", "cells": ["Maximum Coverage", "$500,000 (amounts over $250,000 cannot exceed 10x annual salary)"]},
+              {"label": "Family — Spouse Only", "cells": ["Family — Spouse Only", "50% of your total AD&D coverage"]},
+              {"label": "Family — Child Only", "cells": ["Family — Child Only", "15% of your total AD&D coverage per child"]},
+              {"label": "Family — Spouse & Child", "cells": ["Family — Spouse & Child", "40% for spouse, 10% per child"]}
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Disability Insurance",
+        "description": "Short-term and long-term disability coverage through Mutual of Omaha — protecting your income when you can't work.",
+        "category": "disability",
+        "contentParagraphs": [
+          "Short-Term Disability (STD) Core Plan is provided by RS&H at no cost. Benefits begin after 7 calendar days and pay 60% of income up to $3,500/week for up to 180 days.",
+          "A STD Buy-Up Plan is available for purchase, providing an additional 30% of income (up to $2,000/week). Buy-Up benefits are tax-free income.",
+          "Long-Term Disability (LTD) is provided at no cost. Benefits begin after 180 calendar days and pay 60% of income up to $20,000/month until Social Security Normal Retirement Age."
+        ],
+        "tables": [
+          {
+            "tableTitle": "Short-Term Disability Comparison",
+            "columns": [
+              {"key": "feature", "label": "Feature"},
+              {"key": "core", "label": "STD Core Plan"},
+              {"key": "buyup", "label": "STD Buy-Up Plan"}
+            ],
+            "rows": [
+              {"label": "Your Cost", "cells": ["Your Cost", "No cost (RS&H provided)", "Depends on your earnings"]},
+              {"label": "When Benefits Begin", "cells": ["When Benefits Begin", "After 7 calendar days", "After 7 calendar days"]},
+              {"label": "Benefit Amount", "cells": ["Benefit Amount", "60% of income, max $3,500/week", "Additional 30% of income, max $2,000/week"]},
+              {"label": "Duration", "cells": ["Duration", "Up to 180 days", "Up to 180 days"]},
+              {"label": "Tax Status", "cells": ["Tax Status", "Benefits are taxable income", "Benefits are tax-free income"]}
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Voluntary Benefits",
+        "description": "Supplemental insurance options including Accident Insurance and Critical Illness/Cancer coverage through Mutual of Omaha.",
+        "category": "supplemental",
+        "contentParagraphs": [
+          "Voluntary benefits are designed to protect your family's finances in case of an unforeseen injury or illness. These benefits are offered through Mutual of Omaha.",
+          "You may take these policies with you if you retire or leave RS&H."
+        ],
+        "sections": [
+          {
+            "title": "Accident Insurance Highlights",
+            "paragraphs": [
+              "Family coverage available; no medical questions required",
+              "Coverage applies any time of day — on or off the job",
+              "Pays per covered accident with no limit on number of accidents",
+              "Portable: take the policy with you if you leave RS&H",
+              "$50 Health Screening Benefit per person per year"
+            ],
+            "isList": true
+          },
+          {
+            "title": "Critical Illness & Cancer Covered Conditions",
+            "paragraphs": [
+              "Cancer",
+              "Heart Attack",
+              "Stroke",
+              "Coronary Bypass Surgery",
+              "Major Organ Transplant",
+              "Advanced Parkinson's / Alzheimer's",
+              "End Stage Renal Failure",
+              "Childhood and Developmental Conditions",
+              "And MORE!"
+            ],
+            "isList": true
+          }
+        ],
+        "tables": [
+          {
+            "tableTitle": "Accident Insurance — Key Benefits",
+            "columns": [
+              {"key": "service", "label": "Service"},
+              {"key": "benefit", "label": "Coverage Amount"}
+            ],
+            "rows": [
+              {"label": "Urgent Care / X-Ray", "cells": ["Urgent Care / X-Ray", "$125 / $150"]},
+              {"label": "Hospital Admission", "cells": ["Hospital Admission", "$2,500 + $700/day (up to 365 days)"]},
+              {"label": "Fracture / Dislocation", "cells": ["Fracture / Dislocation", "Up to $5,000 / $6,000 (by schedule)"]},
+              {"label": "Appliance (Crutches, Wheelchair, Walker)", "cells": ["Appliance (Crutches, Wheelchair, Walker)", "$200"]},
+              {"label": "Health Screening Benefit (per person/year)", "cells": ["Health Screening Benefit (per person/year)", "$50"]}
+            ]
+          },
+          {
+            "tableTitle": "Accident Insurance — Bi-Weekly Premiums",
+            "columns": [
+              {"key": "tier", "label": "Coverage Tier"},
+              {"key": "cost", "label": "Bi-Weekly Cost"}
+            ],
+            "rows": [
+              {"label": "Associate Only", "cells": ["Associate Only", "$5.08"]},
+              {"label": "Associate + Spouse", "cells": ["Associate + Spouse", "$7.38"]},
+              {"label": "Associate + Child(ren)", "cells": ["Associate + Child(ren)", "$11.54"]},
+              {"label": "Family", "cells": ["Family", "$13.38"]}
+            ]
+          },
+          {
+            "tableTitle": "Critical Illness & Cancer — Benefit Amounts",
+            "columns": [
+              {"key": "coverage", "label": "Coverage"},
+              {"key": "benefit", "label": "Lump Sum Benefit"}
+            ],
+            "rows": [
+              {"label": "Associate Only", "cells": ["Associate Only", "$10,000"]},
+              {"label": "Covered Spouse", "cells": ["Covered Spouse", "$10,000"]},
+              {"label": "Covered Dependent Child", "cells": ["Covered Dependent Child", "$5,000"]}
+            ]
+          }
+        ]
+      },
+      {
+        "title": "401(k) Retirement Savings Plan",
+        "description": "Save for retirement with pre-tax or Roth contributions and a 50% RS&H company match on up to 6% of pay.",
+        "category": "retirement",
+        "contentParagraphs": [
+          "The RS&H 401(k) plan lets you contribute part of your salary toward retirement while deferring taxes. A Roth 401(k) option is also available.",
+          "All new associates are automatically enrolled at 6% of pay (pre-tax) into T. Rowe Price Target Date Retirement Funds. You have ~45 days from hire to opt out or change elections via NetBenefits.com or 1-800-835-5095.",
+          "RS&H matches 50% of your contributions up to 6% of pay. Of the match, 2/3 is contributed in cash each pay period and 1/3 is contributed in company stock annually.",
+          "All associates over age 18 — including temporary and part-time — are eligible to participate."
+        ],
+        "tables": [
+          {
+            "tableTitle": "2026 Annual Contribution Limits",
+            "columns": [
+              {"key": "age", "label": "Age Group"},
+              {"key": "standard", "label": "Standard Limit"},
+              {"key": "total", "label": "Total with Catch-Up"}
+            ],
+            "rows": [
+              {"label": "Under 50", "cells": ["Under 50", "$24,500", "$24,500"]},
+              {"label": "Age 50–59", "cells": ["Age 50–59", "$24,500", "$32,500 (with catch-up)"]},
+              {"label": "Age 60–63 (Super Catch-Up)", "cells": ["Age 60–63 (Super Catch-Up)", "$24,500", "$35,750 (super catch-up)"]},
+              {"label": "Age 64+", "cells": ["Age 64+", "$24,500", "$32,500 (standard catch-up)"]}
+            ]
+          },
+          {
+            "tableTitle": "Vesting Schedule — Company Match",
+            "columns": [
+              {"key": "years", "label": "Years of Service"},
+              {"key": "vested", "label": "Vesting Percentage"}
+            ],
+            "rows": [
+              {"label": "Less than 1 year", "cells": ["Less than 1 year", "0%"]},
+              {"label": "1 but less than 2 years", "cells": ["1 but less than 2 years", "20%"]},
+              {"label": "2 but less than 3 years", "cells": ["2 but less than 3 years", "40%"]},
+              {"label": "3 but less than 4 years", "cells": ["3 but less than 4 years", "60%"]},
+              {"label": "4 but less than 5 years", "cells": ["4 but less than 5 years", "80%"]},
+              {"label": "5 or more years", "cells": ["5 or more years", "100%"]}
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Employee Assistance Program (EAP)",
+        "description": "Free, confidential counseling and life navigation services available 24/7 to all associates and their families through Health Advocate.",
+        "category": "eap",
+        "contentParagraphs": [
+          "RS&H offers all associates and their families access to a confidential Employee Assistance Program (EAP) through Health Advocate — available 24/7.",
+          "Six free visits (virtual or in person) per incident with licensed professionals. Phone, face-to-face, and web-based assistance available.",
+          "Contact: 1-866-799-2728 | www.healthadvocate.com/members | Plan: RS&H"
+        ],
+        "sections": [
+          {
+            "title": "EAP Services Include",
+            "paragraphs": [
+              "Stress, depression, and substance abuse counseling",
+              "Anxiety, grief, and eating disorder support",
+              "Child and elder care navigation",
+              "Debt, bankruptcy, and financial counseling",
+              "Divorce, child custody, and family law guidance",
+              "Wills, estate planning, and legal referrals",
+              "Adoption, pregnancy, and military life support",
+              "Cancer, heart health, and chronic condition coaching",
+              "And much more"
+            ],
+            "isList": true
+          }
+        ]
+      },
+      {
+        "title": "Additional Voluntary Benefits",
+        "description": "Identity theft protection, pet insurance, legal plan, and auto insurance available through payroll deduction.",
+        "category": "voluntary-benefits",
+        "contentParagraphs": [
+          "RS&H offers a range of additional voluntary benefits to support your everyday life — all available through convenient payroll deduction."
+        ],
+        "sections": [
+          {
+            "title": "Identity Theft Protection — Allstate",
+            "paragraphs": [
+              "Up to $1 million reimbursement per person / $2 million per family",
+              "Tri-bureau credit, dark web, and social media monitoring",
+              "24/7 fraud recovery alerts (email, mobile, app)",
+              "Military-grade VPN, Password Manager, and personal device protection",
+              "Monthly cost: Associate Only $9.50 | Associate + Family $17.50",
+              "Contact: 1-800-789-2720 | www.myaip.com/rsandh"
+            ],
+            "isList": true
+          },
+          {
+            "title": "Pet Insurance — PetPartners",
+            "paragraphs": [
+              "Comprehensive coverage for accidents, illnesses, injuries, and cancer for dogs and cats",
+              "Enroll anytime at www.petpartners.com/enroll?p=RSandH — use discount code RSH10",
+              "Contact: 1-866-774-1113 | help@petpartners.com"
+            ],
+            "isList": true
+          },
+          {
+            "title": "Legal Plan — MetLife MetLaw",
+            "paragraphs": [
+              "Covers associate, spouse, and dependents for a flat bi-weekly fee of $10.38",
+              "Unlimited telephone and office consultations on personal legal matters",
+              "Services: estate planning, immigration, document review, elder law, family law",
+              "Contact: 1-800-821-6400 | info.legalplans.com"
+            ],
+            "isList": true
+          },
+          {
+            "title": "Auto Insurance — Farmers GroupSelect",
+            "paragraphs": [
+              "Discounted group rates through Farmers GroupSelect",
+              "Paid via convenient payroll deductions; coverage stays with you if you change jobs",
+              "Contact: 1-800-422-4272"
+            ],
+            "isList": true
+          }
+        ]
+      },
+      {
+        "title": "Paid Time Off & Other Benefits",
+        "description": "Vacation, holidays, personal leave, paid parental leave, bereavement, and other time-off programs at RS&H.",
+        "category": "paid-time-off",
+        "contentParagraphs": [
+          "RS&H observes 8 paid holidays annually plus one floating holiday per accrual year.",
+          "Vacation is credited based on tenure, with up to 20 days per year for associates with 20+ years of service.",
+          "Personal Leave (PL) is available for personal illness, family emergencies, medical appointments, and other situations. Unused PL transfers to a Leave Bank (max 240 hours) for qualified FMLA leaves."
+        ],
+        "sections": [
+          {
+            "title": "Observed Holidays",
+            "paragraphs": [
+              "New Year's Day",
+              "Martin Luther King Jr. Day",
+              "Memorial Day",
+              "Independence Day",
+              "Labor Day",
+              "Thanksgiving",
+              "Day after Thanksgiving",
+              "Christmas Day",
+              "Plus one Floating Holiday per accrual year"
+            ],
+            "isList": true
+          },
+          {
+            "title": "Paid Parental Leave",
+            "paragraphs": [
+              "Up to 2 weeks of paid parental leave for the birth (including surrogacy) or adoption of a child age 17 and under",
+              "Associates with accrued Leave Bank hours may use up to 40 additional hours (1 week) for a total of 3 weeks",
+              "Available to all benefit-eligible associates"
+            ],
+            "isList": true
+          },
+          {
+            "title": "Other Leave Programs",
+            "paragraphs": [
+              "Bereavement Leave: up to 3 days for immediate family members",
+              "Jury Duty: paid leave for the duration of jury service",
+              "Flexible Work Arrangements: available where applicable"
+            ],
+            "isList": true
+          }
+        ],
+        "tables": [
+          {
+            "tableTitle": "Vacation Accrual Schedule",
+            "columns": [
+              {"key": "tenure", "label": "Years of Service"},
+              {"key": "days", "label": "Vacation Days"}
+            ],
+            "rows": [
+              {"label": "New Hire (first year)", "cells": ["New Hire (first year)", "Pro-rated (3.07 hrs/payroll period)"]},
+              {"label": "1 but less than 3 years", "cells": ["1 but less than 3 years", "10 days"]},
+              {"label": "3 but less than 5 years", "cells": ["3 but less than 5 years", "12 days"]},
+              {"label": "5 but less than 7 years", "cells": ["5 but less than 7 years", "15 days"]},
+              {"label": "7 but less than 9 years", "cells": ["7 but less than 9 years", "16 days"]},
+              {"label": "9 but less than 12 years", "cells": ["9 but less than 12 years", "17 days"]},
+              {"label": "12 but less than 15 years", "cells": ["12 but less than 15 years", "18 days"]},
+              {"label": "15 but less than 20 years", "cells": ["15 but less than 20 years", "19 days"]},
+              {"label": "20 or more years", "cells": ["20 or more years", "20 days"]}
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Benefit Resources & Contacts",
+        "description": "Glossary of key benefit terms and complete contact directory for all RS&H benefit carriers.",
+        "category": "other",
+        "contentParagraphs": [
+          "The following glossary defines common benefit terms. Use the contact directory below to reach your benefit carriers directly."
+        ],
+        "sections": [
+          {
+            "title": "Glossary of Key Terms",
+            "paragraphs": [
+              "Copayment (Copay): Fixed dollar amount you pay for certain in-network services on a PPO plan.",
+              "Coinsurance: Your percentage share of costs after meeting the deductible (e.g., you pay 20%, plan pays 80%).",
+              "Deductible: The amount you must pay before your plan begins paying coinsurance. Copay services typically don't apply to the deductible.",
+              "Out-of-Pocket Maximum: The most you will pay in a plan year; after this the plan pays 100% of covered benefits.",
+              "Formulary: The list of prescription drugs covered by the plan.",
+              "In-Network: Providers who have a negotiated rate agreement with your plan — lower cost to you.",
+              "Out-of-Network: Providers without a plan agreement — you pay more and may face balance billing.",
+              "Balance Billing: When an out-of-network provider bills you for the difference between their rate and what insurance pays."
+            ],
+            "isList": true
+          }
+        ]
+      }
+    ]
+  }
+}

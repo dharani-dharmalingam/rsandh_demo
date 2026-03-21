@@ -1,146 +1,100 @@
 ---
 name: pdf-to-markdown-llamaparse
-description: Convert PDF files to Markdown using LlamaParse (Llama Cloud). Use this skill whenever the user wants to parse a PDF into markdown, extract text from PDFs for downstream processing, or prepare PDF content for variable extraction or AI analysis. Trigger on any mention of PDF-to-markdown, document parsing, LlamaParse, Llama Cloud, "parse this PDF", "convert benefits guide", or uploading a PDF as the first step of the microsite pipeline.
+description: Convert PDF files to Markdown using LlamaParse (Llama Cloud). Use this skill whenever the user wants to parse a PDF into markdown, extract text from PDFs for downstream processing, or prepare PDF content for variable extraction or AI analysis. Trigger on any mention of PDF-to-markdown, document parsing, LlamaParse, Llama Cloud, "parse this PDF", "convert benefits guide", "parse the PDF for <slug>", uploading a PDF as the first step of the microsite pipeline.
 ---
 
-# PDF to Markdown with LlamaParse
+# Skill 1 — PDF to Markdown (LlamaParse)
 
-Convert a PDF benefits guide (or any employer document) to Markdown using the LlamaParse API. The output feeds the `extract-document-variables` skill in the microsite pipeline.
-
-## Important: LlamaParse vs LlamaExtract
-
-This project's existing import pipeline (`lib/benefits-import/extract.ts`) uses **LlamaExtract** — it sends a JSON schema alongside the PDF and gets structured JSON back directly (no markdown intermediate). That flow is exposed in the admin UI at `/admin`.
-
-**This skill uses LlamaParse instead** — it converts the PDF to markdown first. Use this when:
-- You want a human-readable intermediate for review before extraction.
-- The PDF doesn't fit the structured extraction schemas well.
-- You need markdown as input for LLM-assisted variable extraction.
-
-Both LlamaParse and LlamaExtract share the same API key (`LLAMA_CLOUD_API_KEY`) and base URL (`https://api.cloud.llamaindex.ai`).
+**Pipeline role:** First step. Downloads the PDF from Supabase Storage, converts it to Markdown via LlamaParse, and saves the result to the `parsed_documents` table for review and Skill 2.
 
 ## Pipeline context
 
 ```
-PDF  →  [this skill]  →  content/<slug>-parsed.md
-     →  extract-document-variables
-     →  microsite-from-template
+Supabase Storage: {slug}/benefits-guide.pdf
+     ↓  [this skill — POST /api/pipeline/parse]
+parsed_documents table: { slug, markdown, word_count, storage_path }
+     ↓
+Skill 2: extract-document-variables
 ```
 
 ## Prerequisites
 
-- `LLAMA_CLOUD_API_KEY` in `.env.local` (already used by the project for LlamaExtract).
-- The PDF must be accessible as a local file path or a Supabase storage path.
+- PDF already uploaded to Supabase Storage at `{slug}/benefits-guide.pdf`
+  (the admin upload step or a direct Supabase upload handles this)
+- `LLAMA_CLOUD_API_KEY` set in environment
+- Supabase configured (`NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`)
 
 ## Steps
 
-### 1. Resolve the PDF
+### 1. Call the parse API
 
-- **Local file**: use the path directly (e.g. `content/uploads/<slug>-benefits-guide.pdf`).
-- **Supabase storage** (e.g. `rs-h/benefits-guide.pdf`): download using `downloadAsBuffer(path)` from `lib/supabase/storage.ts`.
+```http
+POST /api/pipeline/parse
+Content-Type: application/json
 
-### 2. Call LlamaParse
+{ "slug": "<employer-slug>" }
+```
 
-#### Option A: REST API (recommended — mirrors project conventions)
+Example:
+```http
+POST /api/pipeline/parse
+{ "slug": "rs-h" }
+```
 
-The project already calls `api.cloud.llamaindex.ai` in `lib/benefits-import/extract.ts`. LlamaParse uses the same host but the `/api/v1/parsing` endpoints.
+### 2. Show the checkpoint output
 
-```typescript
-import fs from 'fs'
+The API returns:
 
-const apiKey = process.env.LLAMA_CLOUD_API_KEY!
-const LLAMA_API_BASE = 'https://api.cloud.llamaindex.ai'
-
-// 1. Upload the file
-const formData = new FormData()
-formData.append('file', new Blob([fs.readFileSync(pdfPath)]), 'benefits-guide.pdf')
-
-const uploadRes = await fetch(`${LLAMA_API_BASE}/api/v1/parsing/upload`, {
-  method: 'POST',
-  headers: { Authorization: `Bearer ${apiKey}` },
-  body: formData,
-})
-const { id: jobId } = await uploadRes.json()
-
-// 2. Poll for completion
-let status = 'PENDING'
-while (status === 'PENDING' || status === 'RUNNING') {
-  await new Promise(r => setTimeout(r, 5000))
-  const statusRes = await fetch(`${LLAMA_API_BASE}/api/v1/parsing/job/${jobId}`, {
-    headers: { Authorization: `Bearer ${apiKey}` },
-  })
-  const job = await statusRes.json()
-  status = job.status
+```json
+{
+  "success": true,
+  "slug": "rs-h",
+  "wordCount": 4218,
+  "sectionCount": 12,
+  "storagePath": "rs-h/benefits-guide.pdf",
+  "preview": "## Medical Benefits\n\n| Plan | PPO | HDHP |...",
+  "nextStep": "Markdown saved. Review the preview above, then say: \"extract variables for rs-h\""
 }
-
-// 3. Fetch markdown result
-const resultRes = await fetch(`${LLAMA_API_BASE}/api/v1/parsing/job/${jobId}/result/markdown`, {
-  headers: { Authorization: `Bearer ${apiKey}` },
-})
-const { markdown } = await resultRes.json()
 ```
 
-If the exact endpoint paths have changed, consult the LlamaParse API docs (v2). The pattern is always: upload → poll → fetch result.
+Display this to the user:
+- Word count and section count — are they reasonable for a benefits guide?
+- Preview — do headings and table structure look correct?
+- Flag any obvious issues: garbled text, missing sections, empty preview
 
-#### Option B: Python SDK
+### 3. Prompt for Skill 2
 
-```bash
-pip install llama-cloud>=1.0
-```
+After showing the output, say:
 
-```python
-from llama_cloud import AsyncLlamaCloud
-import asyncio, os
+> Parsed markdown saved to `parsed_documents` for **{slug}** ({wordCount} words, {sectionCount} sections).
+>
+> **Preview:**
+> ```
+> {preview}
+> ```
+>
+> Does the structure look correct? If yes, say: **"extract variables for {slug}"**
 
-async def parse_pdf(pdf_path: str) -> str:
-    client = AsyncLlamaCloud(token=os.environ["LLAMA_CLOUD_API_KEY"])
-    file_obj = await client.files.create(file=pdf_path, purpose="parse")
-    result = await client.parsing.parse(
-        file_id=file_obj.id,
-        tier="agentic",
-        version="latest",
-        expand=["markdown"],
-    )
-    return "\n\n".join(page.markdown for page in result.markdown.pages)
+Wait for the user to confirm before triggering Skill 2.
 
-markdown = asyncio.run(parse_pdf("benefits-guide.pdf"))
-```
+## Quality notes
 
-#### Option C: Node SDK (@llamaindex/llama-cloud)
+- LlamaParse uses the `agentic` tier internally for benefits PDFs — preserves table structure as markdown tables.
+- If `sectionCount` is 0 or `wordCount` is under 500, flag it — the PDF may be scanned/image-only or password-protected.
+- If the preview shows garbled characters, the PDF encoding may need attention before proceeding.
 
-```bash
-npm install @llamaindex/llama-cloud
-```
+## What's stored
 
-Use the package's file upload and parsing APIs. The SDK wraps the same REST endpoints above. Refer to the package README for the current class names and method signatures.
-
-### 3. Save the output
-
-Write the markdown to `content/<slug>-parsed.md` (UTF-8). The slug should match the employer slug used for the microsite (e.g. `premier-america`, `rs-h`).
-
-```typescript
-import path from 'path'
-import fs from 'fs'
-
-const slug = 'premier-america'
-const outPath = path.join(process.cwd(), 'content', `${slug}-parsed.md`)
-fs.writeFileSync(outPath, markdown, 'utf-8')
-```
-
-## Quality tips
-
-- Use `tier: 'agentic'` for benefits PDFs — they have complex tables and multi-column layouts. The agentic tier preserves table structure as markdown tables, which is critical for the extraction step.
-- Preserve headings, bullet lists, and tables exactly — the variable extraction skill relies on markdown structure (`##` headings map to benefit chapters, markdown tables map to plan comparison tables).
-- If pages come back empty or garbled, check for password-protected PDFs or try a different tier.
-
-## Output
-
-| Item | Convention |
-|------|------------|
-| File | `content/<slug>-parsed.md` |
-| Encoding | UTF-8 |
-| Structure | Headings preserved; tables as markdown tables; lists as bullet/numbered |
+| Table | Column | Value |
+|---|---|---|
+| `parsed_documents` | `slug` | employer slug (PK) |
+| `parsed_documents` | `markdown` | full LlamaParse markdown |
+| `parsed_documents` | `storage_path` | `{slug}/benefits-guide.pdf` |
+| `parsed_documents` | `word_count` | integer |
 
 ## Next step
 
-Hand the output path to the `extract-document-variables` skill:
-> "Now extract variables from `content/premier-america-parsed.md`"
+Once the user confirms the preview looks good:
+> "extract variables for {slug}"
+
+This triggers Skill 2 (`extract-document-variables`).
