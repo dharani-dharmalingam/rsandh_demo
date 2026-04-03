@@ -3,6 +3,7 @@
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { FieldInput } from './field-input';
+import { SectionHeader } from './section-header';
 import { Plus, Trash2 } from 'lucide-react';
 import type { RetirementPlanningData, PlanningSection } from '@/lib/content/types';
 
@@ -37,6 +38,10 @@ export function RetirementPlanningEditor({ data, onChange }: Props) {
 
   return (
     <div className="space-y-6">
+      <SectionHeader
+        title="Retirement Planning"
+        description="Edit the retirement page hero, features, and planning section content."
+      />
       <Card className="border-slate-200 bg-white p-6 rounded-xl shadow-sm">
         <h3 className="text-base font-semibold text-slate-900 mb-4">Hero Section</h3>
         <div className="space-y-4">

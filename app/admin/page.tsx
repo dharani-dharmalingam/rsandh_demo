@@ -8,7 +8,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Save, Globe, Loader2, CheckCircle2, Upload, Building2, Users, ArrowRight } from 'lucide-react';
+import { Save, Globe, Loader2, CheckCircle2, Upload, Building2, Users, ArrowRight, Settings, Shield, CalendarDays, TrendingUp, ClipboardList, PiggyBank, ChevronRight } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Skeleton } from '@/components/ui/skeleton';
 import { SiteSettingsEditor } from '@/components/admin/site-settings-editor';
 import { BenefitsEditor } from '@/components/admin/benefits-editor';
 import { OpenEnrollmentEditor } from '@/components/admin/open-enrollment-editor';
@@ -35,6 +37,16 @@ function AdminPageContent() {
   const [status, setStatus] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState('clients');
+
+  const navItems = [
+    { id: 'import',     label: 'Import PDF',      icon: Upload },
+    { id: 'settings',   label: 'Site Settings',   icon: Settings },
+    { id: 'benefits',   label: 'Benefits',         icon: Shield },
+    { id: 'enrollment', label: 'Open Enrollment',  icon: CalendarDays },
+    { id: 'changes',    label: 'Benefit Changes',  icon: TrendingUp },
+    { id: 'checklist',  label: 'Checklist',        icon: ClipboardList },
+    { id: 'retirement', label: 'Retirement',       icon: PiggyBank },
+  ];
 
   const loadContent = useCallback(async () => {
     const employerParam = searchParams.get('employer');
@@ -138,11 +150,30 @@ function AdminPageContent() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="flex flex-col items-center gap-4 animate-fade-in">
-          <Loader2 className="h-10 w-10 animate-spin text-blue-500" />
-          <span className="text-sm font-medium text-slate-600">Loading...</span>
-        </div>
+      <div className="h-full overflow-y-auto">
+        <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-md shadow-sm">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="flex h-16 items-center gap-3">
+              <Skeleton className="h-9 w-9 rounded-lg shrink-0" />
+              <div className="space-y-1.5">
+                <Skeleton className="h-4 w-32" />
+                <Skeleton className="h-3 w-44" />
+              </div>
+            </div>
+          </div>
+        </header>
+        <main className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+          <Skeleton className="h-11 w-52 rounded-xl" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-28" />
+            <Skeleton className="h-3 w-64" />
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[...Array(6)].map((_, i) => (
+              <Skeleton key={i} className="h-[88px] rounded-xl" />
+            ))}
+          </div>
+        </main>
       </div>
     );
   }
@@ -150,7 +181,7 @@ function AdminPageContent() {
   // Global admin: Clients list + Import for new client
   if (isGlobalView) {
     return (
-      <div className="min-h-screen">
+      <div className="h-full overflow-y-auto">
         {/* Header */}
         <header className="sticky top-0 z-50 border-b border-blue-100 bg-white/80 backdrop-blur-md shadow-sm">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -200,9 +231,9 @@ function AdminPageContent() {
                 </p>
               </div>
               {employers.length === 0 ? (
-                <Card className="border-blue-100 bg-white/90 p-12 text-center rounded-2xl shadow-md opacity-0 animate-fade-up" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
-                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 mb-4">
-                    <Building2 className="h-7 w-7 text-blue-600" />
+                <Card className="border-slate-200 bg-white p-12 text-center rounded-xl shadow-sm opacity-0 animate-fade-up" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
+                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 mb-4">
+                    <Building2 className="h-7 w-7 text-blue-500" />
                   </div>
                   <p className="text-slate-700 font-semibold">No clients yet</p>
                   <p className="text-sm text-slate-500 mt-1 max-w-sm mx-auto">
@@ -218,23 +249,31 @@ function AdminPageContent() {
                   </Button>
                 </Card>
               ) : (
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   {employers.map((emp, index) => (
                     <Card
                       key={emp.slug}
-                      className="group border-blue-100/80 bg-white/90 rounded-2xl shadow-sm hover:shadow-lg hover:border-blue-200 overflow-hidden transition-all duration-300 hover:-translate-y-0.5 opacity-0 animate-fade-up"
+                      className="group relative border-slate-200 bg-white rounded-xl shadow-sm hover:shadow-md overflow-hidden transition-all duration-200 opacity-0 animate-fade-up"
                       style={{ animationDelay: `${120 + index * 60}ms`, animationFillMode: 'forwards' }}
                     >
-                      <Link href={`/admin?employer=${encodeURIComponent(emp.slug)}`} className="block p-5">
-                        <div className="flex items-start gap-4">
-                          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-md group-hover:scale-105 transition-transform duration-300">
-                            <Building2 className="h-5 w-5" />
+                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 to-indigo-500" />
+                      <Link href={`/admin?employer=${encodeURIComponent(emp.slug)}`} className="block pl-5 pr-4 py-4">
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-600 font-semibold text-sm group-hover:bg-blue-50 group-hover:text-blue-700 transition-colors">
+                            {emp.name.slice(0, 2).toUpperCase()}
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="font-semibold text-slate-800 truncate group-hover:text-blue-700 transition-colors">{emp.name}</p>
-                            <p className="text-xs text-slate-500 mt-0.5 font-mono">{emp.slug}</p>
+                            <p className="font-medium text-sm text-slate-800 truncate group-hover:text-blue-700 transition-colors">{emp.name}</p>
+                            <p className="text-xs text-slate-400 mt-0.5 font-mono">{emp.slug}</p>
                           </div>
-                          <ArrowRight className="h-4 w-4 shrink-0 text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all duration-200" />
+                          <ArrowRight className="h-4 w-4 shrink-0 text-slate-300 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all duration-200" />
+                        </div>
+                        <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between">
+                          <span className="text-xs text-slate-400 flex items-center gap-1.5">
+                            <Globe className="h-3 w-3" />
+                            Benefits Portal
+                          </span>
+                          <span className="text-xs text-blue-600 font-medium group-hover:underline">Edit content</span>
                         </div>
                       </Link>
                     </Card>
@@ -311,8 +350,8 @@ function AdminPageContent() {
   // Client context but no content yet: show Import tab only
   if (!content) {
     return (
-      <div className="min-h-screen">
-        <header className="sticky top-0 z-50 border-b border-blue-100 bg-white/80 backdrop-blur-md shadow-sm">
+      <div className="h-full flex flex-col overflow-hidden">
+        <header className="shrink-0 border-b border-blue-100 bg-white/80 backdrop-blur-md shadow-sm">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center gap-4">
               <Link
@@ -336,7 +375,7 @@ function AdminPageContent() {
             </div>
           </div>
         </header>
-        <main className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8">
+        <main className="flex-1 overflow-y-auto mx-auto max-w-6xl w-full px-4 sm:px-6 lg:px-8 py-8">
           <BenefitsImportWizard
             clientSlug={slug}
             onComplete={() => {
@@ -350,167 +389,149 @@ function AdminPageContent() {
   }
 
   return (
-    <div className="min-h-screen">
-      <header className="sticky top-0 z-50 border-b border-blue-100 bg-white/80 backdrop-blur-md shadow-sm">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between gap-4">
-            <div className="flex items-center gap-4 min-w-0">
-              <Link
-                href="/admin"
-                className="text-sm text-slate-600 hover:text-blue-600 shrink-0 transition-colors"
-              >
-                ← All clients
-              </Link>
-              <div className="h-4 w-px bg-slate-200 shrink-0" />
-              <div className="flex items-center gap-3 min-w-0">
-                <div className="h-8 w-8 shrink-0 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
-                  <Building2 className="h-4 w-4 text-white" />
-                </div>
-                <div className="min-w-0">
-                  <h1 className="text-lg font-semibold text-slate-800 truncate">
-                    {content.siteSettings?.clientName || slug}
-                  </h1>
-                  <p className="text-xs text-slate-500 flex items-center gap-1.5">
-                    {hasDraft ? (
-                      <>
-                        <span className="inline-block h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" />
-                        Unsaved draft
-                      </>
-                    ) : (
-                      <>
-                        <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                        Published
-                      </>
-                    )}
-                  </p>
-                </div>
-              </div>
+    <div className="h-full flex overflow-hidden">
+      {/* Sidebar */}
+      <aside className="w-56 shrink-0 bg-white border-r border-slate-200 flex flex-col shadow-sm">
+        {/* Client identity */}
+        <div className="p-4 border-b border-slate-100">
+          <Link
+            href="/admin"
+            className="text-xs text-slate-500 hover:text-blue-600 flex items-center gap-1 transition-colors mb-3"
+          >
+            ← All clients
+          </Link>
+          <div className="flex items-center gap-2.5">
+            <div className="h-8 w-8 shrink-0 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-sm">
+              <Building2 className="h-4 w-4 text-white" />
             </div>
-            <div className="flex items-center gap-3 shrink-0">
-              {status && (
-                <span className="text-sm text-emerald-600 flex items-center gap-1.5 animate-fade-in">
-                  <CheckCircle2 className="h-4 w-4" />
-                  {status}
-                </span>
-              )}
-              <Button variant="outline" size="sm" onClick={handleSave} disabled={saving} className="border-blue-200 text-blue-700 hover:bg-blue-50">
-                {saving ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : <Save className="h-4 w-4 mr-2" />}
-                Save Draft
-              </Button>
-              <Button size="sm" onClick={handlePublish} disabled={publishing} className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white shadow-md">
-                {publishing ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : <Globe className="h-4 w-4 mr-2" />}
-                Publish
-              </Button>
+            <div className="min-w-0">
+              <p className="text-sm font-semibold text-slate-800 truncate">
+                {content.siteSettings?.clientName || slug}
+              </p>
+              <Badge
+                variant="outline"
+                className={hasDraft
+                  ? 'text-amber-600 border-amber-200 bg-amber-50 text-[10px] px-1.5 py-0 h-4'
+                  : 'text-emerald-600 border-emerald-200 bg-emerald-50 text-[10px] px-1.5 py-0 h-4'}
+              >
+                {hasDraft ? 'Draft' : 'Published'}
+              </Badge>
             </div>
           </div>
         </div>
-      </header>
 
-      <main className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="h-11 bg-white/90 border border-blue-100 p-1 rounded-xl shadow-sm flex flex-wrap gap-1">
-            <TabsTrigger
-              value="import"
-              className="flex items-center gap-2 px-4 py-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg text-sm font-medium transition-all duration-200 hover:bg-blue-50 data-[state=inactive]:text-slate-600"
+        {/* Nav items */}
+        <nav className="flex-1 overflow-y-auto p-3 space-y-0.5">
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => setActiveTab(item.id)}
+              className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                activeTab === item.id
+                  ? 'bg-blue-50 text-blue-700'
+                  : 'text-slate-600 hover:bg-slate-50 hover:text-slate-800'
+              }`}
             >
-              <Upload className="h-3.5 w-3.5" />
-              Import
-            </TabsTrigger>
-            <TabsTrigger
-              value="settings"
-              className="flex items-center gap-2 px-4 py-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg text-sm font-medium transition-all duration-200 hover:bg-blue-50 data-[state=inactive]:text-slate-600"
-            >
-              Site Settings
-            </TabsTrigger>
-            <TabsTrigger
-              value="benefits"
-              className="flex items-center gap-2 px-4 py-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg text-sm font-medium transition-all duration-200 hover:bg-blue-50 data-[state=inactive]:text-slate-600"
-            >
-              Benefits
-            </TabsTrigger>
-            <TabsTrigger
-              value="enrollment"
-              className="flex items-center gap-2 px-4 py-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg text-sm font-medium transition-all duration-200 hover:bg-blue-50 data-[state=inactive]:text-slate-600"
-            >
-              Open Enrollment
-            </TabsTrigger>
-            <TabsTrigger
-              value="changes"
-              className="flex items-center gap-2 px-4 py-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg text-sm font-medium transition-all duration-200 hover:bg-blue-50 data-[state=inactive]:text-slate-600"
-            >
-              Benefit Changes
-            </TabsTrigger>
-            <TabsTrigger
-              value="checklist"
-              className="flex items-center gap-2 px-4 py-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg text-sm font-medium transition-all duration-200 hover:bg-blue-50 data-[state=inactive]:text-slate-600"
-            >
-              Checklist
-            </TabsTrigger>
-            <TabsTrigger
-              value="retirement"
-              className="flex items-center gap-2 px-4 py-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg text-sm font-medium transition-all duration-200 hover:bg-blue-50 data-[state=inactive]:text-slate-600"
-            >
-              Retirement
-            </TabsTrigger>
-          </TabsList>
+              <item.icon className={`h-4 w-4 shrink-0 ${activeTab === item.id ? 'text-blue-600' : 'text-slate-400'}`} />
+              {item.label}
+            </button>
+          ))}
+        </nav>
 
-          <TabsContent value="import">
-            <BenefitsImportWizard
-              clientSlug={slug}
-              onComplete={() => {
-                loadContent();
-                setActiveTab('benefits');
-              }}
-            />
-          </TabsContent>
+        {/* Save / Publish */}
+        <div className="p-4 border-t border-slate-100 space-y-2">
+          {status && (
+            <p className="text-xs text-emerald-600 flex items-center gap-1.5 pb-1 animate-fade-in">
+              <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
+              {status}
+            </p>
+          )}
+          {error && (
+            <p className="text-xs text-red-500 pb-1 truncate" title={error}>{error}</p>
+          )}
+          <Button variant="outline" size="sm" onClick={handleSave} disabled={saving} className="w-full border-blue-200 text-blue-700 hover:bg-blue-50">
+            {saving ? <Loader2 className="h-4 w-4 animate-spin mr-1.5" /> : <Save className="h-4 w-4 mr-1.5" />}
+            Save Draft
+          </Button>
+          <Button size="sm" onClick={handlePublish} disabled={publishing} className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white shadow-sm">
+            {publishing ? <Loader2 className="h-4 w-4 animate-spin mr-1.5" /> : <Globe className="h-4 w-4 mr-1.5" />}
+            Publish
+          </Button>
+        </div>
+      </aside>
 
-          <TabsContent value="settings">
-            <SiteSettingsEditor
-              data={content.siteSettings}
-              clientData={content.client}
-              onChange={(settings) => updateSection('siteSettings', settings)}
-              onClientChange={(client) => updateSection('client', client)}
-            />
-          </TabsContent>
+      {/* Main area */}
+      <div className="flex-1 flex flex-col overflow-hidden bg-slate-50/80">
+        {/* Topbar breadcrumb */}
+        <header className="h-14 shrink-0 border-b border-slate-200 bg-white/90 backdrop-blur-sm flex items-center px-6 gap-2">
+          <span className="text-sm text-slate-400">Benefits Admin</span>
+          <ChevronRight className="h-4 w-4 text-slate-300" />
+          <span className="text-sm font-medium text-slate-700">
+            {navItems.find((n) => n.id === activeTab)?.label ?? activeTab}
+          </span>
+        </header>
 
-          <TabsContent value="benefits">
-            <BenefitsEditor
-              pageData={content.benefitsPage}
-              chapters={content.benefitChapters}
-              onPageChange={(page) => updateSection('benefitsPage', page)}
-              onChaptersChange={(chapters) => updateSection('benefitChapters', chapters)}
-            />
-          </TabsContent>
+        {/* Scrollable content */}
+        <main className="flex-1 overflow-y-auto p-6">
+          <Tabs value={activeTab} onValueChange={setActiveTab}>
+            <TabsContent value="import">
+              <BenefitsImportWizard
+                clientSlug={slug}
+                onComplete={() => {
+                  loadContent();
+                  setActiveTab('benefits');
+                }}
+              />
+            </TabsContent>
 
-          <TabsContent value="enrollment">
-            <OpenEnrollmentEditor
-              data={content.openEnrollment}
-              onChange={(data) => updateSection('openEnrollment', data)}
-            />
-          </TabsContent>
+            <TabsContent value="settings">
+              <SiteSettingsEditor
+                data={content.siteSettings}
+                clientData={content.client}
+                onChange={(settings) => updateSection('siteSettings', settings)}
+                onClientChange={(client) => updateSection('client', client)}
+              />
+            </TabsContent>
 
-          <TabsContent value="changes">
-            <BenefitChangesEditor
-              data={content.benefitChangesPage}
-              onChange={(data) => updateSection('benefitChangesPage', data)}
-            />
-          </TabsContent>
+            <TabsContent value="benefits">
+              <BenefitsEditor
+                pageData={content.benefitsPage}
+                chapters={content.benefitChapters}
+                onPageChange={(page) => updateSection('benefitsPage', page)}
+                onChaptersChange={(chapters) => updateSection('benefitChapters', chapters)}
+              />
+            </TabsContent>
 
-          <TabsContent value="checklist">
-            <EnrollmentChecklistEditor
-              data={content.enrollmentChecklist}
-              onChange={(data) => updateSection('enrollmentChecklist', data)}
-            />
-          </TabsContent>
+            <TabsContent value="enrollment">
+              <OpenEnrollmentEditor
+                data={content.openEnrollment}
+                onChange={(data) => updateSection('openEnrollment', data)}
+              />
+            </TabsContent>
 
-          <TabsContent value="retirement">
-            <RetirementPlanningEditor
-              data={content.retirementPlanning}
-              onChange={(data) => updateSection('retirementPlanning', data)}
-            />
-          </TabsContent>
-        </Tabs>
-      </main>
+            <TabsContent value="changes">
+              <BenefitChangesEditor
+                data={content.benefitChangesPage}
+                onChange={(data) => updateSection('benefitChangesPage', data)}
+              />
+            </TabsContent>
+
+            <TabsContent value="checklist">
+              <EnrollmentChecklistEditor
+                data={content.enrollmentChecklist}
+                onChange={(data) => updateSection('enrollmentChecklist', data)}
+              />
+            </TabsContent>
+
+            <TabsContent value="retirement">
+              <RetirementPlanningEditor
+                data={content.retirementPlanning}
+                onChange={(data) => updateSection('retirementPlanning', data)}
+              />
+            </TabsContent>
+          </Tabs>
+        </main>
+      </div>
     </div>
   );
 }

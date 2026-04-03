@@ -3,6 +3,7 @@
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { FieldInput } from './field-input';
+import { SectionHeader } from './section-header';
 import { Plus, Trash2, GripVertical } from 'lucide-react';
 import { ChapterTablesEditor } from './table-editor';
 import type { BenefitsPageData, BenefitChapterData } from '@/lib/content/types';
@@ -64,6 +65,10 @@ export function BenefitsEditor({ pageData, chapters, onPageChange, onChaptersCha
 
   return (
     <div className="space-y-6">
+      <SectionHeader
+        title="Benefits"
+        description="Manage benefit chapters and their page content."
+      />
       <Card className="border-slate-200 bg-white p-6 rounded-xl shadow-sm">
         <h3 className="text-base font-semibold text-slate-900 mb-4">Benefits Overview Page</h3>
         <div className="space-y-4">

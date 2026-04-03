@@ -2,6 +2,7 @@
 
 import { Card } from '@/components/ui/card';
 import { FieldInput } from './field-input';
+import { SectionHeader } from './section-header';
 import type { SiteSettingsData, ClientData } from '@/lib/content/types';
 
 interface Props {
@@ -22,6 +23,10 @@ export function SiteSettingsEditor({ data, clientData, onChange, onClientChange 
 
   return (
     <div className="space-y-6">
+      <SectionHeader
+        title="Site Settings"
+        description="Configure client identity, branding, and footer content."
+      />
       <Card className="border-slate-200 bg-white p-6 rounded-xl shadow-sm">
         <h3 className="text-base font-semibold text-slate-900 mb-4">Client Info</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

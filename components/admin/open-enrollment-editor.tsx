@@ -2,6 +2,7 @@
 
 import { Card } from '@/components/ui/card';
 import { FieldInput } from './field-input';
+import { SectionHeader } from './section-header';
 import type { OpenEnrollmentData } from '@/lib/content/types';
 
 interface Props {
@@ -16,6 +17,10 @@ export function OpenEnrollmentEditor({ data, onChange }: Props) {
 
   return (
     <div className="space-y-6">
+      <SectionHeader
+        title="Open Enrollment"
+        description="Set enrollment dates, links, and UI label text shown to employees."
+      />
       <Card className="border-slate-200 bg-white p-6 rounded-xl shadow-sm">
         <h3 className="text-base font-semibold text-slate-900 mb-4">General</h3>
         <div className="space-y-4">

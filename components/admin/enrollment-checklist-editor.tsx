@@ -3,6 +3,7 @@
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { FieldInput } from './field-input';
+import { SectionHeader } from './section-header';
 import { Plus, Trash2 } from 'lucide-react';
 import type { EnrollmentChecklistData, ChecklistItem } from '@/lib/content/types';
 
@@ -38,6 +39,10 @@ export function EnrollmentChecklistEditor({ data, onChange }: Props) {
 
   return (
     <div className="space-y-6">
+      <SectionHeader
+        title="Enrollment Checklist"
+        description="Define the step-by-step checklist employees follow during enrollment."
+      />
       <Card className="border-slate-200 bg-white p-6 rounded-xl shadow-sm">
         <h3 className="text-base font-semibold text-slate-900 mb-4">Page Settings</h3>
         <div className="space-y-4">
